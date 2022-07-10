@@ -6,14 +6,11 @@
 #    By: ljohnson <ljohnson@student.42lyon.fr>      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/07/01 11:43:03 by ljohnson          #+#    #+#              #
-#    Updated: 2022/07/01 13:41:49 by ljohnson         ###   ########lyon.fr    #
+#    Updated: 2022/07/10 11:32:25 by ljohnson         ###   ########lyon.fr    #
 #                                                                              #
 # **************************************************************************** #
 
 .PHONY: all clean fclean re
-.SILENT:
-
--include $(DEPS)
 
 NAME	:=	megaphone
 
@@ -22,21 +19,15 @@ NAME	:=	megaphone
 #//////////////////////////////////////////////////////////////////////////////
 
 # Files
-LST_INCS	:=	
 LST_SRCS	:=	megaphone.cpp
-LST_DEPS	:=	$(LST_SRCS:.cpp=.d)
 LST_OBJS	:=	$(LST_SRCS:.cpp=.o)
 
 # Directories
-P_INCS		:=	incs/
 P_SRCS		:=	srcs/
-P_DEPS		:=	.deps/
 P_OBJS		:=	.objs/
 
 # Shortcuts
-INCS		:=	$(addprefix $(P_INCS),$(LST_INCS))
 SRCS		:=	$(addprefix $(P_SRCS),$(LST_SRCS))
-DEPS		:=	$(addprefix	$(P_DEPS),$(LST_DEPS))
 OBJS		:=	$(addprefix $(P_OBJS),$(LST_OBJS))
 
 #//////////////////////////////////////////////////////////////////////////////
@@ -46,7 +37,6 @@ OBJS		:=	$(addprefix $(P_OBJS),$(LST_OBJS))
 # Commands
 CC	:=	c++
 CF	:=	-Wall -Werror -Wextra -std=c++98
-CI	:=	-I $(P_INCS)
 CS	:=	-g3 -fsanitize=address
 RM	:=	rm -rf
 
@@ -72,21 +62,16 @@ UNDERLINE=\033[4m
 #		RULES
 #//////////////////////////////////////////////////////////////////////////////
 
-all:			$(NAME) Makefile
+all:	$(NAME) Makefile
 
 # Binary creation
-$(NAME):		$(OBJS)
-	$(CC) $(CF) $(CI) $(OBJS) -o $@
-
-$(P_DEPS)%.d:	$(P_SRCS)%.cpp Makefile | $(P_DEPS)
-	$(CC) $(CF) -MM -MF $@ -MT "$(P_OBJS)/$*.o $@" $<
+$(NAME):	$(OBJS) Makefile
+	$(CC) $(CF) $(OBJS) -o $@
 
 $(P_OBJS)%.o:	$(P_SRCS)%.cpp Makefile | $(P_OBJS)
-	$(CC) $(CF) $(CI) -c $< -o $@
+	$(CC) $(CF) -c $< -o $@
 
 # Directories creation
-$(P_DEPS):
-	mkdir $(P_DEPS)
 
 $(P_OBJS):
 	mkdir $(P_OBJS)
@@ -94,7 +79,6 @@ $(P_OBJS):
 # Mandatory Rules
 clean:
 	$(RM) $(P_OBJS)
-	$(RM) $(P_DEPS)
 
 fclean:
 	$(MAKE) clean

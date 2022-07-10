@@ -1,48 +1,105 @@
-NAME = a.out
-CC = g++
-FLAGS = -Wall -Wextra -Werror -std=c++98
+# **************************************************************************** #
+#                                                                              #
+#                                                         :::      ::::::::    #
+#    MakefileCPP                                        :+:      :+:    :+:    #
+#                                                     +:+ +:+         +:+      #
+#    By: ljohnson <ljohnson@student.42lyon.fr>      +#+  +:+       +#+         #
+#                                                 +#+#+#+#+#+   +#+            #
+#    Created: 2022/07/01 11:43:03 by ljohnson          #+#    #+#              #
+#    Updated: 2022/07/10 11:32:39 by ljohnson         ###   ########lyon.fr    #
+#                                                                              #
+# **************************************************************************** #
 
-PATH_SRCS		=	src
-PATH_DEP		=	dep
-PATH_OBJS		=	obj
-PATH_INCLUDES	=	includes
+.PHONY: all clean fclean re
+.SILENT:
 
-LST_SRCS		=	
-LST_OBJS		=	${LST_SRCS:.cpp=.o}
-LST_DEP			=	${LST_SRCS:.cpp=.d}
-LST_INCLUDES	=	
+-include $(DEPS)
 
-SRC =		$(addprefix ${PATH_SRCS}/,${LST_SRCS})
-DEP =		$(addprefix ${PATH_DEP}/,${LST_DEP})
-OBJS =		$(addprefix ${PATH_OBJS}/,${LST_OBJS})
-INCLUDES =	$(addprefix ${PATH_INCLUDES}/,${LST_INCLUDES})
+NAME	:=	
 
-all :				${NAME} Makefile
+#//////////////////////////////////////////////////////////////////////////////
+#		ALL FILES
+#//////////////////////////////////////////////////////////////////////////////
 
-${NAME} :			${OBJS}
-					${CC} ${FLAGS} ${OBJS} -o $@
+# Files
+LST_INCS	:=	
+LST_SRCS	:=	
+LST_DEPS	:=	$(LST_SRCS:.cpp=.d)
+LST_OBJS	:=	$(LST_SRCS:.cpp=.o)
 
-${PATH_DEP}/%.d :	${PATH_SRCS}/%.cpp Makefile | ${PATH_DEP}
-					${CC} ${FLAGS} -MM -MF $@ -MT "${PATH_OBJS}/$*.o $@" $<
+# Directories
+P_INCS		:=	incs/
+P_SRCS		:=	srcs/
+P_DEPS		:=	.deps/
+P_OBJS		:=	.objs/
 
+# Shortcuts
+INCS		:=	$(addprefix $(P_INCS),$(LST_INCS))
+SRCS		:=	$(addprefix $(P_SRCS),$(LST_SRCS))
+DEPS		:=	$(addprefix	$(P_DEPS),$(LST_DEPS))
+OBJS		:=	$(addprefix $(P_OBJS),$(LST_OBJS))
 
-${PATH_OBJS}/%.o:	${PATH_SRCS}/%.cpp Makefile | ${PATH_OBJS}
-					${CC} ${FLAGS} -c $< -o $@ -I ${PATH_INCLUDES}
+#//////////////////////////////////////////////////////////////////////////////
+#		COMMAND SHORTCUTS
+#//////////////////////////////////////////////////////////////////////////////
 
-${PATH_DEP}:
-					mkdir dep
+# Commands
+CC	:=	c++
+CF	:=	-Wall -Werror -Wextra -std=c++98
+CI	:=	-I $(P_INCS)
+CS	:=	-g3 -fsanitize=address
+RM	:=	rm -rf
 
-${PATH_OBJS}:
-					mkdir obj
+# Colors
+BLACK=\033[30m
+RED=\033[31m
+GREEN=\033[32m
+YELLOW=\033[33m
+BLUE=\033[34m
+PURPLE=\033[35m
+CYAN=\033[36m
+WHITE=\033[37m
 
-clean :
-					rm -rf obj dep
+# Text
+ERASE=\033[2K\r
+RESET=\033[0m
+BOLD=\033[1m
+FAINT=\033[2m
+ITALIC=\033[3m
+UNDERLINE=\033[4m
 
-fclean :			clean
-					rm -f ${NAME}
+#//////////////////////////////////////////////////////////////////////////////
+#		RULES
+#//////////////////////////////////////////////////////////////////////////////
 
-re :				fclean all
+all:	$(NAME) Makefile
 
--include ${DEP}
+# Binary creation
+$(NAME):	$(OBJS) Makefile
+	$(CC) $(CF) $(CI) $(OBJS) -o $@
 
-.PHONY: all re clean fclean
+$(P_DEPS)%.d:	$(P_SRCS)%.cpp Makefile | $(P_DEPS)
+	$(CC) $(CF) -MM -MF $@ -MT "$(P_OBJS)/$*.o $@" $<
+
+$(P_OBJS)%.o:	$(P_SRCS)%.cpp Makefile | $(P_OBJS)
+	$(CC) $(CF) $(CI) -c $< -o $@
+
+# Directories creation
+$(P_DEPS):
+	mkdir $(P_DEPS)
+
+$(P_OBJS):
+	mkdir $(P_OBJS)
+
+# Mandatory Rules
+clean:
+	$(RM) $(P_OBJS)
+	$(RM) $(P_DEPS)
+
+fclean:
+	$(MAKE) clean
+	$(RM) $(NAME)
+
+re:
+	$(MAKE) fclean
+	$(MAKE) all
