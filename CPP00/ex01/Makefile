@@ -5,25 +5,23 @@
 #                                                     +:+ +:+         +:+      #
 #    By: ljohnson <ljohnson@student.42lyon.fr>      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2022/07/01 11:43:03 by ljohnson          #+#    #+#              #
-#    Updated: 2022/07/10 15:00:05 by ljohnson         ###   ########lyon.fr    #
+#    Created: 2022/07/10 16:58:45 by ljohnson          #+#    #+#              #
+#    Updated: 2022/07/10 18:53:32 by ljohnson         ###   ########lyon.fr    #
 #                                                                              #
 # **************************************************************************** #
 
 .PHONY: all clean fclean re
-.SILENT:
+# .SILENT:
 
--include $(DEPS)
-
-NAME	:=	
+NAME	:=	test
 
 #//////////////////////////////////////////////////////////////////////////////
 #		ALL FILES
 #//////////////////////////////////////////////////////////////////////////////
 
 # Files
-LST_INCS	:=	
-LST_SRCS	:=	
+LST_INCS	:=	Contact.Class.hpp	Phonebook.Class.hpp
+LST_SRCS	:=	Contact.Class.cpp	Phonebook.Class.cpp
 LST_DEPS	:=	$(LST_SRCS:.cpp=.d)
 LST_OBJS	:=	$(LST_SRCS:.cpp=.o)
 
@@ -35,8 +33,9 @@ P_OBJS		:=	.objs/
 
 # Shortcuts
 INCS		:=	$(addprefix $(P_INCS),$(LST_INCS))
-SRCS		:=	$(addprefix $(P_SRCS),$(LST_SRCS))
-DEPS		:=	$(addprefix	$(P_DEPS),$(LST_DEPS))
+SRCS		:=	$(addprefix $(P_SRCS),$(LST_SRCS))	\
+				$(addprefix $(P_SRCS), main.cpp)
+DEPS		:=	$(addprefix $(P_DEPS),$(LST_DEPS))
 OBJS		:=	$(addprefix $(P_OBJS),$(LST_OBJS))
 
 #//////////////////////////////////////////////////////////////////////////////
@@ -48,6 +47,7 @@ CC	:=	c++
 CF	:=	-Wall -Werror -Wextra -std=c++98
 CI	:=	-I $(P_INCS)
 CS	:=	-g3 -fsanitize=address
+CT	:=	-g3 -fsanitize=threads
 RM	:=	rm -rf
 
 # Colors
@@ -79,10 +79,12 @@ $(NAME):	$(OBJS) Makefile
 	$(CC) $(CF) $(CI) $(OBJS) -o $@
 
 $(P_DEPS)%.d:	$(P_SRCS)%.cpp Makefile | $(P_DEPS)
-	$(CC) $(CF) -MM -MF $@ -MT "$(P_OBJS)/$*.o $@" $<
+	$(CC) $(CF) $(CI) -MM -MF $@ -MT "$(P_OBJS)$*.o $@" $<
+
+-include $(DEPS)
 
 $(P_OBJS)%.o:	$(P_SRCS)%.cpp $(P_DEPS)%.d Makefile | $(P_OBJS)
-	$(CC) $(CF) $(P_DEPS)%.d -c $< -o $@
+	$(CC) $(CF) $(CI) -I $(P_DEPS)%.d -c $< -o $@
 
 # Directories creation
 $(P_DEPS):
