@@ -6,22 +6,23 @@
 #    By: ljohnson <ljohnson@student.42lyon.fr>      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/07/10 16:58:45 by ljohnson          #+#    #+#              #
-#    Updated: 2022/07/10 18:53:32 by ljohnson         ###   ########lyon.fr    #
+#    Updated: 2022/07/13 15:04:29 by ljohnson         ###   ########lyon.fr    #
 #                                                                              #
 # **************************************************************************** #
 
 .PHONY: all clean fclean re
 # .SILENT:
 
-NAME	:=	test
+NAME	:=	PhoneBook
 
 #//////////////////////////////////////////////////////////////////////////////
 #		ALL FILES
 #//////////////////////////////////////////////////////////////////////////////
 
 # Files
-LST_INCS	:=	Contact.Class.hpp	Phonebook.Class.hpp
-LST_SRCS	:=	Contact.Class.cpp	Phonebook.Class.cpp
+LST_INCS	:=	Contact.Class.hpp	PhoneBook.Class.hpp
+LST_SRCS	:=	Contact.Class.cpp	PhoneBook.Class.cpp	\
+				main.cpp
 LST_DEPS	:=	$(LST_SRCS:.cpp=.d)
 LST_OBJS	:=	$(LST_SRCS:.cpp=.o)
 
@@ -33,8 +34,7 @@ P_OBJS		:=	.objs/
 
 # Shortcuts
 INCS		:=	$(addprefix $(P_INCS),$(LST_INCS))
-SRCS		:=	$(addprefix $(P_SRCS),$(LST_SRCS))	\
-				$(addprefix $(P_SRCS), main.cpp)
+SRCS		:=	$(addprefix $(P_SRCS),$(LST_SRCS))
 DEPS		:=	$(addprefix $(P_DEPS),$(LST_DEPS))
 OBJS		:=	$(addprefix $(P_OBJS),$(LST_OBJS))
 
