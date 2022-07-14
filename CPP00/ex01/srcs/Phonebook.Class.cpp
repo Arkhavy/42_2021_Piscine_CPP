@@ -6,7 +6,7 @@
 /*   By: ljohnson <ljohnson@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/10 18:44:49 by ljohnson          #+#    #+#             */
-/*   Updated: 2022/07/14 15:06:02 by ljohnson         ###   ########lyon.fr   */
+/*   Updated: 2022/07/14 18:08:25 by ljohnson         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,10 +71,9 @@ static int	check_phone_number(std::string str)
 	return (0);
 }
 
-static Contact	get_contact_informations()
+void	get_contact_informations(Contact& TmpContact)
 {
 	std::string	str;
-	Contact		TmpContact;
 	
 	for (int i = 0; i < 5; i++)
 	{
@@ -90,7 +89,6 @@ static Contact	get_contact_informations()
 		else
 			TmpContact.set_string(str, i);
 	}
-	return (TmpContact);
 }
 
 void	PhoneBook::add_contact()
@@ -103,13 +101,13 @@ void	PhoneBook::add_contact()
 			this->oldest_contact = 0;
 		print_error("Maximum number of contact reached, replacing the oldest one");
 		std::cout << "Currently replacing contact at index : " << this->oldest_contact << std::endl;
-		Contact[this->oldest_contact] = get_contact_informations();
+		get_contact_informations(Contact[this->oldest_contact]);
 		this->oldest_contact++;
 	}
 	else
 	{
 		std::cout << "Currently adding contact at index : " << this->contact_nb << std::endl;
-		Contact[this->contact_nb] = get_contact_informations();
+		get_contact_informations(Contact[this->contact_nb]);
 		this->contact_nb++;
 	}
 }

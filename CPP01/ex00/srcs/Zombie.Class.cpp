@@ -6,7 +6,7 @@
 /*   By: ljohnson <ljohnson@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/14 14:44:50 by ljohnson          #+#    #+#             */
-/*   Updated: 2022/07/14 15:01:59 by ljohnson         ###   ########lyon.fr   */
+/*   Updated: 2022/07/14 15:12:34 by ljohnson         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ Zombie::Zombie() {return ;}
 
 Zombie::~Zombie()
 {
-	std::cout << "Destructor of " << this->name << " called." << std::endl;
+	std::cout << "\033[2m" << "Destructor of " << this->name << " called." << "\033[0m" << std::endl;
 	return ;
 }
 
