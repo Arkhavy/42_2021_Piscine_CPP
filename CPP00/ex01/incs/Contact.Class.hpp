@@ -6,7 +6,7 @@
 /*   By: ljohnson <ljohnson@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/10 18:45:51 by ljohnson          #+#    #+#             */
-/*   Updated: 2022/07/14 08:43:54 by ljohnson         ###   ########lyon.fr   */
+/*   Updated: 2022/07/14 14:41:50 by ljohnson         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,4 +36,4 @@ class	Contact
 
 };
 
-#endif
+#endif /* CONTACT_CLASS_HPP */
