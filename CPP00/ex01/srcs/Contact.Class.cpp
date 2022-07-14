@@ -6,7 +6,7 @@
 /*   By: ljohnson <ljohnson@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/10 18:44:37 by ljohnson          #+#    #+#             */
-/*   Updated: 2022/07/13 13:35:42 by ljohnson         ###   ########lyon.fr   */
+/*   Updated: 2022/07/13 15:58:23 by ljohnson         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,15 +16,46 @@ Contact::Contact() {return ;}
 
 Contact::~Contact() {return ;}
 
-std::string	Contact::get_first_name() {return (this->first_name);}
+//Contact getter
+std::string	Contact::get_string(int index) 
+{
+	switch (index)
+	{
+		case 0:
+			return (this->first_name);
+		case 1:
+			return (this->last_name);
+		case 2:
+			return (this->nickname);
+		case 3:
+			return (this->phone_number);
+		case 4:
+			return (this->darkest_secret);
+		default:
+			return (NULL);
+	}
+	return (NULL);
+}
 
-std::string	Contact::get_last_name() {return (this->last_name);}
-
-std::string	Contact::get_nickname() {return (this->nickname);}
-
-std::string	Contact::get_phone_number() {return (this->phone_number);}
-
-std::string	Contact::get_darkest_secret() {return (this->darkest_secret);}
+//Contact setter
+void	Contact::set_string(std::string str, int index)
+{
+	switch (index)
+	{
+		case 0:
+			this->first_name = str; break ;
+		case 1:
+			this->last_name = str; break ;
+		case 2:
+			this->nickname = str; break ;
+		case 3:
+			this->phone_number = str; break ;
+		case 4:
+			this->darkest_secret = str; break ;
+		default:
+			break ;
+	}
+}
 
 void	Contact::display_info()
 {

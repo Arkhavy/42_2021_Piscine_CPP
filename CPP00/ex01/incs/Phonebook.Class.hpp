@@ -6,7 +6,7 @@
 /*   By: ljohnson <ljohnson@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/10 18:46:10 by ljohnson          #+#    #+#             */
-/*   Updated: 2022/07/13 14:16:17 by ljohnson         ###   ########lyon.fr   */
+/*   Updated: 2022/07/13 15:44:42 by ljohnson         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@ class	PhoneBook
 {
 	private:
 		int		contact_nb;
+		int		oldest_contact;
 		Contact	Contact[8];
 
 	public:
