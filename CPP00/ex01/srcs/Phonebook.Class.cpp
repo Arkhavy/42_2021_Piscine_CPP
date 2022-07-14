@@ -6,7 +6,7 @@
 /*   By: ljohnson <ljohnson@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/10 18:44:49 by ljohnson          #+#    #+#             */
-/*   Updated: 2022/07/13 16:03:26 by ljohnson         ###   ########lyon.fr   */
+/*   Updated: 2022/07/14 10:04:36 by ljohnson         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,7 @@ PhoneBook::PhoneBook()
 
 PhoneBook::~PhoneBook() {return ;}
 
+// Add Contact Section
 static void	print_message(int index)
 {
 	std::cout << "Please enter ";
@@ -42,6 +43,49 @@ static void	print_message(int index)
 	}
 }
 
+static int	check_phone_number(std::string str)
+{
+	if (str.size() != 10)
+	{
+		print_error("Phone number must be 10 character long, try again !");
+		return (1);
+	}
+	else
+	{
+		for (int i = 0; str[i]; i++)
+		{
+			if (!isdigit(str[i]))
+			{
+				print_error("Phone number must have only digits, try again !");
+				return (1);
+			}
+		}
+	}
+	return (0);
+}
+
+static Contact	get_contact_informations()
+{
+	std::string	str;
+	Contact		TmpContact;
+	
+	for (int i = 0; i < 5; i++)
+	{
+		print_message(i);
+		std::getline(std::cin, str);
+		if (i == 3 && check_phone_number(str))
+			i--;
+		else if (str.size() == 0 || str[0] == '\n')
+		{
+			print_error("Field must not be empty, try again !");
+			i--;
+		}
+		else
+			TmpContact.set_string(str, i);
+	}
+	return (TmpContact);
+}
+
 void	PhoneBook::add_contact()
 {
 	std::string	str;
@@ -51,22 +95,70 @@ void	PhoneBook::add_contact()
 		if (this->oldest_contact == 8)
 			this->oldest_contact = 0;
 		print_error("Maximum number of contact reached, replacing the oldest one");
-		std::cout << "Currently replacing index " << this->oldest_contact << std::endl;
-		for (int i = 0; i < 5; i++)
-		{
-			print_message(i);
-			std::getline(std::cin, str);
-			Contact[this->oldest_contact].set_string(str, i);
-		}
+		std::cout << "Currently replacing contact at index : " << this->oldest_contact << std::endl;
+		Contact[this->oldest_contact] = get_contact_informations();
+		this->oldest_contact++;
 	}
 	else
 	{
-		for (int i = 0; i < 5; i++)
-		{
-			print_message(i);
-			std::getline(std::cin, str);
-			Contact[this->contact_nb].set_string(str, i);
-		}
+		std::cout << "Currently adding contact at index : " << this->contact_nb << std::endl;
+		Contact[this->contact_nb] = get_contact_informations();
 		this->contact_nb++;
+	}
+}
+
+// Search Contact Section
+static void	check_and_display_str(std::string str)
+{
+	std::cout << "|";
+	if (str.size() > 10)
+	{
+		str.resize(9);
+		str.resize(10, '.');
+	}
+	std::cout << std::setw(10) << str;
+}
+
+void	PhoneBook::display_phonebook()
+{
+	std::cout << std::endl << "_____________________________________________";
+	std::cout << std::endl << "|     INDEX|FIRST NAME| LAST NAME|  NICKNAME|" << std::endl;
+	for (int i = 0; i < this->contact_nb; i++)
+	{
+		for (int j = 0; j < 4; j++)
+		{
+			if (j == 0)
+				std::cout << "|" << std::setw(10) << i;
+			else
+				check_and_display_str(Contact[i].get_string(j - 1));
+		}
+		std::cout << "|" << std::endl;
+	}
+	std::cout << "|__________|__________|__________|__________|" << std::endl << std::endl;
+}
+
+void	PhoneBook::search_contact()
+{
+	std::string	str;
+	std::string	cmp = "0123456789";
+
+	if (this->contact_nb == 0)
+		return (print_error("There is no contact to display right now, try the ADD Command !"));
+	this->display_phonebook();
+	while (42)
+	{
+		std::cout << "Please enter an index to display the corresponding entry : ";
+		std::getline(std::cin, str);
+		if (str.size() != 1 || !isdigit(str[0]))
+			print_error("The index given is invalid, try again !");
+		else
+		{
+			for (int i = 0; i < this->contact_nb; i++)
+			{
+				if (str[0] == cmp[i])
+					return (Contact[i].display_info());
+			}
+			print_error("The index given is invalid, try again !");
+		}
 	}
 }

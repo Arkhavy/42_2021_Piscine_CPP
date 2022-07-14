@@ -6,16 +6,16 @@
 /*   By: ljohnson <ljohnson@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/10 18:45:00 by ljohnson          #+#    #+#             */
-/*   Updated: 2022/07/13 16:03:35 by ljohnson         ###   ########lyon.fr   */
+/*   Updated: 2022/07/14 08:49:34 by ljohnson         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <Contact.Class.hpp>
 #include <PhoneBook.Class.hpp>
 
 void	print_error(std::string message)
 {
 	std::cerr << "\033[31m";
+	std::cerr << "\033[1m";
 	std::cerr << message;
 	std::cerr << "\033[0m" << std::endl;
 }
@@ -39,7 +39,7 @@ int	main(void)
 			return (0);
 		}
 		else
-			print_error("Sorry, this command does not exist.");
+			print_error("Sorry, this command does not exist, try again !");
 	}
 	return (0);
 }
