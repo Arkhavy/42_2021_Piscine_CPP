@@ -6,7 +6,7 @@
 /*   By: ljohnson <ljohnson@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/10 18:44:49 by ljohnson          #+#    #+#             */
-/*   Updated: 2022/07/14 13:08:59 by ljohnson         ###   ########lyon.fr   */
+/*   Updated: 2022/07/14 15:06:02 by ljohnson         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,12 +15,17 @@ void	print_error(std::string message);
 
 PhoneBook::PhoneBook()
 {
+	std::cout << "\033[2m" << "PhoneBook constructor called" << "\033[0m" << std::endl;
 	this->contact_nb = 0;
 	this->oldest_contact = 0;
 	return ;
 }
 
-PhoneBook::~PhoneBook() {return ;}
+PhoneBook::~PhoneBook()
+{
+	std::cout << "\033[2m" << "PhoneBook destructor called" << "\033[0m" << std::endl;
+	return ;
+}
 
 /* ************************************************************************** */
 /* Add Contact Section */

@@ -6,15 +6,23 @@
 /*   By: ljohnson <ljohnson@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/10 18:44:37 by ljohnson          #+#    #+#             */
-/*   Updated: 2022/07/14 08:44:55 by ljohnson         ###   ########lyon.fr   */
+/*   Updated: 2022/07/14 15:06:42 by ljohnson         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <Contact.Class.hpp>
 
-Contact::Contact() {return ;}
+Contact::Contact()
+{
+	std::cout << "\033[2m" << "Contact constructor called" << "\033[0m" << std::endl;
+	return ;
+}
 
-Contact::~Contact() {return ;}
+Contact::~Contact()
+{
+	std::cout << "\033[2m" << "Contact destructor called" << "\033[0m" << std::endl;
+	return ;
+}
 
 //Contact getter
 std::string	Contact::get_string(int index) 
