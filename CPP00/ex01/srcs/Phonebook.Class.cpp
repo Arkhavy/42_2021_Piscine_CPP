@@ -6,7 +6,7 @@
 /*   By: ljohnson <ljohnson@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/10 18:44:49 by ljohnson          #+#    #+#             */
-/*   Updated: 2022/07/14 10:04:36 by ljohnson         ###   ########lyon.fr   */
+/*   Updated: 2022/07/14 13:08:59 by ljohnson         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,9 @@ PhoneBook::PhoneBook()
 
 PhoneBook::~PhoneBook() {return ;}
 
-// Add Contact Section
+/* ************************************************************************** */
+/* Add Contact Section */
+/* ************************************************************************** */
 static void	print_message(int index)
 {
 	std::cout << "Please enter ";
@@ -107,7 +109,9 @@ void	PhoneBook::add_contact()
 	}
 }
 
-// Search Contact Section
+/* ************************************************************************** */
+/* Search Contact Section */
+/* ************************************************************************** */
 static void	check_and_display_str(std::string str)
 {
 	std::cout << "|";
