@@ -6,11 +6,11 @@
 /*   By: ljohnson <ljohnson@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/10 18:44:37 by ljohnson          #+#    #+#             */
-/*   Updated: 2022/07/14 15:06:42 by ljohnson         ###   ########lyon.fr   */
+/*   Updated: 2022/07/15 11:09:28 by ljohnson         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <Contact.Class.hpp>
+#include <Contact.hpp>
 
 Contact::Contact()
 {

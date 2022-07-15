@@ -6,11 +6,11 @@
 /*   By: ljohnson <ljohnson@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/10 18:45:00 by ljohnson          #+#    #+#             */
-/*   Updated: 2022/07/15 09:31:12 by ljohnson         ###   ########lyon.fr   */
+/*   Updated: 2022/07/15 11:10:21 by ljohnson         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <PhoneBook.Class.hpp>
+#include <PhoneBook.hpp>
 
 void	print_error(std::string message)
 {

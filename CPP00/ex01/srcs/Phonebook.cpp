@@ -1,16 +1,17 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   PhoneBook.Class.cpp                                :+:      :+:    :+:   */
+/*   Phonebook.Class.cpp                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ljohnson <ljohnson@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/10 18:44:49 by ljohnson          #+#    #+#             */
-/*   Updated: 2022/07/15 09:29:31 by ljohnson         ###   ########lyon.fr   */
+/*   Updated: 2022/07/15 11:10:27 by ljohnson         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <PhoneBook.Class.hpp>
+#include <PhoneBook.hpp>
+
 void	print_error(std::string message);
 void	ft_getline(std::string& str);
 

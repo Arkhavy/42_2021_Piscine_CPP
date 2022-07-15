@@ -1,17 +1,17 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Contact.Class.hpp                                  :+:      :+:    :+:   */
+/*   Contact.hpp                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ljohnson <ljohnson@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/10 18:45:51 by ljohnson          #+#    #+#             */
-/*   Updated: 2022/07/14 14:41:50 by ljohnson         ###   ########lyon.fr   */
+/*   Updated: 2022/07/15 11:08:59 by ljohnson         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef CONTACT_CLASS_HPP
-# define CONTACT_CLASS_HPP
+#ifndef CONTACT_HPP
+# define CONTACT_HPP
 
 # include <string>
 # include <iostream>
@@ -36,4 +36,4 @@ class	Contact
 
 };
 
-#endif /* CONTACT_CLASS_HPP */
+#endif /* CONTACT_HPP */

@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Zombie.Class.cpp                                   :+:      :+:    :+:   */
+/*   Zombie.cpp                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ljohnson <ljohnson@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/14 14:44:50 by ljohnson          #+#    #+#             */
-/*   Updated: 2022/07/15 10:51:15 by ljohnson         ###   ########lyon.fr   */
+/*   Updated: 2022/07/15 11:08:03 by ljohnson         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <Zombie.Class.hpp>
+#include <Zombie.hpp>
 
 Zombie::Zombie(std::string name)
 {
