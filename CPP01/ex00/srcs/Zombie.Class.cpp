@@ -6,13 +6,18 @@
 /*   By: ljohnson <ljohnson@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/14 14:44:50 by ljohnson          #+#    #+#             */
-/*   Updated: 2022/07/14 15:12:34 by ljohnson         ###   ########lyon.fr   */
+/*   Updated: 2022/07/15 09:58:49 by ljohnson         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <Zombie.Class.hpp>
 
-Zombie::Zombie() {return ;}
+Zombie::Zombie(std::string name)
+{
+	this->name = name;
+	std::cout << "\033[2m" << "Constructor of " << this->name << " called." << "\033[0m" << std::endl;
+	return ;
+}
 
 Zombie::~Zombie()
 {
@@ -22,5 +27,8 @@ Zombie::~Zombie()
 
 void	Zombie::announce()
 {
-	std::cout << this->name << ": BraiiiiiiinnnzzzZ..." << std::endl;
+	if (this->name == "unnamed")
+		std::cout << "unnamed" << ": BraiiiiiiinnnzzzZ..." << std::endl;
+	else
+		std::cout << this->name << ": BraiiiiiiinnnzzzZ..." << std::endl;
 }

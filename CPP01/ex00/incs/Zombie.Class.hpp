@@ -6,7 +6,7 @@
 /*   By: ljohnson <ljohnson@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/14 14:41:26 by ljohnson          #+#    #+#             */
-/*   Updated: 2022/07/14 14:53:18 by ljohnson         ###   ########lyon.fr   */
+/*   Updated: 2022/07/15 09:56:29 by ljohnson         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ class	Zombie
 		std::string	name;
 
 	public:
-		Zombie();
+		Zombie(std::string name);
 		~Zombie();
 
 		void announce();
