@@ -6,7 +6,7 @@
 /*   By: ljohnson <ljohnson@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/10 18:45:00 by ljohnson          #+#    #+#             */
-/*   Updated: 2022/07/14 16:11:43 by ljohnson         ###   ########lyon.fr   */
+/*   Updated: 2022/07/15 09:31:12 by ljohnson         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,16 @@ void	print_error(std::string message)
 	std::cerr << "\033[0m" << std::endl;
 }
 
+void	ft_getline(std::string& str)
+{
+	std::getline(std::cin, str);
+	if (std::cin.eofbit != 0)
+	{
+		std::cin.clear();
+		clearerr(stdin);
+	}
+}
+
 int	main(void)
 {
 	PhoneBook	Phonebook;
@@ -27,7 +37,7 @@ int	main(void)
 	while (42)
 	{
 		std::cout << "Please enter one of the following : ADD, SEARCH, EXIT" << std::endl;
-		std::getline(std::cin, str);
+		ft_getline(str);
 		if (str == "ADD")
 			Phonebook.add_contact();
 		else if (str == "SEARCH")

@@ -6,12 +6,13 @@
 /*   By: ljohnson <ljohnson@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/10 18:44:49 by ljohnson          #+#    #+#             */
-/*   Updated: 2022/07/14 18:08:25 by ljohnson         ###   ########lyon.fr   */
+/*   Updated: 2022/07/15 09:29:31 by ljohnson         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <PhoneBook.Class.hpp>
 void	print_error(std::string message);
+void	ft_getline(std::string& str);
 
 PhoneBook::PhoneBook()
 {
@@ -78,7 +79,7 @@ void	get_contact_informations(Contact& TmpContact)
 	for (int i = 0; i < 5; i++)
 	{
 		print_message(i);
-		std::getline(std::cin, str);
+		ft_getline(str);
 		if (i == 3 && check_phone_number(str))
 			i--;
 		else if (str.size() == 0 || str[0] == '\n')
@@ -155,7 +156,7 @@ void	PhoneBook::search_contact()
 	while (42)
 	{
 		std::cout << "Please enter an index to display the corresponding entry : ";
-		std::getline(std::cin, str);
+		ft_getline(str);
 		if (str.size() != 1 || !isdigit(str[0]))
 			print_error("The index given is invalid, try again !");
 		else
