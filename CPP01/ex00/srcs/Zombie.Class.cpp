@@ -6,7 +6,7 @@
 /*   By: ljohnson <ljohnson@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/14 14:44:50 by ljohnson          #+#    #+#             */
-/*   Updated: 2022/07/15 09:58:49 by ljohnson         ###   ########lyon.fr   */
+/*   Updated: 2022/07/15 10:51:15 by ljohnson         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,8 +27,5 @@ Zombie::~Zombie()
 
 void	Zombie::announce()
 {
-	if (this->name == "unnamed")
-		std::cout << "unnamed" << ": BraiiiiiiinnnzzzZ..." << std::endl;
-	else
-		std::cout << this->name << ": BraiiiiiiinnnzzzZ..." << std::endl;
+	std::cout << this->name << ": BraiiiiiiinnnzzzZ..." << std::endl;
 }
