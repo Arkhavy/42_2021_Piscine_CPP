@@ -6,7 +6,7 @@
 /*   By: ljohnson <ljohnson@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/14 14:59:11 by ljohnson          #+#    #+#             */
-/*   Updated: 2022/07/15 11:08:27 by ljohnson         ###   ########lyon.fr   */
+/*   Updated: 2022/07/15 13:29:03 by ljohnson         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,12 +14,12 @@
 
 int	main(void)
 {
-	Zombie	stud("Skunk");
+	Zombie	stud("Normal Zombie");
 	stud.announce();
 
-	stud.randomChump("Worm");
+	stud.randomChump("Random Chump");
 
-	Zombie*	piscineux = stud.newZombie("Blobfish");
+	Zombie*	piscineux = stud.newZombie("New Zombie");
 	piscineux->announce();
 
 	delete piscineux;
