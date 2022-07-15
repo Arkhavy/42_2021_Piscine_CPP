@@ -6,7 +6,7 @@
 /*   By: ljohnson <ljohnson@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/10 18:45:51 by ljohnson          #+#    #+#             */
-/*   Updated: 2022/07/15 11:12:17 by ljohnson         ###   ########lyon.fr   */
+/*   Updated: 2022/07/15 12:39:53 by ljohnson         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,8 +30,8 @@ class	Contact
 		Contact();
 		~Contact();
 
-		void	display_info();
-		std::string	get_string(int index);
+		void	display_info() const;
+		std::string	get_string(int index) const;
 		void	set_string(std::string str, int index);
 
 };

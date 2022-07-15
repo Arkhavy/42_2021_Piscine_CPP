@@ -6,7 +6,7 @@
 /*   By: ljohnson <ljohnson@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/10 18:44:37 by ljohnson          #+#    #+#             */
-/*   Updated: 2022/07/15 11:12:13 by ljohnson         ###   ########lyon.fr   */
+/*   Updated: 2022/07/15 12:39:38 by ljohnson         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ Contact::~Contact()
 }
 
 //Contact getter
-std::string	Contact::get_string(int index) 
+std::string	Contact::get_string(int index) const
 {
 	switch (index)
 	{
@@ -65,7 +65,7 @@ void	Contact::set_string(std::string str, int index)
 	}
 }
 
-void	Contact::display_info()
+void	Contact::display_info() const
 {
 	std::cout << std::endl;
 	std::cout << "--------------------" << std::endl;

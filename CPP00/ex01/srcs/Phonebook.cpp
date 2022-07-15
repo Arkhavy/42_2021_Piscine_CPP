@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: ljohnson <ljohnson@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/07/10 18:44:49 by ljohnson          #+#    #+#             */
-/*   Updated: 2022/07/15 11:12:15 by ljohnson         ###   ########lyon.fr   */
+/*   Created: 2022/07/15 12:44:26 by ljohnson          #+#    #+#             */
+/*   Updated: 2022/07/15 12:44:56 by ljohnson         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -128,7 +128,7 @@ static void	check_and_display_str(std::string str)
 	std::cout << std::setw(10) << str;
 }
 
-void	PhoneBook::display_phonebook()
+void	PhoneBook::display_phonebook() const
 {
 	std::cout << std::endl << "_____________________________________________";
 	std::cout << std::endl << "|     INDEX|FIRST NAME| LAST NAME|  NICKNAME|" << std::endl;
@@ -146,10 +146,10 @@ void	PhoneBook::display_phonebook()
 	std::cout << "|__________|__________|__________|__________|" << std::endl << std::endl;
 }
 
-void	PhoneBook::search_contact()
+void	PhoneBook::search_contact() const
 {
-	std::string	str;
-	std::string	cmp = "0123456789";
+	std::string			str;
+	std::string const	cmp = "0123456789";
 
 	if (this->contact_nb == 0)
 		return (print_error("There is no contact to display right now, try the ADD Command !"));
