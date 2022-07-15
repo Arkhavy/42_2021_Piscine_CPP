@@ -6,23 +6,24 @@
 #    By: ljohnson <ljohnson@student.42lyon.fr>      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/07/10 16:58:45 by ljohnson          #+#    #+#              #
-#    Updated: 2022/07/14 14:38:42 by ljohnson         ###   ########lyon.fr    #
+#    Updated: 2022/07/15 13:48:39 by ljohnson         ###   ########lyon.fr    #
 #                                                                              #
 # **************************************************************************** #
 
 .PHONY: all clean fclean re
 # .SILENT:
 
-NAME	:=	Zombie
+NAME	:=	ZombieHorde
 
 #//////////////////////////////////////////////////////////////////////////////
 #		ALL FILES
 #//////////////////////////////////////////////////////////////////////////////
 
 # Files
-LST_INCS	:=	Zombie.Class.hpp
-LST_SRCS	:=	Zombie.Class.cpp	newZombie.cpp	\
-				randomChump.cpp		main.cpp
+LST_INCS	:=	Zombie.hpp
+LST_SRCS	:=	Zombie.cpp			newZombie.cpp	\
+				randomChump.cpp		zombieHorde.cpp	\
+				main.cpp
 LST_DEPS	:=	$(LST_SRCS:.cpp=.d)
 LST_OBJS	:=	$(LST_SRCS:.cpp=.o)
 

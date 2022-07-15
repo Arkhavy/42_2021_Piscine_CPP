@@ -6,11 +6,11 @@
 /*   By: ljohnson <ljohnson@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/15 11:24:03 by ljohnson          #+#    #+#             */
-/*   Updated: 2022/07/15 11:34:01 by ljohnson         ###   ########lyon.fr   */
+/*   Updated: 2022/07/15 13:46:50 by ljohnson         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../incs/Zombie.hpp"
+#include <Zombie.hpp>
 
 Zombie*	Zombie::zombieHorde(int N, std::string name)
 {
@@ -18,8 +18,8 @@ Zombie*	Zombie::zombieHorde(int N, std::string name)
 
 	if (N <= 0)
 		return (NULL);
-	//will need to watch intra videos
+	zombieHorde = new Zombie[N];
 	for (int i = 0; i < N; i++)
-		zombieHorde[i] = this->newZombie(name);
+		zombieHorde[i].name = name;
 	return (zombieHorde);
 }

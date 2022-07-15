@@ -6,11 +6,17 @@
 /*   By: ljohnson <ljohnson@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/15 11:20:50 by ljohnson          #+#    #+#             */
-/*   Updated: 2022/07/15 11:22:00 by ljohnson         ###   ########lyon.fr   */
+/*   Updated: 2022/07/15 13:48:03 by ljohnson         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <Zombie.hpp>
+
+Zombie::Zombie()
+{
+	std::cout << "\033[2m" << "Default Zombie Constructor called." << "\033[0m" << std::endl;
+	return ;
+}
 
 Zombie::Zombie(std::string name)
 {
