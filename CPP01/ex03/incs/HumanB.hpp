@@ -6,7 +6,7 @@
 /*   By: ljohnson <ljohnson@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/16 11:55:07 by ljohnson          #+#    #+#             */
-/*   Updated: 2022/07/16 14:41:32 by ljohnson         ###   ########lyon.fr   */
+/*   Updated: 2022/07/16 14:53:30 by ljohnson         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ class	HumanB
 		~HumanB();
 
 		void	attack() const;
-		void	setWeapon(Weapon weapon);
+		void	setWeapon(Weapon& weapon);
 };
 
 #endif /* HUMANB_HPP */

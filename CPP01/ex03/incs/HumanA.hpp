@@ -6,7 +6,7 @@
 /*   By: ljohnson <ljohnson@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/16 11:08:44 by ljohnson          #+#    #+#             */
-/*   Updated: 2022/07/16 14:42:20 by ljohnson         ###   ########lyon.fr   */
+/*   Updated: 2022/07/16 14:50:14 by ljohnson         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ class	HumanA
 		Weapon		*weapon;
 
 	public:
-		HumanA(std::string name, Weapon weapon);
+		HumanA(std::string name, Weapon& weapon);
 		~HumanA();
 
 		void	attack() const;

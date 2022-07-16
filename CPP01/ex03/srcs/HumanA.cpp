@@ -6,7 +6,7 @@
 /*   By: ljohnson <ljohnson@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/16 11:12:03 by ljohnson          #+#    #+#             */
-/*   Updated: 2022/07/16 14:42:29 by ljohnson         ###   ########lyon.fr   */
+/*   Updated: 2022/07/16 14:50:00 by ljohnson         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 /* ************************************************************************** */
 /* Constructors & Destructors */
 /* ************************************************************************** */
-HumanA::HumanA(std::string name, Weapon weapon)
+HumanA::HumanA(std::string name, Weapon& weapon)
 {
 	this->name = name;
 	this->weapon = &weapon;

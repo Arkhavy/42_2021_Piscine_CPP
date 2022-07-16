@@ -6,7 +6,7 @@
 /*   By: ljohnson <ljohnson@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/16 11:23:20 by ljohnson          #+#    #+#             */
-/*   Updated: 2022/07/16 11:23:57 by ljohnson         ###   ########lyon.fr   */
+/*   Updated: 2022/07/16 14:54:46 by ljohnson         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,7 @@ int main()
 		club.setType("some other type of club");
 		bob.attack();
 	}
+	std::cout << std::endl;
 	{
 		Weapon club = Weapon("crude spiked club");
 
