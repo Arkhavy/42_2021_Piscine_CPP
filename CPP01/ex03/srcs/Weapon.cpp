@@ -6,7 +6,7 @@
 /*   By: ljohnson <ljohnson@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/16 11:03:09 by ljohnson          #+#    #+#             */
-/*   Updated: 2022/07/16 11:07:18 by ljohnson         ###   ########lyon.fr   */
+/*   Updated: 2022/07/16 12:09:58 by ljohnson         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,23 +14,27 @@
 
 
 /* ************************************************************************** */
-/* Constructors & Destructors Section */
+/* Constructors & Destructors */
 /* ************************************************************************** */
-Weapon::Weapon()
+Weapon::Weapon(std::string type)
 {
-	std::cout << "\033[2m" << "Default Weapon Constructor called." << "\033[0m" << std::endl;
+	this->type = type;
+	std::cout << "\033[2m" << "Weapon " << this->type << " Constructor called." << "\033[0m" << std::endl;
 	return ;
 }
 
 Weapon::~Weapon()
 {
-	std::cout << "\033[2m" << "Default Weapon Desstructor called." << "\033[0m" << std::endl;
+	if (!this->type.empty())
+		std::cout << "\033[2m" << "Default Weapon Destructor called." << "\033[0m" << std::endl;
+	else
+		std::cout << "\033[2m" << "Weapon " << this->type << " Destructor called." << "\033[0m" << std::endl;
 	return ;
 }
 
 /* ************************************************************************** */
-/* Getters & Setters Section */
+/* Getters & Setters */
 /* ************************************************************************** */
-const std::string&	Weapon::get_type() {return (this->type);}
+const std::string&	Weapon::getType() {return (this->type);}
 
-void	Weapon::set_type(std::string type) {this->type = type;}
+void	Weapon::setType(std::string type) {this->type = type;}

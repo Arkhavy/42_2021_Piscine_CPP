@@ -6,7 +6,7 @@
 /*   By: ljohnson <ljohnson@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/16 11:00:50 by ljohnson          #+#    #+#             */
-/*   Updated: 2022/07/16 11:03:04 by ljohnson         ###   ########lyon.fr   */
+/*   Updated: 2022/07/16 11:54:34 by ljohnson         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,11 +22,11 @@ class	Weapon
 		std::string	type;
 
 	public:
-		Weapon();
+		Weapon(std::string type);
 		~Weapon();
 
-		const std::string&	get_type();
-		void				set_type(std::string type);
+		const std::string&	getType();
+		void				setType(std::string type);
 };
 
 #endif /* WEAPON_HPP */
