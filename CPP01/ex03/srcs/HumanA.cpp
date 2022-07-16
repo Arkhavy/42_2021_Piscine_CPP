@@ -6,7 +6,7 @@
 /*   By: ljohnson <ljohnson@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/16 11:12:03 by ljohnson          #+#    #+#             */
-/*   Updated: 2022/07/16 12:11:58 by ljohnson         ###   ########lyon.fr   */
+/*   Updated: 2022/07/16 14:42:29 by ljohnson         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@
 HumanA::HumanA(std::string name, Weapon weapon)
 {
 	this->name = name;
-	this->weapon = weapon;
+	this->weapon = &weapon;
 	std::cout << "\033[2m" << "HumanA " << this->name << " Constructor called." << "\033[0m" << std::endl;
 	return ;
 }
@@ -34,5 +34,5 @@ HumanA::~HumanA()
 /* ************************************************************************** */
 void	HumanA::attack() const
 {
-	std::cout << this->name << "attacks with their " << this->weapon.getType() << std::endl;
+	std::cout << this->name << "attacks with their " << this->weapon->getType() << std::endl;
 }

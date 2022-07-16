@@ -6,7 +6,7 @@
 /*   By: ljohnson <ljohnson@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/16 11:57:10 by ljohnson          #+#    #+#             */
-/*   Updated: 2022/07/16 12:11:41 by ljohnson         ###   ########lyon.fr   */
+/*   Updated: 2022/07/16 14:41:50 by ljohnson         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,12 +31,12 @@ HumanB::~HumanB()
 /* ************************************************************************** */
 /* Getters & Setters */
 /* ************************************************************************** */
-void	HumanB::setWeapon(Weapon weapon) {this->weapon = weapon;}
+void	HumanB::setWeapon(Weapon weapon) {this->weapon = &weapon;}
 
 /* ************************************************************************** */
 /* Member functions */
 /* ************************************************************************** */
 void	HumanB::attack() const
 {
-	std::cout << this->name << "attacks with their " << this->weapon.getType() << std::endl;
+	std::cout << this->name << "attacks with their " << this->weapon->getType() << std::endl;
 }
