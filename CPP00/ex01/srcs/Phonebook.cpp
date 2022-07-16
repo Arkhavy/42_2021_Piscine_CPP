@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Phonebook.cpp                                      :+:      :+:    :+:   */
+/*   PhoneBook.cpp                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ljohnson <ljohnson@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/15 12:44:26 by ljohnson          #+#    #+#             */
-/*   Updated: 2022/07/15 12:44:56 by ljohnson         ###   ########lyon.fr   */
+/*   Updated: 2022/07/16 12:04:31 by ljohnson         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,9 @@
 void	print_error(std::string message);
 void	ft_getline(std::string& str);
 
+/* ************************************************************************** */
+/* Constructors & Destructors */
+/* ************************************************************************** */
 PhoneBook::PhoneBook()
 {
 	std::cout << "\033[2m" << "PhoneBook constructor called" << "\033[0m" << std::endl;
@@ -30,7 +33,7 @@ PhoneBook::~PhoneBook()
 }
 
 /* ************************************************************************** */
-/* Add Contact Section */
+/* Add Contact */
 /* ************************************************************************** */
 static void	print_message(int index)
 {
@@ -115,7 +118,7 @@ void	PhoneBook::add_contact()
 }
 
 /* ************************************************************************** */
-/* Search Contact Section */
+/* Search Contact */
 /* ************************************************************************** */
 static void	check_and_display_str(std::string str)
 {

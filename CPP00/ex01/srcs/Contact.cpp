@@ -6,12 +6,15 @@
 /*   By: ljohnson <ljohnson@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/10 18:44:37 by ljohnson          #+#    #+#             */
-/*   Updated: 2022/07/15 12:39:38 by ljohnson         ###   ########lyon.fr   */
+/*   Updated: 2022/07/16 12:02:31 by ljohnson         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <Contact.hpp>
 
+/* ************************************************************************** */
+/* Constructors & Destructors */
+/* ************************************************************************** */
 Contact::Contact()
 {
 	std::cout << "\033[2m" << "Contact constructor called" << "\033[0m" << std::endl;
@@ -24,7 +27,9 @@ Contact::~Contact()
 	return ;
 }
 
-//Contact getter
+/* ************************************************************************** */
+/* Getters & Setters */
+/* ************************************************************************** */
 std::string	Contact::get_string(int index) const
 {
 	switch (index)
@@ -45,7 +50,6 @@ std::string	Contact::get_string(int index) const
 	return (NULL);
 }
 
-//Contact setter
 void	Contact::set_string(std::string str, int index)
 {
 	switch (index)
@@ -65,6 +69,9 @@ void	Contact::set_string(std::string str, int index)
 	}
 }
 
+/* ************************************************************************** */
+/* Member functions */
+/* ************************************************************************** */
 void	Contact::display_info() const
 {
 	std::cout << std::endl;
