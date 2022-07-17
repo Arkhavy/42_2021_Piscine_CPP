@@ -6,7 +6,7 @@
 /*   By: ljohnson <ljohnson@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/10 18:45:00 by ljohnson          #+#    #+#             */
-/*   Updated: 2022/07/15 11:12:21 by ljohnson         ###   ########lyon.fr   */
+/*   Updated: 2022/07/17 10:43:09 by ljohnson         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,9 @@
 
 void	print_error(std::string message)
 {
-	std::cerr << "\033[31m" << "\033[1m";
-	std::cerr << message;
-	std::cerr << "\033[0m" << std::endl;
+	std::cout << "\033[31m" << "\033[1m";
+	std::cout << message;
+	std::cout << "\033[0m" << std::endl;
 }
 
 void	ft_getline(std::string& str)
