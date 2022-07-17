@@ -6,13 +6,13 @@
 #    By: ljohnson <ljohnson@student.42lyon.fr>      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/07/16 15:00:32 by ljohnson          #+#    #+#              #
-#    Updated: 2022/07/17 10:04:34 by ljohnson         ###   ########lyon.fr    #
+#    Updated: 2022/07/17 12:30:17 by ljohnson         ###   ########lyon.fr    #
 #                                                                              #
 # **************************************************************************** #
 
 .PHONY: all clean fclean re
 
-NAME	:=	test
+NAME	:=	replace
 
 #//////////////////////////////////////////////////////////////////////////////
 #		ALL FILES
