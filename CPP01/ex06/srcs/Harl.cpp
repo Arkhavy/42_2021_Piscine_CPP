@@ -6,7 +6,7 @@
 /*   By: ljohnson <ljohnson@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/17 12:36:17 by ljohnson          #+#    #+#             */
-/*   Updated: 2022/07/17 13:25:31 by ljohnson         ###   ########lyon.fr   */
+/*   Updated: 2022/07/17 16:02:34 by ljohnson         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,6 @@ void	Harl::error() {std::cout << "Error : Meow" << std::endl;}
 /* ************************************************************************** */
 /* Public member functions */
 /* ************************************************************************** */
-
 void	Harl::complain(std::string level)
 {
 	if (level.empty())
