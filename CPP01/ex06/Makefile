@@ -6,14 +6,14 @@
 #    By: ljohnson <ljohnson@student.42lyon.fr>      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/07/17 12:33:39 by ljohnson          #+#    #+#              #
-#    Updated: 2022/07/17 12:33:59 by ljohnson         ###   ########lyon.fr    #
+#    Updated: 2022/07/17 17:23:55 by ljohnson         ###   ########lyon.fr    #
 #                                                                              #
 # **************************************************************************** #
 
 .PHONY: all clean fclean re
 # .SILENT:
 
-NAME	:=	Harl
+NAME	:=	harlFilter
 
 #//////////////////////////////////////////////////////////////////////////////
 #		ALL FILES
