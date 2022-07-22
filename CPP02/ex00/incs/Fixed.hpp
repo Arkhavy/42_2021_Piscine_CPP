@@ -6,7 +6,7 @@
 /*   By: ljohnson <ljohnson@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/22 08:41:08 by ljohnson          #+#    #+#             */
-/*   Updated: 2022/07/22 08:47:00 by ljohnson         ###   ########lyon.fr   */
+/*   Updated: 2022/07/22 11:36:31 by ljohnson         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,8 @@
 class	Fixed
 {
 	private:
+		int					value;
+		static const int	bitnb = 8;
 
 	public:
 		Fixed();
@@ -25,7 +27,7 @@ class	Fixed
 		~Fixed();
 
 		int		getRawBits() const;
-		void	setRawBits(int raw);
+		void	setRawBits(int const raw);
 
 		Fixed&	operator=(Fixed const& rhs);
 };
