@@ -5,15 +5,15 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: ljohnson <ljohnson@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/07/22 08:45:28 by ljohnson          #+#    #+#             */
-/*   Updated: 2022/07/22 13:29:18 by ljohnson         ###   ########lyon.fr   */
+/*   Created: 2022/07/22 13:25:07 by ljohnson          #+#    #+#             */
+/*   Updated: 2022/07/22 13:48:42 by ljohnson         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <Fixed.hpp>
 
 /* ************************************************************************** */
-/* Constructors & Destructors */
+/* Constructor & Destructors */
 /* ************************************************************************** */
 Fixed::Fixed()
 {
@@ -26,6 +26,18 @@ Fixed::Fixed(Fixed const& src)
 {
 	std::cout << "\033[2m" << "Fixed Copy Constructor called." << "\033[0m" << std::endl;
 	*this = src;
+	return ;
+}
+
+Fixed::Fixed(int const nb)
+{
+	std::cout << "\033[2m" << "Fixed int Constructor called." << "\033[0m" << std::endl;
+	return ;
+}
+
+Fixed::Fixed(float const nb)
+{
+	std::cout << "\033[2m" << "Fixed float Constructor called." << "\033[0m" << std::endl;
 	return ;
 }
 
@@ -45,18 +57,24 @@ Fixed&	Fixed::operator=(Fixed const& rhs)
 	return (*this);
 }
 
+Fixed	Fixed::operator<<(Fixed const& rhs)
+{
+	std::cout << "\033[2m" << "Fixed insertion operator called." << "\033[0m" << std::endl;
+	return (*this);
+}
+
 /* ************************************************************************** */
 /* Public member functions */
 /* ************************************************************************** */
 int	Fixed::getRawBits() const
 {
-	std::cout << "\033[2m" << "Fixed getRawBits member function called" << "\033[0m" << std::endl;
+	std::cout << "\033[2m" << "Fixed getRawBits member function called." << "\033[0m" << std::endl;
 	return (this->value);
 }
 
 void	Fixed::setRawBits(int const raw)
 {
-	std::cout << "\033[2m" << "Fixed setRawBits member function called" << "\033[0m" << std::endl;
+	std::cout << "\033[2m" << "Fixed setRawBits member function called." << "\033[0m" << std::endl;
 	this->value = raw;
 	return ;
 }
