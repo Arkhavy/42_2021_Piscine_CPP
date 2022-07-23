@@ -6,7 +6,7 @@
 /*   By: ljohnson <ljohnson@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/22 08:41:08 by ljohnson          #+#    #+#             */
-/*   Updated: 2022/07/22 11:36:31 by ljohnson         ###   ########lyon.fr   */
+/*   Updated: 2022/07/23 14:51:30 by ljohnson         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,9 +22,9 @@ class	Fixed
 		static const int	bitnb = 8;
 
 	public:
-		Fixed();
-		Fixed(Fixed const& src);
-		~Fixed();
+		Fixed(); //Default constructor
+		Fixed(Fixed const& src); //Copy constructor
+		~Fixed(); //Default destructor
 
 		int		getRawBits() const;
 		void	setRawBits(int const raw);
