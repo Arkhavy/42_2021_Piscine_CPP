@@ -6,7 +6,7 @@
 /*   By: ljohnson <ljohnson@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/22 13:42:53 by ljohnson          #+#    #+#             */
-/*   Updated: 2022/07/23 17:02:56 by ljohnson         ###   ########lyon.fr   */
+/*   Updated: 2022/07/23 17:53:33 by ljohnson         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,12 +25,13 @@ int main( void )
 	std::cout << "c is " << c << std::endl;
 	std::cout << "d is " << d << std::endl;
 	
-	std::cout << "-----------------------------------" << std::endl;
 	std::cout << "a is " << a.toInt() << " as integer" << std::endl;
 	std::cout << "b is " << b.toInt() << " as integer" << std::endl;
 	std::cout << "c is " << c.toInt() << " as integer" << std::endl;
 	std::cout << "d is " << d.toInt() << " as integer" << std::endl;
-	std::cout << "-----------------------------------" << std::endl;
+
+	// Additional tests
+	std::cout << std::endl << "-----------------------------------" << std::endl << std::endl;
 	std::cout << "a is " << a.toFloat() << " as Float" << std::endl;
 	std::cout << "b is " << b.toFloat() << " as Float" << std::endl;
 	std::cout << "c is " << c.toFloat() << " as Float" << std::endl;
