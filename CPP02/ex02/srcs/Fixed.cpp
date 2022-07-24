@@ -6,7 +6,7 @@
 /*   By: ljohnson <ljohnson@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/24 08:40:04 by ljohnson          #+#    #+#             */
-/*   Updated: 2022/07/24 12:12:52 by ljohnson         ###   ########lyon.fr   */
+/*   Updated: 2022/07/24 13:29:55 by ljohnson         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -122,20 +122,14 @@ Fixed	Fixed::operator-(Fixed const& rhs) const
 
 Fixed	Fixed::operator/(Fixed const& rhs) const
 {
-	float	lhsval = this->value >> this->bitnb;
-	float	rhsval = rhs.getRawBits() >> this->bitnb;
-
 	if (rhs.getRawBits() == 0)
 		return (0);
-	return (Fixed((lhsval / rhsval)));
+	return (Fixed(this->toFloat() / rhs.toFloat()));
 }
 
 Fixed	Fixed::operator*(Fixed const& rhs) const
 {
-	float	lhsval = this->value >> this->bitnb;
-	float	rhsval = rhs.getRawBits() >> this->bitnb;
-
-	return (Fixed((lhsval * rhsval)));
+	return (Fixed(this->toFloat() * rhs.toFloat()));
 }
 
 int	Fixed::operator>(Fixed const& rhs) const
