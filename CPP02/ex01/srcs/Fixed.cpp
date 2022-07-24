@@ -6,7 +6,7 @@
 /*   By: ljohnson <ljohnson@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/22 13:25:07 by ljohnson          #+#    #+#             */
-/*   Updated: 2022/07/24 08:45:21 by ljohnson         ###   ########lyon.fr   */
+/*   Updated: 2022/07/24 10:02:38 by ljohnson         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,7 +58,7 @@ int	Fixed::getRawBits() const
 
 void	Fixed::setRawBits(int const raw)
 {
-	this->value = raw;
+	this->value = raw << this->bitnb;
 	return ;
 }
 
