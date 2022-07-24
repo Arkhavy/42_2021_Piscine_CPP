@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: ljohnson <ljohnson@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/07/22 13:25:07 by ljohnson          #+#    #+#             */
-/*   Updated: 2022/07/24 08:45:21 by ljohnson         ###   ########lyon.fr   */
+/*   Created: 2022/07/24 08:40:04 by ljohnson          #+#    #+#             */
+/*   Updated: 2022/07/24 08:45:06 by ljohnson         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,6 +75,7 @@ int	Fixed::toInt() const
 /* ************************************************************************** */
 /* Operator overloads */
 /* ************************************************************************** */
+
 Fixed&	Fixed::operator=(Fixed const& rhs)
 {
 	std::cout << "\033[2m" << "Copy assignment operator called" << "\033[0m" << std::endl;
@@ -87,3 +88,4 @@ std::ostream&	operator<<(std::ostream& out, Fixed const& rhs)
 	out << rhs.toFloat();
 	return (out);
 }
+
