@@ -6,7 +6,7 @@
 /*   By: ljohnson <ljohnson@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/24 08:40:04 by ljohnson          #+#    #+#             */
-/*   Updated: 2022/07/24 08:45:06 by ljohnson         ###   ########lyon.fr   */
+/*   Updated: 2022/07/24 10:38:02 by ljohnson         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,34 +17,34 @@
 /* ************************************************************************** */
 Fixed::Fixed() : value(0)
 {
-	std::cout << "\033[2m" << "Default constructor called" << "\033[0m" << std::endl;
+	// std::cout << "\033[2m" << "Default constructor called" << "\033[0m" << std::endl;
 	return ;
 }
 
 Fixed::Fixed(Fixed const& src)
 {
-	std::cout << "\033[2m" << "Copy constructor called" << "\033[0m" << std::endl;
+	// std::cout << "\033[2m" << "Copy constructor called" << "\033[0m" << std::endl;
 	*this = src;
 	return ;
 }
 
 Fixed::Fixed(int const nb)
 {
-	std::cout << "\033[2m" << "Int constructor called" << "\033[0m" << std::endl;
+	// std::cout << "\033[2m" << "Int constructor called" << "\033[0m" << std::endl;
 	this->value = nb << this->bitnb;
 	return ;
 }
 
 Fixed::Fixed(float const nb)
 {
-	std::cout << "\033[2m" << "Float constructor called" << "\033[0m" << std::endl;
+	// std::cout << "\033[2m" << "Float constructor called" << "\033[0m" << std::endl;
 	this->value = roundf(nb * (1 << this->bitnb));
 	return ;
 }
 
 Fixed::~Fixed()
 {
-	std::cout << "\033[2m" << "Destructor called" << "\033[0m" << std::endl;
+	// std::cout << "\033[2m" << "Destructor called" << "\033[0m" << std::endl;
 	return ;
 }
 
@@ -58,8 +58,7 @@ int	Fixed::getRawBits() const
 
 void	Fixed::setRawBits(int const raw)
 {
-	this->value = raw;
-	return ;
+	this->value = raw << this->bitnb;
 }
 
 float	Fixed::toFloat() const
@@ -78,14 +77,34 @@ int	Fixed::toInt() const
 
 Fixed&	Fixed::operator=(Fixed const& rhs)
 {
-	std::cout << "\033[2m" << "Copy assignment operator called" << "\033[0m" << std::endl;
+	// std::cout << "\033[2m" << "Copy assignment operator called" << "\033[0m" << std::endl;
 	this->value = rhs.getRawBits();
 	return (*this);
 }
+
+Fixed	Fixed::operator+(Fixed const& rhs) const
+{
+	return (Fixed((this->value >> this->bitnb) + (rhs.getRawBits() >> this->bitnb)));
+}
+
+Fixed	Fixed::operator-(Fixed const& rhs) const
+{
+	return (Fixed((this->value >> this->bitnb) - (rhs.getRawBits() >> this->bitnb)));
+}
+
+Fixed	Fixed::operator/(Fixed const& rhs) const
+{
+	return (Fixed((this->value >> this->bitnb) / (rhs.getRawBits() >> this->bitnb)));
+}
+
+Fixed	Fixed::operator*(Fixed const& rhs) const
+{
+	return (Fixed((this->value >> this->bitnb) * (rhs.getRawBits() >> this->bitnb)));
+}
+
 
 std::ostream&	operator<<(std::ostream& out, Fixed const& rhs)
 {
 	out << rhs.toFloat();
 	return (out);
 }
-

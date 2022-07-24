@@ -6,7 +6,7 @@
 /*   By: ljohnson <ljohnson@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/24 08:33:59 by ljohnson          #+#    #+#             */
-/*   Updated: 2022/07/24 08:39:56 by ljohnson         ###   ########lyon.fr   */
+/*   Updated: 2022/07/24 10:37:16 by ljohnson         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,10 @@ class	Fixed
 		int		toInt() const;
 
 		Fixed&	operator=(Fixed const& rhs);
+		Fixed	operator+(Fixed const& rhs) const;
+		Fixed	operator-(Fixed const& rhs) const;
+		Fixed	operator/(Fixed const& rhs) const;
+		Fixed	operator*(Fixed const& rhs) const;
 };
 
 std::ostream&	operator<<(std::ostream& out, Fixed const& rhs);
@@ -49,14 +53,19 @@ operator<=
 operator==
 operator!=
 
-operator+
-operator-
-operator*
-operator/
+operator+ OK
+operator- OK
+operator* OK
+operator/ OK
 
 i++
 ++i
 i--
 --i
 ε tel que 1 + ε > 1
+
+min
+min const
+max
+max const
 */
