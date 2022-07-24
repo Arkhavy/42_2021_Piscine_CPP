@@ -6,7 +6,7 @@
 /*   By: ljohnson <ljohnson@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/24 08:40:04 by ljohnson          #+#    #+#             */
-/*   Updated: 2022/07/24 13:29:55 by ljohnson         ###   ########lyon.fr   */
+/*   Updated: 2022/07/24 13:43:50 by ljohnson         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -101,9 +101,8 @@ const Fixed&	Fixed::max(Fixed& lhs, Fixed& rhs)
 
 
 /* ************************************************************************** */
-/* Operator overloads */
+/* Arithmetic Operator overloads */
 /* ************************************************************************** */
-
 Fixed&	Fixed::operator=(Fixed const& rhs)
 {
 	this->value = rhs.getRawBits();
@@ -132,6 +131,9 @@ Fixed	Fixed::operator*(Fixed const& rhs) const
 	return (Fixed(this->toFloat() * rhs.toFloat()));
 }
 
+/* ************************************************************************** */
+/* Comparison Operator overloads */
+/* ************************************************************************** */
 int	Fixed::operator>(Fixed const& rhs) const
 {
 	if (this->value > rhs.getRawBits())
@@ -174,16 +176,20 @@ int	Fixed::operator!=(Fixed const& rhs) const
 	return (0);
 }
 
+/* ************************************************************************** */
+/* Incrementation & Decrementation Operator overloads */
+/* ************************************************************************** */
 Fixed&	Fixed::operator++()
 {
 	this->value++;
 	return (*this);
 }
 
-Fixed&	Fixed::operator++(int val)
+Fixed	Fixed::operator++(int)
 {
-	val = val + 1;
-	return (*this);
+	Fixed	tmp = *this;
+	++*this;
+	return (tmp);
 }
 
 Fixed&	Fixed::operator--()
@@ -192,13 +198,16 @@ Fixed&	Fixed::operator--()
 	return (*this);
 }
 
-Fixed&	Fixed::operator--(int val)
+Fixed	Fixed::operator--(int)
 {
-	val = val + 1;
-	return (*this);
+	Fixed	tmp = *this;
+	++*this;
+	return (tmp);
 }
 
-
+/* ************************************************************************** */
+/* Stream Operator overloads */
+/* ************************************************************************** */
 std::ostream&	operator<<(std::ostream& out, Fixed const& rhs)
 {
 	out << rhs.toFloat();

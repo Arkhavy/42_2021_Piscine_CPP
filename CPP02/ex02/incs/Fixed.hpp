@@ -6,7 +6,7 @@
 /*   By: ljohnson <ljohnson@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/24 08:33:59 by ljohnson          #+#    #+#             */
-/*   Updated: 2022/07/24 12:03:00 by ljohnson         ###   ########lyon.fr   */
+/*   Updated: 2022/07/24 13:56:22 by ljohnson         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,9 +53,9 @@ class	Fixed
 		int		operator!=(Fixed const& rhs) const;
 
 		Fixed&	operator++();
-		Fixed&	operator++(int val);
+		Fixed	operator++(int);
 		Fixed&	operator--();
-		Fixed&	operator--(int val);
+		Fixed	operator--(int);
 };
 
 std::ostream&	operator<<(std::ostream& out, Fixed const& rhs);
@@ -75,10 +75,10 @@ operator- OK
 operator* OK
 operator/ OK
 
-i++
-++i
-i--
---i
+i++ OK
+++i OK
+i-- OK
+--i OK
 ε tel que 1 + ε > 1
 
 min OK
