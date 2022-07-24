@@ -6,7 +6,7 @@
 /*   By: ljohnson <ljohnson@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/24 08:33:59 by ljohnson          #+#    #+#             */
-/*   Updated: 2022/07/24 10:56:14 by ljohnson         ###   ########lyon.fr   */
+/*   Updated: 2022/07/24 11:31:15 by ljohnson         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,6 +44,13 @@ class	Fixed
 		Fixed	operator-(Fixed const& rhs) const;
 		Fixed	operator/(Fixed const& rhs) const;
 		Fixed	operator*(Fixed const& rhs) const;
+
+		int		operator>(Fixed const& rhs) const;
+		int		operator<(Fixed const& rhs) const;
+		int		operator>=(Fixed const& rhs) const;
+		int		operator<=(Fixed const& rhs) const;
+		int		operator==(Fixed const& rhs) const;
+		int		operator!=(Fixed const& rhs) const;
 };
 
 std::ostream&	operator<<(std::ostream& out, Fixed const& rhs);
@@ -51,12 +58,12 @@ std::ostream&	operator<<(std::ostream& out, Fixed const& rhs);
 #endif /* FIXED_HPP */
 
 /*
-operator>
-operator<
-operator>=
-operator<=
-operator==
-operator!=
+operator> OK
+operator< OK
+operator>= OK
+operator<= OK
+operator== OK
+operator!= OK
 
 operator+ OK
 operator- OK
@@ -69,8 +76,8 @@ i--
 --i
 ε tel que 1 + ε > 1
 
-min should be OK
-min const should be OK
-max should be OK
-max const should be OK
+min OK
+min const OK
+max OK
+max const OK
 */
