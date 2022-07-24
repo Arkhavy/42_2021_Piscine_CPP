@@ -6,7 +6,7 @@
 /*   By: ljohnson <ljohnson@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/24 08:40:04 by ljohnson          #+#    #+#             */
-/*   Updated: 2022/07/24 11:54:27 by ljohnson         ###   ########lyon.fr   */
+/*   Updated: 2022/07/24 12:12:52 by ljohnson         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -179,6 +179,31 @@ int	Fixed::operator!=(Fixed const& rhs) const
 		return (1);
 	return (0);
 }
+
+Fixed&	Fixed::operator++()
+{
+	this->value++;
+	return (*this);
+}
+
+Fixed&	Fixed::operator++(int val)
+{
+	val = val + 1;
+	return (*this);
+}
+
+Fixed&	Fixed::operator--()
+{
+	this->value--;
+	return (*this);
+}
+
+Fixed&	Fixed::operator--(int val)
+{
+	val = val + 1;
+	return (*this);
+}
+
 
 std::ostream&	operator<<(std::ostream& out, Fixed const& rhs)
 {

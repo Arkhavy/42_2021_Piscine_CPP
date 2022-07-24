@@ -6,7 +6,7 @@
 /*   By: ljohnson <ljohnson@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/24 08:33:59 by ljohnson          #+#    #+#             */
-/*   Updated: 2022/07/24 11:31:15 by ljohnson         ###   ########lyon.fr   */
+/*   Updated: 2022/07/24 12:03:00 by ljohnson         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,6 +51,11 @@ class	Fixed
 		int		operator<=(Fixed const& rhs) const;
 		int		operator==(Fixed const& rhs) const;
 		int		operator!=(Fixed const& rhs) const;
+
+		Fixed&	operator++();
+		Fixed&	operator++(int val);
+		Fixed&	operator--();
+		Fixed&	operator--(int val);
 };
 
 std::ostream&	operator<<(std::ostream& out, Fixed const& rhs);
