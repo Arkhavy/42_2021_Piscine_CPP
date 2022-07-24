@@ -6,7 +6,7 @@
 /*   By: ljohnson <ljohnson@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/24 08:33:59 by ljohnson          #+#    #+#             */
-/*   Updated: 2022/07/24 13:56:22 by ljohnson         ###   ########lyon.fr   */
+/*   Updated: 2022/07/24 15:20:33 by ljohnson         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,28 +61,3 @@ class	Fixed
 std::ostream&	operator<<(std::ostream& out, Fixed const& rhs);
 
 #endif /* FIXED_HPP */
-
-/*
-operator> OK
-operator< OK
-operator>= OK
-operator<= OK
-operator== OK
-operator!= OK
-
-operator+ OK
-operator- OK
-operator* OK
-operator/ OK
-
-i++ OK
-++i OK
-i-- OK
---i OK
-ε tel que 1 + ε > 1
-
-min OK
-min const OK
-max OK
-max const OK
-*/
