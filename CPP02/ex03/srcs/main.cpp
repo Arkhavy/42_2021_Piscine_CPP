@@ -6,12 +6,11 @@
 /*   By: ljohnson <ljohnson@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/24 15:22:21 by ljohnson          #+#    #+#             */
-/*   Updated: 2022/07/24 15:22:41 by ljohnson         ###   ########lyon.fr   */
+/*   Updated: 2022/07/24 15:38:13 by ljohnson         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <Point.hpp>
-#include <Fixed.hpp>
 
 int	main(void)
 {

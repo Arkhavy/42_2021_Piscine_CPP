@@ -6,7 +6,7 @@
 /*   By: ljohnson <ljohnson@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/24 15:20:16 by ljohnson          #+#    #+#             */
-/*   Updated: 2022/07/24 15:20:17 by ljohnson         ###   ########lyon.fr   */
+/*   Updated: 2022/07/24 15:34:36 by ljohnson         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,34 +17,34 @@
 /* ************************************************************************** */
 Fixed::Fixed() : value(0)
 {
-	// std::cout << "\033[2m" << "Default constructor called" << "\033[0m" << std::endl;
+	// std::cout << "\033[2m" << "Default Fixed constructor called" << "\033[0m" << std::endl;
 	return ;
 }
 
 Fixed::Fixed(Fixed const& src)
 {
-	// std::cout << "\033[2m" << "Copy constructor called" << "\033[0m" << std::endl;
+	// std::cout << "\033[2m" << "Copy Fixed constructor called" << "\033[0m" << std::endl;
 	*this = src;
 	return ;
 }
 
 Fixed::Fixed(int const nb)
 {
-	// std::cout << "\033[2m" << "Int constructor called" << "\033[0m" << std::endl;
+	// std::cout << "\033[2m" << "Int Fixed constructor called" << "\033[0m" << std::endl;
 	this->value = nb << this->bitnb;
 	return ;
 }
 
 Fixed::Fixed(float const nb)
 {
-	// std::cout << "\033[2m" << "Float constructor called" << "\033[0m" << std::endl;
+	// std::cout << "\033[2m" << "Float Fixed constructor called" << "\033[0m" << std::endl;
 	this->value = roundf(nb * (1 << this->bitnb));
 	return ;
 }
 
 Fixed::~Fixed()
 {
-	// std::cout << "\033[2m" << "Destructor called" << "\033[0m" << std::endl;
+	// std::cout << "\033[2m" << "Fixed Destructor called" << "\033[0m" << std::endl;
 	return ;
 }
 
