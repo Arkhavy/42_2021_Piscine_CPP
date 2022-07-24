@@ -6,7 +6,7 @@
 /*   By: ljohnson <ljohnson@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/24 08:40:04 by ljohnson          #+#    #+#             */
-/*   Updated: 2022/07/24 10:38:02 by ljohnson         ###   ########lyon.fr   */
+/*   Updated: 2022/07/24 10:54:27 by ljohnson         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,6 +70,35 @@ int	Fixed::toInt() const
 {
 	return (this->value >> this->bitnb);
 }
+
+static const Fixed&	Fixed::min(Fixed const& lhs, Fixed const& rhs)
+{
+	if (lhs < rhs)
+		return (lhs);
+	return (rhs);
+}
+
+static const Fixed&	Fixed::max(Fixed const& lhs, Fixed const& rhs)
+{
+	if (lhs > rhs)
+		return (lhs);
+	return (rhs);
+}
+
+static const Fixed&	Fixed::min(Fixed& lhs, Fixed& rhs)
+{
+	if (lhs < rhs)
+		return (lhs);
+	return (rhs);
+}
+
+static const Fixed&	Fixed::max(Fixed& lhs, Fixed& rhs)
+{
+	if (lhs > rhs)
+		return (lhs);
+	return (rhs);
+}
+
 
 /* ************************************************************************** */
 /* Operator overloads */

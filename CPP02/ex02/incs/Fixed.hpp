@@ -6,7 +6,7 @@
 /*   By: ljohnson <ljohnson@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/24 08:33:59 by ljohnson          #+#    #+#             */
-/*   Updated: 2022/07/24 10:37:16 by ljohnson         ###   ########lyon.fr   */
+/*   Updated: 2022/07/24 10:56:14 by ljohnson         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,11 @@ class	Fixed
 		void	setRawBits(int const raw);
 		float	toFloat() const;
 		int		toInt() const;
+
+		static const Fixed&	min(Fixed const& lhs, Fixed const& rhs);
+		static const Fixed&	max(Fixed const& lhs, Fixed const& rhs);
+		static const Fixed&	min(Fixed& lhs, Fixed& rhs);
+		static const Fixed&	max(Fixed& lhs, Fixed& rhs);
 
 		Fixed&	operator=(Fixed const& rhs);
 		Fixed	operator+(Fixed const& rhs) const;
@@ -64,8 +69,8 @@ i--
 --i
 ε tel que 1 + ε > 1
 
-min
-min const
-max
-max const
+min should be OK
+min const should be OK
+max should be OK
+max const should be OK
 */
