@@ -6,7 +6,7 @@
 /*   By: ljohnson <ljohnson@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/24 16:07:07 by ljohnson          #+#    #+#             */
-/*   Updated: 2022/07/24 17:54:00 by ljohnson         ###   ########lyon.fr   */
+/*   Updated: 2022/07/28 11:18:12 by ljohnson         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -107,19 +107,14 @@ void	ClapTrap::beRepaired(unsigned int amount)
 	return ;
 }
 
-std::string	ClapTrap::getName() const {return (this->name);}
-unsigned int	ClapTrap::getHitPoints() const {return (this->hit_points);}
-unsigned int	ClapTrap::getEnergyPoints() const {return (this->energy_points);}
-unsigned int	ClapTrap::getAttackDamage() const {return (this->attack_damage);}
-
 /* ************************************************************************** */
 /* Arithmetic Operator Overloads */
 /* ************************************************************************** */
 ClapTrap&	ClapTrap::operator=(ClapTrap const& rhs)
 {
-	this->name = rhs.getName();
-	this->hit_points = rhs.getHitPoints();
-	this->energy_points = rhs.getEnergyPoints();
-	this->attack_damage = rhs.getAttackDamage();
+	this->name = rhs.name;
+	this->hit_points = rhs.hit_points;
+	this->energy_points = rhs.energy_points;
+	this->attack_damage = rhs.attack_damage;
 	return (*this);
 }

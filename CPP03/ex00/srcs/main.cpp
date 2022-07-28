@@ -41,5 +41,14 @@ int	main(void)
 
 	sbire.attack("CL4P-TP"); //Error case EP = 0
 	piscineux.attack("Sbire"); //Error case HP = 0
+
+	std::cout << "----------------------" << std::endl;
+
+	ClapTrap	copyTrap(sbire);
+
+	copyTrap.attack("ouaf");
+	copyTrap.beRepaired(2);
+	copyTrap.takeDamage(4);
+	copyTrap.beRepaired(2);
 	return (0);
 }
