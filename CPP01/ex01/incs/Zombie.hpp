@@ -6,7 +6,7 @@
 /*   By: ljohnson <ljohnson@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/15 11:15:49 by ljohnson          #+#    #+#             */
-/*   Updated: 2022/07/15 13:37:35 by ljohnson         ###   ########lyon.fr   */
+/*   Updated: 2022/07/28 10:43:23 by ljohnson         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,10 +27,10 @@ class	Zombie
 		~Zombie();
 
 		void	announce();
-		Zombie*	newZombie(std::string name);
-		void	randomChump(std::string name);
+		Zombie*	newZombie(std::string name); //Wrong
+		void	randomChump(std::string name); //Wrong
 
-		Zombie*	zombieHorde(int N, std::string name);
+		Zombie*	zombieHorde(int N, std::string name); //Wrong
 };
 
 #endif /* ZOMBIE_HPP */
