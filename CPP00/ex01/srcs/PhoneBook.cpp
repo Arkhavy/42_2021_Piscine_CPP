@@ -6,7 +6,7 @@
 /*   By: ljohnson <ljohnson@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/15 12:44:26 by ljohnson          #+#    #+#             */
-/*   Updated: 2022/07/16 12:04:31 by ljohnson         ###   ########lyon.fr   */
+/*   Updated: 2022/10/03 10:35:30 by ljohnson         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -106,13 +106,13 @@ void	PhoneBook::add_contact()
 			this->oldest_contact = 0;
 		print_error("Maximum number of contact reached, replacing the oldest one");
 		std::cout << "Currently replacing contact at index : " << this->oldest_contact << std::endl;
-		get_contact_informations(Contact[this->oldest_contact]);
+		get_contact_informations(Contacts[this->oldest_contact]);
 		this->oldest_contact++;
 	}
 	else
 	{
 		std::cout << "Currently adding contact at index : " << this->contact_nb << std::endl;
-		get_contact_informations(Contact[this->contact_nb]);
+		get_contact_informations(Contacts[this->contact_nb]);
 		this->contact_nb++;
 	}
 }
@@ -142,7 +142,7 @@ void	PhoneBook::display_phonebook() const
 			if (j == 0)
 				std::cout << "|" << std::setw(10) << i;
 			else
-				check_and_display_str(Contact[i].get_string(j - 1));
+				check_and_display_str(Contacts[i].get_string(j - 1));
 		}
 		std::cout << "|" << std::endl;
 	}
@@ -168,7 +168,7 @@ void	PhoneBook::search_contact() const
 			for (int i = 0; i < this->contact_nb; i++)
 			{
 				if (str[0] == cmp[i])
-					return (Contact[i].display_info());
+					return (Contacts[i].display_info());
 			}
 			print_error("The index given is invalid, try again !");
 		}
