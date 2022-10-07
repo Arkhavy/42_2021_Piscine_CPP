@@ -1,32 +1,40 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.cpp                                           :+:      :+:    :+:   */
+/*   PhoneBook.hpp                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ljohnson <ljohnson@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/10/06 10:43:47 by ljohnson          #+#    #+#             */
-/*   Updated: 2022/10/06 10:45:34 by ljohnson         ###   ########lyon.fr   */
+/*   Created: 2022/07/10 18:46:10 by ljohnson          #+#    #+#             */
+/*   Updated: 2022/10/07 08:06:26 by ljohnson         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
+#ifndef PHONEBOOK_HPP
+# define PHONEBOOK_HPP
+
 #include <Contact.hpp>
-#include <PhoneBook.hpp>
-#include <cstdio>
 
-void	print_error(std::string msg)
+class	PhoneBook
 {
-	std::cout << "\033[31m" << "\033[1m";
-	std::cout << msg;
-	std::cout << "\033[0m" << std::endl;
-}
+	private:
+	// Values
+		int		contact_nb;
+		int		oldest_contact;
+		Contact	contact_list[8];
 
-void	ft_getline(std::string& str)
-{
-	std::getline(std::cin, str);
-	if (std::cin.eofbit != 0)
-	{
-		std::cin.clear();
-		clearerr(stdin);
-	}
-}
+	// Member functions
+		void	display_phonebook() const;
+
+	public:
+	// Constructors & Destructors
+		PhoneBook();
+		~PhoneBook();
+
+	// Member functions
+		void	add_contact();
+		void	search_contact() const;
+
+};
+
+#endif /* PHONEBOOK_HPP */

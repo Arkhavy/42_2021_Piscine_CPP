@@ -5,14 +5,14 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: ljohnson <ljohnson@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/10/06 10:39:40 by ljohnson          #+#    #+#             */
-/*   Updated: 2022/10/06 10:59:53 by ljohnson         ###   ########lyon.fr   */
+/*   Created: 2022/07/15 12:44:26 by ljohnson          #+#    #+#             */
+/*   Updated: 2022/10/07 08:20:41 by ljohnson         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <PhoneBook.hpp>
 
-void	print_error(std::string msg);
+void	print_error(std::string message);
 void	ft_getline(std::string& str);
 
 /* ************************************************************************** */
@@ -20,22 +20,22 @@ void	ft_getline(std::string& str);
 /* ************************************************************************** */
 PhoneBook::PhoneBook()
 {
+	std::cout << "\033[2m" << "PhoneBook constructor called" << "\033[0m" << std::endl;
 	this->contact_nb = 0;
 	this->oldest_contact = 0;
-	std::cout << "\033[2m" << "PhoneBook constructor called" << "\033[2m" << std::endl;
 	return ;
 }
 
 PhoneBook::~PhoneBook()
 {
-	std::cout << "\033[2m" << "Phonebook destructor called" << "\033[2m" << std::endl;
+	std::cout << "\033[2m" << "PhoneBook destructor called" << "\033[0m" << std::endl;
 	return ;
 }
 
 /* ************************************************************************** */
-/* Member Functions : add_contact() */
+/* Add Contact */
 /* ************************************************************************** */
-static void	print_message(int index)
+static void	print_msg(int index)
 {
 	std::cout << "Please enter ";
 	switch (index)
@@ -55,31 +55,12 @@ static void	print_message(int index)
 	}
 }
 
-static void	set_contact_data(Contact& tmp_contact, std::string str, int i)
-{
-	switch (i)
-	{
-		case 0:
-			tmp_contact.set_first_name(str); break ;
-		case 1:
-			tmp_contact.set_last_name(str); break ;
-		case 2:
-			tmp_contact.set_nickname(str); break ;
-		case 3:
-			tmp_contact.set_phone_number(str); break ;
-		case 4:
-			tmp_contact.set_darkest_secret(str); break ;
-		default:
-			break ;
-	}
-}
-
-static bool	check_phone_number(std::string str)
+static int	check_phone_number(std::string str)
 {
 	if (str.size() != 10)
 	{
 		print_error("Phone number must be 10 digits long, try again !");
-		return (false);
+		return (1);
 	}
 	else
 	{
@@ -88,22 +69,22 @@ static bool	check_phone_number(std::string str)
 			if (!isdigit(str[i]))
 			{
 				print_error("Phone number must have only digits, try again !");
-				return (false);
+				return (1);
 			}
 		}
 	}
-	return (true);
+	return (0);
 }
 
-static void	set_contact_informations(Contact& tmp_contact)
+void	set_contact_info(Contact& current_contact)
 {
 	std::string	str;
-
+	
 	for (int i = 0; i < 5; i++)
 	{
-		print_message(i);
+		print_msg(i);
 		ft_getline(str);
-		if (i == 3 && !check_phone_number(str))
+		if (i == 3 && check_phone_number(str))
 			i--;
 		else if (str.size() == 0 || str[0] == '\n')
 		{
@@ -111,7 +92,7 @@ static void	set_contact_informations(Contact& tmp_contact)
 			i--;
 		}
 		else
-			set_contact_data(tmp_contact, str, i);
+			current_contact.set_str(str, i);
 	}
 }
 
@@ -125,17 +106,71 @@ void	PhoneBook::add_contact()
 			this->oldest_contact = 0;
 		print_error("Maximum number of contact reached, replacing the oldest one");
 		std::cout << "Currently replacing contact at index : " << this->oldest_contact << std::endl;
-		set_contact_informations(contact_list[this->oldest_contact]);
+		set_contact_info(contact_list[this->oldest_contact]);
 		this->oldest_contact++;
 	}
 	else
 	{
 		std::cout << "Currently adding contact at index : " << this->contact_nb << std::endl;
-		set_contact_informations(contact_list[this->contact_nb]);
+		set_contact_info(contact_list[this->contact_nb]);
 		this->contact_nb++;
 	}
 }
 
 /* ************************************************************************** */
-/* Member Functions : search_contact() const */
+/* Search Contact */
 /* ************************************************************************** */
+static void	check_and_display_str(std::string str)
+{
+	std::cout << "|";
+	if (str.size() > 10)
+	{
+		str.resize(9);
+		str.resize(10, '.');
+	}
+	std::cout << std::setw(10) << str;
+}
+
+void	PhoneBook::display_phonebook() const
+{
+	std::cout << std::endl << "_____________________________________________";
+	std::cout << std::endl << "|     INDEX|FIRST NAME| LAST NAME|  NICKNAME|" << std::endl;
+	for (int row = 0; row < this->contact_nb; row++)
+	{
+		for (int col = 0; col < 4; col++)
+		{
+			if (col == 0)
+				std::cout << "|" << std::setw(10) << row;
+			else
+				check_and_display_str(contact_list[row].get_str(col - 1));
+		}
+		std::cout << "|" << std::endl;
+	}
+	std::cout << "|__________|__________|__________|__________|" << std::endl << std::endl;
+}
+
+void	PhoneBook::search_contact() const
+{
+	std::string			str;
+	std::string const	cmp = "0123456789";
+
+	if (this->contact_nb == 0)
+		return (print_error("There is no contact to display right now, try the ADD Command !"));
+	this->display_phonebook();
+	while (42)
+	{
+		std::cout << "Please enter an index to display the corresponding entry : ";
+		ft_getline(str);
+		if (str.size() != 1 || !isdigit(str[0]))
+			print_error("The index given is invalid, try again !");
+		else
+		{
+			for (int i = 0; i < this->contact_nb; i++)
+			{
+				if (str[0] == cmp[i])
+					return (contact_list[i].display_info());
+			}
+			print_error("The index given is invalid, try again !");
+		}
+	}
+}

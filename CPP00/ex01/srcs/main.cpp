@@ -6,7 +6,7 @@
 /*   By: ljohnson <ljohnson@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/10 18:45:00 by ljohnson          #+#    #+#             */
-/*   Updated: 2022/10/04 11:52:40 by ljohnson         ###   ########lyon.fr   */
+/*   Updated: 2022/10/07 08:09:36 by ljohnson         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ void	ft_getline(std::string& str)
 
 int	main(void)
 {
-	PhoneBook	Phonebook;
+	PhoneBook	repertory;
 	std::string	str;
 
 	while (42)
@@ -40,16 +40,16 @@ int	main(void)
 		std::cout << "Please enter one of the following : ADD, SEARCH, EXIT" << std::endl;
 		ft_getline(str);
 		if (str == "ADD")
-			Phonebook.add_contact();
+			repertory.add_contact();
 		else if (str == "SEARCH")
-			Phonebook.search_contact();
+			repertory.search_contact();
 		else if (str == "EXIT")
 		{
 			std::cout << "Goodbye !" << std::endl;
 			return (0);
 		}
 		else
-			print_error("Sorry, this command does not exist, try again !");
+			print_error("This command does not exist, try again !");
 	}
 	return (0);
 }
