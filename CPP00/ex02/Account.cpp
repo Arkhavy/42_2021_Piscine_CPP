@@ -6,12 +6,36 @@
 /*   By: ljohnson <ljohnson@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/14 11:51:09 by ljohnson          #+#    #+#             */
-/*   Updated: 2022/11/09 12:47:29 by ljohnson         ###   ########lyon.fr   */
+/*   Updated: 2022/11/09 14:08:22 by ljohnson         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <Account.hpp>
 #include <iostream>
+#include <string>
+#include <sstream>
+#include <ctime>
+
+static std::string	ft_to_string(int nb)
+{
+	std::ostringstream	oss;
+
+	oss << nb;
+	return (oss.str());
+}
+
+static std::string	ft_add_value(int nb)
+{
+	std::string	str;
+
+	str = ft_to_string(nb);
+	if (str.length() < 2)
+	{
+		str = "0";
+		str += ft_to_string(nb);
+	}
+	return (str);
+}
 
 /* ************************************************************************** */
 /* Private Static member variables & functions */
@@ -21,10 +45,24 @@ int	Account::_totalAmount;
 int	Account::_totalNbDeposits;
 int	Account::_totalNbWithdrawals;
 
+
 void	Account::_displayTimestamp(void)
 {
-	//Just to check timestamp for now, need real function
-	std::cout << "[19920104_091532]" << " ";
+	std::time_t	raw_time;
+	std::tm*	current_time;
+	std::string	display;
+	
+	raw_time = std::time(0);
+	current_time = std::localtime(&raw_time);
+	display = ft_to_string(current_time->tm_year + 1900);
+	display += ft_add_value(current_time->tm_mon + 1);
+	display += ft_add_value(current_time->tm_mday);
+	display += "_";
+	display += ft_add_value(current_time->tm_hour);
+	display += ft_add_value(current_time->tm_min);
+	display += ft_add_value(current_time->tm_sec);
+	std::cout << "[" << display << "] ";
+	// std::cout << "[19920104_091532]" << " ";
 	return ;
 }
 
