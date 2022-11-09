@@ -6,14 +6,14 @@
 #    By: ljohnson <ljohnson@student.42lyon.fr>      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/07/10 16:58:45 by ljohnson          #+#    #+#              #
-#    Updated: 2022/07/14 11:50:05 by ljohnson         ###   ########lyon.fr    #
+#    Updated: 2022/11/09 12:36:00 by ljohnson         ###   ########lyon.fr    #
 #                                                                              #
 # **************************************************************************** #
 
 .PHONY: all clean fclean re
 # .SILENT:
 
-NAME	:=	PhoneBook
+NAME	:=	Account
 
 #//////////////////////////////////////////////////////////////////////////////
 #		ALL FILES
@@ -21,7 +21,7 @@ NAME	:=	PhoneBook
 
 # Files
 LST_INCS	:=	Account.hpp
-LST_SRCS	:=	tests.cpp	Account.cpp	main.cpp
+LST_SRCS	:=	tests.cpp	Account.cpp
 LST_DEPS	:=	$(LST_SRCS:.cpp=.d)
 LST_OBJS	:=	$(LST_SRCS:.cpp=.o)
 
