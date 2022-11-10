@@ -6,7 +6,7 @@
 /*   By: ljohnson <ljohnson@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/16 11:57:10 by ljohnson          #+#    #+#             */
-/*   Updated: 2022/07/16 14:53:22 by ljohnson         ###   ########lyon.fr   */
+/*   Updated: 2022/11/10 15:45:04 by ljohnson         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,13 +18,17 @@
 HumanB::HumanB(std::string name)
 {
 	this->name = name;
-	std::cout << "\033[2m" << "HumanB " << this->name << " Constructor called." << "\033[0m" << std::endl;
+	std::cout << "\033[2m";
+	std::cout << "HumanB " << this->name << " Constructor called.";
+	std::cout << "\033[0m" << std::endl;
 	return ;
 }
 
 HumanB::~HumanB()
 {
-	std::cout << "\033[2m" << "HumanB " << this->name << " Destructor called." << "\033[0m" << std::endl;
+	std::cout << "\033[2m";
+	std::cout << "HumanB " << this->name << " Destructor called.";
+	std::cout << "\033[0m" << std::endl;
 	return ;
 }
 
@@ -38,5 +42,5 @@ void	HumanB::setWeapon(Weapon& weapon) {this->weapon = &weapon;}
 /* ************************************************************************** */
 void	HumanB::attack() const
 {
-	std::cout << this->name << "attacks with their " << this->weapon->getType() << std::endl;
+	std::cout << this->name << " attacks with their " << this->weapon->getType() << std::endl;
 }

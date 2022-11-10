@@ -6,7 +6,7 @@
 /*   By: ljohnson <ljohnson@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/16 11:23:20 by ljohnson          #+#    #+#             */
-/*   Updated: 2022/07/16 14:54:46 by ljohnson         ###   ########lyon.fr   */
+/*   Updated: 2022/11/10 15:45:30 by ljohnson         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,5 +33,5 @@ int main()
 		club.setType("some other type of club");
 		jim.attack();
 	}
-	return 0;
+	return (0);
 }
