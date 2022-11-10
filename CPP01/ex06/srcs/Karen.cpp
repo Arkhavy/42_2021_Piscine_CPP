@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Harl.cpp                                           :+:      :+:    :+:   */
+/*   Karen.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ljohnson <ljohnson@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -10,20 +10,25 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <Harl.hpp>
+#include <Karen.hpp>
+int	print_error(std::string message);
 
 /* ************************************************************************** */
 /* Constructors & Destructors */
 /* ************************************************************************** */
-Harl::Harl()
+Karen::Karen()
 {
-	std::cout << "\033[2m" << "Harl Constructor called." << "\033[0m" << std::endl;
+	std::cout << "\033[2m";
+	std::cout << "Karen Constructor called.";
+	std::cout << "\033[0m" << std::endl;
 	return ;
 }
 
-Harl::~Harl()
+Karen::~Karen()
 {
-	std::cout << "\033[2m" << "Harl Destructor called." << "\033[0m" << std::endl;
+	std::cout << "\033[2m";
+	std::cout << "Karen Destructor called.";
+	std::cout << "\033[0m" << std::endl;
 	return ;
 }
 
@@ -31,32 +36,35 @@ Harl::~Harl()
 /* ************************************************************************** */
 /* Private member functions */
 /* ************************************************************************** */
-void	Harl::debug() {std::cout << "Debug : Ouaf" << std::endl;}
+void	Karen::debug() {std::cout << "Debug : Ouaf" << std::endl;}
 
-void	Harl::info() {std::cout << "Info : Woof" << std::endl;}
+void	Karen::info() {std::cout << "Info : Woof" << std::endl;}
 
-void	Harl::warning() {std::cout << "Warning : Bark" << std::endl;}
+void	Karen::warning() {std::cout << "Warning : Bark" << std::endl;}
 
-void	Harl::error() {std::cout << "Error : Meow" << std::endl;}
+void	Karen::error() {std::cout << "Error : Meow" << std::endl;}
 
 /* ************************************************************************** */
 /* Public member functions */
 /* ************************************************************************** */
-void	Harl::complain(std::string level)
+void	Karen::complain(std::string level)
 {
-	if (level.empty())
-		return ;
-	for (int i = 0; i < (int)level.size(); i++)
-		level[i] = std::toupper(level[i]);
-	switch (level[0])
+	if (!level.empty())
 	{
-		case 'D':
-			this->debug();
-		case 'I':
-			this->info();
-		case 'W':
-			this->warning();
-		case 'E':
-			this->error();
+		for (int i = 0; i < (int)level.size(); i++)
+			level[i] = std::toupper(level[i]);
+		switch (level[0])
+		{
+			case 'D':
+				this->debug();
+			case 'I':
+				this->info();
+			case 'W':
+				this->warning();
+			case 'E':
+				this->error();
+		}
+		return ;
 	}
+	print_error("Argument given is not a level ! Try DEBUG, INFO, WARNING or ERROR !");
 }

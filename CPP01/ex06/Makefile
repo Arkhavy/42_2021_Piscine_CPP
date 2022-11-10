@@ -6,22 +6,22 @@
 #    By: ljohnson <ljohnson@student.42lyon.fr>      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/07/17 12:33:39 by ljohnson          #+#    #+#              #
-#    Updated: 2022/07/17 17:23:55 by ljohnson         ###   ########lyon.fr    #
+#    Updated: 2022/11/10 16:40:18 by ljohnson         ###   ########lyon.fr    #
 #                                                                              #
 # **************************************************************************** #
 
 .PHONY: all clean fclean re
 # .SILENT:
 
-NAME	:=	harlFilter
+NAME	:=	KarenFilter
 
 #//////////////////////////////////////////////////////////////////////////////
 #		ALL FILES
 #//////////////////////////////////////////////////////////////////////////////
 
 # Files
-LST_INCS	:=	Harl.hpp
-LST_SRCS	:=	Harl.cpp	main.cpp
+LST_INCS	:=	Karen.hpp
+LST_SRCS	:=	Karen.cpp	main.cpp
 LST_DEPS	:=	$(LST_SRCS:.cpp=.d)
 LST_OBJS	:=	$(LST_SRCS:.cpp=.o)
 
@@ -43,7 +43,7 @@ OBJS		:=	$(addprefix $(P_OBJS),$(LST_OBJS))
 
 # Commands
 CC	:=	c++
-CF	:=	-Wall -Werror -Wextra -std=c++98
+CF	:=	-Wall -Werror -std=c++98
 CI	:=	-I $(P_INCS)
 CS	:=	-g3 -fsanitize=address
 CT	:=	-g3 -fsanitize=threads
