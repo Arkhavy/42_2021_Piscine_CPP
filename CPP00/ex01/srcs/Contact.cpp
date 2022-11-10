@@ -6,7 +6,7 @@
 /*   By: ljohnson <ljohnson@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/10 18:44:37 by ljohnson          #+#    #+#             */
-/*   Updated: 2022/10/07 08:10:28 by ljohnson         ###   ########lyon.fr   */
+/*   Updated: 2022/11/10 15:09:52 by ljohnson         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,13 +17,17 @@
 /* ************************************************************************** */
 Contact::Contact()
 {
-	std::cout << "\033[2m" << "Contact constructor called" << "\033[0m" << std::endl;
+	std::cout << "\033[2m";
+	std::cout << "Contact constructor called";
+	std::cout << "\033[0m" << std::endl;
 	return ;
 }
 
 Contact::~Contact()
 {
-	std::cout << "\033[2m" << "Contact destructor called" << "\033[0m" << std::endl;
+	std::cout << "\033[2m";
+	std::cout << "Contact destructor called";
+	std::cout << "\033[0m" << std::endl;
 	return ;
 }
 

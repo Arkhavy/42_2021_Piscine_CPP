@@ -6,7 +6,7 @@
 /*   By: ljohnson <ljohnson@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/15 12:44:26 by ljohnson          #+#    #+#             */
-/*   Updated: 2022/10/07 08:20:41 by ljohnson         ###   ########lyon.fr   */
+/*   Updated: 2022/11/10 15:10:15 by ljohnson         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,9 @@ void	ft_getline(std::string& str);
 /* ************************************************************************** */
 PhoneBook::PhoneBook()
 {
-	std::cout << "\033[2m" << "PhoneBook constructor called" << "\033[0m" << std::endl;
+	std::cout << "\033[2m";
+	std::cout << "PhoneBook constructor called";
+	std::cout << "\033[0m" << std::endl;
 	this->contact_nb = 0;
 	this->oldest_contact = 0;
 	return ;
@@ -28,7 +30,9 @@ PhoneBook::PhoneBook()
 
 PhoneBook::~PhoneBook()
 {
-	std::cout << "\033[2m" << "PhoneBook destructor called" << "\033[0m" << std::endl;
+	std::cout << "\033[2m";
+	std::cout << "PhoneBook destructor called";
+	std::cout << "\033[0m" << std::endl;
 	return ;
 }
 
