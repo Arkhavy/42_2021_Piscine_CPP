@@ -6,7 +6,7 @@
 /*   By: ljohnson <ljohnson@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/16 15:00:49 by ljohnson          #+#    #+#             */
-/*   Updated: 2022/11/10 16:11:26 by ljohnson         ###   ########lyon.fr   */
+/*   Updated: 2022/11/10 16:27:42 by ljohnson         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,6 @@
 int	print_error(std::string message)
 {
 	std::cout << "\033[31m" << "\033[1m";
-	std::cout << "[ERROR]: ";
 	std::cout << message;
 	std::cout << "\033[0m" << std::endl;
 	return (1);

@@ -6,22 +6,22 @@
 #    By: ljohnson <ljohnson@student.42lyon.fr>      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/07/17 12:33:39 by ljohnson          #+#    #+#              #
-#    Updated: 2022/07/17 12:33:59 by ljohnson         ###   ########lyon.fr    #
+#    Updated: 2022/11/10 16:18:30 by ljohnson         ###   ########lyon.fr    #
 #                                                                              #
 # **************************************************************************** #
 
 .PHONY: all clean fclean re
 # .SILENT:
 
-NAME	:=	Harl
+NAME	:=	Karen
 
 #//////////////////////////////////////////////////////////////////////////////
 #		ALL FILES
 #//////////////////////////////////////////////////////////////////////////////
 
 # Files
-LST_INCS	:=	Harl.hpp
-LST_SRCS	:=	Harl.cpp	main.cpp
+LST_INCS	:=	Karen.hpp
+LST_SRCS	:=	Karen.cpp	main.cpp
 LST_DEPS	:=	$(LST_SRCS:.cpp=.d)
 LST_OBJS	:=	$(LST_SRCS:.cpp=.o)
 
