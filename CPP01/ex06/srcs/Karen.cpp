@@ -47,24 +47,118 @@ void	Karen::error() {std::cout << "Error : Meow" << std::endl;}
 /* ************************************************************************** */
 /* Public member functions */
 /* ************************************************************************** */
+// Function ptr solution, might not be the one wanted by the exercise
+// void	Karen::complain(std::string level)
+// {
+// 	std::string	level_type[4] =
+// 			{
+// 				"DEBUG",
+// 				"INFO",
+// 				"WARNING",
+// 				"ERROR"
+// 			};
+// 	void	(Karen::*func[4])(void) =
+// 			{
+// 				&Karen::debug,
+// 				&Karen::info,
+// 				&Karen::warning,
+// 				&Karen::error
+// 			};
+// 	int	count = 5;
+	
+// 	if (!level.empty())
+// 	{
+// 		for (int i = 0; i < (int)level.size(); i++)
+// 			level[i] = std::toupper(level[i]);
+// 		for (int i = 0; i < 4; i++)
+// 		{
+// 			if (!level_type[i].compare(level))
+// 			{
+// 				count = i;
+// 				break ;
+// 			}
+// 		}
+// 		for (int i = 4; count < i; count++)
+// 			(this->*func[count])();
+// 	}
+// 	if (count == 5)
+// 		print_error("Argument given is not a level ! Try DEBUG, INFO, WARNING or ERROR !");
+// }
+
+// Switch Fallthrough solution, bad practice ?
+// void	Karen::complain(std::string level)
+// {
+// 	if (!level.empty())
+// 	{
+// 		for (int i = 0; i < (int)level.size(); i++)
+// 			level[i] = std::toupper(level[i]);
+// 		switch (level[0])
+// 		{
+// 			case 'D':
+// 				this->debug();
+// 			case 'I':
+// 				this->info();
+// 			case 'W':
+// 				this->warning();
+// 			case 'E':
+// 				this->error(); break ;
+// 			default :
+// 				print_error("Fallthrough error is annoying when you use it by design.");
+// 		}
+// 		return ;
+// 	}
+// 	print_error("Argument given is not a level ! Try DEBUG, INFO, WARNING or ERROR !");
+// }
+
+// Switch loop solution, that is NOT clean but exercise might want this one...
 void	Karen::complain(std::string level)
 {
+	std::string	level_type[4] =
+			{
+				"ERROR",
+				"WARNING",
+				"INFO",
+				"DEBUG"
+			};
+	void	(Karen::*func[4])(void) =
+			{
+				&Karen::error,
+				&Karen::warning,
+				&Karen::info,
+				&Karen::debug
+			};
+	int	count = -2;
+
 	if (!level.empty())
 	{
 		for (int i = 0; i < (int)level.size(); i++)
 			level[i] = std::toupper(level[i]);
-		switch (level[0])
+		for (int i = 0; i < 4; i++)
 		{
-			case 'D':
-				this->debug();
-			case 'I':
-				this->info();
-			case 'W':
-				this->warning();
-			case 'E':
-				this->error();
+			if (!level_type[i].compare(level))
+			{
+				count = i;
+				break ;
+			}
 		}
-		return ;
+		while (count >= 0)
+		{
+			switch (count)
+			{
+				case 0 :
+					(this->*func[0])(); break ;
+				case 1 :
+					(this->*func[1])(); break ;
+				case 2 :
+					(this->*func[2])(); break ;
+				case 3 :
+					(this->*func[3])(); break ;
+				default :
+					print_error("Why am I even writing this error message ?");
+			}
+			count--;
+		}
 	}
-	print_error("Argument given is not a level ! Try DEBUG, INFO, WARNING or ERROR !");
+	if (count == -2)
+		print_error("Argument given is not a level ! Try DEBUG, INFO, WARNING or ERROR !");
 }
