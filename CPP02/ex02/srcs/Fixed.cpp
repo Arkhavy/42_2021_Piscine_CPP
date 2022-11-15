@@ -6,7 +6,7 @@
 /*   By: ljohnson <ljohnson@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/24 08:40:04 by ljohnson          #+#    #+#             */
-/*   Updated: 2022/11/15 11:04:46 by ljohnson         ###   ########lyon.fr   */
+/*   Updated: 2022/11/15 11:42:16 by ljohnson         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -121,24 +121,32 @@ Fixed&	Fixed::operator=(Fixed const& rhs)
 
 Fixed	Fixed::operator+(Fixed const& rhs) const
 {
-	return (Fixed((this->value + rhs.getRawBits()) >> this->bitnb));
+	float	result = (this->toFloat() + rhs.toFloat());
+
+	return (Fixed(result));
 }
 
 Fixed	Fixed::operator-(Fixed const& rhs) const
 {
-	return (Fixed((this->value - rhs.getRawBits()) >> this->bitnb));
+	float	result = (this->toFloat() - rhs.toFloat());
+
+	return (Fixed(result));
 }
 
 Fixed	Fixed::operator/(Fixed const& rhs) const
 {
+	float	result = this->toFloat() / rhs.toFloat();
+
 	if (rhs.getRawBits() == 0)
 		return (0);
-	return (Fixed(this->toFloat() / rhs.toFloat()));
+	return (Fixed(result));
 }
 
 Fixed	Fixed::operator*(Fixed const& rhs) const
 {
-	return (Fixed(this->toFloat() * rhs.toFloat()));
+	float	result = this->toFloat() * rhs.toFloat();
+
+	return (Fixed(result));
 }
 
 /* ************************************************************************** */
