@@ -6,7 +6,7 @@
 /*   By: ljohnson <ljohnson@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/24 08:33:59 by ljohnson          #+#    #+#             */
-/*   Updated: 2022/07/24 15:20:33 by ljohnson         ###   ########lyon.fr   */
+/*   Updated: 2022/11/15 11:02:34 by ljohnson         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,12 +45,12 @@ class	Fixed
 		Fixed	operator/(Fixed const& rhs) const;
 		Fixed	operator*(Fixed const& rhs) const;
 
-		int		operator>(Fixed const& rhs) const;
-		int		operator<(Fixed const& rhs) const;
-		int		operator>=(Fixed const& rhs) const;
-		int		operator<=(Fixed const& rhs) const;
-		int		operator==(Fixed const& rhs) const;
-		int		operator!=(Fixed const& rhs) const;
+		bool	operator>(Fixed const& rhs) const;
+		bool	operator<(Fixed const& rhs) const;
+		bool	operator>=(Fixed const& rhs) const;
+		bool	operator<=(Fixed const& rhs) const;
+		bool	operator==(Fixed const& rhs) const;
+		bool	operator!=(Fixed const& rhs) const;
 
 		Fixed&	operator++();
 		Fixed	operator++(int);
