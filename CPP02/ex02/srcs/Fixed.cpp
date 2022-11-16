@@ -6,7 +6,7 @@
 /*   By: ljohnson <ljohnson@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/24 08:40:04 by ljohnson          #+#    #+#             */
-/*   Updated: 2022/11/15 11:42:16 by ljohnson         ###   ########lyon.fr   */
+/*   Updated: 2022/11/16 17:06:20 by ljohnson         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -137,8 +137,6 @@ Fixed	Fixed::operator/(Fixed const& rhs) const
 {
 	float	result = this->toFloat() / rhs.toFloat();
 
-	if (rhs.getRawBits() == 0)
-		return (0);
 	return (Fixed(result));
 }
 

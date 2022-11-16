@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: ljohnson <ljohnson@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/07/24 15:20:16 by ljohnson          #+#    #+#             */
-/*   Updated: 2022/07/24 15:34:36 by ljohnson         ###   ########lyon.fr   */
+/*   Created: 2022/07/24 08:40:04 by ljohnson          #+#    #+#             */
+/*   Updated: 2022/11/16 17:06:10 by ljohnson         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,34 +17,44 @@
 /* ************************************************************************** */
 Fixed::Fixed() : value(0)
 {
-	// std::cout << "\033[2m" << "Default Fixed constructor called" << "\033[0m" << std::endl;
+	// std::cout << "\033[2m";
+	// std::cout << "Default constructor called";
+	// std::cout << "\033[0m" << std::endl;
 	return ;
 }
 
 Fixed::Fixed(Fixed const& src)
 {
-	// std::cout << "\033[2m" << "Copy Fixed constructor called" << "\033[0m" << std::endl;
+	// std::cout << "\033[2m";
+	// std::cout << "Copy constructor called";
+	// std::cout << "\033[0m" << std::endl;
 	*this = src;
 	return ;
 }
 
 Fixed::Fixed(int const nb)
 {
-	// std::cout << "\033[2m" << "Int Fixed constructor called" << "\033[0m" << std::endl;
+	// std::cout << "\033[2m";
+	// std::cout << "Int constructor called";
+	// std::cout << "\033[0m" << std::endl;
 	this->value = nb << this->bitnb;
 	return ;
 }
 
 Fixed::Fixed(float const nb)
 {
-	// std::cout << "\033[2m" << "Float Fixed constructor called" << "\033[0m" << std::endl;
+	// std::cout << "\033[2m";
+	// std::cout << "Float constructor called";
+	// std::cout << "\033[0m" << std::endl;
 	this->value = roundf(nb * (1 << this->bitnb));
 	return ;
 }
 
 Fixed::~Fixed()
 {
-	// std::cout << "\033[2m" << "Fixed Destructor called" << "\033[0m" << std::endl;
+	// std::cout << "\033[2m";
+	// std::cout << "Destructor called";
+	// std::cout << "\033[0m" << std::endl;
 	return ;
 }
 
@@ -111,70 +121,46 @@ Fixed&	Fixed::operator=(Fixed const& rhs)
 
 Fixed	Fixed::operator+(Fixed const& rhs) const
 {
-	return (Fixed((this->value + rhs.getRawBits()) >> this->bitnb));
+	float	result = (this->toFloat() + rhs.toFloat());
+
+	return (Fixed(result));
 }
 
 Fixed	Fixed::operator-(Fixed const& rhs) const
 {
-	return (Fixed((this->value - rhs.getRawBits()) >> this->bitnb));
+	float	result = (this->toFloat() - rhs.toFloat());
+
+	return (Fixed(result));
 }
 
 Fixed	Fixed::operator/(Fixed const& rhs) const
 {
-	if (rhs.getRawBits() == 0)
-		return (0);
-	return (Fixed(this->toFloat() / rhs.toFloat()));
+	float	result = this->toFloat() / rhs.toFloat();
+
+	return (Fixed(result));
 }
 
 Fixed	Fixed::operator*(Fixed const& rhs) const
 {
-	return (Fixed(this->toFloat() * rhs.toFloat()));
+	float	result = this->toFloat() * rhs.toFloat();
+
+	return (Fixed(result));
 }
 
 /* ************************************************************************** */
 /* Comparison Operator overloads */
 /* ************************************************************************** */
-int	Fixed::operator>(Fixed const& rhs) const
-{
-	if (this->value > rhs.getRawBits())
-		return (1);
-	return (0);
-}
+bool	Fixed::operator>(Fixed const& rhs) const {return (this->value > rhs.getRawBits());}
 
-int	Fixed::operator<(Fixed const& rhs) const
-{
-	if (this->value < rhs.getRawBits())
-		return (1);
-	return (0);
-}
+bool	Fixed::operator<(Fixed const& rhs) const {return (this->value < rhs.getRawBits());}
 
-int	Fixed::operator>=(Fixed const& rhs) const
-{
-	if (this->value >= rhs.getRawBits())
-		return (1);
-	return (0);
-}
+bool	Fixed::operator>=(Fixed const& rhs) const {return (this->value >= rhs.getRawBits());}
 
-int	Fixed::operator<=(Fixed const& rhs) const
-{
-	if (this->value <= rhs.getRawBits())
-		return (1);
-	return (0);
-}
+bool	Fixed::operator<=(Fixed const& rhs) const {return (this->value <= rhs.getRawBits());}
 
-int	Fixed::operator==(Fixed const& rhs) const
-{
-	if (this->value == rhs.getRawBits())
-		return (1);
-	return (0);
-}
+bool	Fixed::operator==(Fixed const& rhs) const {return (this->value == rhs.getRawBits());}
 
-int	Fixed::operator!=(Fixed const& rhs) const
-{
-	if (this->value != rhs.getRawBits())
-		return (1);
-	return (0);
-}
+bool	Fixed::operator!=(Fixed const& rhs) const {return (this->value != rhs.getRawBits());}
 
 /* ************************************************************************** */
 /* Incrementation & Decrementation Operator overloads */
