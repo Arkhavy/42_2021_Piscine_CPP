@@ -6,7 +6,7 @@
 /*   By: ljohnson <ljohnson@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/24 15:29:08 by ljohnson          #+#    #+#             */
-/*   Updated: 2022/11/16 17:07:06 by ljohnson         ###   ########lyon.fr   */
+/*   Updated: 2022/11/17 11:30:21 by ljohnson         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,6 +50,11 @@ Point::~Point()
 
 Point&	Point::operator=(Point const& rhs)
 {
-	//Fixed const wut ?
+	this->~Point();
+	new(this) Point(rhs.getFloatX(), rhs.getFloatY());
 	return (*this);
 }
+
+float	Point::getFloatX() const {return (this->x.toFloat());}
+
+float	Point::getFloatY() const {return (this->y.toFloat());}

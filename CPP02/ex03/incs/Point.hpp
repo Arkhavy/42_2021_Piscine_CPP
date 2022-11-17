@@ -6,7 +6,7 @@
 /*   By: ljohnson <ljohnson@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/24 15:28:07 by ljohnson          #+#    #+#             */
-/*   Updated: 2022/07/24 15:31:18 by ljohnson         ###   ########lyon.fr   */
+/*   Updated: 2022/11/17 11:10:07 by ljohnson         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,11 @@ class	Point
 		Point(Point const& src); //Copy constructor
 		~Point(); //Default destructor
 
+		float	getFloatX() const;
+		float	getFloatY() const;
 		Point&	operator=(Point const& rhs);
 };
+
+bool bsp( Point const a, Point const b, Point const c, Point const point);
 
 #endif /* POINT_HPP */
