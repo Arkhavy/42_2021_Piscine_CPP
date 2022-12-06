@@ -6,7 +6,7 @@
 /*   By: ljohnson <ljohnson@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/24 17:59:47 by ljohnson          #+#    #+#             */
-/*   Updated: 2022/07/24 17:59:48 by ljohnson         ###   ########lyon.fr   */
+/*   Updated: 2022/12/06 20:15:05 by ljohnson         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,11 +33,6 @@ class	ClapTrap
 		void	attack(const std::string& target);
 		void	takeDamage(unsigned int amount);
 		void	beRepaired(unsigned int amount);
-		
-		std::string		getName() const;
-		unsigned int	getHitPoints() const;
-		unsigned int	getEnergyPoints() const;
-		unsigned int	getAttackDamage() const;
 		
 		ClapTrap&	operator=(ClapTrap const& rhs);
 };
