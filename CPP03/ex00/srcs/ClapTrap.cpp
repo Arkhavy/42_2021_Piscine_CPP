@@ -6,37 +6,51 @@
 /*   By: ljohnson <ljohnson@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/24 16:07:07 by ljohnson          #+#    #+#             */
-/*   Updated: 2022/07/28 11:18:12 by ljohnson         ###   ########lyon.fr   */
+/*   Updated: 2022/12/06 20:07:02 by ljohnson         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <ClapTrap.hpp>
+
+#define RED "\033[31m"
+#define GREEN "\033[32m"
+#define BOLD "\033[1m"
+#define FAINT "\033[2m"
+#define FWHITE "\033[0m"
 
 /* ************************************************************************** */
 /* Constructors & Destructors */
 /* ************************************************************************** */
 ClapTrap::ClapTrap() : name("CL4P-TP"), hit_points(10), energy_points(10), attack_damage(0)
 {
-	std::cout << "\033[2m" << "ClapTrap " << this->name << " default constructor called" << "\033[0m" << std::endl;
+	std::cout << FAINT;
+	std::cout << "ClapTrap " << this->name << " default constructor called";
+	std::cout << FWHITE << std::endl;
 	return ;
 }
 
 ClapTrap::ClapTrap(std::string name) : name(name), hit_points(10), energy_points(10), attack_damage(0)
 {
-	std::cout << "\033[2m" << "ClapTrap " << this->name << " constructor called" << "\033[0m" << std::endl;
+	std::cout << FAINT;
+	std::cout << "ClapTrap " << this->name << " constructor called";
+	std::cout << FWHITE << std::endl;
 	return ;
 }
 
 ClapTrap::ClapTrap(ClapTrap const& src)
 {
 	*this = src;
-	std::cout << "\033[2m" << "ClapTrap " << this->name << " copy constructor called" << "\033[0m" << std::endl;
+	std::cout << FAINT;
+	std::cout << "ClapTrap " << this->name << " copy constructor called";
+	std::cout << FWHITE << std::endl;
 	return ;
 }
 
 ClapTrap::~ClapTrap()
 {
-	std::cout << "\033[2m" << "ClapTrap " << this->name << " destructor called" << "\033[0m" << std::endl;
+	std::cout << FAINT;
+	std::cout << "ClapTrap " << this->name << " destructor called";
+	std::cout << FWHITE << std::endl;
 	return ;
 }
 
@@ -47,16 +61,29 @@ void	ClapTrap::attack(const std::string& target)
 {
 	if (this->hit_points == 0)
 	{
-		std::cout << "\033[31m\033[1mA dead " << this->name << " cannot attack " << target << "\033[0m" << std::endl;
+		std::cout << RED << BOLD;
+		std::cout << "A dead " << this->name << " cannot attack " << target;
+		std::cout << FWHITE << std::endl;
 		return ;
 	}
 	if (this->energy_points == 0)
 	{
-		std::cout << "\033[31m\033[1mAn exhausted " << this->name << " cannot attack " << target << "\033[0m" << std::endl;
+		std::cout << RED << BOLD;
+		std::cout << "An exhausted " << this->name << " cannot attack " << target;
+		std::cout << FWHITE << std::endl;
 		return ;
 	}
 	this->energy_points--;
-	std::cout << "ClapTrap \033[32m\033[1m" << this->name << "\033[0m attacks \033[32m\033[1m" << target << "\033[0m, causing \033[31m\033[1m" << this->attack_damage << "\033[0m damages !" << std::endl;
+	std::cout << "ClapTrap ";
+	std::cout << GREEN << BOLD;
+	std::cout << this->name << FWHITE;
+	std::cout << " attacks ";
+	std::cout << GREEN << BOLD;
+	std::cout << target << FWHITE;
+	std::cout << ", causing ";
+	std::cout << RED << BOLD;
+	std::cout << this->attack_damage << FWHITE;
+	std::cout << " damages !" << std::endl;
 	return ;
 }
 
@@ -64,10 +91,18 @@ void	ClapTrap::takeDamage(unsigned int amount)
 {
 	if (this->hit_points == 0)
 	{
-		std::cout << "\033[31m\033[1mA dead " << this->name << " cannot lose more HP, calm down !" << "\033[0m" << std::endl;
+		std::cout << RED << BOLD;
+		std::cout << "A dead " << this->name << " cannot lose more HP, calm down !";
+		std::cout << FWHITE << std::endl;
 		return ;
 	}
-	std::cout << "ClapTrap \033[32m\033[1m" << this->name << "\033[0m just took \033[31m\033[1m" << amount << "\033[0m damages !" << std::endl;
+	std::cout << "ClapTrap ";
+	std::cout << GREEN << BOLD;
+	std::cout << this->name << FWHITE;
+	std::cout << " just took ";
+	std::cout << RED << BOLD;
+	std::cout << amount << FWHITE;
+	std::cout << " damages !" << std::endl;
 	if ((int)(this->hit_points - amount) < 0)
 	{
 		std::cout << "That one might be a little overkill ... But deserved !" << std::endl; 
@@ -82,20 +117,32 @@ void	ClapTrap::beRepaired(unsigned int amount)
 {
 	if (this->hit_points == 0)
 	{
-		std::cout << "\033[31m\033[1mFortunately, a dead " << this->name << " cannot repair itself !\033[0m" << std::endl;
+		std::cout << RED << BOLD;
+		std::cout << "Fortunately, a dead " << this->name << " cannot repair itself !";
+		std::cout << FWHITE << std::endl;
 		return ;
 	}
 	if (this->hit_points == 10)
 	{
-		std::cout << "\033[31m\033[1mFortunately, a fully repaired " << this->name << " cannot repair itself even more !\033[0m" << std::endl;
+		std::cout << RED << BOLD;
+		std::cout << "Fortunately, a fully repaired " << this->name << " cannot repair itself even more !";
+		std::cout << FWHITE << std::endl;
 		return ;
 	}
 	if (this->energy_points == 0)
 	{
-		std::cout << "\033[31m\033[1mAn exhausted " << this->name << " cannot repair itself\033[0m" << std::endl;
+		std::cout << RED << BOLD;
+		std::cout << "An exhausted " << this->name << " cannot repair itself";
+		std::cout << FWHITE << std::endl;
 		return ;
 	}
-	std::cout << "ClapTrap \033[32m\033[1m" << this->name << "\033[0m is repairing itself \033[32m\033[1m" << amount << "\033[0m HP" << std::endl;
+	std::cout << "ClapTrap ";
+	std::cout << GREEN << BOLD;
+	std::cout << this->name << FWHITE;
+	std::cout << " is repairing itself ";
+	std::cout << GREEN << BOLD;
+	std::cout << amount << FWHITE;
+	std::cout << " HP" << std::endl;
 	this->energy_points--;
 	if ((int)(this->hit_points + amount) > 10)
 	{
