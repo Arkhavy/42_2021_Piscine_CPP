@@ -6,7 +6,7 @@
 #    By: ljohnson <ljohnson@student.42lyon.fr>      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/07/24 18:00:03 by ljohnson          #+#    #+#              #
-#    Updated: 2022/12/07 18:25:14 by ljohnson         ###   ########lyon.fr    #
+#    Updated: 2022/12/07 18:27:04 by ljohnson         ###   ########lyon.fr    #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,8 +20,8 @@ NAME	:=	FragTrap
 #//////////////////////////////////////////////////////////////////////////////
 
 # Files
-LST_INCS	:=	ClapTrap.hpp	ScavTrap.hpp
-LST_SRCS	:=	ClapTrap.cpp	ScavTrap.cpp	main.cpp
+LST_INCS	:=	ClapTrap.hpp	ScavTrap.hpp	FragTrap.hpp
+LST_SRCS	:=	ClapTrap.cpp	ScavTrap.cpp	FragTrap.cpp	main.cpp
 LST_DEPS	:=	$(LST_SRCS:.cpp=.d)
 LST_OBJS	:=	$(LST_SRCS:.cpp=.o)
 
