@@ -6,7 +6,7 @@
 /*   By: ljohnson <ljohnson@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/24 17:59:47 by ljohnson          #+#    #+#             */
-/*   Updated: 2022/12/06 20:15:05 by ljohnson         ###   ########lyon.fr   */
+/*   Updated: 2022/12/07 13:26:51 by ljohnson         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,11 +18,14 @@
 
 class	ClapTrap
 {
-	private:
+	protected:
 		std::string		name;
 		unsigned int	hit_points;
 		unsigned int	energy_points;
 		unsigned int	attack_damage;
+
+		unsigned int	max_hit_points;
+		unsigned int	max_energy_points;
 
 	public:
 		ClapTrap(); //Default constructor

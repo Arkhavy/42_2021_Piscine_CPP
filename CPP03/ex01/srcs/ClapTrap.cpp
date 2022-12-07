@@ -6,7 +6,7 @@
 /*   By: ljohnson <ljohnson@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/24 16:07:07 by ljohnson          #+#    #+#             */
-/*   Updated: 2022/12/06 20:15:15 by ljohnson         ###   ########lyon.fr   */
+/*   Updated: 2022/12/07 13:30:30 by ljohnson         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,8 @@ ClapTrap::ClapTrap() : name("CL4P-TP"), hit_points(10), energy_points(10), attac
 {
 	std::cout << FAINT;
 	std::cout << "ClapTrap " << this->name << " default constructor called";
+	this->max_hit_points = this->hit_points;
+	this->max_energy_points = this->energy_points;
 	std::cout << FWHITE << std::endl;
 	return ;
 }
@@ -33,6 +35,8 @@ ClapTrap::ClapTrap(std::string name) : name(name), hit_points(10), energy_points
 {
 	std::cout << FAINT;
 	std::cout << "ClapTrap " << this->name << " constructor called";
+	this->max_hit_points = this->hit_points;
+	this->max_energy_points = this->energy_points;
 	std::cout << FWHITE << std::endl;
 	return ;
 }
@@ -122,7 +126,7 @@ void	ClapTrap::beRepaired(unsigned int amount)
 		std::cout << FWHITE << std::endl;
 		return ;
 	}
-	if (this->hit_points == 10)
+	if (this->hit_points == this->max_hit_points)
 	{
 		std::cout << RED << BOLD;
 		std::cout << "Fortunately, a fully repaired " << this->name << " cannot repair itself even more !";
@@ -144,9 +148,12 @@ void	ClapTrap::beRepaired(unsigned int amount)
 	std::cout << amount << FWHITE;
 	std::cout << " HP" << std::endl;
 	this->energy_points--;
-	if ((int)(this->hit_points + amount) > 10)
+	if ((this->hit_points + amount) > this->max_hit_points)
 	{
-		std::cout << "ClapTrap " << this->name << " is a little bit sad to not be able to repair itself even more..." << std::endl;
+		std::cout << FAINT;
+		std::cout << "ClapTrap " << this->name;
+		std::cout << " is a little bit sad to not be able to repair itself even more...";
+		std::cout << FWHITE << std::endl;
 		this->hit_points = 10;
 		return ;
 	}
@@ -163,5 +170,7 @@ ClapTrap&	ClapTrap::operator=(ClapTrap const& rhs)
 	this->hit_points = rhs.hit_points;
 	this->energy_points = rhs.energy_points;
 	this->attack_damage = rhs.attack_damage;
+	this->max_hit_points = rhs.max_hit_points;
+	this->max_energy_points = rhs.max_energy_points;
 	return (*this);
 }
