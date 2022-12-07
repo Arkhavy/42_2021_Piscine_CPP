@@ -6,7 +6,7 @@
 /*   By: ljohnson <ljohnson@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/07 12:16:58 by ljohnson          #+#    #+#             */
-/*   Updated: 2022/12/07 18:24:01 by ljohnson         ###   ########lyon.fr   */
+/*   Updated: 2022/12/07 18:31:46 by ljohnson         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -118,5 +118,7 @@ ScavTrap&	ScavTrap::operator=(ScavTrap const& rhs)
 	this->hit_points = rhs.hit_points;
 	this->energy_points = rhs.energy_points;
 	this->attack_damage = rhs.attack_damage;
+	this->max_hit_points = rhs.max_hit_points;
+	this->max_energy_points = rhs.max_energy_points;
 	return (*this);
 }
