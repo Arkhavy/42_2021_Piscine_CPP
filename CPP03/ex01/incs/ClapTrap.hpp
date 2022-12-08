@@ -6,7 +6,7 @@
 /*   By: ljohnson <ljohnson@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/24 17:59:47 by ljohnson          #+#    #+#             */
-/*   Updated: 2022/12/07 13:26:51 by ljohnson         ###   ########lyon.fr   */
+/*   Updated: 2022/12/08 23:43:56 by ljohnson         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,9 +33,9 @@ class	ClapTrap
 		ClapTrap(ClapTrap const& src); //Copy constructor
 		~ClapTrap(); //Default destructor
 		
-		void	attack(const std::string& target);
-		void	takeDamage(unsigned int amount);
-		void	beRepaired(unsigned int amount);
+		virtual void	attack(const std::string& target);
+		void			takeDamage(unsigned int amount);
+		void			beRepaired(unsigned int amount);
 		
 		ClapTrap&	operator=(ClapTrap const& rhs);
 };
