@@ -6,7 +6,7 @@
 /*   By: ljohnson <ljohnson@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/16 15:00:49 by ljohnson          #+#    #+#             */
-/*   Updated: 2022/11/10 16:27:42 by ljohnson         ###   ########lyon.fr   */
+/*   Updated: 2023/01/16 18:03:25 by ljohnson         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ int	print_error(std::string message)
 	return (1);
 }
 
-std::string	get_file_content(const char* filename)
+std::string	get_file_content(const char* filename) //fonction à refaire, getline fonctionne, jsuis con mdr
 {
 	std::ifstream	ifs;
 	std::string		file_content;
@@ -49,7 +49,7 @@ std::string	swap_content_parts(std::string content, std::string s1, std::string 
 
 	while (42)
 	{
-		index = content.find(s1);
+		index = content.find(s1); //boucle inf si caractère à remplacer présent dans le remplacement
 		if (index == std::string::npos)
 			break ;
 		content.erase(index, s1.size());
@@ -58,7 +58,7 @@ std::string	swap_content_parts(std::string content, std::string s1, std::string 
 	return (content);
 }
 
-void	write_file_content(const char* filename, std::string content)
+void	write_file_content(const char* filename, std::string content) //fonction potentiellement à refaire aussi
 {
 	std::ofstream	ofs;
 	
