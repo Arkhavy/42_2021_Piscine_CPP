@@ -6,7 +6,7 @@
 /*   By: ljohnson <ljohnson@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/15 11:23:48 by ljohnson          #+#    #+#             */
-/*   Updated: 2022/11/10 15:35:30 by ljohnson         ###   ########lyon.fr   */
+/*   Updated: 2023/01/17 08:52:10 by ljohnson         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,16 +14,18 @@
 
 int	main(void)
 {
-	Zombie		first_zombie("ljohnson");
-	Zombie*		zombie_horde;
+	Zombie		first_z("ljohnson");
+	Zombie		default_z;
+	Zombie*		horde_z;
 	int const	N = 5;
 
-	first_zombie.announce();
+	first_z.announce();
+	default_z.announce();
 
-	zombie_horde = zombieHorde(N, "Horde");
+	horde_z = zombieHorde(N, "Horde");
 	for (int i = 0; i < N; i++)
-		zombie_horde[i].announce();
+		horde_z[i].announce();
 
-	delete [] zombie_horde;
+	delete [] horde_z;
 	return (0);
 }
