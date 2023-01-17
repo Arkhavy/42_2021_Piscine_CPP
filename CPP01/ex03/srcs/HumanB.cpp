@@ -6,7 +6,7 @@
 /*   By: ljohnson <ljohnson@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/16 11:57:10 by ljohnson          #+#    #+#             */
-/*   Updated: 2023/01/17 14:52:05 by ljohnson         ###   ########lyon.fr   */
+/*   Updated: 2023/01/18 00:47:43 by ljohnson         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@
 HumanB::HumanB(std::string name)
 {
 	this->name = name;
+	this->weapon = NULL;
 	std::cout << "\033[2m";
 	std::cout << "HumanB " << this->name << " Constructor called.";
 	std::cout << "\033[0m" << std::endl;
@@ -42,7 +43,7 @@ void	HumanB::setWeapon(Weapon& weapon) {this->weapon = &weapon;}
 /* ************************************************************************** */
 void	HumanB::attack() const
 {
-	if (this->weapon->getType().empty())
+	if (!this->weapon)
 		std::cout << this->name << " attacks with their bare fists" << std::endl;
 	else
 		std::cout << this->name << " attacks with their " << this->weapon->getType() << std::endl;
