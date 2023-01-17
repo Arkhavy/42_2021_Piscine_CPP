@@ -6,7 +6,7 @@
 /*   By: ljohnson <ljohnson@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/16 11:03:09 by ljohnson          #+#    #+#             */
-/*   Updated: 2022/11/10 15:41:31 by ljohnson         ###   ########lyon.fr   */
+/*   Updated: 2023/01/17 14:44:02 by ljohnson         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,6 @@ Weapon::~Weapon()
 /* ************************************************************************** */
 /* Getters & Setters */
 /* ************************************************************************** */
-const std::string&	Weapon::getType() {return (this->type);}
+const std::string&	Weapon::getType() const {return (this->type);}
 
 void	Weapon::setType(std::string type) {this->type = type;}

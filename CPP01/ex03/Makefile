@@ -6,7 +6,7 @@
 #    By: ljohnson <ljohnson@student.42lyon.fr>      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/07/16 10:59:34 by ljohnson          #+#    #+#              #
-#    Updated: 2022/07/16 14:47:23 by ljohnson         ###   ########lyon.fr    #
+#    Updated: 2023/01/17 14:40:14 by ljohnson         ###   ########lyon.fr    #
 #                                                                              #
 # **************************************************************************** #
 
@@ -44,7 +44,7 @@ OBJS		:=	$(addprefix $(P_OBJS),$(LST_OBJS))
 
 # Commands
 CC	:=	c++
-CF	:=	-Wall -Werror -Wextra -std=c++98
+CF	:=	-Wall -Werror -Wextra -std=c++98 -g3 -fsanitize=address
 CI	:=	-I $(P_INCS)
 CS	:=	-g3 -fsanitize=address
 CT	:=	-g3 -fsanitize=threads
@@ -72,10 +72,10 @@ UNDERLINE=\033[4m
 #		RULES
 #//////////////////////////////////////////////////////////////////////////////
 
-all:	$(NAME) Makefile
+all:	$(NAME)
 
 # Binary creation
-$(NAME):	$(OBJS) Makefile
+$(NAME):	$(OBJS)
 	$(CC) $(CF) $(CI) $(OBJS) -o $@
 
 $(P_DEPS)%.d:	$(P_SRCS)%.cpp Makefile | $(P_DEPS)
