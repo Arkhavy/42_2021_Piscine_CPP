@@ -6,7 +6,7 @@
 /*   By: ljohnson <ljohnson@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/16 15:00:49 by ljohnson          #+#    #+#             */
-/*   Updated: 2023/01/16 18:03:25 by ljohnson         ###   ########lyon.fr   */
+/*   Updated: 2023/01/18 01:45:01 by ljohnson         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,7 +72,7 @@ void	write_file_content(const char* filename, std::string content) //fonction po
 	ofs.close();
 }
 
-int	check_user_input(char **av)
+static int	check_user_input(char **av)
 {
 	std::string		s1;
 	std::string		s2;
