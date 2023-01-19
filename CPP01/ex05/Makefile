@@ -6,22 +6,22 @@
 #    By: ljohnson <ljohnson@student.42lyon.fr>      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/07/17 12:33:39 by ljohnson          #+#    #+#              #
-#    Updated: 2022/11/10 16:18:30 by ljohnson         ###   ########lyon.fr    #
+#    Updated: 2023/01/19 13:25:42 by ljohnson         ###   ########lyon.fr    #
 #                                                                              #
 # **************************************************************************** #
 
 .PHONY: all clean fclean re
 # .SILENT:
 
-NAME	:=	Karen
+NAME	:=	Harl
 
 #//////////////////////////////////////////////////////////////////////////////
 #		ALL FILES
 #//////////////////////////////////////////////////////////////////////////////
 
 # Files
-LST_INCS	:=	Karen.hpp
-LST_SRCS	:=	Karen.cpp	main.cpp
+LST_INCS	:=	Harl.hpp
+LST_SRCS	:=	Harl.cpp	main.cpp
 LST_DEPS	:=	$(LST_SRCS:.cpp=.d)
 LST_OBJS	:=	$(LST_SRCS:.cpp=.o)
 
@@ -71,10 +71,10 @@ UNDERLINE=\033[4m
 #		RULES
 #//////////////////////////////////////////////////////////////////////////////
 
-all:	$(NAME) Makefile
+all:	$(NAME)
 
 # Binary creation
-$(NAME):	$(OBJS) Makefile
+$(NAME):	$(OBJS)
 	$(CC) $(CF) $(CI) $(OBJS) -o $@
 
 $(P_DEPS)%.d:	$(P_SRCS)%.cpp Makefile | $(P_DEPS)

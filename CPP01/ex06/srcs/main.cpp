@@ -6,11 +6,11 @@
 /*   By: ljohnson <ljohnson@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/17 13:01:26 by ljohnson          #+#    #+#             */
-/*   Updated: 2022/11/10 16:34:12 by ljohnson         ###   ########lyon.fr   */
+/*   Updated: 2023/01/19 13:25:49 by ljohnson         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <Karen.hpp>
+#include <Harl.hpp>
 
 int	print_error(std::string message)
 {
@@ -22,9 +22,9 @@ int	print_error(std::string message)
 
 int	main(int ac, char **av)
 {
-	Karen	karen;
+	Harl	harl;
 	if (ac != 2)
-		return (print_error("Usage: ./KarenFilter <level>"));
-	karen.complain(av[1]);
+		return (print_error("Usage: ./HarlFilter <level>"));
+	harl.complain(av[1]);
 	return (0);
 }

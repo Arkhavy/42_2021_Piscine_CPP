@@ -1,22 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Karen.hpp                                          :+:      :+:    :+:   */
+/*   Harl.hpp                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ljohnson <ljohnson@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/17 13:29:09 by ljohnson          #+#    #+#             */
-/*   Updated: 2022/11/10 16:30:48 by ljohnson         ###   ########lyon.fr   */
+/*   Updated: 2023/01/19 13:25:23 by ljohnson         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef KAREN_HPP
-# define KAREN_HPP
+#ifndef HARL_HPP
+# define HARL_HPP
 
 # include <iostream>
 # include <string>
 
-class	Karen
+class	Harl
 {
 	private:
 		void	debug();
@@ -25,10 +25,10 @@ class	Karen
 		void	error();
 
 	public:
-		Karen();
-		~Karen();
+		Harl();
+		~Harl();
 
 		void	complain(std::string level);
 };
 
-#endif /* KAREN_HPP */
+#endif /* HARL_HPP */
