@@ -6,7 +6,7 @@
 /*   By: ljohnson <ljohnson@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/18 00:58:06 by ljohnson          #+#    #+#             */
-/*   Updated: 2023/01/18 02:59:40 by ljohnson         ###   ########lyon.fr   */
+/*   Updated: 2023/01/19 12:24:15 by ljohnson         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,22 +65,14 @@ loop
 	else
 		put i1 >> outfile
 
-or use string operations to do the same thing if read is forbidden
+string operation loop
+	get full file into one string
+	i1
 
 Close infile
 Close outfile
 return main
 */
-
-// void	ft_getline(std::string& str)
-// {
-// 	std::getline(std::cin, str);
-// 	if (std::cin.eofbit != 0)
-// 	{
-// 		std::cin.clear();
-// 		clearerr(stdin);
-// 	}
-// }
 
 int	print_error(std::string message)
 {
@@ -90,7 +82,78 @@ int	print_error(std::string message)
 	return (1);
 }
 
-static int	check_user_input(int ac, char **av)
+int	get_file_content(const char* filename, std::string& fcontent)
+{
+	std::ifstream	ifs;
+	std::string		line;
+
+	ifs.open(filename, std::ifstream::in);
+	if (!ifs.good())
+		return (print_error("Infile does not exist or cannot be opened."));
+	while (42)
+	{
+		std::getline(ifs, line);
+		fcontent += line;
+		if (ifs.eof())
+			break ;
+		fcontent += "\n";
+	}
+	ifs.close();
+	return (0);
+}
+
+void	replace_str_content(std::string& fcontent, std::string& s1, std::string& s2)
+{
+	size_t			index = 0;
+	
+	index = fcontent.find(s1);
+	while (index != std::string::npos)
+	{
+		fcontent.erase(index, s1.size());
+		fcontent.insert(index, s2);
+		index = fcontent.find(s1, index + s2.length());
+		if (index == std::string::npos)
+			break ;
+	}
+}
+
+int	write_new_file(std::string& fcontent, const char* filename)
+{
+	std::ofstream	ofs;
+
+	ofs.open(filename, std::ofstream::out);
+	if (!ofs.good())
+		return (print_error("Outfile already exist and can't be opened."));
+	ofs << fcontent;
+	ofs.close();
+	return (0);
+}
+
+const char*	change_filename(const char* filename)
+{
+	std::string	newfilename;
+
+	newfilename = filename;
+	newfilename.append(".replace");
+	filename = newfilename.c_str();
+	return (filename);
+}
+
+int	sed(const char*	filename, std::string& s1, std::string& s2)
+{
+	std::string		fcontent;
+
+	if (get_file_content(filename, fcontent))
+		return (1);
+	replace_str_content(fcontent, s1, s2);
+	filename = change_filename(filename);
+	if (write_new_file(fcontent, filename))
+		return (1);
+	return (0);
+}
+
+
+int	check_user_input(int ac, char **av)
 {
 	std::string	s1;
 	std::string	s2;
@@ -112,7 +175,13 @@ static int	check_user_input(int ac, char **av)
 
 int	main(int ac, char **av)
 {
+	std::string	s1;
+	std::string	s2;
+
 	if (check_user_input(ac, av))
 		return (1);
+	s1 = av[2];
+	s2 = av[3];
+	sed(av[1], s1, s2);
 	return (0);
 }

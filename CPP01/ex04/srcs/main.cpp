@@ -6,7 +6,7 @@
 /*   By: ljohnson <ljohnson@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/16 15:00:49 by ljohnson          #+#    #+#             */
-/*   Updated: 2023/01/18 01:45:01 by ljohnson         ###   ########lyon.fr   */
+/*   Updated: 2023/01/19 11:07:30 by ljohnson         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,23 +72,23 @@ void	write_file_content(const char* filename, std::string content) //fonction po
 	ofs.close();
 }
 
-static int	check_user_input(char **av)
-{
-	std::string		s1;
-	std::string		s2;
+// static int	check_user_input(char **av)
+// {
+// 	std::string		s1;
+// 	std::string		s2;
 	
-	if (!av[0] || !av[1] || !av[2] || !av[0][0] || !av[1][0] || !av[2][0])
-		return (print_error("Invalid argument somewhere in user input, try again !"));
-	std::ifstream	ifs(av[0]);
-	if (!ifs.good())
-		return (print_error("Infile does not exist or can't be opened."));
-	s1 = av[1];
-	s2 = av[2];
-	if (s1 == s2)
-		return (print_error("both s1 and s2 are identical, please change one !"));
-	ifs.close();
-	return (0);
-}
+// 	if (!av[0] || !av[1] || !av[2] || !av[0][0] || !av[1][0] || !av[2][0])
+// 		return (print_error("Invalid argument somewhere in user input, try again !"));
+// 	std::ifstream	ifs(av[0]);
+// 	if (!ifs.good())
+// 		return (print_error("Infile does not exist or can't be opened."));
+// 	s1 = av[1];
+// 	s2 = av[2];
+// 	if (s1 == s2)
+// 		return (print_error("both s1 and s2 are identical, please change one !"));
+// 	ifs.close();
+// 	return (0);
+// }
 
 int	main(int ac, char **av)
 {
