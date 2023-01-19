@@ -6,7 +6,7 @@
 /*   By: ljohnson <ljohnson@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/18 00:58:06 by ljohnson          #+#    #+#             */
-/*   Updated: 2023/01/19 13:19:50 by ljohnson         ###   ########lyon.fr   */
+/*   Updated: 2023/01/19 13:51:14 by ljohnson         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@ int	get_file_content(const char* filename, std::string& fcontent)
 
 void	replace_str_content(std::string& fcontent, std::string& s1, std::string& s2)
 {
-	size_t			index = 0;
+	size_t	index = 0;
 	
 	index = fcontent.find(s1);
 	while (index != std::string::npos)
@@ -80,7 +80,6 @@ std::string	change_filename(const char* filename)
 int	sed(const char*	filename, std::string& s1, std::string& s2)
 {
 	std::string		fcontent;
-	
 
 	if (get_file_content(filename, fcontent))
 		return (1);
