@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: ljohnson <ljohnson@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/07/16 15:00:49 by ljohnson          #+#    #+#             */
-/*   Updated: 2023/01/19 11:07:30 by ljohnson         ###   ########lyon.fr   */
+/*   Created: 2023/01/18 00:58:06 by ljohnson          #+#    #+#             */
+/*   Updated: 2023/01/19 13:19:50 by ljohnson         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,97 +22,104 @@ int	print_error(std::string message)
 	return (1);
 }
 
-std::string	get_file_content(const char* filename) //fonction à refaire, getline fonctionne, jsuis con mdr
+int	get_file_content(const char* filename, std::string& fcontent)
 {
 	std::ifstream	ifs;
-	std::string		file_content;
-	int				fcontent_len;
-	char			*fcontent;
+	std::string		line;
 
 	ifs.open(filename, std::ifstream::in);
-	ifs.seekg (0, ifs.end);
-	fcontent_len = ifs.tellg();
-	ifs.seekg (0, ifs.beg);
-	
-	fcontent = new char[fcontent_len];
-	ifs.read(fcontent, fcontent_len);
-	file_content = fcontent;
-
-	delete [] fcontent;
-	ifs.close();
-	return (file_content);
-}
-
-std::string	swap_content_parts(std::string content, std::string s1, std::string s2)
-{
-	size_t	index = 0;
-
+	if (!ifs.good())
+		return (print_error("ERROR: Infile does not exist or cannot be opened."));
 	while (42)
 	{
-		index = content.find(s1); //boucle inf si caractère à remplacer présent dans le remplacement
+		std::getline(ifs, line);
+		fcontent += line;
+		if (ifs.eof())
+			break ;
+		fcontent += "\n";
+	}
+	ifs.close();
+	return (0);
+}
+
+void	replace_str_content(std::string& fcontent, std::string& s1, std::string& s2)
+{
+	size_t			index = 0;
+	
+	index = fcontent.find(s1);
+	while (index != std::string::npos)
+	{
+		fcontent.erase(index, s1.size());
+		fcontent.insert(index, s2);
+		index = fcontent.find(s1, index + s2.length());
 		if (index == std::string::npos)
 			break ;
-		content.erase(index, s1.size());
-		content.insert(index, s2);
 	}
-	return (content);
 }
 
-void	write_file_content(const char* filename, std::string content) //fonction potentiellement à refaire aussi
+int	write_new_file(std::string& fcontent, std::string filename)
 {
-	std::ofstream	ofs;
-	
-	ofs.open(filename, std::ofstream::out);
+	std::ofstream	ofs(filename);
+
 	if (!ofs.good())
-	{
-		print_error("Outfile already exist and can't be opened.");
-		return ;
-	}
-	ofs << content;
+		return (print_error("ERROR: Outfile already exist and can't be opened."));
+	ofs << fcontent;
 	ofs.close();
+	return (0);
 }
 
-// static int	check_user_input(char **av)
-// {
-// 	std::string		s1;
-// 	std::string		s2;
-	
-// 	if (!av[0] || !av[1] || !av[2] || !av[0][0] || !av[1][0] || !av[2][0])
-// 		return (print_error("Invalid argument somewhere in user input, try again !"));
-// 	std::ifstream	ifs(av[0]);
-// 	if (!ifs.good())
-// 		return (print_error("Infile does not exist or can't be opened."));
-// 	s1 = av[1];
-// 	s2 = av[2];
-// 	if (s1 == s2)
-// 		return (print_error("both s1 and s2 are identical, please change one !"));
-// 	ifs.close();
-// 	return (0);
-// }
-
-int	main(int ac, char **av)
+std::string	change_filename(const char* filename)
 {
-	const char*	filename;
 	std::string	newfilename;
+
+	newfilename = filename;
+	newfilename.append(".replace");
+	return (newfilename);
+}
+
+int	sed(const char*	filename, std::string& s1, std::string& s2)
+{
+	std::string		fcontent;
+	
+
+	if (get_file_content(filename, fcontent))
+		return (1);
+	replace_str_content(fcontent, s1, s2);
+	if (write_new_file(fcontent, change_filename(filename)))
+		return (1);
+	return (0);
+}
+
+
+int	check_user_input(int ac, char **av)
+{
 	std::string	s1;
 	std::string	s2;
-	std::string	content;
 
 	if (ac != 4)
 	{
-		print_error("Invalid number of Arguments");
-		return (print_error("Usage : ./replace <file> <str1> <str2>"));
+		print_error("ERROR: Invalid number of Arguments.");
+		return (print_error("Usage: ./replace <file> <str1> <str2>"));
 	}
-	if (check_user_input(&av[1]))
-		return (1);
-	filename = av[1];
-	newfilename = av[1];
+	for (int i = 1; i < ac; i++)
+		if (!av[i] || !av[i][0])
+			return (print_error("ERROR: Invalid arg in user input."));
 	s1 = av[2];
 	s2 = av[3];
-	content = get_file_content(filename);
-	content = swap_content_parts(content, s1, s2);
-	newfilename.append(".replace");
-	filename = newfilename.c_str();
-	write_file_content(filename, content);
+	if (s1 == s2)
+		return (print_error("ERROR: Identical comparison strings."));
+	return (0);
+}
+
+int	main(int ac, char **av)
+{
+	std::string	s1;
+	std::string	s2;
+
+	if (check_user_input(ac, av))
+		return (1);
+	s1 = av[2];
+	s2 = av[3];
+	sed(av[1], s1, s2);
 	return (0);
 }
