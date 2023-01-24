@@ -6,7 +6,7 @@
 /*   By: ljohnson <ljohnson@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/22 08:45:28 by ljohnson          #+#    #+#             */
-/*   Updated: 2022/11/15 09:41:49 by ljohnson         ###   ########lyon.fr   */
+/*   Updated: 2023/01/24 08:11:03 by ljohnson         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,12 +15,11 @@
 /* ************************************************************************** */
 /* Constructors & Destructors */
 /* ************************************************************************** */
-Fixed::Fixed()
+Fixed::Fixed() : value(0)
 {
 	std::cout << "\033[2m";
 	std::cout << "Fixed Default Constructor called.";
 	std::cout << "\033[0m" << std::endl;
-	this->value = 0;
 	return ;
 }
 
