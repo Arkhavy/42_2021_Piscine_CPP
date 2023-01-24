@@ -6,14 +6,14 @@
 #    By: ljohnson <ljohnson@student.42lyon.fr>      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/07/24 15:21:02 by ljohnson          #+#    #+#              #
-#    Updated: 2022/07/24 15:21:19 by ljohnson         ###   ########lyon.fr    #
+#    Updated: 2023/01/24 08:50:23 by ljohnson         ###   ########lyon.fr    #
 #                                                                              #
 # **************************************************************************** #
 
 .PHONY: all clean fclean re
 # .SILENT:
 
-NAME	:=	Fixed
+NAME	:=	BSP
 
 #//////////////////////////////////////////////////////////////////////////////
 #		ALL FILES

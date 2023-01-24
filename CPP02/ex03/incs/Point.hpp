@@ -6,7 +6,7 @@
 /*   By: ljohnson <ljohnson@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/24 15:28:07 by ljohnson          #+#    #+#             */
-/*   Updated: 2022/11/17 11:10:07 by ljohnson         ###   ########lyon.fr   */
+/*   Updated: 2023/01/24 08:37:51 by ljohnson         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,7 @@ class	Point
 
 		float	getFloatX() const;
 		float	getFloatY() const;
+
 		Point&	operator=(Point const& rhs);
 };
 
