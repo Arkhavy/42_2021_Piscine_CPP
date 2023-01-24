@@ -6,7 +6,7 @@
 /*   By: ljohnson <ljohnson@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/24 08:40:04 by ljohnson          #+#    #+#             */
-/*   Updated: 2022/11/16 17:06:20 by ljohnson         ###   ########lyon.fr   */
+/*   Updated: 2023/01/24 15:09:56 by ljohnson         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -187,7 +187,7 @@ Fixed&	Fixed::operator--()
 Fixed	Fixed::operator--(int)
 {
 	Fixed	tmp = *this;
-	++*this;
+	--*this;
 	return (tmp);
 }
 
