@@ -6,7 +6,7 @@
 /*   By: ljohnson <ljohnson@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/07 12:16:58 by ljohnson          #+#    #+#             */
-/*   Updated: 2023/01/25 14:01:19 by ljohnson         ###   ########lyon.fr   */
+/*   Updated: 2023/01/25 15:01:49 by ljohnson         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,9 +22,8 @@
 /* ************************************************************************** */
 /* Constructors & Destructors */
 /* ************************************************************************** */
-ScavTrap::ScavTrap()
+ScavTrap::ScavTrap() : ClapTrap("SC4V-TP")
 {
-	this->name = "SC4V-TP";
 	this->hit_points = 100;
 	this->energy_points = 50;
 	this->attack_damage = 20;
@@ -36,9 +35,8 @@ ScavTrap::ScavTrap()
 	return ;
 }
 
-ScavTrap::ScavTrap(std::string name)
+ScavTrap::ScavTrap(std::string name) : ClapTrap(name)
 {
-	this->name = name;
 	this->hit_points = 100;
 	this->energy_points = 50;
 	this->attack_damage = 20;

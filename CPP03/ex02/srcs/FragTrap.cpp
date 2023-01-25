@@ -6,7 +6,7 @@
 /*   By: ljohnson <ljohnson@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/07 18:30:27 by ljohnson          #+#    #+#             */
-/*   Updated: 2023/01/25 14:10:37 by ljohnson         ###   ########lyon.fr   */
+/*   Updated: 2023/01/25 15:02:10 by ljohnson         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,9 +22,8 @@
 /* ************************************************************************** */
 /* Constructors & Destructors */
 /* ************************************************************************** */
-FragTrap::FragTrap()
+FragTrap::FragTrap() : ClapTrap("FR4G-TP")
 {
-	this->name = "FR4G-TP";
 	this->hit_points = 100;
 	this->energy_points = 100;
 	this->attack_damage = 30;
@@ -36,9 +35,8 @@ FragTrap::FragTrap()
 	return ;
 }
 
-FragTrap::FragTrap(std::string name)
+FragTrap::FragTrap(std::string name) : ClapTrap(name)
 {
-	this->name = name;
 	this->hit_points = 100;
 	this->energy_points = 100;
 	this->attack_damage = 30;
