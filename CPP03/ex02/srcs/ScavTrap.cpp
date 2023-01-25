@@ -6,7 +6,7 @@
 /*   By: ljohnson <ljohnson@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/07 12:16:58 by ljohnson          #+#    #+#             */
-/*   Updated: 2022/12/07 18:31:24 by ljohnson         ###   ########lyon.fr   */
+/*   Updated: 2023/01/25 14:01:19 by ljohnson         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,13 +24,13 @@
 /* ************************************************************************** */
 ScavTrap::ScavTrap()
 {
-	std::cout << FAINT;
 	this->name = "SC4V-TP";
 	this->hit_points = 100;
 	this->energy_points = 50;
 	this->attack_damage = 20;
 	this->max_hit_points = this->hit_points;
 	this->max_energy_points = this->energy_points;
+	std::cout << FAINT;
 	std::cout << "ScavTrap " << this->name << " default constructor called";
 	std::cout << FWHITE << std::endl;
 	return ;
@@ -38,13 +38,13 @@ ScavTrap::ScavTrap()
 
 ScavTrap::ScavTrap(std::string name)
 {
-	std::cout << FAINT;
 	this->name = name;
 	this->hit_points = 100;
 	this->energy_points = 50;
 	this->attack_damage = 20;
 	this->max_hit_points = this->hit_points;
 	this->max_energy_points = this->energy_points;
+	std::cout << FAINT;
 	std::cout << "ScavTrap " << this->name << " constructor called";
 	std::cout << FWHITE << std::endl;
 	return ;

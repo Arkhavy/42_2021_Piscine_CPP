@@ -6,7 +6,7 @@
 /*   By: ljohnson <ljohnson@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/24 16:07:07 by ljohnson          #+#    #+#             */
-/*   Updated: 2022/12/07 13:30:30 by ljohnson         ###   ########lyon.fr   */
+/*   Updated: 2023/01/25 13:59:19 by ljohnson         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,20 +23,20 @@
 /* ************************************************************************** */
 ClapTrap::ClapTrap() : name("CL4P-TP"), hit_points(10), energy_points(10), attack_damage(0)
 {
-	std::cout << FAINT;
-	std::cout << "ClapTrap " << this->name << " default constructor called";
 	this->max_hit_points = this->hit_points;
 	this->max_energy_points = this->energy_points;
+	std::cout << FAINT;
+	std::cout << "ClapTrap " << this->name << " default constructor called";
 	std::cout << FWHITE << std::endl;
 	return ;
 }
 
 ClapTrap::ClapTrap(std::string name) : name(name), hit_points(10), energy_points(10), attack_damage(0)
 {
-	std::cout << FAINT;
-	std::cout << "ClapTrap " << this->name << " constructor called";
 	this->max_hit_points = this->hit_points;
 	this->max_energy_points = this->energy_points;
+	std::cout << FAINT;
+	std::cout << "ClapTrap " << this->name << " constructor called";
 	std::cout << FWHITE << std::endl;
 	return ;
 }
@@ -154,7 +154,7 @@ void	ClapTrap::beRepaired(unsigned int amount)
 		std::cout << "ClapTrap " << this->name;
 		std::cout << " is a little bit sad to not be able to repair itself even more...";
 		std::cout << FWHITE << std::endl;
-		this->hit_points = 10;
+		this->hit_points = this->max_hit_points;
 		return ;
 	}
 	this->hit_points += amount;
