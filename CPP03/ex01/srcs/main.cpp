@@ -6,11 +6,16 @@
 /*   By: ljohnson <ljohnson@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/07 13:03:16 by ljohnson          #+#    #+#             */
-/*   Updated: 2023/01/25 13:39:46 by ljohnson         ###   ########lyon.fr   */
+/*   Updated: 2023/01/25 14:26:32 by ljohnson         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <ScavTrap.hpp>
+
+void	test_virtual(ClapTrap& vt)
+{
+	vt.attack("Ouaf");
+}
 
 int	main(void)
 {
@@ -44,5 +49,6 @@ int	main(void)
 	cp4.takeDamage(20); // One Shot lol
 
 	std::cout << "--------------------" << std::endl;
+	test_virtual(sp4);
 	return (0);
 }
