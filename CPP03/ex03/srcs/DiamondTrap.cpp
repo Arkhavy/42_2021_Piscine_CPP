@@ -6,34 +6,38 @@
 /*   By: ljohnson <ljohnson@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/09 00:35:08 by ljohnson          #+#    #+#             */
-/*   Updated: 2022/12/09 00:37:56 by ljohnson         ###   ########lyon.fr   */
+/*   Updated: 2023/01/25 15:28:18 by ljohnson         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <DiamondTrap.hpp>
 
+#define RED "\033[31m"
+#define GREEN "\033[32m"
+#define BOLD "\033[1m"
+#define FAINT "\033[2m"
+#define FWHITE "\033[0m"
+
 /* ************************************************************************** */
 /* Constructors & Destructors */
 /* ************************************************************************** */
-DiamondTrap::DiamondTrap()
+DiamondTrap::DiamondTrap() : name("D14M0ND-TP")
 {
 	std::cout << FAINT;
-	this->name = "Diamondb*tch";
 	std::cout << "DiamondTrap " << this->name << " default constructor called";
 	std::cout << FWHITE << std::endl;
 	return ;
 }
 
-DiamondTrap::DiamondTrap(std::string name)
+DiamondTrap::DiamondTrap(std::string name) : name(name)
 {
 	std::cout << FAINT;
-	this->name = name;
 	std::cout << "DiamondTrap " << this->name << " constructor called";
 	std::cout << FWHITE << std::endl;
 	return ;
 }
 
-DiamondTrap::DiamondTrap(DiamondTrap const& src)
+DiamondTrap::DiamondTrap(DiamondTrap const& src) : ClapTrap(src), ScavTrap(src), FragTrap(src)
 {
 	*this = src;
 	std::cout << FAINT;
@@ -53,6 +57,17 @@ DiamondTrap::~DiamondTrap()
 /* ************************************************************************** */
 /* Public member functions */
 /* ************************************************************************** */
+void	DiamondTrap::whoAmI()
+{
+	std::cout << "name = " << this->name << std::endl;
+	std::cout << "Hit Points = " << this->hit_points << std::endl;
+	std::cout << "Energy Points = " << this->energy_points << std::endl;
+	std::cout << "Attack Damage = " << this->attack_damage << std::endl;
+	std::cout << std::endl;
+	std::cout << "Max Hit Points = " << this->max_hit_points << std::endl;
+	std::cout << "Max Energy Points = " << this->max_energy_points << std::endl;
+}
+
 
 /* ************************************************************************** */
 /* Arithmetic Operator Overloads */
