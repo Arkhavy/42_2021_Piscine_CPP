@@ -6,7 +6,7 @@
 /*   By: ljohnson <ljohnson@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/07 18:30:27 by ljohnson          #+#    #+#             */
-/*   Updated: 2022/12/07 18:50:42 by ljohnson         ###   ########lyon.fr   */
+/*   Updated: 2023/01/25 14:40:20 by ljohnson         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,28 +24,28 @@
 /* ************************************************************************** */
 FragTrap::FragTrap()
 {
-	std::cout << FAINT;
 	this->name = "FR4G-TP";
 	this->hit_points = 100;
 	this->energy_points = 100;
 	this->attack_damage = 30;
 	this->max_hit_points = this->hit_points;
 	this->max_energy_points = this->max_energy_points;
-	std::cout << "Fragtrap " << this->name << " default constructor called";
+	std::cout << FAINT;
+	std::cout << "FragTrap " << this->name << " default constructor called";
 	std::cout << FWHITE << std::endl;
 	return ;
 }
 
 FragTrap::FragTrap(std::string name)
 {
-	std::cout << FAINT;
 	this->name = name;
 	this->hit_points = 100;
 	this->energy_points = 100;
 	this->attack_damage = 30;
 	this->max_hit_points = this->hit_points;
 	this->max_energy_points = this->energy_points;
-	std::cout << "Fragtrap " << this->name << " default constructor called";
+	std::cout << FAINT;
+	std::cout << "FragTrap " << this->name << " default constructor called";
 	std::cout << FWHITE << std::endl;
 	return ;
 }
@@ -73,9 +73,9 @@ FragTrap::~FragTrap()
 void	FragTrap::highFivesGuys(void)
 {
 	std::cout << PURPLE;
-	std::cout << this->name << " IS ASKING FOR A HIGH FIVE !" << std::endl;
+	std::cout << this->name << " IS ASKING FOR A HIGH FIVE !";
 	std::cout << FWHITE << FAINT;
-	std::cout << "Don't do too much, Claptraps don't deserve that much attention.";
+	std::cout << " Claptraps don't deserve that much attention...";
 	std::cout << FWHITE << std::endl;
 	
 }
