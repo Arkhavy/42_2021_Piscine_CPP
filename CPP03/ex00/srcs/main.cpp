@@ -14,37 +14,37 @@
 
 int	main(void)
 {
-	ClapTrap	sbire("Sbire");
-	ClapTrap	piscineux;
+	ClapTrap	minion("Minion");
+	ClapTrap	clap;
 
-	sbire.attack("CL4P-TP"); //OK -1EP
-	piscineux.takeDamage(2); //OK -2HP
-	piscineux.beRepaired(2); //OK -1EP +2HP
-	piscineux.beRepaired(2); //Error case HP = 10
+	minion.attack("CL4P-TP"); //OK -1EP
+	clap.takeDamage(2); //OK -2HP
+	clap.beRepaired(2); //OK -1EP +2HP
+	clap.beRepaired(2); //Error case HP = 10
 	std::cout << std::endl;
 
 	for (int i = 0; i < 10; i++) //-10 EP, last one Error case EP = 0
-		sbire.attack("CL4P-TP");
+		minion.attack("CL4P-TP");
 	std::cout << std::endl;
 
 	for (int i = 0; i < 3; i++) //-9HP, all OK
-		piscineux.takeDamage(3);
+		clap.takeDamage(3);
 	std::cout << std::endl;
 
-	piscineux.takeDamage(2); //Overkill case
-	piscineux.takeDamage(2); //Error case HP = 0
+	clap.takeDamage(2); //1HP -2HP, Overkill case
+	clap.takeDamage(2); //Error case HP = 0
 	std::cout << std::endl;
 
-	piscineux.beRepaired(3); //Error case HP = 0
-	sbire.beRepaired(3); //Error case HP = 10
+	clap.beRepaired(3); //Error case HP = 0
+	minion.beRepaired(3); //Error case HP = 10
 	std::cout << std::endl;
 
-	sbire.attack("CL4P-TP"); //Error case EP = 0
-	piscineux.attack("Sbire"); //Error case HP = 0
+	minion.attack("CL4P-TP"); //Error case EP = 0
+	clap.attack("Minion"); //Error case HP = 0
 
 	std::cout << "----------------------" << std::endl;
 
-	ClapTrap	copyTrap(sbire);
+	ClapTrap	copyTrap(minion);
 
 	copyTrap.attack("ouaf");
 	copyTrap.beRepaired(2);
