@@ -6,22 +6,25 @@
 #    By: ljohnson <ljohnson@student.42lyon.fr>      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/07/24 18:00:03 by ljohnson          #+#    #+#              #
-#    Updated: 2022/12/07 18:27:04 by ljohnson         ###   ########lyon.fr    #
+#    Updated: 2023/01/25 15:04:31 by ljohnson         ###   ########lyon.fr    #
 #                                                                              #
 # **************************************************************************** #
 
 .PHONY: all clean fclean re
 # .SILENT:
 
-NAME	:=	FragTrap
+NAME	:=	DiamondTrap
 
 #//////////////////////////////////////////////////////////////////////////////
 #		ALL FILES
 #//////////////////////////////////////////////////////////////////////////////
 
 # Files
-LST_INCS	:=	ClapTrap.hpp	ScavTrap.hpp	FragTrap.hpp
-LST_SRCS	:=	ClapTrap.cpp	ScavTrap.cpp	FragTrap.cpp	main.cpp
+LST_INCS	:=	ClapTrap.hpp	ScavTrap.hpp	\
+				FragTrap.hpp	DiamondTrap.hpp
+LST_SRCS	:=	ClapTrap.cpp	ScavTrap.cpp	\
+				FragTrap.cpp	DiamondTrap.cpp	\
+				main.cpp
 LST_DEPS	:=	$(LST_SRCS:.cpp=.d)
 LST_OBJS	:=	$(LST_SRCS:.cpp=.o)
 

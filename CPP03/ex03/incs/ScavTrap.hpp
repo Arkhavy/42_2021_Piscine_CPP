@@ -6,7 +6,7 @@
 /*   By: ljohnson <ljohnson@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/07 12:15:08 by ljohnson          #+#    #+#             */
-/*   Updated: 2022/12/07 12:47:55 by ljohnson         ###   ########lyon.fr   */
+/*   Updated: 2023/01/25 15:08:18 by ljohnson         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 
 # include <ClapTrap.hpp>
 
-class ScavTrap : public ClapTrap
+class ScavTrap : virtual public ClapTrap
 {
 	public:
 		ScavTrap(); //Default constructor
