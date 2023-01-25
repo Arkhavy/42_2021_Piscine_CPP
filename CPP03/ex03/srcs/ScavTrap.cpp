@@ -6,7 +6,7 @@
 /*   By: ljohnson <ljohnson@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/07 12:16:58 by ljohnson          #+#    #+#             */
-/*   Updated: 2023/01/25 14:40:45 by ljohnson         ###   ########lyon.fr   */
+/*   Updated: 2023/01/25 15:44:00 by ljohnson         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ ScavTrap::ScavTrap()
 	return ;
 }
 
-ScavTrap::ScavTrap(std::string name)
+ScavTrap::ScavTrap(std::string name) : ClapTrap(name)
 {
 	this->name = name;
 	this->hit_points = 100;

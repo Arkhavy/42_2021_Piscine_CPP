@@ -6,7 +6,7 @@
 /*   By: ljohnson <ljohnson@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/07 18:30:27 by ljohnson          #+#    #+#             */
-/*   Updated: 2023/01/25 15:36:26 by ljohnson         ###   ########lyon.fr   */
+/*   Updated: 2023/01/25 15:43:54 by ljohnson         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ FragTrap::FragTrap()
 	return ;
 }
 
-FragTrap::FragTrap(std::string name)
+FragTrap::FragTrap(std::string name) : ClapTrap(name)
 {
 	this->name = name;
 	this->hit_points = 100;

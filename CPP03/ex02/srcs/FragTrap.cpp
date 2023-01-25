@@ -6,7 +6,7 @@
 /*   By: ljohnson <ljohnson@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/07 18:30:27 by ljohnson          #+#    #+#             */
-/*   Updated: 2023/01/25 15:36:29 by ljohnson         ###   ########lyon.fr   */
+/*   Updated: 2023/01/25 15:43:42 by ljohnson         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@
 /* ************************************************************************** */
 /* Constructors & Destructors */
 /* ************************************************************************** */
-FragTrap::FragTrap() : ClapTrap("FR4G-TP")
+FragTrap::FragTrap()
 {
 	this->hit_points = 100;
 	this->energy_points = 100;

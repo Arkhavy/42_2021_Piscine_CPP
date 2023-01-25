@@ -6,7 +6,7 @@
 /*   By: ljohnson <ljohnson@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/09 00:35:08 by ljohnson          #+#    #+#             */
-/*   Updated: 2023/01/25 15:28:18 by ljohnson         ###   ########lyon.fr   */
+/*   Updated: 2023/01/25 15:43:12 by ljohnson         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ DiamondTrap::DiamondTrap() : name("D14M0ND-TP")
 	return ;
 }
 
-DiamondTrap::DiamondTrap(std::string name) : name(name)
+DiamondTrap::DiamondTrap(std::string name) : ClapTrap(name), ScavTrap(name), FragTrap(name), name(name)
 {
 	std::cout << FAINT;
 	std::cout << "DiamondTrap " << this->name << " constructor called";
