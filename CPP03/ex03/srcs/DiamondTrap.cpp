@@ -6,7 +6,7 @@
 /*   By: ljohnson <ljohnson@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/09 00:35:08 by ljohnson          #+#    #+#             */
-/*   Updated: 2023/01/25 15:43:12 by ljohnson         ###   ########lyon.fr   */
+/*   Updated: 2023/01/26 09:16:15 by ljohnson         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,13 @@
 /* ************************************************************************** */
 DiamondTrap::DiamondTrap() : name("D14M0ND-TP")
 {
+	ClapTrap::name = this->name + "_clap_name";
+	//FragTrap(100)
+	//ScavTrap(50)
+	//FragTrap(30)
+
+	this->max_hit_points = this->hit_points;
+	this->max_energy_points = this->energy_points;
 	std::cout << FAINT;
 	std::cout << "DiamondTrap " << this->name << " default constructor called";
 	std::cout << FWHITE << std::endl;
@@ -31,6 +38,13 @@ DiamondTrap::DiamondTrap() : name("D14M0ND-TP")
 
 DiamondTrap::DiamondTrap(std::string name) : ClapTrap(name), ScavTrap(name), FragTrap(name), name(name)
 {
+	ClapTrap::name = name + "_clap_name";
+	//FragTrap(100)
+	//ScavTrap(50)
+	//FragTrap(30)
+
+	this->max_hit_points = this->hit_points;
+	this->max_energy_points = this->energy_points;
 	std::cout << FAINT;
 	std::cout << "DiamondTrap " << this->name << " constructor called";
 	std::cout << FWHITE << std::endl;

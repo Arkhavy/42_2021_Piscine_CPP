@@ -6,7 +6,7 @@
 /*   By: ljohnson <ljohnson@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/07 18:27:14 by ljohnson          #+#    #+#             */
-/*   Updated: 2023/01/25 15:08:13 by ljohnson         ###   ########lyon.fr   */
+/*   Updated: 2023/01/26 08:57:45 by ljohnson         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 
 # include <ClapTrap.hpp>
 
-class FragTrap : virtual public ClapTrap
+class FragTrap : public virtual ClapTrap
 {
 	public:
 		FragTrap(); //Default constructor
