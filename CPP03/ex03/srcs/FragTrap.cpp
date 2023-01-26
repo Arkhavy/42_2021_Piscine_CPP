@@ -6,7 +6,7 @@
 /*   By: ljohnson <ljohnson@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/07 18:30:27 by ljohnson          #+#    #+#             */
-/*   Updated: 2023/01/25 15:43:54 by ljohnson         ###   ########lyon.fr   */
+/*   Updated: 2023/01/26 07:48:48 by ljohnson         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ FragTrap::FragTrap()
 	this->energy_points = 100;
 	this->attack_damage = 30;
 	this->max_hit_points = this->hit_points;
-	this->max_energy_points = this->max_energy_points;
+	this->max_energy_points = this->energy_points;
 	std::cout << FAINT;
 	std::cout << "FragTrap " << this->name << " default constructor called";
 	std::cout << FWHITE << std::endl;
