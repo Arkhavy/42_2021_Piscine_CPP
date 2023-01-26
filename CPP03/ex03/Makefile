@@ -6,7 +6,7 @@
 #    By: ljohnson <ljohnson@student.42lyon.fr>      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/07/24 18:00:03 by ljohnson          #+#    #+#              #
-#    Updated: 2023/01/25 15:04:31 by ljohnson         ###   ########lyon.fr    #
+#    Updated: 2023/01/26 11:01:41 by ljohnson         ###   ########lyon.fr    #
 #                                                                              #
 # **************************************************************************** #
 
@@ -74,10 +74,10 @@ UNDERLINE=\033[4m
 #		RULES
 #//////////////////////////////////////////////////////////////////////////////
 
-all:	$(NAME) Makefile
+all:	$(NAME)
 
 # Binary creation
-$(NAME):	$(OBJS) Makefile
+$(NAME):	$(OBJS)
 	$(CC) $(CF) $(CI) $(OBJS) -o $@
 
 $(P_DEPS)%.d:	$(P_SRCS)%.cpp Makefile | $(P_DEPS)
