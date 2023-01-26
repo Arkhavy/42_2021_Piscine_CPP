@@ -6,7 +6,7 @@
 /*   By: ljohnson <ljohnson@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/07 13:03:16 by ljohnson          #+#    #+#             */
-/*   Updated: 2023/01/26 09:16:39 by ljohnson         ###   ########lyon.fr   */
+/*   Updated: 2023/01/26 10:52:22 by ljohnson         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,7 +65,7 @@ int	main(void)
 
 	std::cout << "--------------------" << std::endl;
 
-	DiamondTrap	dp2("ouaf");
+	DiamondTrap	dp2("S3C0ND_TP");
 
 	dp2.whoAmI();
 	dp2.attack("Minion");

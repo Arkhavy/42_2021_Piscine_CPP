@@ -6,7 +6,7 @@
 /*   By: ljohnson <ljohnson@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/09 00:20:13 by ljohnson          #+#    #+#             */
-/*   Updated: 2023/01/26 08:57:35 by ljohnson         ###   ########lyon.fr   */
+/*   Updated: 2023/01/26 10:53:10 by ljohnson         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ class	DiamondTrap : public ScavTrap, public FragTrap
 {
 	private:
 		std::string	name;
-	
+
 	public:
 		DiamondTrap(); //Default constructor
 		DiamondTrap(std::string name);

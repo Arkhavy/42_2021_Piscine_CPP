@@ -6,7 +6,7 @@
 /*   By: ljohnson <ljohnson@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/07 18:30:27 by ljohnson          #+#    #+#             */
-/*   Updated: 2023/01/26 07:48:48 by ljohnson         ###   ########lyon.fr   */
+/*   Updated: 2023/01/26 10:44:45 by ljohnson         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,25 @@
 /* ************************************************************************** */
 /* Constructors & Destructors */
 /* ************************************************************************** */
+unsigned int	FragTrap::frag_max_hit_points;
+unsigned int	FragTrap::frag_attack_damage;
+
+unsigned int	FragTrap::get_max_hit_points()
+{
+	unsigned int	tmp = FragTrap::frag_max_hit_points;
+
+	return (tmp);
+}
+unsigned int	FragTrap::get_attack_damage()
+{
+	unsigned int	tmp = FragTrap::frag_attack_damage;
+
+	return (tmp);
+}
+
+void	FragTrap::set_max_hit_points() {FragTrap::frag_max_hit_points = this->max_hit_points;}
+void	FragTrap::set_attack_damage() {FragTrap::frag_attack_damage = this->attack_damage;}
+
 FragTrap::FragTrap()
 {
 	this->name = "FR4G-TP";
@@ -30,6 +49,8 @@ FragTrap::FragTrap()
 	this->attack_damage = 30;
 	this->max_hit_points = this->hit_points;
 	this->max_energy_points = this->energy_points;
+	this->set_max_hit_points();
+	this->set_attack_damage();
 	std::cout << FAINT;
 	std::cout << "FragTrap " << this->name << " default constructor called";
 	std::cout << FWHITE << std::endl;
@@ -44,6 +65,8 @@ FragTrap::FragTrap(std::string name) : ClapTrap(name)
 	this->attack_damage = 30;
 	this->max_hit_points = this->hit_points;
 	this->max_energy_points = this->energy_points;
+	this->set_max_hit_points();
+	this->set_attack_damage();
 	std::cout << FAINT;
 	std::cout << "FragTrap " << this->name << " constructor called";
 	std::cout << FWHITE << std::endl;

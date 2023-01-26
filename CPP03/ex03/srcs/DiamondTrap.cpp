@@ -6,7 +6,7 @@
 /*   By: ljohnson <ljohnson@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/09 00:35:08 by ljohnson          #+#    #+#             */
-/*   Updated: 2023/01/26 09:16:15 by ljohnson         ###   ########lyon.fr   */
+/*   Updated: 2023/01/26 10:57:04 by ljohnson         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,9 +24,9 @@
 DiamondTrap::DiamondTrap() : name("D14M0ND-TP")
 {
 	ClapTrap::name = this->name + "_clap_name";
-	//FragTrap(100)
-	//ScavTrap(50)
-	//FragTrap(30)
+	this->hit_points = FragTrap::get_max_hit_points();
+	this->energy_points = ScavTrap::get_max_energy_points();
+	this->attack_damage = FragTrap::get_attack_damage();
 
 	this->max_hit_points = this->hit_points;
 	this->max_energy_points = this->energy_points;
@@ -38,10 +38,10 @@ DiamondTrap::DiamondTrap() : name("D14M0ND-TP")
 
 DiamondTrap::DiamondTrap(std::string name) : ClapTrap(name), ScavTrap(name), FragTrap(name), name(name)
 {
-	ClapTrap::name = name + "_clap_name";
-	//FragTrap(100)
-	//ScavTrap(50)
-	//FragTrap(30)
+	ClapTrap::name = this->name + "_clap_name";
+	this->hit_points = FragTrap::get_max_hit_points();
+	this->energy_points = ScavTrap::get_max_energy_points();
+	this->attack_damage = FragTrap::get_attack_damage();
 
 	this->max_hit_points = this->hit_points;
 	this->max_energy_points = this->energy_points;
@@ -73,13 +73,12 @@ DiamondTrap::~DiamondTrap()
 /* ************************************************************************** */
 void	DiamondTrap::whoAmI()
 {
-	std::cout << "name = " << this->name << std::endl;
-	std::cout << "Hit Points = " << this->hit_points << std::endl;
-	std::cout << "Energy Points = " << this->energy_points << std::endl;
-	std::cout << "Attack Damage = " << this->attack_damage << std::endl;
+	std::cout << "My name is ";
+	std::cout << GREEN << BOLD << this->name << FWHITE;
 	std::cout << std::endl;
-	std::cout << "Max Hit Points = " << this->max_hit_points << std::endl;
-	std::cout << "Max Energy Points = " << this->max_energy_points << std::endl;
+	std::cout << "My ClapTrap name is ";
+	std::cout << GREEN << BOLD << ClapTrap::name << FWHITE;
+	std::cout << std::endl;
 }
 
 

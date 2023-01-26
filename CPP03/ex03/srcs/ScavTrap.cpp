@@ -6,7 +6,7 @@
 /*   By: ljohnson <ljohnson@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/07 12:16:58 by ljohnson          #+#    #+#             */
-/*   Updated: 2023/01/25 15:44:00 by ljohnson         ###   ########lyon.fr   */
+/*   Updated: 2023/01/26 10:45:05 by ljohnson         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,17 @@
 /* ************************************************************************** */
 /* Constructors & Destructors */
 /* ************************************************************************** */
+unsigned int	ScavTrap::scav_max_energy_points;
+
+unsigned int	ScavTrap::get_max_energy_points()
+{
+	unsigned int	tmp = ScavTrap::scav_max_energy_points;
+
+	return (tmp);
+}
+
+void	ScavTrap::set_max_energy_points() {ScavTrap::scav_max_energy_points = this->max_energy_points;}
+
 ScavTrap::ScavTrap()
 {
 	this->name = "SC4V-TP";
@@ -30,6 +41,7 @@ ScavTrap::ScavTrap()
 	this->attack_damage = 20;
 	this->max_hit_points = this->hit_points;
 	this->max_energy_points = this->energy_points;
+	this->set_max_energy_points();
 	std::cout << FAINT;
 	std::cout << "ScavTrap " << this->name << " default constructor called";
 	std::cout << FWHITE << std::endl;
@@ -44,6 +56,7 @@ ScavTrap::ScavTrap(std::string name) : ClapTrap(name)
 	this->attack_damage = 20;
 	this->max_hit_points = this->hit_points;
 	this->max_energy_points = this->energy_points;
+	this->set_max_energy_points();
 	std::cout << FAINT;
 	std::cout << "ScavTrap " << this->name << " constructor called";
 	std::cout << FWHITE << std::endl;
