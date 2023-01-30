@@ -1,28 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.cpp                                           :+:      :+:    :+:   */
+/*   WrongCat.hpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ljohnson <ljohnson@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/01/30 11:09:45 by ljohnson          #+#    #+#             */
-/*   Updated: 2023/01/30 11:10:34 by ljohnson         ###   ########lyon.fr   */
+/*   Created: 2023/01/30 11:30:46 by ljohnson          #+#    #+#             */
+/*   Updated: 2023/01/30 11:32:10 by ljohnson         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
-int main()
-{
-	const Animal* meta = new Animal();
-	const Animal* j = new Dog();
-	const Animal* i = new Cat();
-	std::cout << j->getType() << " " << std::endl;
-	std::cout << i->getType() << " " << std::endl;
-	i->makeSound(); //will output the cat sound!
-	j->makeSound();
-	meta->makeSound();
+#pragma once
 
-	delete meta;
-	delete j;
-	delete i;
-	return 0;
-}
+#include <WrongAnimal.hpp>
+
+class WrongCat : public WrongAnimal
+{
+	public:
+		WrongCat(); //Default constructor
+		WrongCat(std::string type);
+		WrongCat(WrongCat const& src); //Copy constructor
+		~WrongCat(); //Default destructor
+
+		void	makeSound();
+
+		WrongCat&	operator=(WrongCat const& rhs); //Assignment operator overload
+};

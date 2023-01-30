@@ -6,21 +6,23 @@
 #    By: ljohnson <ljohnson@student.42lyon.fr>      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/01/26 11:24:18 by ljohnson          #+#    #+#              #
-#    Updated: 2023/01/26 11:25:00 by ljohnson         ###   ########lyon.fr    #
+#    Updated: 2023/01/30 11:34:03 by ljohnson         ###   ########lyon.fr    #
 #                                                                              #
 # **************************************************************************** #
 
 .PHONY: all clean fclean re
 # .SILENT:
 
-NAME	:=	
+NAME	:=	Animal
 
 #//////////////////////////////////////////////////////////////////////////////
 #		ALL FILES
 #//////////////////////////////////////////////////////////////////////////////
 
 # Files
-LST_INCS	:=	
+LST_INCS	:=	Animal.hpp	Cat.hpp	\
+				Dog.hpp		WrongAnimal.hpp	\
+				WrongCat.hpp
 LST_SRCS	:=	
 LST_DEPS	:=	$(LST_SRCS:.cpp=.d)
 LST_OBJS	:=	$(LST_SRCS:.cpp=.o)

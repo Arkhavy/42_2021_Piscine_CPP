@@ -1,28 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.cpp                                           :+:      :+:    :+:   */
+/*   Dog.hpp                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ljohnson <ljohnson@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/01/30 11:09:45 by ljohnson          #+#    #+#             */
-/*   Updated: 2023/01/30 11:10:34 by ljohnson         ###   ########lyon.fr   */
+/*   Created: 2023/01/30 11:25:12 by ljohnson          #+#    #+#             */
+/*   Updated: 2023/01/30 11:32:20 by ljohnson         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
-int main()
-{
-	const Animal* meta = new Animal();
-	const Animal* j = new Dog();
-	const Animal* i = new Cat();
-	std::cout << j->getType() << " " << std::endl;
-	std::cout << i->getType() << " " << std::endl;
-	i->makeSound(); //will output the cat sound!
-	j->makeSound();
-	meta->makeSound();
+#pragma once
 
-	delete meta;
-	delete j;
-	delete i;
-	return 0;
-}
+#include <Animal.hpp>
+
+class Dog : public Animal
+{
+	public:
+		Dog(); //Default constructor
+		Dog(std::string type);
+		Dog(Dog const& src); //Copy constructor
+		~Dog(); //Default destructor
+
+		void	makeSound();
+		
+		Dog&	operator=(Dog const& rhs); //Assignment operator overload
+};
