@@ -6,7 +6,7 @@
 /*   By: ljohnson <ljohnson@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/30 11:22:51 by ljohnson          #+#    #+#             */
-/*   Updated: 2023/01/30 14:38:14 by ljohnson         ###   ########lyon.fr   */
+/*   Updated: 2023/01/30 17:02:39 by ljohnson         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,7 @@ class Cat : public Animal
 		~Cat(); //Default destructor
 
 		void	makeSound() const;
-		
+		void	display_ideas() const;
+
 		Cat&	operator=(Cat const& rhs); //Assignment operator overload
 };

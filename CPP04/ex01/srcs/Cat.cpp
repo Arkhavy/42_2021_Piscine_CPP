@@ -6,7 +6,7 @@
 /*   By: ljohnson <ljohnson@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/30 11:42:58 by ljohnson          #+#    #+#             */
-/*   Updated: 2023/01/30 15:19:08 by ljohnson         ###   ########lyon.fr   */
+/*   Updated: 2023/01/30 17:06:26 by ljohnson         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ Cat::Cat()
 {
 	this->brain = new Brain();
 	this->type = "Cat";
-	std::cout << FAINT;
+	std::cout << FAINT << CYAN;
 	std::cout << "Cat default constructor called.";
 	std::cout << FWHITE << std::endl;
 }
@@ -28,7 +28,7 @@ Cat::Cat(std::string type)
 {
 	this->brain = new Brain();
 	this->type = type;
-	std::cout << FAINT;
+	std::cout << FAINT << CYAN;
 	std::cout << "Cat " << this->type << " constructor called.";
 	std::cout << FWHITE << std::endl;
 }
@@ -45,7 +45,7 @@ Cat::Cat(Cat const& src)
 Cat::~Cat()
 {
 	delete this->brain;
-	std::cout << FAINT;
+	std::cout << FAINT << CYAN;
 	std::cout << "Cat " << this->type << " destructor called.";
 	std::cout << FWHITE << std::endl;
 }
@@ -69,4 +69,10 @@ void	Cat::makeSound() const
 	std::cout << this->type;
 	std::cout << FWHITE;
 	std::cout << " is making a Cat sound ! MIAOU !" << std::endl;
+}
+
+void	Cat::display_ideas() const
+{
+	for (int i = 0; i < 100; i++)
+		std::cout << i << ": " << this->brain->get_one_idea(i) << std::endl;
 }

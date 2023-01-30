@@ -6,7 +6,7 @@
 /*   By: ljohnson <ljohnson@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/30 14:22:36 by ljohnson          #+#    #+#             */
-/*   Updated: 2023/01/30 15:24:48 by ljohnson         ###   ########lyon.fr   */
+/*   Updated: 2023/01/30 17:05:02 by ljohnson         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,8 +34,8 @@ class Brain
 		Brain(Brain const& src); //Copy constructor
 		~Brain(); //Default destructor
 
-		void	set_one_idea(const unsigned int index, const std::string& idea);
-		void	display_ideas() const;
+		void				set_one_idea(unsigned int const index, std::string const& idea);
+		const std::string&	get_one_idea(unsigned int const index) const;
 
 		Brain&	operator=(Brain const& rhs); //Assignment operator overload
 };

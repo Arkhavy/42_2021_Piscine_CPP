@@ -6,7 +6,7 @@
 /*   By: ljohnson <ljohnson@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/30 14:41:46 by ljohnson          #+#    #+#             */
-/*   Updated: 2023/01/30 15:27:47 by ljohnson         ###   ########lyon.fr   */
+/*   Updated: 2023/01/30 17:10:45 by ljohnson         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,17 +30,37 @@ int	main()
 	std::cout << "Cat tests" << std::endl;
 	std::cout << "--------------------------------------------------" << std::endl;
 
+	Cat	c1;
+	Cat	c2("c2");
+	Cat	c3(c1);
+
+	c1.display_ideas();
 
 	std::cout << std::endl;
 	std::cout << "--------------------------------------------------" << std::endl;
 	std::cout << "Dog tests" << std::endl;
 	std::cout << "--------------------------------------------------" << std::endl;
 
+	Dog	d1;
+	Dog	d2("d2");
+	Dog	d3(d1);
+
+	d1.display_ideas();
+
 	std::cout << std::endl;
 	std::cout << "--------------------------------------------------" << std::endl;
-	std::cout << "Other Animal tests" << std::endl;
+	std::cout << "Mandatory tests" << std::endl;
 	std::cout << "--------------------------------------------------" << std::endl;
 
+	Animal*	alist[10];
+
+	for (int i = 0; i < 5; i++)
+		alist[i] = new Dog();
+	for (int i = 5; i < 10; i++)
+		alist[i] = new Cat();
+
+	for (int i = 0; i < 10; i++)
+		delete alist[i];
 	std::cout << "--------------------------------------------------" << std::endl;
 	return (0);
 }

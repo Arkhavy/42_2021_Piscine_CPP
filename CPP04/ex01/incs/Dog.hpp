@@ -6,7 +6,7 @@
 /*   By: ljohnson <ljohnson@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/30 11:25:12 by ljohnson          #+#    #+#             */
-/*   Updated: 2023/01/30 14:38:25 by ljohnson         ###   ########lyon.fr   */
+/*   Updated: 2023/01/30 17:02:36 by ljohnson         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,7 @@ class Dog : public Animal
 		~Dog(); //Default destructor
 
 		void	makeSound() const;
-		
+		void	display_ideas() const;
+
 		Dog&	operator=(Dog const& rhs); //Assignment operator overload
 };
