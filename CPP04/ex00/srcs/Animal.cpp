@@ -6,7 +6,7 @@
 /*   By: ljohnson <ljohnson@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/30 11:32:47 by ljohnson          #+#    #+#             */
-/*   Updated: 2023/01/30 11:57:29 by ljohnson         ###   ########lyon.fr   */
+/*   Updated: 2023/01/30 12:18:45 by ljohnson         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,7 @@ Animal&	Animal::operator=(Animal const& rhs)
 /* ************************************************************************** */
 /* Public Member Functions */
 /* ************************************************************************** */
-void	Animal::makeSound()
+void	Animal::makeSound() const
 {
 	std::cout << GREEN << BOLD;
 	std::cout << this->type;
@@ -64,4 +64,4 @@ void	Animal::makeSound()
 	std::cout << " is making an Animal sound ! GRAOU !" << std::endl;
 }
 
-std::string	Animal::getType() {return (this->type);}
+const std::string&	Animal::getType() const {return (this->type);}

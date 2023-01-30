@@ -6,7 +6,7 @@
 /*   By: ljohnson <ljohnson@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/30 11:44:56 by ljohnson          #+#    #+#             */
-/*   Updated: 2023/01/30 11:57:12 by ljohnson         ###   ########lyon.fr   */
+/*   Updated: 2023/01/30 12:17:02 by ljohnson         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,7 @@ WrongAnimal&	WrongAnimal::operator=(WrongAnimal const& rhs)
 /* ************************************************************************** */
 /* Public Member Functions */
 /* ************************************************************************** */
-void	WrongAnimal::makeSound()
+void	WrongAnimal::makeSound() const
 {
 	std::cout << RED << BOLD;
 	std::cout << this->type;
@@ -64,4 +64,4 @@ void	WrongAnimal::makeSound()
 	std::cout << " is making a WrongAnimal sound ! OUI OUI BAGUETTE !" << std::endl;
 }
 
-std::string	WrongAnimal::getType() {return (this->type);}
+const std::string&	WrongAnimal::getType() const {return (this->type);}

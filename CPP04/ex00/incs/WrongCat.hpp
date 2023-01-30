@@ -6,7 +6,7 @@
 /*   By: ljohnson <ljohnson@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/30 11:30:46 by ljohnson          #+#    #+#             */
-/*   Updated: 2023/01/30 11:32:10 by ljohnson         ###   ########lyon.fr   */
+/*   Updated: 2023/01/30 12:16:26 by ljohnson         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ class WrongCat : public WrongAnimal
 		WrongCat(WrongCat const& src); //Copy constructor
 		~WrongCat(); //Default destructor
 
-		void	makeSound();
+		void	makeSound() const;
 
 		WrongCat&	operator=(WrongCat const& rhs); //Assignment operator overload
 };

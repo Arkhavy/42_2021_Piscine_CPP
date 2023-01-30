@@ -6,7 +6,7 @@
 /*   By: ljohnson <ljohnson@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/30 11:09:45 by ljohnson          #+#    #+#             */
-/*   Updated: 2023/01/30 11:54:24 by ljohnson         ###   ########lyon.fr   */
+/*   Updated: 2023/01/30 12:18:31 by ljohnson         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,9 +24,5 @@ int main()
 	i->makeSound(); //will output the cat sound!
 	j->makeSound();
 	meta->makeSound();
-
-	delete meta;
-	delete j;
-	delete i;
 	return 0;
 }

@@ -6,7 +6,7 @@
 /*   By: ljohnson <ljohnson@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/30 11:43:57 by ljohnson          #+#    #+#             */
-/*   Updated: 2023/01/30 11:52:51 by ljohnson         ###   ########lyon.fr   */
+/*   Updated: 2023/01/30 12:16:10 by ljohnson         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,7 +59,7 @@ Dog&	Dog::operator=(Dog const& rhs)
 /* ************************************************************************** */
 /* Public Member Functions */
 /* ************************************************************************** */
-void	Dog::makeSound()
+void	Dog::makeSound() const
 {
 	std::cout << PURPLE << BOLD;
 	std::cout << this->type;

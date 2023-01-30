@@ -6,7 +6,7 @@
 /*   By: ljohnson <ljohnson@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/30 11:42:58 by ljohnson          #+#    #+#             */
-/*   Updated: 2023/01/30 11:52:25 by ljohnson         ###   ########lyon.fr   */
+/*   Updated: 2023/01/30 12:16:10 by ljohnson         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,7 +58,7 @@ Cat&	Cat::operator=(Cat const& rhs)
 /* ************************************************************************** */
 /* Public Member Functions */
 /* ************************************************************************** */
-void	Cat::makeSound()
+void	Cat::makeSound() const
 {
 	std::cout << YELLOW << BOLD;
 	std::cout << this->type;
