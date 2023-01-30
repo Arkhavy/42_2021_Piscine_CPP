@@ -6,7 +6,7 @@
 #    By: ljohnson <ljohnson@student.42lyon.fr>      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/01/26 11:24:21 by ljohnson          #+#    #+#              #
-#    Updated: 2023/01/26 11:25:02 by ljohnson         ###   ########lyon.fr    #
+#    Updated: 2023/01/30 14:23:20 by ljohnson         ###   ########lyon.fr    #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,8 +20,13 @@ NAME	:=
 #//////////////////////////////////////////////////////////////////////////////
 
 # Files
-LST_INCS	:=	
-LST_SRCS	:=	
+LST_INCS	:=	Animal.hpp		Cat.hpp			\
+				Dog.hpp			WrongAnimal.hpp	\
+				WrongCat.hpp	Brain.hpp
+LST_SRCS	:=	Animal.cpp		Cat.cpp			\
+				Dog.cpp			WrongAnimal.cpp	\
+				WrongCat.cpp	Brain.cpp		\
+				main.cpp
 LST_DEPS	:=	$(LST_SRCS:.cpp=.d)
 LST_OBJS	:=	$(LST_SRCS:.cpp=.o)
 
