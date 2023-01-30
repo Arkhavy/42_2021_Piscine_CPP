@@ -6,9 +6,13 @@
 /*   By: ljohnson <ljohnson@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/30 11:09:45 by ljohnson          #+#    #+#             */
-/*   Updated: 2023/01/30 11:10:34 by ljohnson         ###   ########lyon.fr   */
+/*   Updated: 2023/01/30 11:54:24 by ljohnson         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
+
+#include <Cat.hpp>
+#include <Dog.hpp>
+#include <WrongCat.hpp>
 
 int main()
 {

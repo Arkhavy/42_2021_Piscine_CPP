@@ -6,7 +6,7 @@
 /*   By: ljohnson <ljohnson@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/30 11:43:57 by ljohnson          #+#    #+#             */
-/*   Updated: 2023/01/30 11:44:36 by ljohnson         ###   ########lyon.fr   */
+/*   Updated: 2023/01/30 11:52:51 by ljohnson         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,15 +16,17 @@
 /* ************************************************************************** */
 /* Constructors & Destructors */
 /* ************************************************************************** */
-Dog::Dog() : type("Dog")
+Dog::Dog()
 {
+	this->type = "Dog";
 	std::cout << FAINT;
 	std::cout << "Dog default constructor called.";
 	std::cout << FWHITE << std::endl;
 }
 
-Dog::Dog(std::tring type) : type(type)
+Dog::Dog(std::string type)
 {
+	this->type = type;
 	std::cout << FAINT;
 	std::cout << "Dog " << this->type << " constructor called.";
 	std::cout << FWHITE << std::endl;

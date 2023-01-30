@@ -6,7 +6,7 @@
 /*   By: ljohnson <ljohnson@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/30 11:44:56 by ljohnson          #+#    #+#             */
-/*   Updated: 2023/01/30 11:45:28 by ljohnson         ###   ########lyon.fr   */
+/*   Updated: 2023/01/30 11:57:12 by ljohnson         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ WrongAnimal::WrongAnimal() : type("WrongAnimal")
 	std::cout << FWHITE << std::endl;
 }
 
-WrongAnimal::WrongAnimal(std::tring type) : type(type)
+WrongAnimal::WrongAnimal(std::string type) : type(type)
 {
 	std::cout << FAINT;
 	std::cout << "WrongAnimal " << this->type << " constructor called.";
@@ -63,3 +63,5 @@ void	WrongAnimal::makeSound()
 	std::cout << FWHITE;
 	std::cout << " is making a WrongAnimal sound ! OUI OUI BAGUETTE !" << std::endl;
 }
+
+std::string	WrongAnimal::getType() {return (this->type);}

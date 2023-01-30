@@ -6,7 +6,7 @@
 /*   By: ljohnson <ljohnson@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/30 11:45:40 by ljohnson          #+#    #+#             */
-/*   Updated: 2023/01/30 11:46:51 by ljohnson         ###   ########lyon.fr   */
+/*   Updated: 2023/01/30 11:52:39 by ljohnson         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,15 +15,17 @@
 /* ************************************************************************** */
 /* Constructors & Destructors */
 /* ************************************************************************** */
-WrongCat::WrongCat() : type("WrongCat")
+WrongCat::WrongCat()
 {
+	this->type = "WrongCat";
 	std::cout << FAINT;
 	std::cout << "WrongCat default constructor called.";
 	std::cout << FWHITE << std::endl;
 }
 
-WrongCat::WrongCat(std::tring type) : type(type)
+WrongCat::WrongCat(std::string type)
 {
+	this->type = type;
 	std::cout << FAINT;
 	std::cout << "WrongCat " << this->type << " constructor called.";
 	std::cout << FWHITE << std::endl;

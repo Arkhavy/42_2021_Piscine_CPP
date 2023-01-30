@@ -6,7 +6,7 @@
 /*   By: ljohnson <ljohnson@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/30 11:42:58 by ljohnson          #+#    #+#             */
-/*   Updated: 2023/01/30 11:44:33 by ljohnson         ###   ########lyon.fr   */
+/*   Updated: 2023/01/30 11:52:25 by ljohnson         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,15 +15,17 @@
 /* ************************************************************************** */
 /* Constructors & Destructors */
 /* ************************************************************************** */
-Cat::Cat() : type("Cat")
+Cat::Cat()
 {
+	this->type = "Cat";
 	std::cout << FAINT;
 	std::cout << "Cat default constructor called.";
 	std::cout << FWHITE << std::endl;
 }
 
-Cat::Cat(std::tring type) : type(type)
+Cat::Cat(std::string type)
 {
+	this->type = type;
 	std::cout << FAINT;
 	std::cout << "Cat " << this->type << " constructor called.";
 	std::cout << FWHITE << std::endl;

@@ -6,7 +6,7 @@
 /*   By: ljohnson <ljohnson@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/30 11:28:14 by ljohnson          #+#    #+#             */
-/*   Updated: 2023/01/30 11:44:25 by ljohnson         ###   ########lyon.fr   */
+/*   Updated: 2023/01/30 11:56:41 by ljohnson         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,7 @@ class WrongAnimal
 		~WrongAnimal(); //Default destructor
 
 		virtual void	makeSound();
+		std::string		getType();
 
 		WrongAnimal&	operator=(WrongAnimal const& rhs); //Assignment operator overload
 };

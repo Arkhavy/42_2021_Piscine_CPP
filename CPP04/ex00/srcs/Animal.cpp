@@ -6,7 +6,7 @@
 /*   By: ljohnson <ljohnson@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/30 11:32:47 by ljohnson          #+#    #+#             */
-/*   Updated: 2023/01/30 11:41:57 by ljohnson         ###   ########lyon.fr   */
+/*   Updated: 2023/01/30 11:57:29 by ljohnson         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ Animal::Animal() : type("Animal")
 	std::cout << FWHITE << std::endl;
 }
 
-Animal::Animal(std::tring type) : type(type)
+Animal::Animal(std::string type) : type(type)
 {
 	std::cout << FAINT;
 	std::cout << "Animal " << this->type << " constructor called.";
@@ -63,3 +63,5 @@ void	Animal::makeSound()
 	std::cout << FWHITE;
 	std::cout << " is making an Animal sound ! GRAOU !" << std::endl;
 }
+
+std::string	Animal::getType() {return (this->type);}
