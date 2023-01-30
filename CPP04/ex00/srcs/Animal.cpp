@@ -6,7 +6,7 @@
 /*   By: ljohnson <ljohnson@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/30 11:32:47 by ljohnson          #+#    #+#             */
-/*   Updated: 2023/01/30 12:18:45 by ljohnson         ###   ########lyon.fr   */
+/*   Updated: 2023/01/30 13:27:44 by ljohnson         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,3 +65,4 @@ void	Animal::makeSound() const
 }
 
 const std::string&	Animal::getType() const {return (this->type);}
+void	Animal::setType(std::string type) {this->type = type;}

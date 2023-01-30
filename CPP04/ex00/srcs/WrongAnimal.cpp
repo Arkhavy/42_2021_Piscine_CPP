@@ -6,7 +6,7 @@
 /*   By: ljohnson <ljohnson@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/30 11:44:56 by ljohnson          #+#    #+#             */
-/*   Updated: 2023/01/30 12:17:02 by ljohnson         ###   ########lyon.fr   */
+/*   Updated: 2023/01/30 13:39:19 by ljohnson         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,3 +65,4 @@ void	WrongAnimal::makeSound() const
 }
 
 const std::string&	WrongAnimal::getType() const {return (this->type);}
+void	WrongAnimal::setType(std::string type) {this->type = type;}

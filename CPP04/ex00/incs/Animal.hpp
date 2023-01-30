@@ -6,7 +6,7 @@
 /*   By: ljohnson <ljohnson@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/30 11:14:59 by ljohnson          #+#    #+#             */
-/*   Updated: 2023/01/30 12:18:38 by ljohnson         ###   ########lyon.fr   */
+/*   Updated: 2023/01/30 13:28:08 by ljohnson         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,10 +33,11 @@ class Animal
 		Animal(); //Default constructor
 		Animal(std::string type);
 		Animal(Animal const& src); //Copy constructor
-		~Animal(); //Default destructor
+		virtual	~Animal(); //Default destructor
 
-		virtual void			makeSound() const;
-		const std::string&		getType() const;
+		virtual void		makeSound() const;
+		const std::string&	getType() const;
+		void				setType(std::string type);
 
 		Animal&	operator=(Animal const& rhs); //Assignment operator overload
 };
