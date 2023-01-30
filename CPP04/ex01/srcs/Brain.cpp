@@ -1,72 +1,59 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Cat.cpp                                            :+:      :+:    :+:   */
+/*   Brain.cpp                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ljohnson <ljohnson@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/01/30 11:42:58 by ljohnson          #+#    #+#             */
-/*   Updated: 2023/01/30 15:19:08 by ljohnson         ###   ########lyon.fr   */
+/*   Created: 2023/01/30 14:22:26 by ljohnson          #+#    #+#             */
+/*   Updated: 2023/01/30 15:25:30 by ljohnson         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <Cat.hpp>
+#include <Brain.hpp>
 
 /* ************************************************************************** */
 /* Constructors & Destructors */
 /* ************************************************************************** */
-Cat::Cat()
+Brain::Brain()
 {
-	this->brain = new Brain();
-	this->type = "Cat";
+	for (int i = 0; i < 100; i++)
+		this->ideas[i] = "EMPTY";
 	std::cout << FAINT;
-	std::cout << "Cat default constructor called.";
+	std::cout << "Brain default constructor called.";
 	std::cout << FWHITE << std::endl;
 }
 
-Cat::Cat(std::string type)
-{
-	this->brain = new Brain();
-	this->type = type;
-	std::cout << FAINT;
-	std::cout << "Cat " << this->type << " constructor called.";
-	std::cout << FWHITE << std::endl;
-}
-
-Cat::Cat(Cat const& src)
+Brain::Brain(Brain const& src)
 {
 	*this = src;
-	this->brain = new Brain(*src.brain);
 	std::cout << FAINT << CYAN;
-	std::cout << "Cat " << this->type << " copy constructor called.";
+	std::cout << "Brain copy constructor called.";
 	std::cout << FWHITE << std::endl;
 }
 
-Cat::~Cat()
+Brain::~Brain()
 {
-	delete this->brain;
 	std::cout << FAINT;
-	std::cout << "Cat " << this->type << " destructor called.";
+	std::cout << "Brain default destructor called.";
 	std::cout << FWHITE << std::endl;
 }
-
 /* ************************************************************************** */
 /* Operator Overloads */
 /* ************************************************************************** */
-Cat&	Cat::operator=(Cat const& rhs)
+Brain&	Brain::operator=(Brain const& src)
 {
-	this->type = rhs.type;
-	this->brain = rhs.brain;
+	for (int i = 0; i < 100; i++)
+		this->ideas[i] = src.ideas[i];
 	return (*this);
 }
-
 /* ************************************************************************** */
 /* Public Member Functions */
 /* ************************************************************************** */
-void	Cat::makeSound() const
+void	Brain::set_one_idea(const unsigned int index, const std::string& idea) {this->ideas[index] = idea;}
+
+void	Brain::display_ideas() const
 {
-	std::cout << YELLOW << BOLD;
-	std::cout << this->type;
-	std::cout << FWHITE;
-	std::cout << " is making a Cat sound ! MIAOU !" << std::endl;
+	for (int i = 0; i < 100; i++)
+		std::cout << i << ": " << this->ideas[i] << std::endl;
 }

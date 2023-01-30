@@ -6,16 +6,20 @@
 /*   By: ljohnson <ljohnson@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/30 11:22:51 by ljohnson          #+#    #+#             */
-/*   Updated: 2023/01/30 12:16:14 by ljohnson         ###   ########lyon.fr   */
+/*   Updated: 2023/01/30 14:38:14 by ljohnson         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
 #pragma once
 
 #include <Animal.hpp>
+#include <Brain.hpp>
 
 class Cat : public Animal
 {
+	private:
+		Brain*	brain;
+
 	public:
 		Cat(); //Default constructor
 		Cat(std::string type);

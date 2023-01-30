@@ -6,10 +6,9 @@
 /*   By: ljohnson <ljohnson@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/30 11:43:57 by ljohnson          #+#    #+#             */
-/*   Updated: 2023/01/30 12:16:10 by ljohnson         ###   ########lyon.fr   */
+/*   Updated: 2023/01/30 15:19:26 by ljohnson         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
-
 
 #include <Dog.hpp>
 
@@ -19,6 +18,7 @@
 Dog::Dog()
 {
 	this->type = "Dog";
+	this->brain = new Brain();
 	std::cout << FAINT;
 	std::cout << "Dog default constructor called.";
 	std::cout << FWHITE << std::endl;
@@ -27,6 +27,7 @@ Dog::Dog()
 Dog::Dog(std::string type)
 {
 	this->type = type;
+	this->brain = new Brain();
 	std::cout << FAINT;
 	std::cout << "Dog " << this->type << " constructor called.";
 	std::cout << FWHITE << std::endl;
@@ -35,6 +36,7 @@ Dog::Dog(std::string type)
 Dog::Dog(Dog const& src)
 {
 	*this = src;
+	this->brain = new Brain(*src.brain);
 	std::cout << FAINT << CYAN;
 	std::cout << "Dog " << this->type << " copy constructor called.";
 	std::cout << FWHITE << std::endl;
@@ -42,6 +44,7 @@ Dog::Dog(Dog const& src)
 
 Dog::~Dog()
 {
+	delete this->brain;
 	std::cout << FAINT;
 	std::cout << "Dog " << this->type << " destructor called.";
 	std::cout << FWHITE << std::endl;
@@ -53,6 +56,7 @@ Dog::~Dog()
 Dog&	Dog::operator=(Dog const& rhs)
 {
 	this->type = rhs.type;
+	this->brain = rhs.brain;
 	return (*this);
 }
 

@@ -6,14 +6,14 @@
 #    By: ljohnson <ljohnson@student.42lyon.fr>      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/01/26 11:24:21 by ljohnson          #+#    #+#              #
-#    Updated: 2023/01/30 14:23:20 by ljohnson         ###   ########lyon.fr    #
+#    Updated: 2023/01/30 14:26:59 by ljohnson         ###   ########lyon.fr    #
 #                                                                              #
 # **************************************************************************** #
 
 .PHONY: all clean fclean re
 # .SILENT:
 
-NAME	:=	
+NAME	:=	Brain
 
 #//////////////////////////////////////////////////////////////////////////////
 #		ALL FILES
