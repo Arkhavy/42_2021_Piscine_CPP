@@ -6,7 +6,7 @@
 /*   By: ljohnson <ljohnson@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/30 11:22:51 by ljohnson          #+#    #+#             */
-/*   Updated: 2023/01/30 17:02:39 by ljohnson         ###   ########lyon.fr   */
+/*   Updated: 2023/02/06 14:52:40 by ljohnson         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,7 @@ class Cat : public Animal
 
 		void	makeSound() const;
 		void	display_ideas() const;
+		void	set_brain_idea(unsigned int const index, std::string const& idea);
 
 		Cat&	operator=(Cat const& rhs); //Assignment operator overload
 };

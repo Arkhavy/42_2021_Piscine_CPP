@@ -6,7 +6,7 @@
 /*   By: ljohnson <ljohnson@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/30 14:41:46 by ljohnson          #+#    #+#             */
-/*   Updated: 2023/01/30 17:10:45 by ljohnson         ###   ########lyon.fr   */
+/*   Updated: 2023/02/06 14:57:00 by ljohnson         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,11 @@ int	main()
 	Cat	c3(c1);
 
 	c1.display_ideas();
+	std::cout << "--------------------------------------------------" << std::endl;
+	c1.set_brain_idea(25, "ouaf ouaf");
+	c1.set_brain_idea(50, "ouef ouef");
+	c1.set_brain_idea(75, "ouif ouif");
+	c1.display_ideas();
 
 	std::cout << std::endl;
 	std::cout << "--------------------------------------------------" << std::endl;
@@ -45,6 +50,11 @@ int	main()
 	Dog	d2("d2");
 	Dog	d3(d1);
 
+	d1.display_ideas();
+	std::cout << "--------------------------------------------------" << std::endl;
+	d1.set_brain_idea(25, "arf arf");
+	d1.set_brain_idea(50, "erf erf");
+	d1.set_brain_idea(75, "irf irf");
 	d1.display_ideas();
 
 	std::cout << std::endl;

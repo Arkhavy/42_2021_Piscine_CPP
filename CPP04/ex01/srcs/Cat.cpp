@@ -6,7 +6,7 @@
 /*   By: ljohnson <ljohnson@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/30 11:42:58 by ljohnson          #+#    #+#             */
-/*   Updated: 2023/02/06 14:44:51 by ljohnson         ###   ########lyon.fr   */
+/*   Updated: 2023/02/06 14:56:26 by ljohnson         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,4 +75,10 @@ void	Cat::display_ideas() const
 {
 	for (int i = 0; i < 100; i++)
 		std::cout << i << ": " << this->brain->get_one_idea(i) << std::endl;
+}
+
+void	Cat::set_brain_idea(unsigned int const index, std::string const& idea)
+{
+	if (index < 100)
+		this->brain->set_one_idea(index, idea);
 }
