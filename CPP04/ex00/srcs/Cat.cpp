@@ -6,7 +6,7 @@
 /*   By: ljohnson <ljohnson@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/30 11:42:58 by ljohnson          #+#    #+#             */
-/*   Updated: 2023/01/30 12:16:10 by ljohnson         ###   ########lyon.fr   */
+/*   Updated: 2023/02/06 14:40:00 by ljohnson         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ Cat::Cat(std::string type)
 	std::cout << FWHITE << std::endl;
 }
 
-Cat::Cat(Cat const& src)
+Cat::Cat(Cat const& src) : Animal(src)
 {
 	*this = src;
 	std::cout << FAINT << CYAN;

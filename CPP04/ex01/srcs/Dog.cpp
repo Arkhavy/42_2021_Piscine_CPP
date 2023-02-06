@@ -6,7 +6,7 @@
 /*   By: ljohnson <ljohnson@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/30 11:43:57 by ljohnson          #+#    #+#             */
-/*   Updated: 2023/01/30 17:06:29 by ljohnson         ###   ########lyon.fr   */
+/*   Updated: 2023/02/06 14:44:57 by ljohnson         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ Dog::Dog(std::string type)
 	std::cout << FWHITE << std::endl;
 }
 
-Dog::Dog(Dog const& src)
+Dog::Dog(Dog const& src) : Animal(src)
 {
 	*this = src;
 	this->brain = new Brain(*src.brain);
