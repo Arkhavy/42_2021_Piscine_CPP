@@ -6,14 +6,14 @@
 #    By: ljohnson <ljohnson@student.42lyon.fr>      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/01/26 11:24:33 by ljohnson          #+#    #+#              #
-#    Updated: 2023/01/26 11:25:07 by ljohnson         ###   ########lyon.fr    #
+#    Updated: 2023/02/08 18:17:48 by ljohnson         ###   ########lyon.fr    #
 #                                                                              #
 # **************************************************************************** #
 
 .PHONY: all clean fclean re
 # .SILENT:
 
-NAME	:=	
+NAME	:=	Materia
 
 #//////////////////////////////////////////////////////////////////////////////
 #		ALL FILES
