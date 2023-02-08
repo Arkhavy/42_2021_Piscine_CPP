@@ -6,7 +6,7 @@
 /*   By: ljohnson <ljohnson@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/30 11:32:47 by ljohnson          #+#    #+#             */
-/*   Updated: 2023/02/06 15:14:33 by ljohnson         ###   ########lyon.fr   */
+/*   Updated: 2023/02/08 18:07:30 by ljohnson         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,13 +56,6 @@ AAnimal&	AAnimal::operator=(AAnimal const& rhs)
 /* ************************************************************************** */
 /* Public Member Functions */
 /* ************************************************************************** */
-void	AAnimal::makeSound() const
-{
-	std::cout << GREEN << BOLD;
-	std::cout << this->type;
-	std::cout << FWHITE;
-	std::cout << " is making an AAnimal sound ! GRAOU !" << std::endl;
-}
-
 const std::string&	AAnimal::getType() const {return (this->type);}
+
 void	AAnimal::setType(std::string type) {this->type = type;}

@@ -6,7 +6,7 @@
 /*   By: ljohnson <ljohnson@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/30 11:14:59 by ljohnson          #+#    #+#             */
-/*   Updated: 2023/02/06 15:35:00 by ljohnson         ###   ########lyon.fr   */
+/*   Updated: 2023/02/08 18:00:59 by ljohnson         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ class AAnimal
 		AAnimal(AAnimal const& src); //Copy constructor
 		virtual	~AAnimal(); //Default destructor
 
-		virtual void		makeSound() const;
+		virtual void		makeSound() const = 0;
 		const std::string&	getType() const;
 		void				setType(std::string type);
 
