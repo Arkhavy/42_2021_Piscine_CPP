@@ -1,28 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   AMateria.cpp                                       :+:      :+:    :+:   */
+/*   Cure.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ljohnson <ljohnson@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/02/08 18:22:26 by ljohnson          #+#    #+#             */
-/*   Updated: 2023/02/10 19:32:36 by ljohnson         ###   ########lyon.fr   */
+/*   Created: 2023/02/10 19:11:51 by ljohnson          #+#    #+#             */
+/*   Updated: 2023/02/10 19:40:13 by ljohnson         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <AMateria.hpp>
+#include <Cure.hpp>
 
 /* ************************************************************************** */
 /* Constructors & Destructors */
 /* ************************************************************************** */
-AMateria::AMateria() : type("AMateria")
+Cure::Cure()
 {
+	this->type = "cure";
 	std::cout << FAINT;
-	std::cout << "AMateria default constructor called.";
+	std::cout << "Cure default constructor called.";
 	std::cout << FWHITE << std::endl;
 }
 
-AMateria::AMateria(std::string const& type) : type(type)
+Cure::Cure(std::string const& type) : AMateria(type)
 {
 	std::cout << FAINT;
 	std::cout << "Materia" << this->type;
@@ -30,7 +31,7 @@ AMateria::AMateria(std::string const& type) : type(type)
 	std::cout << FWHITE << std::endl;
 }
 
-AMateria::AMateria(AMateria const& src)
+Cure::Cure(Cure const& src) : AMateria(src)
 {
 	*this = src;
 	std::cout << FAINT;
@@ -39,7 +40,7 @@ AMateria::AMateria(AMateria const& src)
 	std::cout << FWHITE << std::endl;
 }
 
-AMateria::~AMateria()
+Cure::~Cure()
 {
 	std::cout << FAINT;
 	std::cout << "Materia" << this->type;
@@ -50,15 +51,19 @@ AMateria::~AMateria()
 /* ************************************************************************** */
 /* Operator Overloads */
 /* ************************************************************************** */
-AMateria&	AMateria::operator=(AMateria const& rhs)
+Cure&	Cure::operator=(Cure const& rhs)
 {
 	this->type = rhs.type;
 	return (*this);
 }
-
 /* ************************************************************************** */
 /* Public Member Functions */
 /* ************************************************************************** */
-std::string const&	AMateria::getType() const {return (this->type);}
+Cure*	Cure::clone() const {return (new Cure());}
 
-// void	AMateria::use(ICharacter& target) {}
+void	Cure::use(ICharacter& target)
+{
+	std::cout << "* heals " << GREEN;
+	std::cout << target.getName() << FWHITE;
+	std::cout << "'s wounds *";
+}

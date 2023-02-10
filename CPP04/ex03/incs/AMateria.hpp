@@ -6,7 +6,7 @@
 /*   By: ljohnson <ljohnson@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/08 18:18:20 by ljohnson          #+#    #+#             */
-/*   Updated: 2023/02/08 18:32:11 by ljohnson         ###   ########lyon.fr   */
+/*   Updated: 2023/02/10 19:45:21 by ljohnson         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,7 @@ class AMateria
 {
 	protected:
 		std::string	type;
+
 	public:
 		AMateria(); //Default constructor
 		AMateria(std::string const& type);
@@ -40,5 +41,5 @@ class AMateria
 		virtual AMateria*	clone() const = 0;
 		virtual void		use(ICharacter& target);
 
-		AMateria&	operator=(AMateria const& rhs); //Assignement operator overload
+		AMateria&	operator=(AMateria const& rhs); //Assignment operator overload
 };

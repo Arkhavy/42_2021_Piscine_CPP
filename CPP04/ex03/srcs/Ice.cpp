@@ -1,28 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   AMateria.cpp                                       :+:      :+:    :+:   */
+/*   Ice.cpp                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ljohnson <ljohnson@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/02/08 18:22:26 by ljohnson          #+#    #+#             */
-/*   Updated: 2023/02/10 19:32:36 by ljohnson         ###   ########lyon.fr   */
+/*   Created: 2023/02/10 19:26:57 by ljohnson          #+#    #+#             */
+/*   Updated: 2023/02/10 19:40:23 by ljohnson         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <AMateria.hpp>
+#include <Ice.hpp>
 
 /* ************************************************************************** */
 /* Constructors & Destructors */
 /* ************************************************************************** */
-AMateria::AMateria() : type("AMateria")
+Ice::Ice()
 {
+	this->type = "cure";
 	std::cout << FAINT;
-	std::cout << "AMateria default constructor called.";
+	std::cout << "Ice default constructor called.";
 	std::cout << FWHITE << std::endl;
 }
 
-AMateria::AMateria(std::string const& type) : type(type)
+Ice::Ice(std::string const& type) : AMateria(type)
 {
 	std::cout << FAINT;
 	std::cout << "Materia" << this->type;
@@ -30,7 +31,7 @@ AMateria::AMateria(std::string const& type) : type(type)
 	std::cout << FWHITE << std::endl;
 }
 
-AMateria::AMateria(AMateria const& src)
+Ice::Ice(Ice const& src) : AMateria(src)
 {
 	*this = src;
 	std::cout << FAINT;
@@ -39,7 +40,7 @@ AMateria::AMateria(AMateria const& src)
 	std::cout << FWHITE << std::endl;
 }
 
-AMateria::~AMateria()
+Ice::~Ice()
 {
 	std::cout << FAINT;
 	std::cout << "Materia" << this->type;
@@ -50,7 +51,7 @@ AMateria::~AMateria()
 /* ************************************************************************** */
 /* Operator Overloads */
 /* ************************************************************************** */
-AMateria&	AMateria::operator=(AMateria const& rhs)
+Ice&	Ice::operator=(Ice const& rhs)
 {
 	this->type = rhs.type;
 	return (*this);
@@ -59,6 +60,11 @@ AMateria&	AMateria::operator=(AMateria const& rhs)
 /* ************************************************************************** */
 /* Public Member Functions */
 /* ************************************************************************** */
-std::string const&	AMateria::getType() const {return (this->type);}
+Ice*	Ice::clone() const {return (new Ice());}
 
-// void	AMateria::use(ICharacter& target) {}
+void	AMateria::use(ICharacter& target)
+{
+	std::cout << "* shoots an ice bolt at " << GREEN;
+	std::cout << target.getName() << FWHITE;
+	std::cout << " *";
+}
