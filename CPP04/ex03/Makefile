@@ -6,7 +6,7 @@
 #    By: ljohnson <ljohnson@student.42lyon.fr>      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/01/26 11:24:33 by ljohnson          #+#    #+#              #
-#    Updated: 2023/02/10 19:38:26 by ljohnson         ###   ########lyon.fr    #
+#    Updated: 2023/02/13 16:45:23 by ljohnson         ###   ########lyon.fr    #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,11 +20,14 @@ NAME	:=	Materia
 #//////////////////////////////////////////////////////////////////////////////
 
 # Files
-LST_INCS	:=	AMateria.hpp	Cure.hpp		\
-				Ice.hpp			ICharacter.hpp
-LST_SRCS	:=	AMateria.cpp	Cure.cpp		\
-				Ice.cpp			ICharacter.cpp	\
-				main.cpp
+LST_INCS	:=	ICharacter.hpp		Character.hpp		\
+				IMateriaSource.hpp	MateriaSource.hpp	\
+				Cure.hpp			Ice.hpp				\
+				AMateria.hpp
+LST_SRCS	:=	ICharacter.cpp		Character.cpp		\
+				IMateriaSource.cpp	MateriaSource.cpp	\
+				Cure.cpp			Ice.cpp				\
+				AMateria.cpp		main.cpp
 LST_DEPS	:=	$(LST_SRCS:.cpp=.d)
 LST_OBJS	:=	$(LST_SRCS:.cpp=.o)
 
