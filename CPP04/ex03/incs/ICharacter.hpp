@@ -6,7 +6,7 @@
 /*   By: ljohnson <ljohnson@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/10 19:04:19 by ljohnson          #+#    #+#             */
-/*   Updated: 2023/02/10 19:46:00 by ljohnson         ###   ########lyon.fr   */
+/*   Updated: 2023/02/13 11:36:36 by ljohnson         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,11 +28,13 @@
 
 class ICharacter
 {
-	private:
+	protected:
 		AMateria	inventory[4];
+		std::string	name;
 
 	public:
 		ICharacter(); //Default constructor
+		ICharacter(std::string name);
 		ICharacter(ICharacter const& src); //Copy constructor
 		virtual ~ICharacter(); //Default destructor
 
