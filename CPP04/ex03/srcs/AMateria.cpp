@@ -6,7 +6,7 @@
 /*   By: ljohnson <ljohnson@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/08 18:22:26 by ljohnson          #+#    #+#             */
-/*   Updated: 2023/02/13 13:16:03 by ljohnson         ###   ########lyon.fr   */
+/*   Updated: 2023/02/13 14:23:00 by ljohnson         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,14 +15,14 @@
 /* ************************************************************************** */
 /* Constructors & Destructors */
 /* ************************************************************************** */
-AMateria::AMateria() : type("AMateria"), equipped(0)
+AMateria::AMateria() : type("AMateria"), equipped(false)
 {
 	std::cout << FAINT;
 	std::cout << "AMateria default constructor called.";
 	std::cout << FWHITE << std::endl;
 }
 
-AMateria::AMateria(std::string const& type) : type(type), equipped(0)
+AMateria::AMateria(std::string const& type) : type(type), equipped(false)
 {
 	std::cout << FAINT;
 	std::cout << "Materia" << this->type;
