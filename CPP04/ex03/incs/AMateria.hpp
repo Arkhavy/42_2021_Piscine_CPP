@@ -6,7 +6,7 @@
 /*   By: ljohnson <ljohnson@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/08 18:18:20 by ljohnson          #+#    #+#             */
-/*   Updated: 2023/02/13 15:43:58 by ljohnson         ###   ########lyon.fr   */
+/*   Updated: 2023/02/13 18:45:22 by ljohnson         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,6 @@
 
 #include <iostream>
 #include <string>
-
-#include <ICharacter.hpp>
 
 #define YELLOW "\033[33m"
 #define CYAN "\033[36m"

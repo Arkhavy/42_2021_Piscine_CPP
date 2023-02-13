@@ -6,7 +6,7 @@
 /*   By: ljohnson <ljohnson@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/10 19:38:35 by ljohnson          #+#    #+#             */
-/*   Updated: 2023/02/13 16:07:10 by ljohnson         ###   ########lyon.fr   */
+/*   Updated: 2023/02/13 18:34:46 by ljohnson         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,10 @@ ICharacter::ICharacter(ICharacter const& src)
 	for (int i = 0; i < 4; i++)
 	{
 		delete this->inventory[i];
-		this->inventory[i] = new AMateria(src.inventory[i]);
+		if (src.inventory[i] == NULL)
+			this->inventory[i] = NULL;
+		else
+			this->inventory[i] = src.inventory[i]->clone();
 	}
 	std::cout << FAINT;
 	std::cout << "ICharacter " << this->name << " copy constructor called.";
@@ -67,7 +70,10 @@ ICharacter&	ICharacter::operator=(ICharacter const& rhs)
 	for (int i = 0; i < 4; i++)
 	{
 		delete this->inventory[i];
-		this->inventory[i] = new AMateria(rhs.inventory[i]);
+		if (rhs.inventory[i] == NULL)
+			this->inventory[i] = NULL;
+		else
+			this->inventory[i] = rhs.inventory[i]->clone();
 	}
 	return (*this);
 }

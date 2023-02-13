@@ -6,13 +6,16 @@
 /*   By: ljohnson <ljohnson@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/10 19:12:05 by ljohnson          #+#    #+#             */
-/*   Updated: 2023/02/13 16:29:24 by ljohnson         ###   ########lyon.fr   */
+/*   Updated: 2023/02/13 18:45:25 by ljohnson         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
 #pragma once
 
 #include <AMateria.hpp>
+#include <ICharacter.hpp>
+
+class ICharacter;
 
 class Cure : public AMateria
 {

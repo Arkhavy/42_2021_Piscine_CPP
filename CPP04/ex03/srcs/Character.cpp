@@ -6,7 +6,7 @@
 /*   By: ljohnson <ljohnson@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/13 11:26:42 by ljohnson          #+#    #+#             */
-/*   Updated: 2023/02/13 16:07:57 by ljohnson         ###   ########lyon.fr   */
+/*   Updated: 2023/02/13 18:35:05 by ljohnson         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,8 +15,9 @@
 /* ************************************************************************** */
 /* Constructors & Destructors */
 /* ************************************************************************** */
-Character::Character() : name("Default Character name")
+Character::Character()
 {
+	this->name = "Default character name";
 	for (int i = 0; i < 4; i++)
 		this->inventory[i] = NULL;
 	std::cout << FAINT;
@@ -40,7 +41,10 @@ Character::Character(Character const& src) : ICharacter(src)
 	for (int i = 0; i < 4; i++)
 	{
 		delete this->inventory[i];
-		this->inventory[i] = new AMateria(src.inventory[i]);
+		if (src.inventory[i] == NULL)
+			this->inventory[i] = NULL;
+		else
+			this->inventory[i] = src.inventory[i]->clone();
 	}
 	std::cout << FAINT;
 	std::cout << "Character Copy constructor called.";
@@ -69,8 +73,12 @@ Character&	Character::operator=(Character const& rhs)
 	for (int i = 0; i < 4; i++)
 	{
 		delete this->inventory[i];
-		this->inventory[i] = rhs.inventory[i];
+		if (rhs.inventory[i] == NULL)
+			this->inventory[i] = NULL;
+		else
+			this->inventory[i] = rhs.inventory[i]->clone();
 	}
+	return (*this);
 }
 /* ************************************************************************** */
 /* Public Member Functions */
@@ -79,7 +87,7 @@ std::string const&	Character::getName() const {return (this->name);}
 
 void	Character::equip(AMateria* m)
 {
-	if (m->getEquipped == true)
+	if (m->getEquipped() == true)
 	{
 		std::cerr << RED << BOLD;
 		std::cerr << "ERROR: The Materia " << m->getType() << " is already equipped !";
@@ -88,7 +96,7 @@ void	Character::equip(AMateria* m)
 	}
 	for (int i = 0; i < 4; i++)
 	{
-		if (this->inventory[i] = NULL)
+		if (this->inventory[i] == NULL)
 		{
 			this->inventory[i] = m;
 			m->setEquipped(true);

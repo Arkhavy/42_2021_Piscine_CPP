@@ -6,7 +6,7 @@
 /*   By: ljohnson <ljohnson@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/10 19:04:19 by ljohnson          #+#    #+#             */
-/*   Updated: 2023/02/13 15:33:42 by ljohnson         ###   ########lyon.fr   */
+/*   Updated: 2023/02/13 18:00:45 by ljohnson         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,8 @@
 #include <iostream>
 #include <string>
 
-#include <AMateria.hpp>
+#include <Cure.hpp>
+#include <Ice.hpp>
 
 #define YELLOW "\033[33m"
 #define CYAN "\033[36m"

@@ -6,13 +6,15 @@
 /*   By: ljohnson <ljohnson@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/13 16:09:29 by ljohnson          #+#    #+#             */
-/*   Updated: 2023/02/13 16:40:07 by ljohnson         ###   ########lyon.fr   */
+/*   Updated: 2023/02/13 18:37:44 by ljohnson         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
 #pragma once
 
 #include <AMateria.hpp>
+
+class AMateria;
 
 class IMateriaSource
 {
