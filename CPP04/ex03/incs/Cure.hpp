@@ -6,7 +6,7 @@
 /*   By: ljohnson <ljohnson@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/10 19:12:05 by ljohnson          #+#    #+#             */
-/*   Updated: 2023/02/10 19:45:23 by ljohnson         ###   ########lyon.fr   */
+/*   Updated: 2023/02/13 16:29:24 by ljohnson         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ class Cure : public AMateria
 		Cure(); //Default constructor
 		Cure(std::string const& type);
 		Cure(Cure const& src); //Copy constructor
-		~Cure(); //Default destructor
+		~Cure(); //override Default destructor
 
 		Cure*	clone() const; //override
 		void	use(ICharacter& target); //override
