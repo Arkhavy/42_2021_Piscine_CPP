@@ -6,7 +6,7 @@
 /*   By: ljohnson <ljohnson@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/08 18:22:26 by ljohnson          #+#    #+#             */
-/*   Updated: 2023/02/10 19:32:36 by ljohnson         ###   ########lyon.fr   */
+/*   Updated: 2023/02/13 13:16:03 by ljohnson         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,14 +15,14 @@
 /* ************************************************************************** */
 /* Constructors & Destructors */
 /* ************************************************************************** */
-AMateria::AMateria() : type("AMateria")
+AMateria::AMateria() : type("AMateria"), equipped(0)
 {
 	std::cout << FAINT;
 	std::cout << "AMateria default constructor called.";
 	std::cout << FWHITE << std::endl;
 }
 
-AMateria::AMateria(std::string const& type) : type(type)
+AMateria::AMateria(std::string const& type) : type(type), equipped(0)
 {
 	std::cout << FAINT;
 	std::cout << "Materia" << this->type;
@@ -53,6 +53,7 @@ AMateria::~AMateria()
 AMateria&	AMateria::operator=(AMateria const& rhs)
 {
 	this->type = rhs.type;
+	this->equipped = rhs.equipped;
 	return (*this);
 }
 
@@ -60,5 +61,8 @@ AMateria&	AMateria::operator=(AMateria const& rhs)
 /* Public Member Functions */
 /* ************************************************************************** */
 std::string const&	AMateria::getType() const {return (this->type);}
+bool	const&	AMateria::getEquipped() const {return (this->equipped);}
+
+void	AMateria::setEquipped(bool equipped) {this->equipped = equipped;}
 
 // void	AMateria::use(ICharacter& target) {}

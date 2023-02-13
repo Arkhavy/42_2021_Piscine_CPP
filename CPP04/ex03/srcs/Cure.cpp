@@ -6,7 +6,7 @@
 /*   By: ljohnson <ljohnson@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/10 19:11:51 by ljohnson          #+#    #+#             */
-/*   Updated: 2023/02/10 19:40:13 by ljohnson         ###   ########lyon.fr   */
+/*   Updated: 2023/02/13 13:15:21 by ljohnson         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@
 Cure::Cure()
 {
 	this->type = "cure";
+	this->equipped = 0;
 	std::cout << FAINT;
 	std::cout << "Cure default constructor called.";
 	std::cout << FWHITE << std::endl;
@@ -25,6 +26,8 @@ Cure::Cure()
 
 Cure::Cure(std::string const& type) : AMateria(type)
 {
+	this->type = type;
+	this->equipped = 0;
 	std::cout << FAINT;
 	std::cout << "Materia" << this->type;
 	std::cout << " constructor called.";
@@ -54,6 +57,7 @@ Cure::~Cure()
 Cure&	Cure::operator=(Cure const& rhs)
 {
 	this->type = rhs.type;
+	this->equipped = rhs.equipped;
 	return (*this);
 }
 /* ************************************************************************** */

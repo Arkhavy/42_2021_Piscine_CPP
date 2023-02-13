@@ -6,7 +6,7 @@
 /*   By: ljohnson <ljohnson@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/08 18:18:20 by ljohnson          #+#    #+#             */
-/*   Updated: 2023/02/10 19:45:21 by ljohnson         ###   ########lyon.fr   */
+/*   Updated: 2023/02/13 13:15:10 by ljohnson         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,7 @@ class AMateria
 {
 	protected:
 		std::string	type;
+		bool		equipped;
 
 	public:
 		AMateria(); //Default constructor
@@ -37,9 +38,12 @@ class AMateria
 		AMateria(AMateria const& src); //Copy constructor
 		~AMateria(); //Default destructor
 
-		std::string const&	getType() const; //Returns the materia type
+		std::string const&	getType() const;
 		virtual AMateria*	clone() const = 0;
 		virtual void		use(ICharacter& target);
+
+		bool	const&	getEquipped() const;
+		void			setEquipped(bool equipped);
 
 		AMateria&	operator=(AMateria const& rhs); //Assignment operator overload
 };
