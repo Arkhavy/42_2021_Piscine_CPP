@@ -6,7 +6,7 @@
 /*   By: ljohnson <ljohnson@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/08 18:18:20 by ljohnson          #+#    #+#             */
-/*   Updated: 2023/02/13 13:15:10 by ljohnson         ###   ########lyon.fr   */
+/*   Updated: 2023/02/13 15:43:58 by ljohnson         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,8 @@
 #define FAINT "\033[2m"
 #define FWHITE "\033[0m"
 
+class ICharacter;
+
 class AMateria
 {
 	protected:
@@ -36,7 +38,7 @@ class AMateria
 		AMateria(); //Default constructor
 		AMateria(std::string const& type);
 		AMateria(AMateria const& src); //Copy constructor
-		~AMateria(); //Default destructor
+		virtual	~AMateria(); //Default destructor
 
 		std::string const&	getType() const;
 		virtual AMateria*	clone() const = 0;

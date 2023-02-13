@@ -6,7 +6,7 @@
 /*   By: ljohnson <ljohnson@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/10 19:26:57 by ljohnson          #+#    #+#             */
-/*   Updated: 2023/02/13 14:22:49 by ljohnson         ###   ########lyon.fr   */
+/*   Updated: 2023/02/13 15:59:13 by ljohnson         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,5 +70,5 @@ void	AMateria::use(ICharacter& target)
 {
 	std::cout << "* shoots an ice bolt at " << GREEN;
 	std::cout << target.getName() << FWHITE;
-	std::cout << " *";
+	std::cout << " *" << std::endl;
 }

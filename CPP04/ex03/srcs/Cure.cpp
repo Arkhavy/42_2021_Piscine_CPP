@@ -6,7 +6,7 @@
 /*   By: ljohnson <ljohnson@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/10 19:11:51 by ljohnson          #+#    #+#             */
-/*   Updated: 2023/02/13 14:22:30 by ljohnson         ###   ########lyon.fr   */
+/*   Updated: 2023/02/13 15:58:49 by ljohnson         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,5 +69,5 @@ void	Cure::use(ICharacter& target)
 {
 	std::cout << "* heals " << GREEN;
 	std::cout << target.getName() << FWHITE;
-	std::cout << "'s wounds *";
+	std::cout << "'s wounds *" << std::endl;
 }
