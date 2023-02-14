@@ -1,0 +1,94 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   Bureaucrat.cpp                                     :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: ljohnson <ljohnson@student.42lyon.fr>      +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/02/14 12:59:40 by ljohnson          #+#    #+#             */
+/*   Updated: 2023/02/14 15:02:08 by ljohnson         ###   ########lyon.fr   */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include <Bureaucrat.hpp>
+
+/* ************************************************************************** */
+/* Constructors & Destructors */
+/* ************************************************************************** */
+Bureaucrat::Bureaucrat() : name("Default"), grade(150) //Private
+{
+	std::cout << FAINT;
+	std::cout << "Default Bureaucrat constructor called.";
+	std::cout << FWHITE << std::endl;
+}
+
+Bureaucrat::Bureaucrat(std::string const name, unsigned int const grade) : name(name)
+{
+	if (grade < 1)
+		throw GradeTooHighException();
+	else if (grade > 150)
+		throw GradeTooLowException();
+	this->grade = grade;
+	std::cout << FAINT;
+	std::cout << "Bureaucrat " << this->name << " constructor called.";
+	std::cout << FWHITE << std::endl;
+}
+
+Bureaucrat::Bureaucrat(Bureaucrat const& src)
+{
+	*this = src;
+	std::cout << FAINT;
+	std::cout << "Bureaucrat " << this->name << " copy constructor called.";
+	std::cout << FWHITE << std::endl;
+}
+
+Bureaucrat::~Bureaucrat()
+{
+	std::cout << FAINT;
+	std::cout << "Bureaucrat " << this->name << " destructor called.";
+	std::cout << FWHITE << std::endl;
+}
+
+/* ************************************************************************** */
+/* Operator Overloads */
+/* ************************************************************************** */
+Bureaucrat&	Bureaucrat::operator=(Bureaucrat const& rhs)
+{
+	this->~Bureaucrat();
+	new(this) Bureaucrat(rhs.getName(), rhs.getGrade());
+	return (*this);
+}
+
+std::ostream&	operator<<(std::ostream& out, Bureaucrat const& rhs)
+{
+	out << rhs.getName();
+	out << ", bureaucrat grade ";
+	out << rhs.getGrade() << ".";
+	return (out);
+}
+
+/* ************************************************************************** */
+/* Exceptions */
+/* ************************************************************************** */
+char const*	Bureaucrat::GradeTooHighException::what() const throw() {return ("Grade is too High !");}
+char const*	Bureaucrat::GradeTooLowException::what() const throw() {return ("Grade is too low !");}
+
+/* ************************************************************************** */
+/* Public Member Functions */
+/* ************************************************************************** */
+std::string const	Bureaucrat::getName() const {return (this->name);}
+unsigned int	Bureaucrat::getGrade() const {return (this->grade);}
+
+void	Bureaucrat::increment_grade()
+{
+	if ((this->grade - 1) < 1)
+		throw GradeTooHighException();
+	this->grade--;
+}
+
+void	Bureaucrat::decrement_grade()
+{
+	if ((this->grade + 1) > 150)
+		throw GradeTooLowException();
+	this->grade++;
+}
