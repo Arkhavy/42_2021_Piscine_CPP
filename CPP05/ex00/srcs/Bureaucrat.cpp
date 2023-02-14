@@ -6,7 +6,7 @@
 /*   By: ljohnson <ljohnson@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/14 12:59:40 by ljohnson          #+#    #+#             */
-/*   Updated: 2023/02/14 15:02:08 by ljohnson         ###   ########lyon.fr   */
+/*   Updated: 2023/02/14 17:51:44 by ljohnson         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,7 +63,7 @@ std::ostream&	operator<<(std::ostream& out, Bureaucrat const& rhs)
 {
 	out << rhs.getName();
 	out << ", bureaucrat grade ";
-	out << rhs.getGrade() << ".";
+	out << rhs.getGrade() << "." << std::endl;
 	return (out);
 }
 
