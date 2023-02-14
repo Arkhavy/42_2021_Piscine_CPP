@@ -6,22 +6,23 @@
 #    By: ljohnson <ljohnson@student.42lyon.fr>      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/01/26 11:24:33 by ljohnson          #+#    #+#              #
-#    Updated: 2023/02/14 11:13:49 by ljohnson         ###   ########lyon.fr    #
+#    Updated: 2023/02/14 18:15:52 by ljohnson         ###   ########lyon.fr    #
 #                                                                              #
 # **************************************************************************** #
 
 .PHONY: all clean fclean re
 # .SILENT:
 
-NAME	:=	
+NAME	:=	Form
 
 #//////////////////////////////////////////////////////////////////////////////
 #		ALL FILES
 #//////////////////////////////////////////////////////////////////////////////
 
 # Files
-LST_INCS	:=	
-LST_SRCS	:=	
+LST_INCS	:=	Bureaucrat.hpp	Form.hpp
+LST_SRCS	:=	Bureaucrat.cpp	Form.cpp	\
+				main.cpp
 LST_DEPS	:=	$(LST_SRCS:.cpp=.d)
 LST_OBJS	:=	$(LST_SRCS:.cpp=.o)
 

@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Form.hpp                                           :+:      :+:    :+:   */
+/*   Bureaucrat.hpp                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ljohnson <ljohnson@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/02/14 17:13:17 by ljohnson          #+#    #+#             */
-/*   Updated: 2023/02/14 18:17:54 by ljohnson         ###   ########lyon.fr   */
+/*   Created: 2023/02/14 12:34:11 by ljohnson          #+#    #+#             */
+/*   Updated: 2023/02/14 18:16:31 by ljohnson         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,8 +16,8 @@
 #include <string>
 #include <exception>
 
-#include <Bureaucrat.hpp>
-class Bureaucrat;
+#include <Form.hpp>
+class Form;
 
 #define YELLOW "\033[33m"
 #define CYAN "\033[36m"
@@ -28,28 +28,26 @@ class Bureaucrat;
 #define FAINT "\033[2m"
 #define FWHITE "\033[0m"
 
-class Form
+class Bureaucrat
 {
 	private:
-		Form();
+		Bureaucrat();
 		std::string const	name;
-		bool				is_signed;
-		unsigned int const	sign_req; //range from highest 1 to lowest 150
-		unsigned int const	exec_req; //range from highest 1 to lowest 150
+		unsigned int		grade; //range from highest 1 to lowest 150
 
 	public:
 		//Constructors & Destructors
-		Form(std::string const name, unsigned int const sign_req, unsigned int const exec_req);
-		Form(Form const& src);
-		~Form();
+		Bureaucrat(std::string const name, unsigned int const grade);
+		Bureaucrat(Bureaucrat const& src);
+		~Bureaucrat();
 
-		void			beSigned(Bureaucrat const& worker);
+		void				signForm(Form& doc) const;
 
 		//Getters & Setters
-		std::string		get_name() const;
-		bool			get_is_signed() const;
-		unsigned int	get_sign_req() const;
-		unsigned int	get_exec_req() const;
+		std::string const	getName() const;
+		unsigned int		getGrade() const;
+		void				increment_grade();
+		void				decrement_grade();
 
 		//Exceptions
 		class GradeTooHighException : public std::exception
@@ -71,7 +69,7 @@ class Form
 		};
 
 		//Operator overloads
-		Form&	operator=(Form const& rhs);
+		Bureaucrat&	operator=(Bureaucrat const& rhs);
 };
 
-std::ostream&	operator<<(std::ostream& out, Form const& rhs);
+std::ostream&	operator<<(std::ostream& out, Bureaucrat const& rhs);
