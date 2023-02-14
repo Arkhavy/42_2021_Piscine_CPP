@@ -6,7 +6,7 @@
 /*   By: ljohnson <ljohnson@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/13 16:21:34 by ljohnson          #+#    #+#             */
-/*   Updated: 2023/02/13 18:42:59 by ljohnson         ###   ########lyon.fr   */
+/*   Updated: 2023/02/14 08:39:53 by ljohnson         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,11 @@ IMateriaSource::IMateriaSource(IMateriaSource const& src)
 
 IMateriaSource::~IMateriaSource()
 {
+	for (int i = 0; i < 4; i++)
+	{
+		delete this->inventory[i];
+		this->inventory[i] = NULL;
+	}
 	std::cout << FAINT;
 	std::cout << "IMateriaSource default destructor called.";
 	std::cout << FWHITE << std::endl;

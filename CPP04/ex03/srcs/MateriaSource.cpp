@@ -6,7 +6,7 @@
 /*   By: ljohnson <ljohnson@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/13 16:31:01 by ljohnson          #+#    #+#             */
-/*   Updated: 2023/02/13 18:44:36 by ljohnson         ###   ########lyon.fr   */
+/*   Updated: 2023/02/14 08:33:28 by ljohnson         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,7 +84,9 @@ void	MateriaSource::learnMateria(AMateria* m)
 		if (this->inventory[i] == NULL)
 		{
 			this->inventory[i] = m;
-			std::cout << "Materia " << m->getType() << " successfully learned !" << std::endl;
+			std::cout << "Materia ";
+			std::cout << CYAN << m->getType() << FWHITE;
+			std::cout << " successfully learned !" << std::endl;
 			return ;
 		}
 	}
@@ -106,7 +108,9 @@ AMateria*	MateriaSource::createMateria(std::string const& type)
 	{
 		if (type == this->inventory[i]->getType())
 		{
-			std::cout << "Materia " << type << " successfully created !" << std::endl;
+			std::cout << "Materia ";
+			std::cout << CYAN << type << FWHITE;
+			std::cout << " successfully created !" << std::endl;
 			return (this->inventory[i]->clone());
 		}
 	}

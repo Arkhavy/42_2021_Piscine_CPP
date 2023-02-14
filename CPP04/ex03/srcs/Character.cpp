@@ -6,7 +6,7 @@
 /*   By: ljohnson <ljohnson@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/13 11:26:42 by ljohnson          #+#    #+#             */
-/*   Updated: 2023/02/14 08:13:38 by ljohnson         ###   ########lyon.fr   */
+/*   Updated: 2023/02/14 08:34:09 by ljohnson         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -100,7 +100,9 @@ void	Character::equip(AMateria* m)
 		{
 			this->inventory[i] = m;
 			m->setEquipped(true);
-			std::cout << "Materia" << m->getType() << " successfully equipped !" << std::endl;
+			std::cout << "Materia ";
+			std::cout << CYAN << m->getType() << FWHITE;
+			std::cout << " successfully equipped !" << std::endl;
 			return ;
 		}
 	}
@@ -149,7 +151,7 @@ void	Character::use(int idx, ICharacter& target)
 		std::cerr << FWHITE << std::endl;
 		return ;
 	}
-	std::cout << this->name << " ";
+	std::cout << GREEN << this->name << FWHITE << " ";
 	this->inventory[idx]->use(target);
 	delete this->inventory[idx];
 	this->inventory[idx] = NULL;

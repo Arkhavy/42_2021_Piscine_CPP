@@ -6,7 +6,7 @@
 /*   By: ljohnson <ljohnson@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/10 19:11:51 by ljohnson          #+#    #+#             */
-/*   Updated: 2023/02/13 18:23:02 by ljohnson         ###   ########lyon.fr   */
+/*   Updated: 2023/02/14 08:35:27 by ljohnson         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ Cure::Cure(std::string const& type) : AMateria(type)
 	this->type = type;
 	this->equipped = false;
 	std::cout << FAINT;
-	std::cout << "Materia" << this->type;
+	std::cout << "Materia " << this->type;
 	std::cout << " constructor called.";
 	std::cout << FWHITE << std::endl;
 }
@@ -38,7 +38,7 @@ Cure::Cure(Cure const& src) : AMateria(src)
 {
 	*this = src;
 	std::cout << FAINT;
-	std::cout << "Materia" << this->type;
+	std::cout << "Materia " << this->type;
 	std::cout << " copy constructor called.";
 	std::cout << FWHITE << std::endl;
 }
@@ -46,7 +46,7 @@ Cure::Cure(Cure const& src) : AMateria(src)
 Cure::~Cure()
 {
 	std::cout << FAINT;
-	std::cout << "Materia" << this->type;
+	std::cout << "Materia " << this->type;
 	std::cout << " default destructor called.";
 	std::cout << FWHITE << std::endl;
 }
