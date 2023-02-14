@@ -6,7 +6,7 @@
 /*   By: ljohnson <ljohnson@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/13 11:09:18 by ljohnson          #+#    #+#             */
-/*   Updated: 2023/02/13 14:18:18 by ljohnson         ###   ########lyon.fr   */
+/*   Updated: 2023/02/14 08:13:16 by ljohnson         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ class Character : public ICharacter
 		std::string const&	getName() const; //override
 		void				equip(AMateria* m); //override
 		void				unequip(int idx); //override
-		void				use(int idx, Character& target); //override
+		void				use(int idx, ICharacter& target); //override
 
 		Character&	operator=(Character const& rhs); //Assignment operator overload
 };

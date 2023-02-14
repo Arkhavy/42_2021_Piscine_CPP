@@ -6,13 +6,16 @@
 /*   By: ljohnson <ljohnson@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/13 16:51:00 by ljohnson          #+#    #+#             */
-/*   Updated: 2023/02/13 16:52:19 by ljohnson         ###   ########lyon.fr   */
+/*   Updated: 2023/02/14 08:12:49 by ljohnson         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include <ICharacter.hpp>
 #include <Character.hpp>
+#include <AMateria.hpp>
 #include <Cure.hpp>
 #include <Ice.hpp>
+#include <IMateriaSource.hpp>
 #include <MateriaSource.hpp>
 
 int	main(void)

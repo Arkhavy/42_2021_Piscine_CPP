@@ -6,7 +6,7 @@
 /*   By: ljohnson <ljohnson@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/13 11:26:42 by ljohnson          #+#    #+#             */
-/*   Updated: 2023/02/13 18:35:05 by ljohnson         ###   ########lyon.fr   */
+/*   Updated: 2023/02/14 08:13:38 by ljohnson         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -133,7 +133,7 @@ void	Character::unequip(int idx)
 	std::cout << this->name << " successfully unequipped " << tmp_type << " Materia !" << std::endl;
 }
 
-void	Character::use(int idx, Character& target)
+void	Character::use(int idx, ICharacter& target)
 {
 	if (idx < 0 || idx > 3)
 	{

@@ -6,11 +6,12 @@
 /*   By: ljohnson <ljohnson@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/08 18:22:26 by ljohnson          #+#    #+#             */
-/*   Updated: 2023/02/13 14:23:00 by ljohnson         ###   ########lyon.fr   */
+/*   Updated: 2023/02/14 08:21:02 by ljohnson         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <AMateria.hpp>
+#include <ICharacter.hpp>
 
 /* ************************************************************************** */
 /* Constructors & Destructors */
@@ -65,4 +66,9 @@ bool	const&	AMateria::getEquipped() const {return (this->equipped);}
 
 void	AMateria::setEquipped(bool equipped) {this->equipped = equipped;}
 
-// void	AMateria::use(ICharacter& target) {}
+void	AMateria::use(ICharacter& target)
+{
+	std::cout << "* use an Abstract Materia on " << GREEN;
+	std::cout << target.getName() << FWHITE;
+	std::cout << " *" << std::endl;
+}

@@ -6,7 +6,7 @@
 #    By: ljohnson <ljohnson@student.42lyon.fr>      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/01/26 11:24:33 by ljohnson          #+#    #+#              #
-#    Updated: 2023/02/13 16:45:23 by ljohnson         ###   ########lyon.fr    #
+#    Updated: 2023/02/14 08:21:22 by ljohnson         ###   ########lyon.fr    #
 #                                                                              #
 # **************************************************************************** #
 
@@ -49,7 +49,7 @@ OBJS		:=	$(addprefix $(P_OBJS),$(LST_OBJS))
 
 # Commands
 CC	:=	c++
-CF	:=	-Wall -Werror -Wextra -std=c++98
+CF	:=	-Wall -Werror -Wextra -std=c++98 -g -fsanitize=address
 CI	:=	-I $(P_INCS)
 CS	:=	-g3 -fsanitize=address
 CT	:=	-g3 -fsanitize=threads
