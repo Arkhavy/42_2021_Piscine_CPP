@@ -6,7 +6,7 @@
 /*   By: ljohnson <ljohnson@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/30 11:42:58 by ljohnson          #+#    #+#             */
-/*   Updated: 2023/02/06 14:56:26 by ljohnson         ###   ########lyon.fr   */
+/*   Updated: 2023/02/14 16:18:45 by ljohnson         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,7 @@ Cat::Cat(std::string type)
 Cat::Cat(Cat const& src) : Animal(src)
 {
 	*this = src;
+	delete this->brain;
 	this->brain = new Brain(*src.brain);
 	std::cout << FAINT << CYAN;
 	std::cout << "Cat " << this->type << " copy constructor called.";
@@ -56,7 +57,8 @@ Cat::~Cat()
 Cat&	Cat::operator=(Cat const& rhs)
 {
 	this->type = rhs.type;
-	this->brain = rhs.brain;
+	delete this->brain;
+	this->brain = new Brain(*rhs.brain);
 	return (*this);
 }
 

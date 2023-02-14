@@ -6,7 +6,7 @@
 /*   By: ljohnson <ljohnson@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/30 11:22:51 by ljohnson          #+#    #+#             */
-/*   Updated: 2023/02/06 15:14:31 by ljohnson         ###   ########lyon.fr   */
+/*   Updated: 2023/02/14 16:21:05 by ljohnson         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,11 +24,11 @@ class Cat : public AAnimal
 		Cat(); //Default constructor
 		Cat(std::string type);
 		Cat(Cat const& src); //Copy constructor
-		~Cat(); //Default destructor
+		virtual ~Cat(); //Default destructor
 
-		void	makeSound() const;
-		void	display_ideas() const;
-		void	set_brain_idea(unsigned int const index, std::string const& idea);
+		virtual void	makeSound() const;
+		void			display_ideas() const;
+		void			set_brain_idea(unsigned int const index, std::string const& idea);
 
 		Cat&	operator=(Cat const& rhs); //Assignment operator overload
 };
