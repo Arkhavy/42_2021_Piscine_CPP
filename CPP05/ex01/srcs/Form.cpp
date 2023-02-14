@@ -6,7 +6,7 @@
 /*   By: ljohnson <ljohnson@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/14 17:13:17 by ljohnson          #+#    #+#             */
-/*   Updated: 2023/02/14 18:20:57 by ljohnson         ###   ########lyon.fr   */
+/*   Updated: 2023/02/14 21:32:16 by ljohnson         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ Form::Form(Form const& src) : sign_req(src.sign_req), exec_req(src.exec_req)
 Form::~Form()
 {
 	std::cout << FAINT;
-	std::cout << this->name << " From default destructor called.";
+	std::cout << this->name << " Form default destructor called.";
 	std::cout << FWHITE << std::endl;
 }
 
@@ -57,12 +57,25 @@ Form&	Form::operator=(Form const& rhs)
 
 std::ostream&	operator<<(std::ostream& out, Form const& rhs)
 {
-	out << "--------------------------------------------------" << std::endl;
-	out << "Form: " << rhs.get_name() << std::endl;
-	out << "Is signed: " << rhs.get_is_signed() << std::endl;
-	out << "Sign Requirement grade: " << rhs.get_sign_req() << std::endl;
-	out << "Execution Requirement grade: " << rhs.get_exec_req() << std::endl;
-	out << "--------------------------------------------------" << std::endl;
+	out << FAINT << "----------" << FWHITE << std::endl;
+
+	out << "Form: " << CYAN;
+	out << rhs.get_name();
+	out << FWHITE << std::endl;
+
+	out << "Is signed: " << CYAN;
+	out << rhs.get_is_signed();
+	out << FWHITE << std::endl;
+
+	out << "Sign Requirement grade: " << CYAN;
+	out << rhs.get_sign_req();
+	out << FWHITE << std::endl;
+
+	out << "Execution Requirement grade: " << CYAN;
+	out << rhs.get_exec_req();
+	out << FWHITE << std::endl;
+
+	out << FAINT << "----------" << FWHITE << std::endl;
 	return (out);
 }
 

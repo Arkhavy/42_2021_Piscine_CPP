@@ -6,7 +6,7 @@
 /*   By: ljohnson <ljohnson@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/14 12:59:40 by ljohnson          #+#    #+#             */
-/*   Updated: 2023/02/14 18:18:02 by ljohnson         ###   ########lyon.fr   */
+/*   Updated: 2023/02/14 21:11:50 by ljohnson         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -103,7 +103,7 @@ void	Bureaucrat::signForm(Form& doc) const
 	}
 	if (this->grade > doc.get_sign_req())
 	{
-		std::cout << this->name << "couldn't sign " << doc.get_name();
+		std::cout << this->name << " couldn't sign " << doc.get_name() << ", ";
 		throw GradeTooLowException();
 	}
 	doc.beSigned(*this);
