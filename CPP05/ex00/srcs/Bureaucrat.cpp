@@ -6,7 +6,7 @@
 /*   By: ljohnson <ljohnson@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/14 12:59:40 by ljohnson          #+#    #+#             */
-/*   Updated: 2023/02/14 17:51:44 by ljohnson         ###   ########lyon.fr   */
+/*   Updated: 2023/02/14 17:54:19 by ljohnson         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,8 +70,8 @@ std::ostream&	operator<<(std::ostream& out, Bureaucrat const& rhs)
 /* ************************************************************************** */
 /* Exceptions */
 /* ************************************************************************** */
-char const*	Bureaucrat::GradeTooHighException::what() const throw() {return ("Grade is too High !");}
-char const*	Bureaucrat::GradeTooLowException::what() const throw() {return ("Grade is too low !");}
+char const*	Bureaucrat::GradeTooHighException::what() const throw() {return ("Bureaucrat Grade is too High !");}
+char const*	Bureaucrat::GradeTooLowException::what() const throw() {return ("Bureaucrat Grade is too low !");}
 
 /* ************************************************************************** */
 /* Public Member Functions */
