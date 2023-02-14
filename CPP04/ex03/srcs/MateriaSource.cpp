@@ -6,7 +6,7 @@
 /*   By: ljohnson <ljohnson@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/13 16:31:01 by ljohnson          #+#    #+#             */
-/*   Updated: 2023/02/14 08:33:28 by ljohnson         ###   ########lyon.fr   */
+/*   Updated: 2023/02/14 10:36:52 by ljohnson         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -106,13 +106,16 @@ AMateria*	MateriaSource::createMateria(std::string const& type)
 	}
 	for (int i = 0; i < 4; i++)
 	{
-		if (type == this->inventory[i]->getType())
+		if (this->inventory[i])
 		{
-			std::cout << "Materia ";
-			std::cout << CYAN << type << FWHITE;
-			std::cout << " successfully created !" << std::endl;
-			return (this->inventory[i]->clone());
-		}
+			if (type == this->inventory[i]->getType())
+			{
+				std::cout << "Materia ";
+				std::cout << CYAN << type << FWHITE;
+				std::cout << " successfully created !" << std::endl;
+				return (this->inventory[i]->clone());
+			}
+		}	
 	}
 	std::cerr << RED << BOLD;
 	std::cerr << "The type given does not match any learned Materia type !";
