@@ -6,7 +6,7 @@
 /*   By: ljohnson <ljohnson@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/14 12:59:40 by ljohnson          #+#    #+#             */
-/*   Updated: 2023/02/15 14:27:24 by ljohnson         ###   ########lyon.fr   */
+/*   Updated: 2023/02/15 14:40:23 by ljohnson         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -121,6 +121,6 @@ void	Bureaucrat::executeForm(AForm const& form)
 		throw CannotExecuteException();
 	form.execute(*this);
 	std::cout << GREEN << BOLD << this->name << FWHITE;
-	std::cout << " executed AForm ";
+	std::cout << " executed successfully AForm ";
 	std::cout << CYAN << BOLD << form.get_name() << FWHITE << std::endl;
 }
