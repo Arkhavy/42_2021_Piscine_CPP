@@ -6,7 +6,7 @@
 /*   By: ljohnson <ljohnson@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/15 13:31:04 by ljohnson          #+#    #+#             */
-/*   Updated: 2023/02/15 15:35:16 by ljohnson         ###   ########lyon.fr   */
+/*   Updated: 2023/02/15 16:45:08 by ljohnson         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ void	print_err(char const* what)
 
 int	main(void)
 {
-	RobotomyRequestForm		ouaf("ceci est une cible");
+	ShrubberyCreationForm	ouaf("cible_lol");
 	Bureaucrat				ouef1("1", 140);
 	Bureaucrat				ouef2("2", 40);
 	Bureaucrat				ouef3("3", 1);
