@@ -6,7 +6,7 @@
 /*   By: ljohnson <ljohnson@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/15 13:31:04 by ljohnson          #+#    #+#             */
-/*   Updated: 2023/02/15 16:45:08 by ljohnson         ###   ########lyon.fr   */
+/*   Updated: 2023/02/15 17:12:16 by ljohnson         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,65 +23,40 @@ void	print_err(char const* what)
 
 int	main(void)
 {
-	ShrubberyCreationForm	ouaf("cible_lol");
-	Bureaucrat				ouef1("1", 140);
-	Bureaucrat				ouef2("2", 40);
-	Bureaucrat				ouef3("3", 1);
+	Bureaucrat*	worker[3];
+	AForm*		paperwork[3];
 
+	worker[0] = new Bureaucrat("Emperor", 1);
+	worker[1] = new Bureaucrat("Jedi Padawan", 70);
+	worker[2] = new Bureaucrat("Stormtrooper", 150);
+	paperwork[0] = new PresidentialPardonForm("JarJar Binks");
+	paperwork[1] = new RobotomyRequestForm("General Grievous");
+	paperwork[2] = new ShrubberyCreationForm("Temple");
 
-	std::cout << ouaf << std::endl;
-	std::cout << ouef1 << std::endl;
-	std::cout << ouef2 << std::endl;
-	std::cout << ouef3 << std::endl;
+	for (int i = 0; i < 3; i++)
+		std::cout << *worker[i];
+	for (int i = 0; i < 3; i++)
+		std::cout << *paperwork[i];
 
+	std::cout << FAINT << "--------------------------------------------------" << FWHITE << std::endl;
 
-	try {ouef1.signForm(ouaf);}
-	catch(std::exception& e) {print_err(e.what());}
-
-	std::cout << ouaf << std::endl;
-
-	try {ouef1.executeForm(ouaf);}
-	catch(std::exception& e) {print_err(e.what());}
-
-	try {ouef2.executeForm(ouaf);}
-	catch(std::exception& e) {print_err(e.what());}
-
-	try {ouef3.executeForm(ouaf);}
-	catch(std::exception& e) {print_err(e.what());}
-
-	std::cout << std::endl << "--------------------------------------------------" << std::endl << std::endl;
-	std::cout << std::endl << "--------------------------------------------------" << std::endl << std::endl;
-
-	try {ouef2.signForm(ouaf);}
-	catch(std::exception& e) {print_err(e.what());}
-
-	std::cout << ouaf << std::endl;
-
-	try {ouef1.executeForm(ouaf);}
-	catch(std::exception& e) {print_err(e.what());}
-
-	try {ouef2.executeForm(ouaf);}
-	catch(std::exception& e) {print_err(e.what());}
-
-	try {ouef3.executeForm(ouaf);}
-	catch(std::exception& e) {print_err(e.what());}
-
-	std::cout << std::endl << "--------------------------------------------------" << std::endl << std::endl;
-	std::cout << std::endl << "--------------------------------------------------" << std::endl << std::endl;
-
-	try {ouef3.signForm(ouaf);}
-	catch(std::exception& e) {print_err(e.what());}
-
-	std::cout << ouaf << std::endl;
-
-	try {ouef1.executeForm(ouaf);}
-	catch(std::exception& e) {print_err(e.what());}
-
-	try {ouef2.executeForm(ouaf);}
-	catch(std::exception& e) {print_err(e.what());}
-
-	try {ouef3.executeForm(ouaf);}
-	catch(std::exception& e) {print_err(e.what());}
-
+	for (int i = 2; i >= 0; i--)
+	{
+		for (int j = 0; j <= 2; j++)
+		{
+			try {worker[i]->signForm(*paperwork[j]);}
+			catch(std::exception& e) {print_err(e.what());}
+			std::cout << *paperwork[j];
+			try {worker[i]->executeForm(*paperwork[j]);}
+			catch(std::exception& e) {print_err(e.what());}
+			std::cout << FAINT << "-------------------------" << FWHITE << std::endl;
+		}
+		std::cout << FAINT << "-------------------------" << FWHITE << std::endl;
+	}
+	for (int i = 0; i < 3; i++)
+	{
+		delete worker[i];
+		delete paperwork[i];
+	}
 	return (0);
 }
