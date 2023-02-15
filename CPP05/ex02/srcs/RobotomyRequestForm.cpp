@@ -6,7 +6,7 @@
 /*   By: ljohnson <ljohnson@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/15 11:53:54 by ljohnson          #+#    #+#             */
-/*   Updated: 2023/02/15 13:25:56 by ljohnson         ###   ########lyon.fr   */
+/*   Updated: 2023/02/15 13:30:45 by ljohnson         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,8 @@ RobotomyRequestForm::~RobotomyRequestForm()
 /* ************************************************************************** */
 RobotomyRequestForm&	RobotomyRequestForm::operator=(RobotomyRequestForm const& rhs)
 {
-	this->target = rhs.target;
+	this->~RobotomyRequestForm();
+	new(this) RobotomyRequestForm(rhs.target);
 	return (*this);
 }
 
@@ -61,5 +62,6 @@ RobotomyRequestForm&	RobotomyRequestForm::operator=(RobotomyRequestForm const& r
 /* ************************************************************************** */
 void	RobotomyRequestForm::execute(Bureaucrat const& executor) const
 {
+	(void)executor;
 	//ouaf
 }

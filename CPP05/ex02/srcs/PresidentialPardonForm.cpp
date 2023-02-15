@@ -6,7 +6,7 @@
 /*   By: ljohnson <ljohnson@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/15 11:38:30 by ljohnson          #+#    #+#             */
-/*   Updated: 2023/02/15 13:25:56 by ljohnson         ###   ########lyon.fr   */
+/*   Updated: 2023/02/15 13:30:39 by ljohnson         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,8 @@ PresidentialPardonForm::~PresidentialPardonForm()
 /* ************************************************************************** */
 PresidentialPardonForm&	PresidentialPardonForm::operator=(PresidentialPardonForm const& rhs)
 {
-	this->target = rhs.target;
+	this->~PresidentialPardonForm();
+	new(this) PresidentialPardonForm(rhs.target);
 	return (*this);
 }
 
@@ -61,5 +62,6 @@ PresidentialPardonForm&	PresidentialPardonForm::operator=(PresidentialPardonForm
 /* ************************************************************************** */
 void	PresidentialPardonForm::execute(Bureaucrat const& executor) const
 {
+	(void)executor;
 	//ouaf
 }

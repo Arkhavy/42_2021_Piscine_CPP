@@ -6,7 +6,7 @@
 /*   By: ljohnson <ljohnson@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/15 11:54:13 by ljohnson          #+#    #+#             */
-/*   Updated: 2023/02/15 13:25:56 by ljohnson         ###   ########lyon.fr   */
+/*   Updated: 2023/02/15 13:30:48 by ljohnson         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,8 @@ ShrubberyCreationForm::~ShrubberyCreationForm()
 /* ************************************************************************** */
 ShrubberyCreationForm&	ShrubberyCreationForm::operator=(ShrubberyCreationForm const& rhs)
 {
-	this->target = rhs.target;
+	this->~ShrubberyCreationForm();
+	new(this) ShrubberyCreationForm(rhs.target);
 	return (*this);
 }
 
@@ -61,5 +62,6 @@ ShrubberyCreationForm&	ShrubberyCreationForm::operator=(ShrubberyCreationForm co
 /* ************************************************************************** */
 void	ShrubberyCreationForm::execute(Bureaucrat const& executor) const
 {
+	(void)executor;
 	//ouaf
 }
