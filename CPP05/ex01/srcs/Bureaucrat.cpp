@@ -6,7 +6,7 @@
 /*   By: ljohnson <ljohnson@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/14 12:59:40 by ljohnson          #+#    #+#             */
-/*   Updated: 2023/02/14 21:11:50 by ljohnson         ###   ########lyon.fr   */
+/*   Updated: 2023/02/15 11:33:26 by ljohnson         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,18 +94,18 @@ void	Bureaucrat::decrement_grade()
 	this->grade++;
 }
 
-void	Bureaucrat::signForm(Form& doc) const
+void	Bureaucrat::signForm(Form& form) const
 {
-	if (doc.get_is_signed())
+	if (form.get_is_signed())
 	{
-		std::cout << this->name << " couldn't sign " << doc.get_name() << " because ";
+		std::cout << this->name << " couldn't sign " << form.get_name() << " because ";
 		throw AlreadySignedException();
 	}
-	if (this->grade > doc.get_sign_req())
+	if (this->grade > form.get_sign_req())
 	{
-		std::cout << this->name << " couldn't sign " << doc.get_name() << ", ";
+		std::cout << this->name << " couldn't sign " << form.get_name() << ", ";
 		throw GradeTooLowException();
 	}
-	doc.beSigned(*this);
-	std::cout << this->name << " signed Form " << doc.get_name() << std::endl;
+	form.beSigned(*this);
+	std::cout << this->name << " signed Form " << form.get_name() << std::endl;
 }

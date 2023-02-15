@@ -6,7 +6,7 @@
 /*   By: ljohnson <ljohnson@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/14 12:34:11 by ljohnson          #+#    #+#             */
-/*   Updated: 2023/02/14 18:16:31 by ljohnson         ###   ########lyon.fr   */
+/*   Updated: 2023/02/15 11:33:10 by ljohnson         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ class Bureaucrat
 		Bureaucrat(Bureaucrat const& src);
 		~Bureaucrat();
 
-		void				signForm(Form& doc) const;
+		void				signForm(Form& form) const;
 
 		//Getters & Setters
 		std::string const	getName() const;
