@@ -72,6 +72,12 @@ class AForm
 				virtual char const* what() const throw();
 		};
 
+		class NotSignedException : public std::exception
+		{
+			public:
+				virtual char const* what() const throw();
+		};
+
 		//Operator overloads
 		AForm&	operator=(AForm const& rhs);
 };

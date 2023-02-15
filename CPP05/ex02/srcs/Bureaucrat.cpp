@@ -6,7 +6,7 @@
 /*   By: ljohnson <ljohnson@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/14 12:59:40 by ljohnson          #+#    #+#             */
-/*   Updated: 2023/02/15 13:25:56 by ljohnson         ###   ########lyon.fr   */
+/*   Updated: 2023/02/15 14:27:24 by ljohnson         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,6 +73,8 @@ std::ostream&	operator<<(std::ostream& out, Bureaucrat const& rhs)
 char const*	Bureaucrat::GradeTooHighException::what() const throw() {return ("Bureaucrat Grade is too High !");}
 char const*	Bureaucrat::GradeTooLowException::what() const throw() {return ("Bureaucrat Grade is too low !");}
 char const* Bureaucrat::AlreadySignedException::what() const throw() {return ("Bureaucrat saw the AForm is already signed !");}
+char const*	Bureaucrat::NotSignedException::what() const throw() {return ("Bureaucrat saw the AForm is not signed yet !");}
+char const*	Bureaucrat::CannotExecuteException::what() const throw() {return ("Bureaucrat cannot execute form given !");}
 
 /* ************************************************************************** */
 /* Public Member Functions */
@@ -94,18 +96,31 @@ void	Bureaucrat::decrement_grade()
 	this->grade++;
 }
 
-void	Bureaucrat::signForm(AForm& AForm) const
+void	Bureaucrat::signForm(AForm& form) const
 {
-	if (AForm.get_is_signed())
+	if (form.get_is_signed())
 	{
-		std::cout << this->name << " couldn't sign " << AForm.get_name() << " because ";
+		std::cout << this->name << " couldn't sign " << form.get_name() << " because ";
 		throw AlreadySignedException();
 	}
-	if (this->grade > AForm.get_sign_req())
+	if (this->grade > form.get_sign_req())
 	{
-		std::cout << this->name << " couldn't sign " << AForm.get_name() << ", ";
+		std::cout << this->name << " couldn't sign " << form.get_name() << ", ";
 		throw GradeTooLowException();
 	}
-	AForm.beSigned(*this);
-	std::cout << this->name << " signed AForm " << AForm.get_name() << std::endl;
+	form.beSigned(*this);
+	std::cout << this->name << " signed AForm ";
+	std::cout << CYAN << BOLD << form.get_name() << FWHITE << std::endl;
+}
+
+void	Bureaucrat::executeForm(AForm const& form)
+{
+	if (!form.get_is_signed())
+		throw NotSignedException();
+	if (this->grade > form.get_exec_req())
+		throw CannotExecuteException();
+	form.execute(*this);
+	std::cout << GREEN << BOLD << this->name << FWHITE;
+	std::cout << " executed AForm ";
+	std::cout << CYAN << BOLD << form.get_name() << FWHITE << std::endl;
 }

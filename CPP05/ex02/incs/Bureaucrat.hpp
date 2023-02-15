@@ -6,7 +6,7 @@
 /*   By: ljohnson <ljohnson@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/14 12:34:11 by ljohnson          #+#    #+#             */
-/*   Updated: 2023/02/15 13:25:56 by ljohnson         ###   ########lyon.fr   */
+/*   Updated: 2023/02/15 14:27:14 by ljohnson         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,8 @@ class AForm;
 #define BOLD "\033[1m"
 #define FAINT "\033[2m"
 #define FWHITE "\033[0m"
+#define ITALIC "\033[3m"
+#define UNDERLINE "\033[4m"
 
 class Bureaucrat
 {
@@ -41,8 +43,8 @@ class Bureaucrat
 		Bureaucrat(Bureaucrat const& src);
 		~Bureaucrat();
 
-		void				signForm(AForm& AForm) const;
-		void				executeForm(AForm const& AForm);
+		void				signForm(AForm& form) const;
+		void				executeForm(AForm const& form);
 
 		//Getters & Setters
 		std::string const	getName() const;
@@ -64,6 +66,18 @@ class Bureaucrat
 		};
 
 		class AlreadySignedException : public std::exception
+		{
+			public:
+				virtual char const* what() const throw();
+		};
+
+		class NotSignedException : public std::exception
+		{
+			public:
+				virtual char const* what() const throw();
+		};
+
+		class CannotExecuteException : public std::exception
 		{
 			public:
 				virtual char const* what() const throw();

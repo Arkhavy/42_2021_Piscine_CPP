@@ -6,7 +6,7 @@
 /*   By: ljohnson <ljohnson@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/15 11:38:30 by ljohnson          #+#    #+#             */
-/*   Updated: 2023/02/15 13:30:39 by ljohnson         ###   ########lyon.fr   */
+/*   Updated: 2023/02/15 14:28:03 by ljohnson         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,6 +62,11 @@ PresidentialPardonForm&	PresidentialPardonForm::operator=(PresidentialPardonForm
 /* ************************************************************************** */
 void	PresidentialPardonForm::execute(Bureaucrat const& executor) const
 {
-	(void)executor;
-	//ouaf
+	if (!this->get_is_signed())
+		throw NotSignedException();
+	if (executor.getGrade() > this->get_exec_req())
+		throw GradeTooLowException();
+	std::cout << YELLOW << BOLD << this->target << FWHITE;
+	std::cout << " has been pardoned by ";
+	std::cout << RED << BOLD << ITALIC << UNDERLINE << "Zaphod Beeblebrox" << FWHITE << std::endl;
 }

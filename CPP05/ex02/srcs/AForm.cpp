@@ -58,19 +58,19 @@ std::ostream&	operator<<(std::ostream& out, AForm const& rhs)
 {
 	out << FAINT << "----------" << FWHITE << std::endl;
 
-	out << "AForm: " << CYAN;
+	out << "AForm: " << CYAN << BOLD;
 	out << rhs.get_name();
 	out << FWHITE << std::endl;
 
-	out << "Is signed: " << CYAN;
+	out << "Is signed: " << CYAN << BOLD;
 	out << rhs.get_is_signed();
 	out << FWHITE << std::endl;
 
-	out << "Sign Requirement grade: " << CYAN;
+	out << "Sign Requirement grade: " << CYAN << BOLD;
 	out << rhs.get_sign_req();
 	out << FWHITE << std::endl;
 
-	out << "Execution Requirement grade: " << CYAN;
+	out << "Execution Requirement grade: " << CYAN << BOLD;
 	out << rhs.get_exec_req();
 	out << FWHITE << std::endl;
 
@@ -84,6 +84,7 @@ std::ostream&	operator<<(std::ostream& out, AForm const& rhs)
 char const*	AForm::GradeTooHighException::what() const throw() {return ("AForm Grade is too High !");}
 char const*	AForm::GradeTooLowException::what() const throw() {return ("AForm Grade is too Low !");}
 char const* AForm::AlreadySignedException::what() const throw() {return ("AForm is already signed !");}
+char const*	AForm::NotSignedException::what() const throw() {return ("AForm is not signed yet !");}
 
 /* ************************************************************************** */
 /* Public Member Functions */
