@@ -6,15 +6,15 @@
 /*   By: ljohnson <ljohnson@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/15 11:52:53 by ljohnson          #+#    #+#             */
-/*   Updated: 2023/02/15 11:53:04 by ljohnson         ###   ########lyon.fr   */
+/*   Updated: 2023/02/15 13:25:56 by ljohnson         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
 #pragma once
 
-#include <Form.hpp>
+#include <AForm.hpp>
 
-class RobotomyRequestForm : public Form
+class RobotomyRequestForm : public AForm
 {
 	private:
 		RobotomyRequestForm();

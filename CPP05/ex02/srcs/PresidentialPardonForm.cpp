@@ -6,7 +6,7 @@
 /*   By: ljohnson <ljohnson@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/15 11:38:30 by ljohnson          #+#    #+#             */
-/*   Updated: 2023/02/15 11:52:30 by ljohnson         ###   ########lyon.fr   */
+/*   Updated: 2023/02/15 13:25:56 by ljohnson         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 /* Constructors & Destructors */
 /* ************************************************************************** */
 PresidentialPardonForm::PresidentialPardonForm() :
-	Form("PresidentialPardonForm", 25, 5), target("Default")
+	AForm("PresidentialPardonForm", 25, 5), target("Default")
 {
 	std::cout << FAINT;
 	std::cout << "Default PresidentialPardonForm constructor called.";
@@ -24,7 +24,7 @@ PresidentialPardonForm::PresidentialPardonForm() :
 }
 
 PresidentialPardonForm::PresidentialPardonForm(std::string const target) :
-	Form("PresidentialPardonForm", 25, 5), target(target)
+	AForm("PresidentialPardonForm", 25, 5), target(target)
 {
 	std::cout << FAINT;
 	std::cout << "PresidentialPardonForm with target [" << this->target << "] constructor called.";
@@ -32,7 +32,7 @@ PresidentialPardonForm::PresidentialPardonForm(std::string const target) :
 }
 
 PresidentialPardonForm::PresidentialPardonForm(PresidentialPardonForm const& src) :
-	Form(src)
+	AForm(src)
 {
 	*this = src; //Need potential change later to check Shallow and Deep Copy
 	std::cout << FAINT;

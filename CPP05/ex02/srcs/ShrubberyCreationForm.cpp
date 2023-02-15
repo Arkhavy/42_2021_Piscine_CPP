@@ -6,7 +6,7 @@
 /*   By: ljohnson <ljohnson@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/15 11:54:13 by ljohnson          #+#    #+#             */
-/*   Updated: 2023/02/15 11:54:23 by ljohnson         ###   ########lyon.fr   */
+/*   Updated: 2023/02/15 13:25:56 by ljohnson         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 /* Constructors & Destructors */
 /* ************************************************************************** */
 ShrubberyCreationForm::ShrubberyCreationForm() :
-	Form("ShrubberyCreationForm", 25, 5), target("Default")
+	AForm("ShrubberyCreationForm", 25, 5), target("Default")
 {
 	std::cout << FAINT;
 	std::cout << "Default ShrubberyCreationForm constructor called.";
@@ -24,7 +24,7 @@ ShrubberyCreationForm::ShrubberyCreationForm() :
 }
 
 ShrubberyCreationForm::ShrubberyCreationForm(std::string const target) :
-	Form("ShrubberyCreationForm", 25, 5), target(target)
+	AForm("ShrubberyCreationForm", 25, 5), target(target)
 {
 	std::cout << FAINT;
 	std::cout << "ShrubberyCreationForm with target [" << this->target << "] constructor called.";
@@ -32,7 +32,7 @@ ShrubberyCreationForm::ShrubberyCreationForm(std::string const target) :
 }
 
 ShrubberyCreationForm::ShrubberyCreationForm(ShrubberyCreationForm const& src) :
-	Form(src)
+	AForm(src)
 {
 	*this = src; //Need potential change later to check Shallow and Deep Copy
 	std::cout << FAINT;

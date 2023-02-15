@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Form.hpp                                           :+:      :+:    :+:   */
+/*   AForm.hpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ljohnson <ljohnson@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -28,10 +28,10 @@ class Bureaucrat;
 #define FAINT "\033[2m"
 #define FWHITE "\033[0m"
 
-class Form
+class AForm
 {
 	private:
-		Form();
+		AForm();
 		std::string const	name;
 		bool				is_signed;
 		unsigned int const	sign_req; //range from highest 1 to lowest 150
@@ -39,9 +39,9 @@ class Form
 
 	public:
 		//Constructors & Destructors
-		Form(std::string const name, unsigned int const sign_req, unsigned int const exec_req);
-		Form(Form const& src);
-		virtual ~Form();
+		AForm(std::string const name, unsigned int const sign_req, unsigned int const exec_req);
+		AForm(AForm const& src);
+		virtual ~AForm();
 
 		void			beSigned(Bureaucrat const& worker);
 		virtual void	execute(Bureaucrat const& executor) const = 0;
@@ -73,7 +73,7 @@ class Form
 		};
 
 		//Operator overloads
-		Form&	operator=(Form const& rhs);
+		AForm&	operator=(AForm const& rhs);
 };
 
-std::ostream&	operator<<(std::ostream& out, Form const& rhs);
+std::ostream&	operator<<(std::ostream& out, AForm const& rhs);

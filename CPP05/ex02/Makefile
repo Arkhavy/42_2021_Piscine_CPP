@@ -6,22 +6,29 @@
 #    By: ljohnson <ljohnson@student.42lyon.fr>      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/01/26 11:24:33 by ljohnson          #+#    #+#              #
-#    Updated: 2023/02/14 11:13:56 by ljohnson         ###   ########lyon.fr    #
+#    Updated: 2023/02/15 13:24:52 by ljohnson         ###   ########lyon.fr    #
 #                                                                              #
 # **************************************************************************** #
 
 .PHONY: all clean fclean re
 # .SILENT:
 
-NAME	:=	
+NAME	:=	FormExecution
 
 #//////////////////////////////////////////////////////////////////////////////
 #		ALL FILES
 #//////////////////////////////////////////////////////////////////////////////
 
 # Files
-LST_INCS	:=	
-LST_SRCS	:=	
+LST_INCS	:=	Bureaucrat.hpp	AForm.hpp	\
+				PresidentialPardonForm.hpp	\
+				RobotomyRequestForm.hpp		\
+				ShrubberyCreationForm.hpp
+LST_SRCS	:=	Bureaucrat.cpp	AForm.cpp	\
+				PresidentialPardonForm.cpp	\
+				RobotomyRequestForm.cpp		\
+				ShrubberyCreationForm.cpp	\
+				main.cpp
 LST_DEPS	:=	$(LST_SRCS:.cpp=.d)
 LST_OBJS	:=	$(LST_SRCS:.cpp=.o)
 

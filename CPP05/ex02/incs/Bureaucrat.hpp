@@ -6,7 +6,7 @@
 /*   By: ljohnson <ljohnson@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/14 12:34:11 by ljohnson          #+#    #+#             */
-/*   Updated: 2023/02/15 11:33:02 by ljohnson         ###   ########lyon.fr   */
+/*   Updated: 2023/02/15 13:25:56 by ljohnson         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,8 +16,8 @@
 #include <string>
 #include <exception>
 
-#include <Form.hpp>
-class Form;
+#include <AForm.hpp>
+class AForm;
 
 #define YELLOW "\033[33m"
 #define CYAN "\033[36m"
@@ -41,8 +41,8 @@ class Bureaucrat
 		Bureaucrat(Bureaucrat const& src);
 		~Bureaucrat();
 
-		void				signForm(Form& form) const;
-		void				executeForm(Form const& form)
+		void				signForm(AForm& AForm) const;
+		void				executeForm(AForm const& AForm);
 
 		//Getters & Setters
 		std::string const	getName() const;
