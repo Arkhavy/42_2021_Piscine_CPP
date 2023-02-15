@@ -6,7 +6,7 @@
 /*   By: ljohnson <ljohnson@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/15 13:31:04 by ljohnson          #+#    #+#             */
-/*   Updated: 2023/02/15 14:36:04 by ljohnson         ###   ########lyon.fr   */
+/*   Updated: 2023/02/15 15:27:14 by ljohnson         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,9 +23,9 @@ void	print_err(char const* what)
 
 int	main(void)
 {
-	PresidentialPardonForm	ouaf("ceci est une cible");
-	Bureaucrat				ouef1("1", 50);
-	Bureaucrat				ouef2("2", 20);
+	RobotomyRequestForm		ouaf("ceci est une cible");
+	Bureaucrat				ouef1("1", 140);
+	Bureaucrat				ouef2("2", 40);
 	Bureaucrat				ouef3("3", 1);
 
 
@@ -81,6 +81,9 @@ int	main(void)
 	catch(AForm::AlreadySignedException& e) {print_err(e.what());}
 	catch(AForm::NotSignedException& e) {print_err(e.what());}
 
+	std::cout << std::endl << "--------------------------------------------------" << std::endl << std::endl;
+	std::cout << std::endl << "--------------------------------------------------" << std::endl << std::endl;
+
 	try {ouef2.signForm(ouaf);}
 	catch(Bureaucrat::GradeTooHighException& e) {print_err(e.what());}
 	catch(Bureaucrat::GradeTooLowException& e) {print_err(e.what());}
@@ -126,5 +129,55 @@ int	main(void)
 	catch(AForm::GradeTooLowException& e) {print_err(e.what());}
 	catch(AForm::AlreadySignedException& e) {print_err(e.what());}
 	catch(AForm::NotSignedException& e) {print_err(e.what());}
+
+	std::cout << std::endl << "--------------------------------------------------" << std::endl << std::endl;
+	std::cout << std::endl << "--------------------------------------------------" << std::endl << std::endl;
+
+	try {ouef3.signForm(ouaf);}
+	catch(Bureaucrat::GradeTooHighException& e) {print_err(e.what());}
+	catch(Bureaucrat::GradeTooLowException& e) {print_err(e.what());}
+	catch(Bureaucrat::AlreadySignedException& e) {print_err(e.what());}
+	catch(Bureaucrat::NotSignedException& e) {print_err(e.what());}
+	catch(Bureaucrat::CannotExecuteException& e) {print_err(e.what());}
+	catch(AForm::GradeTooHighException& e) {print_err(e.what());}
+	catch(AForm::GradeTooLowException& e) {print_err(e.what());}
+	catch(AForm::AlreadySignedException& e) {print_err(e.what());}
+	catch(AForm::NotSignedException& e) {print_err(e.what());}
+
+	std::cout << ouaf << std::endl;
+
+	try {ouef1.executeForm(ouaf);}
+	catch(Bureaucrat::GradeTooHighException& e) {print_err(e.what());}
+	catch(Bureaucrat::GradeTooLowException& e) {print_err(e.what());}
+	catch(Bureaucrat::AlreadySignedException& e) {print_err(e.what());}
+	catch(Bureaucrat::NotSignedException& e) {print_err(e.what());}
+	catch(Bureaucrat::CannotExecuteException& e) {print_err(e.what());}
+	catch(AForm::GradeTooHighException& e) {print_err(e.what());}
+	catch(AForm::GradeTooLowException& e) {print_err(e.what());}
+	catch(AForm::AlreadySignedException& e) {print_err(e.what());}
+	catch(AForm::NotSignedException& e) {print_err(e.what());}
+
+	try {ouef2.executeForm(ouaf);}
+	catch(Bureaucrat::GradeTooHighException& e) {print_err(e.what());}
+	catch(Bureaucrat::GradeTooLowException& e) {print_err(e.what());}
+	catch(Bureaucrat::AlreadySignedException& e) {print_err(e.what());}
+	catch(Bureaucrat::NotSignedException& e) {print_err(e.what());}
+	catch(Bureaucrat::CannotExecuteException& e) {print_err(e.what());}
+	catch(AForm::GradeTooHighException& e) {print_err(e.what());}
+	catch(AForm::GradeTooLowException& e) {print_err(e.what());}
+	catch(AForm::AlreadySignedException& e) {print_err(e.what());}
+	catch(AForm::NotSignedException& e) {print_err(e.what());}
+
+	try {ouef3.executeForm(ouaf);}
+	catch(Bureaucrat::GradeTooHighException& e) {print_err(e.what());}
+	catch(Bureaucrat::GradeTooLowException& e) {print_err(e.what());}
+	catch(Bureaucrat::AlreadySignedException& e) {print_err(e.what());}
+	catch(Bureaucrat::NotSignedException& e) {print_err(e.what());}
+	catch(Bureaucrat::CannotExecuteException& e) {print_err(e.what());}
+	catch(AForm::GradeTooHighException& e) {print_err(e.what());}
+	catch(AForm::GradeTooLowException& e) {print_err(e.what());}
+	catch(AForm::AlreadySignedException& e) {print_err(e.what());}
+	catch(AForm::NotSignedException& e) {print_err(e.what());}
+
 	return (0);
 }

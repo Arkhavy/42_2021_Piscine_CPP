@@ -6,7 +6,7 @@
 /*   By: ljohnson <ljohnson@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/15 11:53:54 by ljohnson          #+#    #+#             */
-/*   Updated: 2023/02/15 13:30:45 by ljohnson         ###   ########lyon.fr   */
+/*   Updated: 2023/02/15 15:23:44 by ljohnson         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 /* Constructors & Destructors */
 /* ************************************************************************** */
 RobotomyRequestForm::RobotomyRequestForm() :
-	AForm("RobotomyRequestForm", 25, 5), target("Default")
+	AForm("RobotomyRequestForm", 72, 45), target("Default")
 {
 	std::cout << FAINT;
 	std::cout << "Default RobotomyRequestForm constructor called.";
@@ -24,7 +24,7 @@ RobotomyRequestForm::RobotomyRequestForm() :
 }
 
 RobotomyRequestForm::RobotomyRequestForm(std::string const target) :
-	AForm("RobotomyRequestForm", 25, 5), target(target)
+	AForm("RobotomyRequestForm", 72, 45), target(target)
 {
 	std::cout << FAINT;
 	std::cout << "RobotomyRequestForm with target [" << this->target << "] constructor called.";
@@ -62,6 +62,23 @@ RobotomyRequestForm&	RobotomyRequestForm::operator=(RobotomyRequestForm const& r
 /* ************************************************************************** */
 void	RobotomyRequestForm::execute(Bureaucrat const& executor) const
 {
-	(void)executor;
-	//ouaf
+	static int	nb_lol = 0;
+
+	if (!this->get_is_signed())
+		throw NotSignedException();
+	if (executor.getGrade() > this->get_exec_req())
+		throw GradeTooLowException();
+	nb_lol++;
+	std::cout << ITALIC << BOLD << "BRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRR...." << FWHITE << std::endl;
+	if ((nb_lol % 2) == 0)
+	{
+		std::cout << YELLOW << BOLD << this->target << FWHITE;
+		std::cout << " has been robotomized succesfully !" << std::endl;
+	}
+	else
+	{
+		std::cout << "Robotomy of ";
+		std::cout << YELLOW << BOLD << this->target << FWHITE;
+		std::cout << " failed, try again !" << std::endl;
+	}
 }
