@@ -6,7 +6,7 @@
 /*   By: ljohnson <ljohnson@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/14 14:54:51 by ljohnson          #+#    #+#             */
-/*   Updated: 2023/02/14 17:10:31 by ljohnson         ###   ########lyon.fr   */
+/*   Updated: 2023/02/16 07:13:01 by ljohnson         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,10 +25,15 @@ void	init_bureaucrat(std::string const& name, unsigned int const grade)
 
 	std::cout << worker << std::endl;
 
+	std::cout << GREEN << "Incrementation" << FWHITE << std::endl;
 	worker.increment_grade();
 	std::cout << worker << std::endl;
+
+	std::cout << GREEN << "Decrementation" << FWHITE << std::endl;
 	worker.decrement_grade();
 	std::cout << worker << std::endl;
+
+	std::cout << GREEN << "Decrementation" << FWHITE << std::endl;
 	worker.decrement_grade();
 	std::cout << worker << std::endl;
 }
@@ -55,8 +60,7 @@ int	main(void)
 					print_err("Ouaf!");
 			}
 		}
-		catch (Bureaucrat::GradeTooHighException& e) {print_err(e.what());}
-		catch (Bureaucrat::GradeTooLowException& e) {print_err(e.what());}
+		catch (std::exception& e) {print_err(e.what());}
 		std::cout << "--------------------------------------------------" << std::endl;
 	}
 	return (0);

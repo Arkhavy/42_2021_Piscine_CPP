@@ -6,7 +6,7 @@
 /*   By: ljohnson <ljohnson@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/14 17:13:17 by ljohnson          #+#    #+#             */
-/*   Updated: 2023/02/14 21:32:16 by ljohnson         ###   ########lyon.fr   */
+/*   Updated: 2023/02/16 07:21:17 by ljohnson         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,10 @@
 /* ************************************************************************** */
 Form::Form() : name("Default form"), is_signed(false), sign_req(150), exec_req(150)
 {
+	if (this->sign_req < 1 || this->exec_req < 1)
+		throw GradeTooHighException();
+	else if (this->sign_req > 150 || this->exec_req > 150)
+		throw GradeTooLowException();
 	std::cout << FAINT;
 	std::cout << "Default Form constructor called.";
 	std::cout << FWHITE << std::endl;
@@ -25,6 +29,10 @@ Form::Form() : name("Default form"), is_signed(false), sign_req(150), exec_req(1
 Form::Form(std::string const name, unsigned int const sign_req, unsigned int const exec_req) :
 	name(name), is_signed(false), sign_req(sign_req), exec_req(exec_req)
 {
+	if (sign_req < 1 || exec_req < 1)
+		throw GradeTooHighException();
+	else if (sign_req > 150 || exec_req > 150)
+		throw GradeTooLowException();
 	std::cout << FAINT;
 	std::cout << this->name << " Form constructor called.";
 	std::cout << FWHITE << std::endl;
@@ -32,6 +40,10 @@ Form::Form(std::string const name, unsigned int const sign_req, unsigned int con
 
 Form::Form(Form const& src) : sign_req(src.sign_req), exec_req(src.exec_req)
 {
+	if (sign_req < 1 || exec_req < 1)
+		throw GradeTooHighException();
+	else if (sign_req > 150 || exec_req > 150)
+		throw GradeTooLowException();
 	*this = src;
 	std::cout << FAINT;
 	std::cout << this->name << " Form copy constructor called.";
@@ -57,8 +69,6 @@ Form&	Form::operator=(Form const& rhs)
 
 std::ostream&	operator<<(std::ostream& out, Form const& rhs)
 {
-	out << FAINT << "----------" << FWHITE << std::endl;
-
 	out << "Form: " << CYAN;
 	out << rhs.get_name();
 	out << FWHITE << std::endl;
@@ -73,9 +83,7 @@ std::ostream&	operator<<(std::ostream& out, Form const& rhs)
 
 	out << "Execution Requirement grade: " << CYAN;
 	out << rhs.get_exec_req();
-	out << FWHITE << std::endl;
-
-	out << FAINT << "----------" << FWHITE << std::endl;
+	out << FWHITE << std::endl << std::endl;
 	return (out);
 }
 
