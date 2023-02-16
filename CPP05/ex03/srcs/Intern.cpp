@@ -6,7 +6,7 @@
 /*   By: ljohnson <ljohnson@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/15 17:22:38 by ljohnson          #+#    #+#             */
-/*   Updated: 2023/02/15 17:45:06 by ljohnson         ###   ########lyon.fr   */
+/*   Updated: 2023/02/16 09:03:18 by ljohnson         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,10 +39,9 @@ Intern::~Intern()
 /* ************************************************************************** */
 /* Operator Overloads */
 /* ************************************************************************** */
-Intern&	operator=(Intern const& rhs)
+Intern&	Intern::operator=(Intern const& rhs)
 {
-	this->~Intern();
-	new(this) Intern();
+	(void)rhs;
 	return (*this);
 }
 
@@ -63,23 +62,25 @@ static int	check_form_name(std::string const& form_name)
 		if (form_name == form_list[i])
 			return (i);
 	}
-	throw FormDoesNotExistException();
+	throw Intern::FormDoesNotExistException();
 	// return (4);
 }
 
-AForm&	Intern::makeForm(std::string const form_name, std::string const target)
+AForm*	Intern::makeForm(std::string const form_name, std::string const target)
 {
 	int	form_to_create = check_form_name(form_name);
+	AForm*	tmp;
 
 	switch(form_to_create)
 	{
 		case 0:
-			return (new PresidentialPardonForm(target)); break ;
+			tmp = new PresidentialPardonForm(target); break ;
 		case 1:
-			return (new RobotomyRequestForm(target)); break ;
+			tmp = new RobotomyRequestForm(target); break ;
 		case 2:
-			return (new ShrubberyCreationForm(target)); break ;
+			tmp = new ShrubberyCreationForm(target); break ;
 		default:
 			throw FormDoesNotExistException();
 	}
+	return (tmp);
 }
