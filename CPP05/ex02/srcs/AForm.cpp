@@ -17,6 +17,10 @@
 /* ************************************************************************** */
 AForm::AForm() : name("Default AForm"), is_signed(false), sign_req(150), exec_req(150)
 {
+	if (this->sign_req < 1 || this->exec_req < 1)
+		throw GradeTooHighException();
+	else if (this->sign_req > 150 || this->exec_req > 150)
+		throw GradeTooLowException();
 	std::cout << FAINT;
 	std::cout << "Default AForm constructor called.";
 	std::cout << FWHITE << std::endl;
@@ -25,6 +29,10 @@ AForm::AForm() : name("Default AForm"), is_signed(false), sign_req(150), exec_re
 AForm::AForm(std::string const name, unsigned int const sign_req, unsigned int const exec_req) :
 	name(name), is_signed(false), sign_req(sign_req), exec_req(exec_req)
 {
+	if (sign_req < 1 || exec_req < 1)
+		throw GradeTooHighException();
+	else if (sign_req > 150 || exec_req > 150)
+		throw GradeTooLowException();
 	std::cout << FAINT;
 	std::cout << this->name << " AForm constructor called.";
 	std::cout << FWHITE << std::endl;
@@ -32,6 +40,10 @@ AForm::AForm(std::string const name, unsigned int const sign_req, unsigned int c
 
 AForm::AForm(AForm const& src) : sign_req(src.sign_req), exec_req(src.exec_req)
 {
+	if (src.sign_req < 1 || src.exec_req < 1)
+		throw GradeTooHighException();
+	else if (src.sign_req > 150 || src.exec_req > 150)
+		throw GradeTooLowException();
 	*this = src;
 	std::cout << FAINT;
 	std::cout << this->name << " AForm copy constructor called.";

@@ -6,7 +6,7 @@
 /*   By: ljohnson <ljohnson@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/14 17:13:17 by ljohnson          #+#    #+#             */
-/*   Updated: 2023/02/16 07:21:17 by ljohnson         ###   ########lyon.fr   */
+/*   Updated: 2023/02/16 07:46:34 by ljohnson         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,9 +40,9 @@ Form::Form(std::string const name, unsigned int const sign_req, unsigned int con
 
 Form::Form(Form const& src) : sign_req(src.sign_req), exec_req(src.exec_req)
 {
-	if (sign_req < 1 || exec_req < 1)
+	if (src.sign_req < 1 || src.exec_req < 1)
 		throw GradeTooHighException();
-	else if (sign_req > 150 || exec_req > 150)
+	else if (src.sign_req > 150 || src.exec_req > 150)
 		throw GradeTooLowException();
 	*this = src;
 	std::cout << FAINT;
