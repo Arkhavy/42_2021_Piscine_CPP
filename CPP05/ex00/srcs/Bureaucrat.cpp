@@ -6,7 +6,7 @@
 /*   By: ljohnson <ljohnson@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/14 12:59:40 by ljohnson          #+#    #+#             */
-/*   Updated: 2023/02/14 17:54:19 by ljohnson         ###   ########lyon.fr   */
+/*   Updated: 2023/02/16 08:29:19 by ljohnson         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,10 @@
 /* ************************************************************************** */
 Bureaucrat::Bureaucrat() : name("Default"), grade(150) //Private
 {
+	if (this->grade < 1)
+		throw GradeTooHighException();
+	else if (this->grade > 150)
+		throw GradeTooLowException();
 	std::cout << FAINT;
 	std::cout << "Default Bureaucrat constructor called.";
 	std::cout << FWHITE << std::endl;
@@ -36,6 +40,10 @@ Bureaucrat::Bureaucrat(std::string const name, unsigned int const grade) : name(
 
 Bureaucrat::Bureaucrat(Bureaucrat const& src)
 {
+	if (src.grade < 1)
+		throw GradeTooHighException();
+	else if (src.grade > 150)
+		throw GradeTooLowException();
 	*this = src;
 	std::cout << FAINT;
 	std::cout << "Bureaucrat " << this->name << " copy constructor called.";
