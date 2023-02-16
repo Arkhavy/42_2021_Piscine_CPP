@@ -6,7 +6,7 @@
 /*   By: ljohnson <ljohnson@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/30 11:42:58 by ljohnson          #+#    #+#             */
-/*   Updated: 2023/02/14 16:18:45 by ljohnson         ###   ########lyon.fr   */
+/*   Updated: 2023/02/16 18:14:09 by ljohnson         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,6 @@ Cat::~Cat()
 Cat&	Cat::operator=(Cat const& rhs)
 {
 	this->type = rhs.type;
-	delete this->brain;
 	this->brain = new Brain(*rhs.brain);
 	return (*this);
 }

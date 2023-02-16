@@ -6,7 +6,7 @@
 /*   By: ljohnson <ljohnson@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/30 11:43:57 by ljohnson          #+#    #+#             */
-/*   Updated: 2023/02/14 16:22:10 by ljohnson         ###   ########lyon.fr   */
+/*   Updated: 2023/02/16 18:15:01 by ljohnson         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,6 @@ Dog::~Dog()
 Dog&	Dog::operator=(Dog const& rhs)
 {
 	this->type = rhs.type;
-	delete this->brain;
 	this->brain = new Brain(*rhs.brain);
 	return (*this);
 }
