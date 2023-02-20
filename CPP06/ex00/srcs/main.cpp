@@ -6,12 +6,11 @@
 /*   By: ljohnson <ljohnson@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/17 11:31:54 by ljohnson          #+#    #+#             */
-/*   Updated: 2023/02/17 15:01:02 by ljohnson         ###   ########lyon.fr   */
+/*   Updated: 2023/02/20 19:21:59 by ljohnson         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <iostream>
-#include <climits>
+#include <Convert.hpp>
 
 int	print_err(char const* what)
 {
@@ -32,24 +31,39 @@ int	main(int ac, char** av)
 {
 	if (ac != 2)
 		return (print_err("ERROR: Usage: ./convert <arg>"));
-
+	try
+	{
+		int	conv_int = static_cast<int>(std::atoi(av[1]));
+		if (static_cast<int>(std::atoi(av[1]) != conv_int))
+			throw IntOverflowException();
+		std::cout << "int: " << conv_int << std::endl;
+	}
+	catch (std::exception& e) {print_err(e.what());}
 	return (0);
 }
 
-if (char_valid)
-	std::cout << "char: " << static_cast<char>var << std::endl;
-else if (not)
-	std::cout << "char:"
-std::cout << "int: " << static_cast<int>var << std::endl;
+//NEED ATOI AND ATOF WITH FOLLOWING CONDITION TO AVOID OVERFLOWS
+//C++ VERSION WILL BE FUN LOLOLOL
+//WILL BE A BRUTAL ONE
+// Will num*10 + digit overflow?
+// if ((num >= INT_MAX/10) && ((num > INT_MAX/10) || (digit > INT_MAX%10)))
 
 
 
-error cases :
-global : no arg | empty string
-char : non displayable | impossible
-int : overflow | impossible
-float : overflow | nanf
-double : overflow | nan
+
+// if (char_valid)
+// 	std::cout << "char: " << static_cast<char>var << std::endl;
+// else if (not)
+// 	std::cout << "char:"
+// std::cout << "int: " << static_cast<int>var << std::endl;
+
+// error cases :
+// global : no arg | empty string
+// char : non displayable | impossible
+// int : overflow | impossible
+// float : overflow | nanf
+// double : overflow | nan
+
 /*
 check all characters
 	if (!isdigit(val[0]))
