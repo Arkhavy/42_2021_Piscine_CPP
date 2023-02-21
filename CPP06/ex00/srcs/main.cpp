@@ -6,7 +6,7 @@
 /*   By: ljohnson <ljohnson@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/17 11:31:54 by ljohnson          #+#    #+#             */
-/*   Updated: 2023/02/21 18:13:10 by ljohnson         ###   ########lyon.fr   */
+/*   Updated: 2023/02/21 19:13:56 by ljohnson         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,54 +24,68 @@ int	print_err(char const* what)
 	return (1);
 }
 
-// bool	ft_is_digit(char value) {return (value >= '0' && value <= '9');}
+bool	ft_is_digit(char value) {return (value >= '0' && value <= '9');}
 
-// bool	ft_is_displayable(char value) {return (value >= 32 && value <= 126);}
+bool	ft_is_displayable(char value) {return (value >= 32 && value <= 126);}
 
-// bool	ft_basic_check(std::string const& str)
-// {
-// 	unsigned int	a = 0;
-// 	unsigned int	len = str.length();
+double	ft_is_double_literal(std::string const& str)
+{
+	if (str == "+inf" || str == "+inff")
+		return (strtod("+inf", NULL));
+	else if (str == "-inf" || str == "-inff")
+		return (strtod("-inf", NULL));
+	else if (str == "nan" || str "nanf")
+		return (strtod("nan", NULL));
+	return (false);
+}
 
-// 	if (len == 1 && (str[0] == '-' || str[0] == '+'))
-// 		return (false);
-// 	if (len > 1)
-// 	{
-// 		if (str[0] == '-' || str[0] == '+')
-// 			a++;
-// 		while (ft_is_digit(str[a]))
-// 			a++;
-// 	}
-// 	if (a == len)
-// 		return (true);
-// 	return (false);
-// }
+bool	ft_basic_check(std::string const& str)
+{
+	unsigned int	a = 0;
+	unsigned int	len = str.length();
 
-// bool	ft_is_char(std::string const& str)
-// {
-// 	if (str.length() > 1)
-// 		return (false);
-// 	if (!ft_is_displayable(str[0]))
-// 		return (false);
-// }
+	if (len == 1 && (str[0] == '-' || str[0] == '+'))
+		return (false);
+	if (len > 1)
+	{
+		if (str[0] == '-' || str[0] == '+')
+			a++;
+		while (ft_is_digit(str[a]))
+			a++;
+	}
+	if (a == len)
+		return (true);
+	return (false);
+}
 
-// bool	ft_is_int(std::string const& str)
-// {
-// 	if (!ft_basic_check(str))
-// 		return (false);
-// }
+bool	ft_is_char(std::string const& str)
+{
+	if (str.empty())
+		return (false);
+	if (str.length() > 1)
+		return (false);
+	if (str[0] >= 0 && str[0] <= 127)
+		return (true);
+	return (false);
+}
 
-// bool	ft_is_float(std::string const& str)
-// {
-// 	if (!ft_basic_check(str))
-// 		return (false);
-// }
+bool	ft_is_int(std::string const& str)
+{
+	if (!ft_basic_check(str))
+		return (false);
+}
 
-// bool	ft_is_double(std::string const& str)
-// {
-// 	if (!ft_basic_check(str))
-// 		return (false);
-// }
+bool	ft_is_float(std::string const& str)
+{
+	if (!ft_basic_check(str))
+		return (false);
+}
+
+bool	ft_is_double(std::string const& str)
+{
+	if (!ft_basic_check(str))
+		return (false);
+}
 
 // int result = result * 10 + static_cast<int>(str[a] + '0');
 /* ************************************************************************** */
