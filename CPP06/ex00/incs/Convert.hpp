@@ -6,7 +6,7 @@
 /*   By: ljohnson <ljohnson@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/20 18:20:02 by ljohnson          #+#    #+#             */
-/*   Updated: 2023/02/20 18:54:09 by ljohnson         ###   ########lyon.fr   */
+/*   Updated: 2023/02/21 18:12:24 by ljohnson         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,9 @@
 #include <string>
 #include <exception>
 #include <climits>
+#include <cfloat>
 #include <cstdlib>
+#include <iomanip>
 
 #define YELLOW "\033[33m"
 #define CYAN "\033[36m"
@@ -109,4 +111,10 @@ class	DoubleNaNException : public std::exception
 {
 	public:
 		virtual char const* what() const throw();
+};
+
+class	DefaultException : public std::exception
+{
+	public:
+		virtual char const*	what() const throw();
 };

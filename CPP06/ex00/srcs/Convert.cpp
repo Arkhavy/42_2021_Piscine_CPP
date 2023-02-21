@@ -6,7 +6,7 @@
 /*   By: ljohnson <ljohnson@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/20 18:24:38 by ljohnson          #+#    #+#             */
-/*   Updated: 2023/02/21 11:52:57 by ljohnson         ###   ########lyon.fr   */
+/*   Updated: 2023/02/21 14:20:48 by ljohnson         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,4 +40,7 @@ char const*	DoubleInfNegativeException::what() const throw() {return ("double: -
 char const*	DoubleInfPositiveException::what() const throw() {return ("double: +inf");}
 char const*	DoubleNaNException::what() const throw() {return ("double: NaN");}
 
-
+/* ************************************************************************** */
+/* Other Exceptions */
+/* ************************************************************************** */
+char const*	DefaultException::what() const throw() {return ("Default error");}

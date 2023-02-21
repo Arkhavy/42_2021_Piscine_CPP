@@ -6,7 +6,7 @@
 /*   By: ljohnson <ljohnson@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/17 11:31:54 by ljohnson          #+#    #+#             */
-/*   Updated: 2023/02/21 13:02:38 by ljohnson         ###   ########lyon.fr   */
+/*   Updated: 2023/02/21 18:13:10 by ljohnson         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,152 +24,68 @@ int	print_err(char const* what)
 	return (1);
 }
 
-bool	ft_isdigit(char value) {return (value >= '0' && value <= '9');}
+// bool	ft_is_digit(char value) {return (value >= '0' && value <= '9');}
 
-int	ft_power(int const nb, int power)
-{
-	int	result = 1;
+// bool	ft_is_displayable(char value) {return (value >= 32 && value <= 126);}
 
-	if ((nb == 0 && power != 0) || power < 0)
-		return (0);
-	if ((nb < 0 && power == 0) || (power == 0))
-		return (1);
-	else
-	{
-		for (; power > 0; power--)
-			result = result * nb;
-	}
-	return (result);
-}
+// bool	ft_basic_check(std::string const& str)
+// {
+// 	unsigned int	a = 0;
+// 	unsigned int	len = str.length();
 
-unsigned int	ft_sign_check(char const* str, int& negative)
-{
-	if (str[0] == '-' || str[0] == '+')
-	{
-		if (str[0] == '-')
-			negative = -1;
-		return (1);
-	}
-	return (0);
-}
+// 	if (len == 1 && (str[0] == '-' || str[0] == '+'))
+// 		return (false);
+// 	if (len > 1)
+// 	{
+// 		if (str[0] == '-' || str[0] == '+')
+// 			a++;
+// 		while (ft_is_digit(str[a]))
+// 			a++;
+// 	}
+// 	if (a == len)
+// 		return (true);
+// 	return (false);
+// }
 
-/* ************************************************************************** */
-/* Int Conversion */
-/* ************************************************************************** */
-//Ajouter condition overflow int
-int	ft_add_str_to_int(char const* str, int& a)
-{
-	int	result = 0;
+// bool	ft_is_char(std::string const& str)
+// {
+// 	if (str.length() > 1)
+// 		return (false);
+// 	if (!ft_is_displayable(str[0]))
+// 		return (false);
+// }
 
-	while (ft_isdigit(str[a]))
-	{
-		result = result * 10 + static_cast<int>(str[a] - '0');
-		a++;
-	}
-	return (result);
-}
+// bool	ft_is_int(std::string const& str)
+// {
+// 	if (!ft_basic_check(str))
+// 		return (false);
+// }
 
-int	ft_atoi(char const* str)
-{
-	int		negative = 1;
-	int		a = ft_sign_check(str, negative);
-	long	result = ft_add_str_to_int(str, a);
+// bool	ft_is_float(std::string const& str)
+// {
+// 	if (!ft_basic_check(str))
+// 		return (false);
+// }
 
-	if (result > LONG_MAX && negative == -1)
-		return (0);
-	else if (result > LONG_MAX && negative == 1)
-		return (-1);
-	return (static_cast<int>(result * negative));
-}
+// bool	ft_is_double(std::string const& str)
+// {
+// 	if (!ft_basic_check(str))
+// 		return (false);
+// }
 
-/* ************************************************************************** */
-/* Float Conversion */
-/* ************************************************************************** */
-//Ajouter condition overflow float
-float	ft_add_str_to_float(char const* str, int& a)
-{
-	float	result = 0;
-
-	while (ft_isdigit(str[a]))
-	{
-		result = result * 10 + static_cast<float>(str[a] - '0');
-		a++;
-	}
-	return (result);
-}
-
-float	ft_atof(char const* str)
-{
-	float	decimal = 0;
-	int		negative = 1;
-	int		point = 1;
-	int		a = ft_sign_check(str, negative);
-	int		result = ft_add_str_to_int(str, a);
-
-	if (str[a] == '.')
-	{
-		a++;
-		point = a;
-		decimal = ft_add_str_to_int(str, a);
-		point = a - point;
-	}
-	return (static_cast<float>((result + (decimal / ft_power(10, point))) * negative));
-}
-
-/* ************************************************************************** */
-/* Double Conversion */
-/* ************************************************************************** */
-//Ajouter condition overflow double
-double	ft_add_str_to_double(char const* str, int& a)
-{
-	double	result = 0;
-
-	while (ft_isdigit(str[a]))
-	{
-		result = result * 10 + static_cast<double>(str[a] - '0');
-		a++;
-	}
-	return (result);
-}
-
-float	ft_atod(char const* str)
-{
-	double	decimal = 0;
-	int		negative = 1;
-	int		point = 1;
-	int		a = ft_sign_check(str, negative);
-	int		result = ft_add_str_to_int(str, a);
-
-	if (str[a] == '.')
-	{
-		a++;
-		point = a;
-		decimal = ft_add_str_to_int(str, a);
-		point = a - point;
-	}
-	return (static_cast<double>((result + (decimal / ft_power(10, point))) * negative));
-}
-
+// int result = result * 10 + static_cast<int>(str[a] + '0');
 /* ************************************************************************** */
 /* Main */
 /* ************************************************************************** */
 
 int	main(int ac, char** av)
 {
+	// std::string	tmp = av[1];
 	if (ac != 2)
 		return (print_err("ERROR: Usage: ./convert <arg>"));
-	(void)av;
+	std::cout << "ouaf: " << std::setprecision(8) << atof(av[1]) << std::endl;
 	return (0);
 }
-
-//NEED ATOI AND ATOF WITH FOLLOWING CONDITION TO AVOID OVERFLOWS
-//C++ VERSION WILL BE FUN LOLOLOL
-//WILL BE A BRUTAL ONE
-// Will num*10 + digit overflow?
-// if ((num >= INT_MAX/10) && ((num > INT_MAX/10) || (digit > INT_MAX%10)))
-
-
-
 
 // if (char_valid)
 // 	std::cout << "char: " << static_cast<char>var << std::endl;
