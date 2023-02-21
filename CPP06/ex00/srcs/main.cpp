@@ -6,11 +6,15 @@
 /*   By: ljohnson <ljohnson@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/17 11:31:54 by ljohnson          #+#    #+#             */
-/*   Updated: 2023/02/20 19:21:59 by ljohnson         ###   ########lyon.fr   */
+/*   Updated: 2023/02/21 12:02:29 by ljohnson         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <Convert.hpp>
+
+/* ************************************************************************** */
+/* Main Functions */
+/* ************************************************************************** */
 
 int	print_err(char const* what)
 {
@@ -20,25 +24,140 @@ int	print_err(char const* what)
 	return (1);
 }
 
-bool	ft_isdigit(char value)
+bool	ft_isdigit(char value) {return (value >= '0' && value <= '9');}
+
+int	ft_power(int const nb, int const power)
 {
-	if (value < '0' && value > '9')
-		return (false);
-	return (true);
+	int	result = 1;
+
+	if ((nb == 0 && power != 0) || power < 0)
+		return (0);
+	if ((nb < 0 && power == 0) || (power == 0))
+		return (1);
+	else
+	{
+		for (; power > 0; power--)
+			result = result * nb;
+	}
+	return (result);
 }
+
+unsigned int	ft_sign_check(char const& str, int& negative)
+{
+	if (str[0] == '-' || str[0] == '+')
+	{
+		if (str[0] == '-')
+			negative = -1;
+		return (1);
+	}
+	return (0);
+}
+
+/* ************************************************************************** */
+/* Int Conversion */
+/* ************************************************************************** */
+//Ajouter condition overflow int
+int	ft_add_str_to_int(char const& str, int& a)
+{
+	int	result = 0;
+
+	while (ft_isdigit(str[a]))
+	{
+		result = result * 10 + static_cast<int>(str[a] - '0');
+		a++;
+	}
+	return (result);
+}
+
+int	ft_atoi(char const& str)
+{
+	int		negative = 1;
+	int		a = ft_sign_check(str, negative);
+	long	result = ft_add_str_to_int(str, a);
+
+	if (result > LONG_MAX && negative == -1)
+		return (0);
+	else if (result > LONG_MAX && negative == 1)
+		return (-1);
+	return (static_cast<int>(result * negative));
+}
+
+/* ************************************************************************** */
+/* Float Conversion */
+/* ************************************************************************** */
+//Ajouter condition overflow float
+float	ft_add_str_to_float(char const& str, int& a)
+{
+	float	result = 0;
+
+	while (ft_isdigit(str[a]))
+	{
+		result = result * 10 + static_cast<float>(str[a] - '0');
+		a++;
+	}
+	return (result);
+}
+
+float	ft_atof(char const& str)
+{
+	float	decimal = 0;
+	int		negative = 1;
+	int		point = 1;
+	int		a = ft_atoi_check(str, negative);
+	int		result = ft_add_str_to_int(str, a);
+
+	if (str[a] == '.')
+	{
+		a++;
+		point = a;
+		decimal = ft_add_str_to_int(str, a);
+		point = a - point;
+	}
+	return (static_cast<float>((result + (decimal / ft_power(10, point))) * negative));
+}
+
+/* ************************************************************************** */
+/* Double Conversion */
+/* ************************************************************************** */
+//Ajouter condition overflow double
+double	ft_add_str_to_double(char const& str, int& a)
+{
+	double	result = 0;
+
+	while (ft_isdigit(str[a]))
+	{
+		result = result * 10 + static_cast<double>(str[a] - '0');
+		a++;
+	}
+	return (result);
+}
+
+float	ft_atod(char const& str)
+{
+	double	decimal = 0;
+	int		negative = 1;
+	int		point = 1;
+	int		a = ft_atoi_check(str, negative);
+	int		result = ft_add_str_to_int(str, a);
+
+	if (str[a] == '.')
+	{
+		a++;
+		point = a;
+		decimal = ft_add_str_to_int(str, a);
+		point = a - point;
+	}
+	return (static_cast<double>((result + (decimal / ft_power(10, point))) * negative));
+}
+
+/* ************************************************************************** */
+/* Main */
+/* ************************************************************************** */
 
 int	main(int ac, char** av)
 {
 	if (ac != 2)
 		return (print_err("ERROR: Usage: ./convert <arg>"));
-	try
-	{
-		int	conv_int = static_cast<int>(std::atoi(av[1]));
-		if (static_cast<int>(std::atoi(av[1]) != conv_int))
-			throw IntOverflowException();
-		std::cout << "int: " << conv_int << std::endl;
-	}
-	catch (std::exception& e) {print_err(e.what());}
 	return (0);
 }
 
