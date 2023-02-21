@@ -6,7 +6,7 @@
 /*   By: ljohnson <ljohnson@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/17 11:31:54 by ljohnson          #+#    #+#             */
-/*   Updated: 2023/02/21 12:02:29 by ljohnson         ###   ########lyon.fr   */
+/*   Updated: 2023/02/21 13:02:38 by ljohnson         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ int	print_err(char const* what)
 
 bool	ft_isdigit(char value) {return (value >= '0' && value <= '9');}
 
-int	ft_power(int const nb, int const power)
+int	ft_power(int const nb, int power)
 {
 	int	result = 1;
 
@@ -42,7 +42,7 @@ int	ft_power(int const nb, int const power)
 	return (result);
 }
 
-unsigned int	ft_sign_check(char const& str, int& negative)
+unsigned int	ft_sign_check(char const* str, int& negative)
 {
 	if (str[0] == '-' || str[0] == '+')
 	{
@@ -57,7 +57,7 @@ unsigned int	ft_sign_check(char const& str, int& negative)
 /* Int Conversion */
 /* ************************************************************************** */
 //Ajouter condition overflow int
-int	ft_add_str_to_int(char const& str, int& a)
+int	ft_add_str_to_int(char const* str, int& a)
 {
 	int	result = 0;
 
@@ -69,7 +69,7 @@ int	ft_add_str_to_int(char const& str, int& a)
 	return (result);
 }
 
-int	ft_atoi(char const& str)
+int	ft_atoi(char const* str)
 {
 	int		negative = 1;
 	int		a = ft_sign_check(str, negative);
@@ -86,7 +86,7 @@ int	ft_atoi(char const& str)
 /* Float Conversion */
 /* ************************************************************************** */
 //Ajouter condition overflow float
-float	ft_add_str_to_float(char const& str, int& a)
+float	ft_add_str_to_float(char const* str, int& a)
 {
 	float	result = 0;
 
@@ -98,12 +98,12 @@ float	ft_add_str_to_float(char const& str, int& a)
 	return (result);
 }
 
-float	ft_atof(char const& str)
+float	ft_atof(char const* str)
 {
 	float	decimal = 0;
 	int		negative = 1;
 	int		point = 1;
-	int		a = ft_atoi_check(str, negative);
+	int		a = ft_sign_check(str, negative);
 	int		result = ft_add_str_to_int(str, a);
 
 	if (str[a] == '.')
@@ -120,7 +120,7 @@ float	ft_atof(char const& str)
 /* Double Conversion */
 /* ************************************************************************** */
 //Ajouter condition overflow double
-double	ft_add_str_to_double(char const& str, int& a)
+double	ft_add_str_to_double(char const* str, int& a)
 {
 	double	result = 0;
 
@@ -132,12 +132,12 @@ double	ft_add_str_to_double(char const& str, int& a)
 	return (result);
 }
 
-float	ft_atod(char const& str)
+float	ft_atod(char const* str)
 {
 	double	decimal = 0;
 	int		negative = 1;
 	int		point = 1;
-	int		a = ft_atoi_check(str, negative);
+	int		a = ft_sign_check(str, negative);
 	int		result = ft_add_str_to_int(str, a);
 
 	if (str[a] == '.')
@@ -158,6 +158,7 @@ int	main(int ac, char** av)
 {
 	if (ac != 2)
 		return (print_err("ERROR: Usage: ./convert <arg>"));
+	(void)av;
 	return (0);
 }
 
