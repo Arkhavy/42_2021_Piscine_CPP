@@ -6,7 +6,7 @@
 /*   By: ljohnson <ljohnson@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/20 18:20:02 by ljohnson          #+#    #+#             */
-/*   Updated: 2023/02/22 12:05:14 by ljohnson         ###   ########lyon.fr   */
+/*   Updated: 2023/02/22 13:53:36 by ljohnson         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@
 /* ************************************************************************** */
 /* Char Exceptions */
 /* ************************************************************************** */
-class	CharImpossibleException : public std::exception
+class	IsCharException : public std::exception
 {
 	public:
 		virtual char const* what() const throw();
@@ -55,6 +55,18 @@ class	IntImpossibleException : public std::exception
 /* ************************************************************************** */
 /* Float Exceptions */
 /* ************************************************************************** */
+class	FloatPosInfException : public std::exception
+{
+	public:
+		virtual char const* what() const throw();
+};
+
+class	FloatNegInfException : public std::exception
+{
+	public:
+		virtual char const* what() const throw();
+};
+
 class	FloatNaNException : public std::exception
 {
 	public:
@@ -64,6 +76,18 @@ class	FloatNaNException : public std::exception
 /* ************************************************************************** */
 /* Double Exceptions */
 /* ************************************************************************** */
+class	DoublePosInfException : public std::exception
+{
+	public:
+		virtual char const* what() const throw();
+};
+
+class	DoubleNegInfException : public std::exception
+{
+	public:
+		virtual char const* what() const throw();
+};
+
 class	DoubleNaNException : public std::exception
 {
 	public:
@@ -73,8 +97,8 @@ class	DoubleNaNException : public std::exception
 /* ************************************************************************** */
 /* Other Exceptions */
 /* ************************************************************************** */
-class	EmptyStrException : public std::exception
+class	NbNotValidException : public std::exception
 {
 	public:
 		virtual char const* what() const throw();
-};
+}
