@@ -6,7 +6,7 @@
 /*   By: ljohnson <ljohnson@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/20 18:20:02 by ljohnson          #+#    #+#             */
-/*   Updated: 2023/02/21 18:12:24 by ljohnson         ###   ########lyon.fr   */
+/*   Updated: 2023/02/22 12:05:14 by ljohnson         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,6 @@
 #include <climits>
 #include <cfloat>
 #include <cstdlib>
-#include <iomanip>
 
 #define YELLOW "\033[33m"
 #define CYAN "\033[36m"
@@ -47,12 +46,6 @@ class	CharNonDisplayableException : public std::exception
 /* ************************************************************************** */
 /* Int Exceptions */
 /* ************************************************************************** */
-class	IntOverflowException : public std::exception
-{
-	public:
-		virtual char const*	what() const throw();
-};
-
 class	IntImpossibleException : public std::exception
 {
 	public:
@@ -62,24 +55,6 @@ class	IntImpossibleException : public std::exception
 /* ************************************************************************** */
 /* Float Exceptions */
 /* ************************************************************************** */
-class	FloatOverflowException : public std::exception
-{
-	public:
-		virtual char const*	what() const throw();
-};
-
-class	FloatInfNegativeException : public std::exception
-{
-	public:
-		virtual char const* what() const throw();
-};
-
-class	FloatInfPositiveException : public std::exception
-{
-	public:
-		virtual char const* what() const throw();
-};
-
 class	FloatNaNException : public std::exception
 {
 	public:
@@ -89,32 +64,17 @@ class	FloatNaNException : public std::exception
 /* ************************************************************************** */
 /* Double Exceptions */
 /* ************************************************************************** */
-class	DoubleOverflowException : public std::exception
-{
-	public:
-		virtual char const*	what() const throw();
-};
-
-class	DoubleInfNegativeException : public std::exception
-{
-	public:
-		virtual char const* what() const throw();
-};
-
-class	DoubleInfPositiveException : public std::exception
-{
-	public:
-		virtual char const* what() const throw();
-};
-
 class	DoubleNaNException : public std::exception
 {
 	public:
 		virtual char const* what() const throw();
 };
 
-class	DefaultException : public std::exception
+/* ************************************************************************** */
+/* Other Exceptions */
+/* ************************************************************************** */
+class	EmptyStrException : public std::exception
 {
 	public:
-		virtual char const*	what() const throw();
+		virtual char const* what() const throw();
 };
