@@ -6,7 +6,7 @@
 /*   By: ljohnson <ljohnson@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/17 11:31:54 by ljohnson          #+#    #+#             */
-/*   Updated: 2023/02/22 13:57:36 by ljohnson         ###   ########lyon.fr   */
+/*   Updated: 2023/02/22 15:26:33 by ljohnson         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ void	ft_check_literals(std::string const& str, unsigned int const type)
 			case 0: throw IntImpossibleException();
 			case 1: throw FloatPosInfException();
 			case 2: throw DoublePosInfException();
-			default: throw NbNotValidException();
+			default: break ;
 		}
 	}
 	else if (str == "-inf" || str == "-inff")
@@ -47,18 +47,15 @@ void	ft_check_literals(std::string const& str, unsigned int const type)
 			case 0: throw IntImpossibleException();
 			case 1: throw FloatNegInfException();
 			case 2: throw DoubleNegInfException();
-			default: throw NbNotValidException();
+			default: break ;
 		}
 	}
-	else if (str == "nan" || str == "nanf")
+	switch(type)
 	{
-		switch(type)
-		{
-			case 0: throw IntImpossibleException();
-			case 1: throw FloatNaNException();
-			case 2: throw DoubleNaNException();
-			default: throw NbNotValidException();
-		}
+		case 0: throw IntImpossibleException(); break ;
+		case 1: throw FloatNaNException(); break ;
+		case 2: throw DoubleNaNException(); break ;
+		default: throw NbNotValidException();
 	}
 }
 
@@ -77,7 +74,7 @@ void	ft_check_nb_validity(std::string const& str, unsigned int const type)
 		while (ft_is_digit(str[a]) || str[a] == '.')
 		{
 			if (point && str[a] == '.')
-				throw NbNotValidException();
+				break ;
 			if (str[a] == '.')
 				point = true;
 			a++;
@@ -85,7 +82,10 @@ void	ft_check_nb_validity(std::string const& str, unsigned int const type)
 		if (a == len || (a == (len - 1) && str[a] == 'f'))
 			return ;
 	}
-	ft_check_literals(str, type);
+	if (type != 3)
+		ft_check_literals(str, type);
+	else if (type == 3)
+		throw CharImpossibleException();
 	throw NbNotValidException();
 }
 
@@ -98,6 +98,31 @@ bool	ft_is_char(std::string const& str)
 	return (true);
 }
 
+void	ft_char_handler(std::string const& str)
+{
+	if (ft_is_char(str))
+	{
+		if (ft_is_displayable(str[0]))
+			std::cout << "char: '" << static_cast<char>(str[0]) << "'" << std::endl;
+		else
+			throw CharNonDisplayableException();
+	}
+	else
+	{
+		ft_check_nb_validity(str, 3);
+		int	val = strtol(str.data(), NULL, 10);
+		if (val >= 0 && val <= 127)
+		{
+			if (val >= 32 && val <= 126)
+				std::cout << "char: '" << static_cast<char>(val) << "'" << std::endl;
+			else
+				throw CharNonDisplayableException();
+		}
+		else
+			throw CharImpossibleException();
+	}
+}
+
 /* ************************************************************************** */
 /* Main */
 /* ************************************************************************** */
@@ -107,48 +132,33 @@ int	main(int ac, char** av)
 		return (print_err("ERROR: Usage: ./convert <arg>"));
 
 	std::string	str = av[1];
+
 	if (str.empty())
 		return (print_err("ERROR: argument is empty !"));
 	//char
-	try
-	{
-		if (ft_is_char(str))
-		{
-			if (ft_is_displayable(str[0]))
-				std::cout << "char: " << static_cast<char>(str[0]) << std::endl;
-			else
-				throw CharNonDisplayableException();
-		}
-		if (strtol(str, NULL, 10) >= 0 && strtol(str, NULL, 10) <= 127)
-		{
-			if (strtol(str, NULL, 10) >= 32 && strtol(str, NULL, 10) <= 126)
-				std::cout << "char: " << static_cast<char>(strtol(str, NULL, 10)) << std::endl;
-		}
-		else
-			throw CharImpossibleException();
-	}
+	try {ft_char_handler(str);}
 	catch (std::exception& e) {print_err(e.what());}
 	//int
 	try
 	{
-		ft_check_nb_validity(str);
-		std::cout << "int: " << strtol(str, NULL, 10) << std::endl;
+		ft_check_nb_validity(str, 0);
+		std::cout << "int: " << strtol(str.data(), NULL, 10) << std::endl;
 	}
 	catch (IsCharException& e) {std::cout << "int: " << static_cast<int>(str[0]) << std::endl;}
 	catch (std::exception& e) {print_err(e.what());}
 	//float
 	try
 	{
-		ft_check_nb_validity(str);
-		std::cout << "float: " << static_cast<float>(str) << "f" << std::endl;
+		ft_check_nb_validity(str, 1);
+		std::cout << "float: " << static_cast<float>(strtof(str.data(), NULL)) << "f" << std::endl;
 	}
 	catch (IsCharException& e) {std::cout << "float: " << static_cast<float>(str[0]) << ".0f" << std::endl;}
 	catch (std::exception& e) {print_err(e.what());}
 	//double
 	try
 	{
-		ft_check_nb_validity(str);
-		std::cout << "double: " << static_cast<double>(str) << std::endl;
+		ft_check_nb_validity(str, 2);
+		std::cout << "double: " << static_cast<double>(strtod(str.data(), NULL)) << std::endl;
 	}
 	catch (IsCharException& e) {std::cout << "double: " << static_cast<double>(str[0]) << ".0" << std::endl;}
 	catch (std::exception& e) {print_err(e.what());}

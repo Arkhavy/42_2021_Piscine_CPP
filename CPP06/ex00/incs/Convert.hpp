@@ -6,7 +6,7 @@
 /*   By: ljohnson <ljohnson@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/20 18:20:02 by ljohnson          #+#    #+#             */
-/*   Updated: 2023/02/22 13:53:36 by ljohnson         ###   ########lyon.fr   */
+/*   Updated: 2023/02/22 14:56:40 by ljohnson         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,12 @@ class	IsCharException : public std::exception
 };
 
 class	CharNonDisplayableException : public std::exception
+{
+	public:
+		virtual char const* what() const throw();
+};
+
+class	CharImpossibleException : public std::exception
 {
 	public:
 		virtual char const* what() const throw();
@@ -101,4 +107,4 @@ class	NbNotValidException : public std::exception
 {
 	public:
 		virtual char const* what() const throw();
-}
+};
