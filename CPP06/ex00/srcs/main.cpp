@@ -6,7 +6,7 @@
 /*   By: ljohnson <ljohnson@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/17 11:31:54 by ljohnson          #+#    #+#             */
-/*   Updated: 2023/02/22 18:34:27 by ljohnson         ###   ########lyon.fr   */
+/*   Updated: 2023/02/22 18:56:30 by ljohnson         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -128,7 +128,7 @@ void	ft_char_handler(std::string const& str)
 	else
 	{
 		ft_check_nb_validity(str, 3);
-		int	val = strtol(str.data(), NULL, 10);
+		int	val = std::strtol(str.data(), NULL, 10);
 		if (val >= 0 && val <= 127)
 		{
 			if (val >= 32 && val <= 126)
@@ -160,7 +160,7 @@ int	main(int ac, char** av)
 	try
 	{
 		ft_check_nb_validity(str, 0);
-		std::cout << "int: " << strtol(str.data(), NULL, 10) << std::endl;
+		std::cout << "int: " << std::strtol(str.data(), NULL, 10) << std::endl;
 	}
 	catch (IsCharException& e) {std::cout << "int: " << static_cast<int>(str[0]) << std::endl;}
 	catch (std::exception& e) {print_err(e.what());}
@@ -169,9 +169,9 @@ int	main(int ac, char** av)
 	{
 		ft_check_nb_validity(str, 1);
 		if (ft_check_point(str))
-			std::cout << "float: " << static_cast<float>(strtof(str.data(), NULL)) << "f" << std::endl;
+			std::cout << "float: " << static_cast<float>(std::strtof(str.data(), NULL)) << "f" << std::endl;
 		else
-			std::cout << "float: " << static_cast<float>(strtof(str.data(), NULL)) << ".0f" << std::endl;
+			std::cout << "float: " << static_cast<float>(std::strtof(str.data(), NULL)) << ".0f" << std::endl;
 	}
 	catch (IsCharException& e) {std::cout << "float: " << static_cast<float>(str[0]) << ".0f" << std::endl;}
 	catch (std::exception& e) {print_err(e.what());}
@@ -180,9 +180,9 @@ int	main(int ac, char** av)
 	{
 		ft_check_nb_validity(str, 2);
 		if (ft_check_point(str))
-			std::cout << "double: " << static_cast<double>(strtod(str.data(), NULL)) << std::endl;
+			std::cout << "double: " << static_cast<double>(std::strtod(str.data(), NULL)) << std::endl;
 		else
-			std::cout << "double: " << static_cast<double>(strtod(str.data(), NULL)) << ".0" << std::endl;
+			std::cout << "double: " << static_cast<double>(std::strtod(str.data(), NULL)) << ".0" << std::endl;
 	}
 	catch (IsCharException& e) {std::cout << "double: " << static_cast<double>(str[0]) << ".0" << std::endl;}
 	catch (std::exception& e) {print_err(e.what());}
