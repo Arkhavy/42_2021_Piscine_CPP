@@ -6,7 +6,7 @@
 /*   By: ljohnson <ljohnson@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/20 18:20:02 by ljohnson          #+#    #+#             */
-/*   Updated: 2023/02/22 14:56:40 by ljohnson         ###   ########lyon.fr   */
+/*   Updated: 2023/02/22 18:38:31 by ljohnson         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,6 +58,12 @@ class	IntImpossibleException : public std::exception
 		virtual char const* what() const throw();
 };
 
+class	IntOverflowException : public std::exception
+{
+	public:
+		virtual char const*	what() const throw();
+};
+
 /* ************************************************************************** */
 /* Float Exceptions */
 /* ************************************************************************** */
@@ -79,6 +85,12 @@ class	FloatNaNException : public std::exception
 		virtual char const* what() const throw();
 };
 
+class	FloatOverflowException : public std::exception
+{
+	public:
+		virtual char const*	what() const throw();
+};
+
 /* ************************************************************************** */
 /* Double Exceptions */
 /* ************************************************************************** */
@@ -98,6 +110,12 @@ class	DoubleNaNException : public std::exception
 {
 	public:
 		virtual char const* what() const throw();
+};
+
+class	DoubleOverflowException : public std::exception
+{
+	public:
+		virtual char const*	what() const throw();
 };
 
 /* ************************************************************************** */
