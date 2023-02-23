@@ -6,9 +6,11 @@
 /*   By: ljohnson <ljohnson@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/23 08:18:23 by ljohnson          #+#    #+#             */
-/*   Updated: 2023/02/23 08:48:09 by ljohnson         ###   ########lyon.fr   */
+/*   Updated: 2023/02/23 09:06:50 by ljohnson         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
+
+#pragma once
 
 #include <iostream>
 #include <string>
