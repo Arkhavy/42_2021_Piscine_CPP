@@ -6,7 +6,7 @@
 /*   By: ljohnson <ljohnson@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/17 11:31:54 by ljohnson          #+#    #+#             */
-/*   Updated: 2023/02/22 18:56:30 by ljohnson         ###   ########lyon.fr   */
+/*   Updated: 2023/02/23 08:12:23 by ljohnson         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -141,85 +141,69 @@ void	ft_char_handler(std::string const& str)
 	}
 }
 
+void	ft_int_handler(std::string const& str)
+{
+	ft_check_nb_validity(str, 0);
+	int	val = std::strtol(str.data(), NULL, 10);
+	if (errno == ERANGE)
+		throw IntOverflowException();
+	std::cout << "int: " << val << std::endl;
+}
+
+void	ft_float_handler(std::string const& str)
+{
+	ft_check_nb_validity(str, 1);
+	float	val = std::strtof(str.data(), NULL);
+	if (val > FLT_MAX || val < FLT_MIN)
+		throw FloatOverflowException();
+	if (ft_check_point(str))
+		std::cout << "float: " << val << "f" << std::endl;
+	else
+		std::cout << "float: " << val << ".0f" << std::endl;
+}
+
+void	ft_double_handler(std::string const& str)
+{
+	ft_check_nb_validity(str, 2);
+	double	val = std::strtod(str.data(), NULL);
+	if (val > DBL_MAX || val < DBL_MIN)
+		throw DoubleOverflowException();
+	if (ft_check_point(str))
+		std::cout << "double: " << val << std::endl;
+	else
+		std::cout << "double: " << val << ".0" << std::endl;
+}
+
 /* ************************************************************************** */
 /* Main */
 /* ************************************************************************** */
 int	main(int ac, char** av)
 {
+	std::string	str;;
+
 	if (ac != 2)
 		return (print_err("ERROR: Usage: ./convert <arg>"));
-
-	std::string	str = av[1];
-
+	str = av[1];
 	if (str.empty())
 		return (print_err("ERROR: argument is empty !"));
+
 	//char
 	try {ft_char_handler(str);}
 	catch (std::exception& e) {print_err(e.what());}
+
 	//int
-	try
-	{
-		ft_check_nb_validity(str, 0);
-		std::cout << "int: " << std::strtol(str.data(), NULL, 10) << std::endl;
-	}
+	try{ft_int_handler(str);}
 	catch (IsCharException& e) {std::cout << "int: " << static_cast<int>(str[0]) << std::endl;}
 	catch (std::exception& e) {print_err(e.what());}
+
 	//float
-	try
-	{
-		ft_check_nb_validity(str, 1);
-		if (ft_check_point(str))
-			std::cout << "float: " << static_cast<float>(std::strtof(str.data(), NULL)) << "f" << std::endl;
-		else
-			std::cout << "float: " << static_cast<float>(std::strtof(str.data(), NULL)) << ".0f" << std::endl;
-	}
+	try{ft_float_handler(str);}
 	catch (IsCharException& e) {std::cout << "float: " << static_cast<float>(str[0]) << ".0f" << std::endl;}
 	catch (std::exception& e) {print_err(e.what());}
+
 	//double
-	try
-	{
-		ft_check_nb_validity(str, 2);
-		if (ft_check_point(str))
-			std::cout << "double: " << static_cast<double>(std::strtod(str.data(), NULL)) << std::endl;
-		else
-			std::cout << "double: " << static_cast<double>(std::strtod(str.data(), NULL)) << ".0" << std::endl;
-	}
+	try{ft_double_handler(str);}
 	catch (IsCharException& e) {std::cout << "double: " << static_cast<double>(str[0]) << ".0" << std::endl;}
 	catch (std::exception& e) {print_err(e.what());}
 	return (0);
 }
-
-/*
-Erreurs actuelles :
-FLOAT n'affiche pas son f
-FLOAT et DOUBLE n'ont pas de .0 s'il n'y a pas de décimale
-CHAR n'affiche pas le caractère si on donne sa valeur ASCII
-int float double n'affichent pas de valeur ASCII si un char est donné
-*/
-
-
-
-/*
-./convert 0
-char: Non displayable
-int: 0
-float: 0.0f
-double: 0.0
-
-./convert nan
-char: impossible
-int: impossible
-float: nanf
-double: nan
-
-./convert 42.0f
-char: '*'
-int: 42
-float: 42.0f
-double: 42.0
-*/
-
-/*
-bool < char < short int < int < unsigned int < long < unsigned < long long < float < double < long double
-char < int < float < double
-*/

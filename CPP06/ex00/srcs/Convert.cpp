@@ -6,7 +6,7 @@
 /*   By: ljohnson <ljohnson@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/20 18:24:38 by ljohnson          #+#    #+#             */
-/*   Updated: 2023/02/22 15:23:52 by ljohnson         ###   ########lyon.fr   */
+/*   Updated: 2023/02/23 08:03:38 by ljohnson         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,7 @@ char const*	CharImpossibleException::what() const throw() {return ("char: Imposs
 /* Int Exceptions */
 /* ************************************************************************** */
 char const*	IntImpossibleException::what() const throw() {return ("int: Impossible");}
+char const*	IntOverflowException::what() const throw() {return ("int: Overflow");}
 
 /* ************************************************************************** */
 /* Float Exceptions */
@@ -30,6 +31,7 @@ char const*	IntImpossibleException::what() const throw() {return ("int: Impossib
 char const*	FloatPosInfException::what() const throw() {return ("float: +inff");}
 char const*	FloatNegInfException::what() const throw() {return ("float: -inff");}
 char const*	FloatNaNException::what() const throw() {return ("float: NaNf");}
+char const*	FloatOverflowException::what() const throw() {return ("float: Overflow");}
 
 /* ************************************************************************** */
 /* Double Exceptions */
@@ -37,6 +39,7 @@ char const*	FloatNaNException::what() const throw() {return ("float: NaNf");}
 char const*	DoublePosInfException::what() const throw() {return ("double: +inf");}
 char const*	DoubleNegInfException::what() const throw() {return ("double: -inf");}
 char const*	DoubleNaNException::what() const throw() {return ("double: NaN");}
+char const*	DoubleOverflowException::what() const throw() {return ("double: Overflow");}
 
 /* ************************************************************************** */
 /* Other Exceptions */

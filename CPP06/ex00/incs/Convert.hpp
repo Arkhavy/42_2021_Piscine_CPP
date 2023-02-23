@@ -6,7 +6,7 @@
 /*   By: ljohnson <ljohnson@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/20 18:20:02 by ljohnson          #+#    #+#             */
-/*   Updated: 2023/02/22 18:38:31 by ljohnson         ###   ########lyon.fr   */
+/*   Updated: 2023/02/23 08:06:33 by ljohnson         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@
 #include <climits>
 #include <cfloat>
 #include <cstdlib>
+#include <cerrno>
 
 #define YELLOW "\033[33m"
 #define CYAN "\033[36m"
