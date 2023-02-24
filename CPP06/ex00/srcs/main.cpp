@@ -6,7 +6,7 @@
 /*   By: ljohnson <ljohnson@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/17 11:31:54 by ljohnson          #+#    #+#             */
-/*   Updated: 2023/02/23 08:12:23 by ljohnson         ###   ########lyon.fr   */
+/*   Updated: 2023/02/24 13:40:24 by ljohnson         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -154,7 +154,7 @@ void	ft_float_handler(std::string const& str)
 {
 	ft_check_nb_validity(str, 1);
 	float	val = std::strtof(str.data(), NULL);
-	if (val > FLT_MAX || val < FLT_MIN)
+	if (val > FLT_MAX || val < (-FLT_MAX - 1))
 		throw FloatOverflowException();
 	if (ft_check_point(str))
 		std::cout << "float: " << val << "f" << std::endl;
@@ -166,7 +166,7 @@ void	ft_double_handler(std::string const& str)
 {
 	ft_check_nb_validity(str, 2);
 	double	val = std::strtod(str.data(), NULL);
-	if (val > DBL_MAX || val < DBL_MIN)
+	if (val > DBL_MAX || val < (-DBL_MAX - 1))
 		throw DoubleOverflowException();
 	if (ft_check_point(str))
 		std::cout << "double: " << val << std::endl;
