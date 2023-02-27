@@ -6,7 +6,7 @@
 /*   By: ljohnson <ljohnson@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/23 10:39:44 by ljohnson          #+#    #+#             */
-/*   Updated: 2023/02/23 10:39:59 by ljohnson         ###   ########lyon.fr   */
+/*   Updated: 2023/02/27 13:27:11 by ljohnson         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,12 +25,12 @@ int main(int, char**)
 		numbers[i] = value;
 		mirror[i] = value;
 	}
-	//SCOPE
+	std::cout << "----------" << std::endl;
 	{
 		Array<int> tmp = numbers;
 		Array<int> test(tmp);
 	}
-
+	std::cout << "----------" << std::endl;
 	for (int i = 0; i < MAX_VAL; i++)
 	{
 		if (mirror[i] != numbers[i])
@@ -39,6 +39,7 @@ int main(int, char**)
 			return 1;
 		}
 	}
+	std::cout << "----------" << std::endl;
 	try
 	{
 		numbers[-2] = 0;
@@ -47,6 +48,7 @@ int main(int, char**)
 	{
 		std::cerr << e.what() << '\n';
 	}
+	std::cout << "----------" << std::endl;
 	try
 	{
 		numbers[MAX_VAL] = 0;
@@ -55,11 +57,18 @@ int main(int, char**)
 	{
 		std::cerr << e.what() << '\n';
 	}
-
+	std::cout << "----------" << std::endl;
 	for (int i = 0; i < MAX_VAL; i++)
 	{
 		numbers[i] = rand();
 	}
-	delete [] mirror;//
+	std::cout << "--------------------------------------------------" << std::endl;
+	numbers[2] = 123;
+	if (numbers[2] != mirror[2])
+		std::cout << "ouaf" << std::endl;
+	mirror[3] = 1234;
+	if (numbers[3] != mirror[3])
+		std::cout << "ouaf again" << std::endl;
+	delete [] mirror;
 	return 0;
 }

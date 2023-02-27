@@ -6,7 +6,7 @@
 #    By: ljohnson <ljohnson@student.42lyon.fr>      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/02/16 10:30:10 by ljohnson          #+#    #+#              #
-#    Updated: 2023/02/23 13:03:57 by ljohnson         ###   ########lyon.fr    #
+#    Updated: 2023/02/27 13:20:40 by ljohnson         ###   ########lyon.fr    #
 #                                                                              #
 # **************************************************************************** #
 
@@ -85,7 +85,7 @@ $(P_DEPS)%.d:	$(P_SRCS)%.cpp Makefile | $(P_DEPS)
 
 -include $(DEPS)
 
-$(P_OBJS)%.o:	$(P_SRCS)%.cpp $(P_DEPS)%.d $(P_TMPT)%.tpp Makefile | $(P_OBJS)
+$(P_OBJS)%.o:	$(P_SRCS)%.cpp $(P_DEPS)%.d Makefile | $(P_OBJS)
 	$(CC) $(CF) $(CI) -I $(P_DEPS)%.d -c $< -o $@
 
 # Directories creation
