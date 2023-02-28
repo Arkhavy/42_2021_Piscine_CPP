@@ -6,7 +6,7 @@
 /*   By: ljohnson <ljohnson@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/28 09:41:20 by ljohnson          #+#    #+#             */
-/*   Updated: 2023/02/28 13:21:54 by ljohnson         ###   ########lyon.fr   */
+/*   Updated: 2023/02/28 13:41:50 by ljohnson         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,7 +63,7 @@ std::ostream&	operator<<(std::ostream& out, Span const& rhs)
 	unsigned int	tab_size = rhs.get_size();
 	for (unsigned int i = 0; i < tab_size; i++)
 	{
-		if ((i % 100) == 0)
+		if ((i % 100) == 0 && i != 0)
 			std::cout << std::endl;
 		out << rhs.get_value_idx(i) << " ";
 	}
