@@ -6,7 +6,7 @@
 /*   By: ljohnson <ljohnson@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/28 10:19:38 by ljohnson          #+#    #+#             */
-/*   Updated: 2023/02/28 13:43:09 by ljohnson         ###   ########lyon.fr   */
+/*   Updated: 2023/02/28 13:52:11 by ljohnson         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,6 @@ void	ft_print_title(char const* title)
 	std::cout << FWHITE << std::endl;
 }
 
-//TEST DEEP COPY
 int	main(void)
 {
 	ft_print_title("Init span 1, add 10 numbers then throw an exception on 11th");
