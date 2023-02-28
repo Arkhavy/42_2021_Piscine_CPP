@@ -6,7 +6,7 @@
 #    By: ljohnson <ljohnson@student.42lyon.fr>      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/02/27 14:32:25 by ljohnson          #+#    #+#              #
-#    Updated: 2023/02/27 14:34:49 by ljohnson         ###   ########lyon.fr    #
+#    Updated: 2023/02/28 08:13:06 by ljohnson         ###   ########lyon.fr    #
 #                                                                              #
 # **************************************************************************** #
 
@@ -21,7 +21,7 @@ NAME	:=	easyfind
 
 # Files
 LST_INCS	:=	easyfind.hpp
-LST_SRCS	:=	main.cpp
+LST_SRCS	:=	easyfind.cpp	main.cpp
 LST_TMPT	:=	easyfind.tpp
 LST_DEPS	:=	$(LST_SRCS:.cpp=.d)
 LST_OBJS	:=	$(LST_SRCS:.cpp=.o)
