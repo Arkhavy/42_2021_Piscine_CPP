@@ -6,7 +6,7 @@
 /*   By: ljohnson <ljohnson@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/28 14:11:15 by ljohnson          #+#    #+#             */
-/*   Updated: 2023/02/28 15:36:43 by ljohnson         ###   ########lyon.fr   */
+/*   Updated: 2023/02/28 15:45:33 by ljohnson         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,6 +48,7 @@ MutantStack<T>::~MutantStack()
 template<typename T>
 MutantStack<T>&	MutantStack<T>::operator=(MutantStack const& rhs)
 {
+	this->c = rhs.c;
 	return (*this);
 }
 /* ************************************************************************** */
