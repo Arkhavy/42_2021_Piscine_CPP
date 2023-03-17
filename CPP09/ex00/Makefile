@@ -5,24 +5,24 @@
 #                                                     +:+ +:+         +:+      #
 #    By: ljohnson <ljohnson@student.42lyon.fr>      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2023/03/13 14:21:35 by ljohnson          #+#    #+#              #
-#    Updated: 2023/03/13 14:21:36 by ljohnson         ###   ########lyon.fr    #
+#    Created: 2023/03/17 13:10:48 by ljohnson          #+#    #+#              #
+#    Updated: 2023/03/17 13:10:59 by ljohnson         ###   ########lyon.fr    #
 #                                                                              #
 # **************************************************************************** #
 
 .PHONY: all clean fclean re
 # .SILENT:
 
-NAME	:=	
+NAME	:=	btc
 
 #//////////////////////////////////////////////////////////////////////////////
 #		ALL FILES
 #//////////////////////////////////////////////////////////////////////////////
 
 # Files
-LST_INCS	:=	
-LST_SRCS	:=	
-LST_TMPT	:=	
+LST_INCS	:=	BitcoinExchange.hpp
+LST_SRCS	:=	BitcoinExchange.cpp	main.cpp
+LST_TMPT	:=	BitcoinExchange.tpp
 LST_DEPS	:=	$(LST_SRCS:.cpp=.d)
 LST_OBJS	:=	$(LST_SRCS:.cpp=.o)
 
