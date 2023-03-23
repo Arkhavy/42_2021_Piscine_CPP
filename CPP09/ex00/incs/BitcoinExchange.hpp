@@ -6,7 +6,7 @@
 /*   By: ljohnson <ljohnson@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/17 13:02:49 by ljohnson          #+#    #+#             */
-/*   Updated: 2023/03/17 13:27:11 by ljohnson         ###   ########lyon.fr   */
+/*   Updated: 2023/03/23 14:41:50 by ljohnson         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,21 @@
 # define FAINT		"\033[2m"
 # define ITALIC		"\033[3m"
 # define UNDERLINE	"\033[4m"
+
+class	BitcoinExchange
+{
+	private:
+		std::map<std::string, float>	data;
+
+	public:
+		BitcoinExchange();
+		BitcoinExchange(BitcoinExchange const& src);
+		virtual	~BitcoinExchange();
+
+		BictoinExchange&	operator=(BitcoinExchange const& rhs);
+
+		float const&	get_data_by_key(std::string const& key) const;
+};
 
 template<typename T>
 T	ft_print_err(std::string const& message, T const val);
