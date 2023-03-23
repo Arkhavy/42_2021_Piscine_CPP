@@ -6,7 +6,7 @@
 /*   By: ljohnson <ljohnson@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/17 13:17:50 by ljohnson          #+#    #+#             */
-/*   Updated: 2023/03/23 14:42:30 by ljohnson         ###   ########lyon.fr   */
+/*   Updated: 2023/03/23 16:27:23 by ljohnson         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,15 +31,32 @@ BitcoinExchange::~BitcoinExchange()
 /* ************************************************************************** */
 BitcoinExchange&	BitcoinExchange::operator=(BitcoinExchange const& rhs)
 {
-	this->map = rhs.map;
+	this->data = rhs.data;
 	return (*this);
+}
+
+float&	BitcoinExchange::operator[](std::string const& key)
+{
+	for (std::map<std::string, float>::iterator it = this->data.begin(); it != this->data.end(); it++)
+	{
+		if (key == it->first)
+			return (this->data[key]);
+	}
+	throw KeyNotFoundException();
+	return (this->data[key]);
 }
 
 /* ************************************************************************** */
 /* Exceptions */
 /* ************************************************************************** */
+char const*	KeyNotFoundException::what() const throw() {return ("Key not found lol");}
 
 /* ************************************************************************** */
 /* Member Functions */
 /* ************************************************************************** */
-float const&	BitcoinExchange::get_data_by_key(std::string const& key) const {return (this->data[key]);}
+unsigned int	BitcoinExchange::get_size() const {return (this->data.size());}
+
+void	BitcoinExchange::set_key_value(std::string const& key, float const& value) {this->data[key] = value;}
+
+typename std::map<std::string, float>::iterator	BitcoinExchange::begin() {return (this->data.begin());}
+typename std::map<std::string, float>::iterator	BitcoinExchange::end() {return (this->data.end());}

@@ -6,7 +6,7 @@
 /*   By: ljohnson <ljohnson@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/17 13:02:49 by ljohnson          #+#    #+#             */
-/*   Updated: 2023/03/23 14:41:50 by ljohnson         ###   ########lyon.fr   */
+/*   Updated: 2023/03/23 16:26:38 by ljohnson         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 #include <iostream>
 #include <string>
 #include <exception>
+#include <map>
 
 # define BLACK		"\033[30m"
 # define RED		"\033[31m"
@@ -38,13 +39,37 @@ class	BitcoinExchange
 		std::map<std::string, float>	data;
 
 	public:
+	//Constructors & Destructors
 		BitcoinExchange();
 		BitcoinExchange(BitcoinExchange const& src);
 		virtual	~BitcoinExchange();
 
-		BictoinExchange&	operator=(BitcoinExchange const& rhs);
+	//Operator overloads
+		BitcoinExchange&	operator=(BitcoinExchange const& rhs);
+		float&	operator[](std::string const& key);
 
-		float const&	get_data_by_key(std::string const& key) const;
+	//Getter & Setters
+		unsigned int	get_size() const;
+		void	set_key_value(std::string const& key, float const& value);
+
+	//Iterators
+	typedef typename	std::map<std::string, float>::iterator	iterator;
+
+	iterator		begin();
+	iterator		end();
+
+	//Member functions
+
+	//Exceptions
+};
+
+/* ************************************************************************** */
+/* Exceptions */
+/* ************************************************************************** */
+class	KeyNotFoundException : public std::exception
+{
+	public:
+		virtual char const*	what() const throw();
 };
 
 template<typename T>
