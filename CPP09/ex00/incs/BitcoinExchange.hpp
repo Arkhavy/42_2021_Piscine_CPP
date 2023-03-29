@@ -6,7 +6,7 @@
 /*   By: ljohnson <ljohnson@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/17 13:02:49 by ljohnson          #+#    #+#             */
-/*   Updated: 2023/03/29 10:46:48 by ljohnson         ###   ########lyon.fr   */
+/*   Updated: 2023/03/29 11:39:05 by ljohnson         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,6 +72,12 @@ class	KeyNotFoundException : public std::exception
 	public:
 		virtual char const*	what() const throw();
 };
+
+class	InvalidDatabaseException : public std::exception
+{
+	public:
+		virtual char const*	what() const throw();
+}
 
 template<typename T>
 T	ft_print_msg(std::string const& message, T const val);

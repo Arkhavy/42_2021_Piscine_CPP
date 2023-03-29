@@ -6,7 +6,7 @@
 /*   By: ljohnson <ljohnson@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/17 13:17:50 by ljohnson          #+#    #+#             */
-/*   Updated: 2023/03/29 10:40:25 by ljohnson         ###   ########lyon.fr   */
+/*   Updated: 2023/03/29 11:40:01 by ljohnson         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,8 @@ float&	BitcoinExchange::operator[](std::string const& key)
 /* ************************************************************************** */
 /* Exceptions */
 /* ************************************************************************** */
-char const*	KeyNotFoundException::what() const throw() {return ("Key not found lol");}
+char const*	KeyNotFoundException::what() const throw() {return ("ERROR: Key not found in database map");}
+char const*	InvalidDatabaseException::what() const throw() {return ("ERROR: Invalid database file");}
 
 /* ************************************************************************** */
 /* Member Functions */
