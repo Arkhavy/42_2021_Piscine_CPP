@@ -6,7 +6,7 @@
 /*   By: ljohnson <ljohnson@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/17 13:17:50 by ljohnson          #+#    #+#             */
-/*   Updated: 2023/03/29 11:40:01 by ljohnson         ###   ########lyon.fr   */
+/*   Updated: 2023/03/29 14:38:39 by ljohnson         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,8 +50,11 @@ float&	BitcoinExchange::operator[](std::string const& key)
 /* ************************************************************************** */
 /* Exceptions */
 /* ************************************************************************** */
-char const*	KeyNotFoundException::what() const throw() {return ("ERROR: Key not found in database map");}
-char const*	InvalidDatabaseException::what() const throw() {return ("ERROR: Invalid database file");}
+char const*	KeyNotFoundException::what()		const throw() {return ("ERROR: Key not found in database map");}
+char const*	InvalidDatabaseException::what()	const throw() {return ("ERROR: Invalid database given");}
+char const*	InvalidInputException::what()		const throw() {return ("ERROR: Invalid input given");}
+char const*	InvalidProgramNameException::what()	const throw() {return ("ERROR: Invalid program name");}
+char const*	InvalidArgumentException::what()	const throw() {return ("ERROR: Invalid argument given");}
 
 /* ************************************************************************** */
 /* Member Functions */

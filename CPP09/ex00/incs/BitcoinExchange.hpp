@@ -6,7 +6,7 @@
 /*   By: ljohnson <ljohnson@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/17 13:02:49 by ljohnson          #+#    #+#             */
-/*   Updated: 2023/03/29 11:39:05 by ljohnson         ###   ########lyon.fr   */
+/*   Updated: 2023/03/29 16:36:05 by ljohnson         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,8 +15,14 @@
 #include <iostream>
 #include <string>
 #include <exception>
-#include <map>
 #include <fstream>
+#include <cctype>
+#include <sys/stat.h>
+#include <cstdlib>
+#include <climits>
+#include <cfloat>
+#include <cerrno>
+#include <map>
 
 # define BLACK		"\033[30m"
 # define RED		"\033[31m"
@@ -77,7 +83,39 @@ class	InvalidDatabaseException : public std::exception
 {
 	public:
 		virtual char const*	what() const throw();
-}
+};
+
+class	InvalidInputException : public std::exception
+{
+	public:
+		virtual char const*	what() const throw();
+};
+
+class	InvalidProgramNameException : public std::exception
+{
+	public:
+		virtual char const*	what() const throw();
+};
+
+class	InvalidArgumentException : public std::exception
+{
+	public:
+		virtual char const*	what() const throw();
+};
+
+class	InvalidDateException : public std::exception
+{
+	public:
+		virtual char const*	what() const throw();
+};
+
+class	InvalidValueException : public std::exception
+{
+	public:
+		virtual char const*	what() const throw();
+};
+
+
 
 template<typename T>
 T	ft_print_msg(std::string const& message, T const val);
