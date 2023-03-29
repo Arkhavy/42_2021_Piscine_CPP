@@ -6,7 +6,7 @@
 /*   By: ljohnson <ljohnson@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/17 13:02:49 by ljohnson          #+#    #+#             */
-/*   Updated: 2023/03/23 16:26:38 by ljohnson         ###   ########lyon.fr   */
+/*   Updated: 2023/03/29 10:46:48 by ljohnson         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@
 #include <string>
 #include <exception>
 #include <map>
+#include <fstream>
 
 # define BLACK		"\033[30m"
 # define RED		"\033[31m"
@@ -46,17 +47,17 @@ class	BitcoinExchange
 
 	//Operator overloads
 		BitcoinExchange&	operator=(BitcoinExchange const& rhs);
-		float&	operator[](std::string const& key);
+		float&				operator[](std::string const& key);
 
 	//Getter & Setters
 		unsigned int	get_size() const;
-		void	set_key_value(std::string const& key, float const& value);
+		void			set_key_value(std::string const& key, float const& value);
 
 	//Iterators
 	typedef typename	std::map<std::string, float>::iterator	iterator;
 
-	iterator		begin();
-	iterator		end();
+	iterator	begin();
+	iterator	end();
 
 	//Member functions
 
@@ -73,6 +74,6 @@ class	KeyNotFoundException : public std::exception
 };
 
 template<typename T>
-T	ft_print_err(std::string const& message, T const val);
+T	ft_print_msg(std::string const& message, T const val);
 
 #include <BitcoinExchange.tpp>
