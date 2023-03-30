@@ -6,7 +6,7 @@
 /*   By: ljohnson <ljohnson@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/17 12:54:18 by ljohnson          #+#    #+#             */
-/*   Updated: 2023/03/30 09:57:48 by ljohnson         ###   ########lyon.fr   */
+/*   Updated: 2023/03/30 10:59:51 by ljohnson         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,7 +73,7 @@ void	check_date(std::string const& date)
 	if (static_cast<size_t>(pos) == std::string::npos)
 		throw InvalidDateException();
 	year = std::strtol(&date_str[0], NULL, 10);
-	if (errno == ERANGE)
+	if (errno == ERANGE || year > INT_MAX || year < (-INT_MAX - 1))
 		throw InvalidDateException();
 	old_pos = pos;
 
@@ -81,10 +81,10 @@ void	check_date(std::string const& date)
 	if (static_cast<size_t>(pos) == std::string::npos)
 		throw InvalidDateException();
 	month = std::strtol(&date_str[old_pos + 1], NULL, 10);
-	if (errno == ERANGE)
+	if (errno == ERANGE || month > INT_MAX || month < (-INT_MAX - 1))
 		throw InvalidDateException();
 	day = std::strtol(&date_str[pos + 1], NULL, 10);
-	if (errno == ERANGE)
+	if (errno == ERANGE || day > INT_MAX || day < (-INT_MAX - 1))
 		throw InvalidDateException();
 	check_date_numbers(month, day);
 }
@@ -92,6 +92,7 @@ void	check_date(std::string const& date)
 /* ************************************************************************** */
 /* MODULE : CHECK VALUE */
 /* ************************************************************************** */
+//Works for database, need to limit to 1000 for input
 void	check_value(std::string const& value)
 {
 	bool	point = false;
@@ -100,7 +101,19 @@ void	check_value(std::string const& value)
 	{
 		if (value[i] == '.')
 			(point == true) ? throw InvalidValueException() : point = true;
-		if (!isdigit[value[i]] && value[i] != '.')
+		if (!isdigit(value[i]) && value[i] != '.')
+			throw InvalidValueException();
+	}
+	if (point == true)
+	{
+		float	tmp = std::strtod(value.c_str(), NULL);
+		if (tmp < 0 || tmp > FLT_MAX || tmp < (-FLT_MAX - 1) || errno == ERANGE)
+			throw InvalidValueException();
+	}
+	else
+	{
+		int	tmp = std::strtol(value.c_str(), NULL, 10);
+		if (tmp < 0 || tmp > INT_MAX || tmp < (-INT_MAX - 1) || errno == ERANGE)
 			throw InvalidValueException();
 	}
 }
@@ -108,19 +121,17 @@ void	check_value(std::string const& value)
 /* ************************************************************************** */
 /* MODULE : GET DATABASE */
 /* ************************************************************************** */
-int	ft_check_line(std::string const& line)
+int	ft_check_line(std::string const& line, std::string& date, std::string& value)
 {
 	size_t	pos = 0;
-	std::string	date;
-	std::string	value;
 
 	pos = line.find(',', 0);
 	if (pos == std::string::npos)
 		throw InvalidLineException();
 	date = line.substr(0, pos);
 	check_date(date);
-	value = line.substr(pos, line.size() - (pos + 1));
-	chek_value(value);
+	value = line.substr(pos + 1, line.size() - pos);
+	check_value(value);
 	return (0);
 }
 
@@ -129,7 +140,7 @@ void	get_database(BitcoinExchange& database)
 	std::ifstream	ifs("data.csv", std::ifstream::in);
 	std::string		line;
 
-	for (int i = 0; i > 0; i++)
+	for (int i = 0; i >= 0; i++)
 	{
 		std::getline(ifs, line);
 		if (i == 0 && line != "date,exchange_rate")
@@ -138,12 +149,16 @@ void	get_database(BitcoinExchange& database)
 		{
 			try
 			{
-				ft_check_line(line);
-				//add line to map
+				std::string	date;
+				std::string	value;
+
+				ft_check_line(line, date, value);
+				std::cout << date << "," << value << std::endl;
+				database.set_key_value(date, std::strtod(value.c_str(), NULL));
 			}
 			catch (std::exception& e)
 			{
-				ft_print_msg<int>(CYAN, e.what(), 1);
+				// ft_print_msg<int>(FAINT, e.what(), 1);
 				//skip line
 			}
 		}
@@ -198,17 +213,15 @@ int	check_user_input(std::string program_name, std::string input)
 int	main(int ac, char** av)
 {
 	BitcoinExchange	database;
+
 	if (ac != 2)
 		return (ft_print_msg<int>(RED, "ERROR: Usage: ./btc <input>", 1));
 	try {check_user_input(av[0], av[1]);}
 	catch (std::exception& e) {return (ft_print_msg<int>(RED, e.what(), 1));}
 	try {get_database(database);}
 	catch (std::exception& e) {ft_print_msg<int>(RED, e.what(), 1);}
-	// BitcoinExchange	ouaf;
 
-	// ouaf.set_key_value("ouef ouef", 42);
-	// for (std::map<std::string, float>::iterator it = ouaf.begin(); it != ouaf.end(); it++)
-	// 	std::cout << it->first << " | " << it->second << std::endl;
 	ft_print_msg<int>(GREEN, "Everything worked correctly wooooo !", 0);
+	// database.display_data();
 	return (0);
 }

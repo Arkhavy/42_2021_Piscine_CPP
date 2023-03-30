@@ -6,7 +6,7 @@
 /*   By: ljohnson <ljohnson@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/17 13:17:50 by ljohnson          #+#    #+#             */
-/*   Updated: 2023/03/30 09:31:46 by ljohnson         ###   ########lyon.fr   */
+/*   Updated: 2023/03/30 10:47:47 by ljohnson         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,3 +68,10 @@ void	BitcoinExchange::set_key_value(std::string const& key, float const& value) 
 
 typename std::map<std::string, float>::iterator	BitcoinExchange::begin() {return (this->data.begin());}
 typename std::map<std::string, float>::iterator	BitcoinExchange::end() {return (this->data.end());}
+
+void	BitcoinExchange::display_data()
+{
+	for (std::map<std::string, float>::iterator it = this->data.begin(); it != this->data.end(); it++)
+		std::cout << it->first << " | " << it->second << "\n";
+	std::cout << std::endl;
+}

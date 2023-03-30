@@ -6,7 +6,7 @@
 /*   By: ljohnson <ljohnson@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/17 13:02:49 by ljohnson          #+#    #+#             */
-/*   Updated: 2023/03/30 09:30:24 by ljohnson         ###   ########lyon.fr   */
+/*   Updated: 2023/03/30 10:47:49 by ljohnson         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,8 +66,7 @@ class	BitcoinExchange
 	iterator	end();
 
 	//Member functions
-
-	//Exceptions
+		void	display_data();
 };
 
 /* ************************************************************************** */
@@ -121,6 +120,9 @@ class	InvalidLineException : public std::exception
 		virtual char const*	what() const throw();
 };
 
+/* ************************************************************************** */
+/* Templates */
+/* ************************************************************************** */
 template<typename T>
 T	ft_print_msg(std::string const& message, T const val);
 
