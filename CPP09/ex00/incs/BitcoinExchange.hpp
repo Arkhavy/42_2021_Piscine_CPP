@@ -6,7 +6,7 @@
 /*   By: ljohnson <ljohnson@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/17 13:02:49 by ljohnson          #+#    #+#             */
-/*   Updated: 2023/03/29 16:36:05 by ljohnson         ###   ########lyon.fr   */
+/*   Updated: 2023/03/30 09:30:24 by ljohnson         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -115,7 +115,11 @@ class	InvalidValueException : public std::exception
 		virtual char const*	what() const throw();
 };
 
-
+class	InvalidLineException : public std::exception
+{
+	public:
+		virtual char const*	what() const throw();
+};
 
 template<typename T>
 T	ft_print_msg(std::string const& message, T const val);

@@ -6,7 +6,7 @@
 /*   By: ljohnson <ljohnson@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/17 12:54:18 by ljohnson          #+#    #+#             */
-/*   Updated: 2023/03/29 16:46:43 by ljohnson         ###   ########lyon.fr   */
+/*   Updated: 2023/03/30 09:57:48 by ljohnson         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,34 +54,55 @@ void	check_date_numbers(int const month, int const day)
 		throw InvalidDateException();
 }
 
-int	check_date(std::string const& date)
+void	check_date(std::string const& date)
 {
 	int	year = 0;
 	int	month = 0;
 	int	day = 0;
 
-	size_t	pos = 0;
-	size_t	old_pos = 0;
-	char*	date_str = date.c_str();
+	int	pos = 0;
+	int	old_pos = 0;
+	char const*	date_str = date.c_str();
 
+	for (size_t i = 0; i < date.size(); i++)
+	{
+		if (!isdigit(date[i]) && date[i] != '-')
+			throw InvalidDateException();
+	}
 	pos = date.find('-', 0);
-	if (pos == std::string::npos)
+	if (static_cast<size_t>(pos) == std::string::npos)
 		throw InvalidDateException();
-	year = std::strtol(&date_str[0], &date_str[pos], 10);
+	year = std::strtol(&date_str[0], NULL, 10);
 	if (errno == ERANGE)
 		throw InvalidDateException();
 	old_pos = pos;
 
 	pos = date.find('-', (old_pos + 1));
-	if (pos == std::string::npos)
+	if (static_cast<size_t>(pos) == std::string::npos)
 		throw InvalidDateException();
-	month = std::strtol(&date_str[old_pos + 1], &date_str[pos], 10);
+	month = std::strtol(&date_str[old_pos + 1], NULL, 10);
 	if (errno == ERANGE)
 		throw InvalidDateException();
 	day = std::strtol(&date_str[pos + 1], NULL, 10);
 	if (errno == ERANGE)
 		throw InvalidDateException();
 	check_date_numbers(month, day);
+}
+
+/* ************************************************************************** */
+/* MODULE : CHECK VALUE */
+/* ************************************************************************** */
+void	check_value(std::string const& value)
+{
+	bool	point = false;
+
+	for (size_t i = 0; i < value.size(); i++)
+	{
+		if (value[i] == '.')
+			(point == true) ? throw InvalidValueException() : point = true;
+		if (!isdigit[value[i]] && value[i] != '.')
+			throw InvalidValueException();
+	}
 }
 
 /* ************************************************************************** */
@@ -95,18 +116,12 @@ int	ft_check_line(std::string const& line)
 
 	pos = line.find(',', 0);
 	if (pos == std::string::npos)
-		return (0);
+		throw InvalidLineException();
 	date = line.substr(0, pos);
-	if (date.size() != 10)
-		return (0);
-	if (date[4] != '-' || date[7] != '-')
-		return (0);
-	for (size_t i = 0; i < date.size(); i++)
-	{
-		if (i != 4 && i != 7 && !isdigit(date[i]))
-			return (0);
-	}
-	value = line.substr(pos, line.size());
+	check_date(date);
+	value = line.substr(pos, line.size() - (pos + 1));
+	chek_value(value);
+	return (0);
 }
 
 void	get_database(BitcoinExchange& database)
@@ -121,10 +136,16 @@ void	get_database(BitcoinExchange& database)
 			throw InvalidDatabaseException();
 		else
 		{
-			if (ft_check_line(line))
+			try
+			{
+				ft_check_line(line);
 				//add line to map
-			else
+			}
+			catch (std::exception& e)
+			{
+				ft_print_msg<int>(CYAN, e.what(), 1);
 				//skip line
+			}
 		}
 		if (ifs.eof())
 			break ;

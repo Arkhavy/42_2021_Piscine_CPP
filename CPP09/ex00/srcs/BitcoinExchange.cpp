@@ -6,7 +6,7 @@
 /*   By: ljohnson <ljohnson@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/17 13:17:50 by ljohnson          #+#    #+#             */
-/*   Updated: 2023/03/29 14:38:39 by ljohnson         ###   ########lyon.fr   */
+/*   Updated: 2023/03/30 09:31:46 by ljohnson         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,6 +55,9 @@ char const*	InvalidDatabaseException::what()	const throw() {return ("ERROR: Inva
 char const*	InvalidInputException::what()		const throw() {return ("ERROR: Invalid input given");}
 char const*	InvalidProgramNameException::what()	const throw() {return ("ERROR: Invalid program name");}
 char const*	InvalidArgumentException::what()	const throw() {return ("ERROR: Invalid argument given");}
+char const*	InvalidDateException::what()		const throw() {return ("ERROR: Invalid date given");}
+char const*	InvalidValueException::what()		const throw() {return ("ERROR: Invalid value given");}
+char const*	InvalidLineException::what()		const throw() {return ("ERROR: Invalid line given");}
 
 /* ************************************************************************** */
 /* Member Functions */
