@@ -6,7 +6,7 @@
 /*   By: ljohnson <ljohnson@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/17 13:02:49 by ljohnson          #+#    #+#             */
-/*   Updated: 2023/03/30 12:58:37 by ljohnson         ###   ########lyon.fr   */
+/*   Updated: 2023/03/30 17:48:45 by ljohnson         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,19 @@
 # define ITALIC		"\033[3m"
 # define UNDERLINE	"\033[4m"
 
+#define	JAN	1
+#define	FEB	2
+#define	MAR	3
+#define	APR	4
+#define	MAY	5
+#define	JUN	6
+#define	JUL	7
+#define	AUG	8
+#define	SEP	9
+#define	OCT	10
+#define	NOV	11
+#define	DEC	12
+
 class	BitcoinExchange
 {
 	private:
@@ -57,17 +70,8 @@ class	BitcoinExchange
 
 	//Getter & Setters
 		unsigned int	get_size() const;
-		float&			get_value_from_key(std::string const& key);
+		float&			get_value_from_date(std::string const& date);
 		void			set_key_value(std::string const& key, float const& value);
-
-	//Iterators
-	typedef typename	std::map<std::string, float>::iterator	iterator;
-
-	iterator	begin();
-	iterator	end();
-
-	//Member functions
-		void	display_data();
 };
 
 /* ************************************************************************** */
@@ -78,9 +82,13 @@ class	InvalidDatabaseException	: public std::exception {public: virtual char con
 class	InvalidInputException		: public std::exception {public: virtual char const*	what() const throw();};
 class	InvalidProgramNameException	: public std::exception {public: virtual char const*	what() const throw();};
 class	InvalidArgumentException	: public std::exception {public: virtual char const*	what() const throw();};
-class	InvalidDateException		: public std::exception {public: virtual char const*	what() const throw();};
-class	InvalidValueException		: public std::exception {public: virtual char const*	what() const throw();};
-class	InvalidLineException		: public std::exception {public: virtual char const*	what() const throw();};
+class	NegativeValueException		: public std::exception {public: virtual char const*	what() const throw();};
+class	OverflowValueException		: public std::exception {public: virtual char const*	what() const throw();};
+
+class	InvalidContentException		: public std::exception {public: virtual char const*	what() const throw();};
+class	InvalidDateException		: public InvalidContentException {public: virtual char const*	what() const throw();};
+class	InvalidValueException		: public InvalidContentException {public: virtual char const*	what() const throw();};
+class	InvalidLineException		: public InvalidContentException {public: virtual char const*	what() const throw();};
 
 /* ************************************************************************** */
 /* Templates */

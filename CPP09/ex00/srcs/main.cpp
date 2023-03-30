@@ -6,24 +6,11 @@
 /*   By: ljohnson <ljohnson@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/17 12:54:18 by ljohnson          #+#    #+#             */
-/*   Updated: 2023/03/30 12:58:04 by ljohnson         ###   ########lyon.fr   */
+/*   Updated: 2023/03/30 17:48:41 by ljohnson         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <BitcoinExchange.hpp>
-
-#define	JAN	1
-#define	FEB	2
-#define	MAR	3
-#define	APR	4
-#define	MAY	5
-#define	JUN	6
-#define	JUL	7
-#define	AUG	8
-#define	SEP	9
-#define	OCT	10
-#define	NOV	11
-#define	DEC	12
 
 /* ************************************************************************** */
 /* MODULE : CHECK DATE */
@@ -92,7 +79,6 @@ void	check_date(std::string const& date)
 /* ************************************************************************** */
 /* MODULE : CHECK VALUE */
 /* ************************************************************************** */
-//Works for database, need to limit to 1000 for input
 void	check_value(std::string const& value, bool is_db)
 {
 	bool	point = false;
@@ -102,30 +88,34 @@ void	check_value(std::string const& value, bool is_db)
 		if (value[i] == '.')
 			(point == true) ? throw InvalidValueException() : point = true;
 		if (!isdigit(value[i]) && value[i] != '.')
+		{
+			if (value[i] == '-')
+				throw NegativeValueException();
 			throw InvalidValueException();
+		}
 	}
 	if (point == true)
 	{
 		float	tmp = std::strtod(value.c_str(), NULL);
 		if (tmp < 0 || tmp > FLT_MAX || tmp < (-FLT_MAX - 1) || errno == ERANGE)
-			throw InvalidValueException();
+			throw OverflowValueException();
 		if (!is_db && tmp > 1000)
-			throw InvalidValueException();
+			throw OverflowValueException();
 	}
 	else
 	{
 		int	tmp = std::strtol(value.c_str(), NULL, 10);
 		if (tmp < 0 || tmp > INT_MAX || tmp < (-INT_MAX - 1) || errno == ERANGE)
-			throw InvalidValueException();
+			throw OverflowValueException();
 		if (!is_db && tmp > 1000)
-			throw InvalidValueException();
+			throw OverflowValueException();
 	}
 }
 
 /* ************************************************************************** */
 /* MODULE : GET DATABASE */
 /* ************************************************************************** */
-int	check_db_lines(std::string const& line, std::string& date, std::string& value)
+void	check_db_lines(std::string const& line, std::string& date, std::string& value)
 {
 	size_t	pos = 0;
 
@@ -136,7 +126,6 @@ int	check_db_lines(std::string const& line, std::string& date, std::string& valu
 	check_date(date);
 	value = line.substr(pos + 1, line.size() - pos);
 	check_value(value, true);
-	return (0);
 }
 
 void	get_database(BitcoinExchange& database)
@@ -167,6 +156,60 @@ void	get_database(BitcoinExchange& database)
 		}
 	}
 	ifs.close();
+}
+
+/* ************************************************************************** */
+/* MODULE : DISPLAY EXCHANGE */
+/* ************************************************************************** */
+void	display_line(BitcoinExchange& database, std::string const& date, std::string const& value)
+{
+	float	f_value = std::strtod(value.c_str(), NULL);
+	float	db_value = database.get_value_from_date(date);
+
+	std::cout << date << " => " << value << " = " << (f_value * db_value) << std::endl;
+}
+
+void	check_infile_line(std::string const& line, std::string& date, std::string& value)
+{
+	size_t	pos = 0;
+
+	pos = line.find(" | ", 0);
+	if (pos == std::string::npos)
+		throw InvalidLineException();
+	date = line.substr(0, pos);
+	check_date(date);
+	value = line.substr(pos + 3, line.size() - (pos + 2));
+	check_value(value, false);
+}
+
+void	display_bitcoin_exchange(BitcoinExchange& database, char const* infile)
+{
+	std::ifstream	ifs(infile, std::ifstream::in);
+	std::string		line;
+
+	for (int i = 0; i >= 0; i++)
+	{
+		std::getline(ifs, line);
+		if (i == 0 && line != "date | value")
+			throw InvalidInputException();
+		else
+		{
+			if (i == 0)
+				continue ;
+			try
+			{
+				std::string	date;
+				std::string	value;
+
+				check_infile_line(line, date, value);
+				display_line(database, date, value);
+			}
+			catch (InvalidContentException& e) {ft_print_msg<int>(RED, static_cast<std::string>("ERROR: bad input => ") += line, 1);}
+			catch (std::exception& e) {ft_print_msg<int>(RED, static_cast<std::string>(e.what()), 1);}
+			if (ifs.eof())
+				break ;
+		}
+	}
 }
 
 /* ************************************************************************** */
@@ -220,9 +263,9 @@ int	main(int ac, char** av)
 	try {check_user_input(av[0], av[1]);}
 	catch (std::exception& e) {return (ft_print_msg<int>(RED, e.what(), 1));}
 	try {get_database(database);}
-	catch (std::exception& e) {ft_print_msg<int>(RED, e.what(), 1);}
-	// try {display_bitcoin_exchange(database, )}
-	ft_print_msg<int>(GREEN, "Everything worked correctly wooooo !", 0);
-	// database.display_data();
+	catch (std::exception& e) {return (ft_print_msg<int>(RED, e.what(), 1));}
+	try {display_bitcoin_exchange(database, av[1]);}
+	catch (std::exception& e) {return (ft_print_msg<int>(RED, e.what(), 1));}
+	database.display_data();
 	return (0);
 }

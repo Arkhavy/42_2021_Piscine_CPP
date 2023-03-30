@@ -6,7 +6,7 @@
 /*   By: ljohnson <ljohnson@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/17 13:17:50 by ljohnson          #+#    #+#             */
-/*   Updated: 2023/03/30 12:58:31 by ljohnson         ###   ########lyon.fr   */
+/*   Updated: 2023/03/30 17:48:11 by ljohnson         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,6 +55,10 @@ char const*	InvalidDatabaseException::what()	const throw() {return ("ERROR: Inva
 char const*	InvalidInputException::what()		const throw() {return ("ERROR: Invalid input given");}
 char const*	InvalidProgramNameException::what()	const throw() {return ("ERROR: Invalid program name");}
 char const*	InvalidArgumentException::what()	const throw() {return ("ERROR: Invalid argument given");}
+char const*	NegativeValueException::what()		const throw() {return ("ERROR: Not a positive number");}
+char const*	OverflowValueException::what()		const throw() {return ("ERROR: Too large a number");}
+
+char const*	InvalidContentException::what()		const throw() {return ("ERROR: Invalid content given");}
 char const*	InvalidDateException::what()		const throw() {return ("ERROR: Invalid date given");}
 char const*	InvalidValueException::what()		const throw() {return ("ERROR: Invalid value given");}
 char const*	InvalidLineException::what()		const throw() {return ("ERROR: Invalid line given");}
@@ -62,17 +66,23 @@ char const*	InvalidLineException::what()		const throw() {return ("ERROR: Invalid
 /* ************************************************************************** */
 /* Member Functions */
 /* ************************************************************************** */
-unsigned int	BitcoinExchange::get_size() const {return (this->data.size());}
-float&	BitcoinExchange::get_value_from_key(std::string const& key) {return (this->data[key]);}
+unsigned int	BitcoinExchange::get_size() const 							{return (this->data.size());}
+float&			BitcoinExchange::get_value_from_date(std::string const& date)
+{
+	std::map<std::string, float>::iterator	it = this->data.begin();
+	std::string	last_date = it->first;
+
+	if (date.compare(it->first) < 0)
+		throw InvalidDateException();
+	while (it != this->data.end())
+	{
+		if (date.compare(it->first) >= 0)
+			last_date = it->first;
+		else
+			break ;
+		it++;
+	}
+	return (this->data[last_date]);
+}
 
 void	BitcoinExchange::set_key_value(std::string const& key, float const& value) {this->data[key] = value;}
-
-typename std::map<std::string, float>::iterator	BitcoinExchange::begin() {return (this->data.begin());}
-typename std::map<std::string, float>::iterator	BitcoinExchange::end() {return (this->data.end());}
-
-void	BitcoinExchange::display_data()
-{
-	for (std::map<std::string, float>::iterator it = this->data.begin(); it != this->data.end(); it++)
-		std::cout << it->first << " | " << it->second << "\n";
-	std::cout << std::endl;
-}
