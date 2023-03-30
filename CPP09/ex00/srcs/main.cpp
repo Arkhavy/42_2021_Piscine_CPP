@@ -6,7 +6,7 @@
 /*   By: ljohnson <ljohnson@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/17 12:54:18 by ljohnson          #+#    #+#             */
-/*   Updated: 2023/03/30 17:48:41 by ljohnson         ###   ########lyon.fr   */
+/*   Updated: 2023/03/30 17:56:07 by ljohnson         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -266,6 +266,5 @@ int	main(int ac, char** av)
 	catch (std::exception& e) {return (ft_print_msg<int>(RED, e.what(), 1));}
 	try {display_bitcoin_exchange(database, av[1]);}
 	catch (std::exception& e) {return (ft_print_msg<int>(RED, e.what(), 1));}
-	database.display_data();
 	return (0);
 }
