@@ -6,7 +6,7 @@
 /*   By: ljohnson <ljohnson@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/17 13:17:50 by ljohnson          #+#    #+#             */
-/*   Updated: 2023/03/30 10:47:47 by ljohnson         ###   ########lyon.fr   */
+/*   Updated: 2023/03/30 12:58:31 by ljohnson         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,6 +63,7 @@ char const*	InvalidLineException::what()		const throw() {return ("ERROR: Invalid
 /* Member Functions */
 /* ************************************************************************** */
 unsigned int	BitcoinExchange::get_size() const {return (this->data.size());}
+float&	BitcoinExchange::get_value_from_key(std::string const& key) {return (this->data[key]);}
 
 void	BitcoinExchange::set_key_value(std::string const& key, float const& value) {this->data[key] = value;}
 

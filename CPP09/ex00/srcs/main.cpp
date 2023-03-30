@@ -6,7 +6,7 @@
 /*   By: ljohnson <ljohnson@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/17 12:54:18 by ljohnson          #+#    #+#             */
-/*   Updated: 2023/03/30 11:25:49 by ljohnson         ###   ########lyon.fr   */
+/*   Updated: 2023/03/30 12:58:04 by ljohnson         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -125,7 +125,7 @@ void	check_value(std::string const& value, bool is_db)
 /* ************************************************************************** */
 /* MODULE : GET DATABASE */
 /* ************************************************************************** */
-int	ft_check_line(std::string const& line, std::string& date, std::string& value)
+int	check_db_lines(std::string const& line, std::string& date, std::string& value)
 {
 	size_t	pos = 0;
 
@@ -156,7 +156,7 @@ void	get_database(BitcoinExchange& database)
 				std::string	date;
 				std::string	value;
 
-				ft_check_line(line, date, value);
+				check_db_lines(line, date, value);
 				database.set_key_value(date, std::strtod(value.c_str(), NULL));
 			}
 			catch (std::exception& e)
@@ -221,7 +221,7 @@ int	main(int ac, char** av)
 	catch (std::exception& e) {return (ft_print_msg<int>(RED, e.what(), 1));}
 	try {get_database(database);}
 	catch (std::exception& e) {ft_print_msg<int>(RED, e.what(), 1);}
-
+	// try {display_bitcoin_exchange(database, )}
 	ft_print_msg<int>(GREEN, "Everything worked correctly wooooo !", 0);
 	// database.display_data();
 	return (0);

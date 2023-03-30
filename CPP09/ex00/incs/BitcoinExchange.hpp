@@ -6,7 +6,7 @@
 /*   By: ljohnson <ljohnson@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/17 13:02:49 by ljohnson          #+#    #+#             */
-/*   Updated: 2023/03/30 11:24:49 by ljohnson         ###   ########lyon.fr   */
+/*   Updated: 2023/03/30 12:58:37 by ljohnson         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,6 +57,7 @@ class	BitcoinExchange
 
 	//Getter & Setters
 		unsigned int	get_size() const;
+		float&			get_value_from_key(std::string const& key);
 		void			set_key_value(std::string const& key, float const& value);
 
 	//Iterators
