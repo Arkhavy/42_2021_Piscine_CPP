@@ -6,7 +6,7 @@
 /*   By: ljohnson <ljohnson@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/17 13:02:49 by ljohnson          #+#    #+#             */
-/*   Updated: 2023/03/30 10:47:49 by ljohnson         ###   ########lyon.fr   */
+/*   Updated: 2023/03/30 11:24:49 by ljohnson         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,53 +72,14 @@ class	BitcoinExchange
 /* ************************************************************************** */
 /* Exceptions */
 /* ************************************************************************** */
-class	KeyNotFoundException : public std::exception
-{
-	public:
-		virtual char const*	what() const throw();
-};
-
-class	InvalidDatabaseException : public std::exception
-{
-	public:
-		virtual char const*	what() const throw();
-};
-
-class	InvalidInputException : public std::exception
-{
-	public:
-		virtual char const*	what() const throw();
-};
-
-class	InvalidProgramNameException : public std::exception
-{
-	public:
-		virtual char const*	what() const throw();
-};
-
-class	InvalidArgumentException : public std::exception
-{
-	public:
-		virtual char const*	what() const throw();
-};
-
-class	InvalidDateException : public std::exception
-{
-	public:
-		virtual char const*	what() const throw();
-};
-
-class	InvalidValueException : public std::exception
-{
-	public:
-		virtual char const*	what() const throw();
-};
-
-class	InvalidLineException : public std::exception
-{
-	public:
-		virtual char const*	what() const throw();
-};
+class	KeyNotFoundException		: public std::exception {public: virtual char const*	what() const throw();};
+class	InvalidDatabaseException	: public std::exception {public: virtual char const*	what() const throw();};
+class	InvalidInputException		: public std::exception {public: virtual char const*	what() const throw();};
+class	InvalidProgramNameException	: public std::exception {public: virtual char const*	what() const throw();};
+class	InvalidArgumentException	: public std::exception {public: virtual char const*	what() const throw();};
+class	InvalidDateException		: public std::exception {public: virtual char const*	what() const throw();};
+class	InvalidValueException		: public std::exception {public: virtual char const*	what() const throw();};
+class	InvalidLineException		: public std::exception {public: virtual char const*	what() const throw();};
 
 /* ************************************************************************** */
 /* Templates */

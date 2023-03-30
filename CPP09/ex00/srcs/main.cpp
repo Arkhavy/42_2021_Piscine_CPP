@@ -6,7 +6,7 @@
 /*   By: ljohnson <ljohnson@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/17 12:54:18 by ljohnson          #+#    #+#             */
-/*   Updated: 2023/03/30 11:06:29 by ljohnson         ###   ########lyon.fr   */
+/*   Updated: 2023/03/30 11:25:49 by ljohnson         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,7 +93,7 @@ void	check_date(std::string const& date)
 /* MODULE : CHECK VALUE */
 /* ************************************************************************** */
 //Works for database, need to limit to 1000 for input
-void	check_value(std::string const& value)
+void	check_value(std::string const& value, bool is_db)
 {
 	bool	point = false;
 
@@ -109,11 +109,15 @@ void	check_value(std::string const& value)
 		float	tmp = std::strtod(value.c_str(), NULL);
 		if (tmp < 0 || tmp > FLT_MAX || tmp < (-FLT_MAX - 1) || errno == ERANGE)
 			throw InvalidValueException();
+		if (!is_db && tmp > 1000)
+			throw InvalidValueException();
 	}
 	else
 	{
 		int	tmp = std::strtol(value.c_str(), NULL, 10);
 		if (tmp < 0 || tmp > INT_MAX || tmp < (-INT_MAX - 1) || errno == ERANGE)
+			throw InvalidValueException();
+		if (!is_db && tmp > 1000)
 			throw InvalidValueException();
 	}
 }
@@ -131,7 +135,7 @@ int	ft_check_line(std::string const& line, std::string& date, std::string& value
 	date = line.substr(0, pos);
 	check_date(date);
 	value = line.substr(pos + 1, line.size() - pos);
-	check_value(value);
+	check_value(value, true);
 	return (0);
 }
 
@@ -157,12 +161,10 @@ void	get_database(BitcoinExchange& database)
 			}
 			catch (std::exception& e)
 			{
-				// ft_print_msg<int>(FAINT, e.what(), 1);
-				//skip line
+				if (ifs.eof())
+					break ;
 			}
 		}
-		if (ifs.eof())
-			break ;
 	}
 	ifs.close();
 }
