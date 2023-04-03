@@ -6,7 +6,7 @@
 /*   By: ljohnson <ljohnson@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/17 12:54:18 by ljohnson          #+#    #+#             */
-/*   Updated: 2023/03/30 17:56:07 by ljohnson         ###   ########lyon.fr   */
+/*   Updated: 2023/04/03 11:10:38 by ljohnson         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -148,11 +148,9 @@ void	get_database(BitcoinExchange& database)
 				check_db_lines(line, date, value);
 				database.set_key_value(date, std::strtod(value.c_str(), NULL));
 			}
-			catch (std::exception& e)
-			{
-				if (ifs.eof())
-					break ;
-			}
+			catch (std::exception& e) {}
+			if (ifs.eof())
+				break ;
 		}
 	}
 	ifs.close();
