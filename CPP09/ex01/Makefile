@@ -6,23 +6,23 @@
 #    By: ljohnson <ljohnson@student.42lyon.fr>      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/03/13 14:21:44 by ljohnson          #+#    #+#              #
-#    Updated: 2023/03/13 14:21:53 by ljohnson         ###   ########lyon.fr    #
+#    Updated: 2023/04/03 12:37:41 by ljohnson         ###   ########lyon.fr    #
 #                                                                              #
 # **************************************************************************** #
 
 .PHONY: all clean fclean re
 # .SILENT:
 
-NAME	:=	
+NAME	:=	RPN
 
 #//////////////////////////////////////////////////////////////////////////////
 #		ALL FILES
 #//////////////////////////////////////////////////////////////////////////////
 
 # Files
-LST_INCS	:=	
-LST_SRCS	:=	
-LST_TMPT	:=	
+LST_INCS	:=	RPN.hpp
+LST_SRCS	:=	RPN.cpp	main.cpp
+LST_TMPT	:=	RPN.tpp
 LST_DEPS	:=	$(LST_SRCS:.cpp=.d)
 LST_OBJS	:=	$(LST_SRCS:.cpp=.o)
 
