@@ -6,7 +6,7 @@
 /*   By: ljohnson <ljohnson@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/03 11:20:42 by ljohnson          #+#    #+#             */
-/*   Updated: 2023/04/04 11:53:11 by ljohnson         ###   ########lyon.fr   */
+/*   Updated: 2023/04/04 13:37:57 by ljohnson         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,10 @@ RPN&	RPN::operator=(RPN const& rhs)
 std::ostream&	operator<<(std::ostream& out, RPN const& rhs)
 {
 	for (size_t i = 0; i < rhs.get_size(); i++)
+	{
 		out << rhs.get_value_idx(i);
+		out << "\n";
+	}
 	return (out);
 }
 

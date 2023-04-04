@@ -6,7 +6,7 @@
 /*   By: ljohnson <ljohnson@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/03 11:20:40 by ljohnson          #+#    #+#             */
-/*   Updated: 2023/04/04 11:46:23 by ljohnson         ###   ########lyon.fr   */
+/*   Updated: 2023/04/04 13:57:00 by ljohnson         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,13 +14,13 @@
 
 
 /* ************************************************************************** */
-/* MODULE :  */
+/* MODULE : */
 /* ************************************************************************** */
 void	create_rpn_stack(RPN& rpn, std::string const& input)
 {
 	std::string	value;
 
-	for (size_t i = 0; i < input.size(); i++)
+	for (size_t i = 0; i < input.length(); i++)
 	{
 		if (input[i] != ' ')
 		{
@@ -30,12 +30,9 @@ void	create_rpn_stack(RPN& rpn, std::string const& input)
 				value += input[i + 1];
 				i++;
 			}
+			rpn.push_front(value);
+			value.clear();
 		}
-		rpn.push_front(value);
-		value.clear();
-		i++;
-		while (input[i] == ' ')
-			i++;
 	}
 }
 
@@ -73,10 +70,14 @@ int	main(int ac, char** av)
 
 	if (ac != 2)
 		return (ft_print_msg<int>(RED, "ERROR: Usage: ./RPN <Inverted Polish mathematical expression>", 1));
-	try {check_user_input(av[0], av[1]);}
+	try
+	{
+		check_user_input(av[0], av[1]);
+		create_rpn_stack(rpn, av[1]);
+		rpn_operation(rpn);
+	}
 	catch (std::exception& e) {return (ft_print_msg<int>(RED, e.what(), 1));}
-	try {create_rpn_stack(rpn, av[1]);}
-	catch (std::exception& e) {return (ft_print_msg<int>(RED, e.what(), 1));}
+	std::cout << rpn << std::endl;
 	ft_print_msg(GREEN, "Everything worked correctly woo", 1);
 	return (0);
 }
