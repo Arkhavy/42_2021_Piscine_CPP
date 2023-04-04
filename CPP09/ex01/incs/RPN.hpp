@@ -6,7 +6,7 @@
 /*   By: ljohnson <ljohnson@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/03 11:20:38 by ljohnson          #+#    #+#             */
-/*   Updated: 2023/04/03 12:36:49 by ljohnson         ###   ########lyon.fr   */
+/*   Updated: 2023/04/04 11:53:14 by ljohnson         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 #include <string>
 #include <iostream>
 #include <exception>
-#include <stack>
+#include <deque>
 
 # define BLACK		"\033[30m"
 # define RED		"\033[31m"
@@ -36,6 +36,7 @@
 class	RPN
 {
 	private:
+		std::deque<std::string>	value;
 	
 	public:
 	//Constructors & Destructors
@@ -43,15 +44,28 @@ class	RPN
 		RPN(RPN const& src);
 		virtual	~RPN();
 
+		void				push_front(std::string const value);
+		void				push_back(std::string const value);
+		void				pop_front();
+		void				pop_back();
+		std::string const&	get_front() const;
+		std::string const&	get_back() const;
+		std::string const&	get_value_idx(size_t const idx) const;
+		size_t				get_size() const;
+
 	//Operator overloads
 		RPN&	operator=(RPN const& rhs);
 
 	//Getter & Setters
 };
 
+std::ostream&	operator<<(std::ostream& out, RPN const& rhs);
+
 /* ************************************************************************** */
 /* Exceptions */
 /* ************************************************************************** */
+class InvalidProgramNameException : public std::exception {public: virtual char const*	what() const throw();};
+class InvalidArgumentException : public std::exception {public: virtual char const*	what() const throw();};
 
 /* ************************************************************************** */
 /* Templates */

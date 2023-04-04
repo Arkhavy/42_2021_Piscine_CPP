@@ -6,12 +6,42 @@
 /*   By: ljohnson <ljohnson@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/03 11:20:40 by ljohnson          #+#    #+#             */
-/*   Updated: 2023/04/03 13:37:28 by ljohnson         ###   ########lyon.fr   */
+/*   Updated: 2023/04/04 11:46:23 by ljohnson         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <RPN.hpp>
 
+
+/* ************************************************************************** */
+/* MODULE :  */
+/* ************************************************************************** */
+void	create_rpn_stack(RPN& rpn, std::string const& input)
+{
+	std::string	value;
+
+	for (size_t i = 0; i < input.size(); i++)
+	{
+		if (input[i] != ' ')
+		{
+			value = input[i];
+			if ((input[i] == '-' || input[i] == '+') && isdigit(input[i + 1]))
+			{
+				value += input[i + 1];
+				i++;
+			}
+		}
+		rpn.push_front(value);
+		value.clear();
+		i++;
+		while (input[i] == ' ')
+			i++;
+	}
+}
+
+/* ************************************************************************** */
+/* MODULE : CHECK USER INPUT */
+/* ************************************************************************** */
 bool	is_symbol(char c) {return (c == '+' || c == '-' || c == '/' || c == '*');}
 
 bool	is_input_valid(std::string const& input)
@@ -20,26 +50,6 @@ bool	is_input_valid(std::string const& input)
 	{
 		if (!isdigit(input[i]) && input[i] != ' ' && !is_symbol(input[i]))
 			return (false);
-	}
-	for (size_t i = 0; i < input.length(); i++)
-	{
-		if (is_symbol(input[i]))
-		{
-			for (size_t j = i; j < input.length(); j++)
-			{
-				if (input[j] == ' ')
-					j++;
-				if (isdigit(input[j]))
-					break ;
-				else if (is_symbol(input[j]))
-				{
-					if (input[j] == '-' && isdigit(input[j + 1]))
-						break ;
-					else
-						return (false);
-				}
-			}
-		}
 	}
 	return (true);
 }
@@ -54,6 +64,9 @@ void	check_user_input(std::string const& program_name, std::string const& input)
 		throw InvalidArgumentException();
 }
 
+/* ************************************************************************** */
+/* MAIN */
+/* ************************************************************************** */
 int	main(int ac, char** av)
 {
 	RPN	rpn;
@@ -62,5 +75,8 @@ int	main(int ac, char** av)
 		return (ft_print_msg<int>(RED, "ERROR: Usage: ./RPN <Inverted Polish mathematical expression>", 1));
 	try {check_user_input(av[0], av[1]);}
 	catch (std::exception& e) {return (ft_print_msg<int>(RED, e.what(), 1));}
+	try {create_rpn_stack(rpn, av[1]);}
+	catch (std::exception& e) {return (ft_print_msg<int>(RED, e.what(), 1));}
+	ft_print_msg(GREEN, "Everything worked correctly woo", 1);
 	return (0);
 }
