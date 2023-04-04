@@ -6,7 +6,7 @@
 /*   By: ljohnson <ljohnson@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/03 11:20:38 by ljohnson          #+#    #+#             */
-/*   Updated: 2023/04/04 11:53:14 by ljohnson         ###   ########lyon.fr   */
+/*   Updated: 2023/04/04 15:08:03 by ljohnson         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,10 @@
 #include <string>
 #include <iostream>
 #include <exception>
+#include <cerrno>
+#include <climits>
 #include <deque>
+#include <cstdlib>
 
 # define BLACK		"\033[30m"
 # define RED		"\033[31m"
@@ -36,7 +39,7 @@
 class	RPN
 {
 	private:
-		std::deque<std::string>	value;
+		std::deque<int>	data;
 	
 	public:
 	//Constructors & Destructors
@@ -44,28 +47,36 @@ class	RPN
 		RPN(RPN const& src);
 		virtual	~RPN();
 
-		void				push_front(std::string const value);
-		void				push_back(std::string const value);
-		void				pop_front();
-		void				pop_back();
-		std::string const&	get_front() const;
-		std::string const&	get_back() const;
-		std::string const&	get_value_idx(size_t const idx) const;
-		size_t				get_size() const;
-
 	//Operator overloads
 		RPN&	operator=(RPN const& rhs);
 
 	//Getter & Setters
+		void		push_front(int const value);
+		void		push_back(int const value);
+		void		pop_front();
+		void		pop_back();
+		int const&	get_front() const;
+		int const&	get_back() const;
+		int const&	get_value_idx(size_t const idx) const;
+		size_t		get_size() const;
+
+	//Member functions
+		void	operation(std::string const& input);
 };
 
 std::ostream&	operator<<(std::ostream& out, RPN const& rhs);
+bool	is_symbol(char c);
 
 /* ************************************************************************** */
 /* Exceptions */
 /* ************************************************************************** */
-class InvalidProgramNameException : public std::exception {public: virtual char const*	what() const throw();};
-class InvalidArgumentException : public std::exception {public: virtual char const*	what() const throw();};
+class InvalidProgramNameException	: public std::exception {public: virtual char const*	what() const throw();};
+class InvalidArgumentException		: public std::exception {public: virtual char const*	what() const throw();};
+class NotEnoughElementException		: public std::exception {public: virtual char const*	what() const throw();};
+class ImpossibleConversionException	: public std::exception {public: virtual char const*	what() const throw();}; 
+class DivisionByZeroException		: public std::exception {public: virtual char const*	what() const throw();};
+class QueueNotEmptyException		: public std::exception {public: virtual char const*	what() const throw();};
+class OutOfRangeException			: public std::exception {public: virtual char const*	what() const throw();};
 
 /* ************************************************************************** */
 /* Templates */
