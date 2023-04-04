@@ -6,7 +6,7 @@
 /*   By: ljohnson <ljohnson@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/03 11:20:42 by ljohnson          #+#    #+#             */
-/*   Updated: 2023/04/04 15:18:15 by ljohnson         ###   ########lyon.fr   */
+/*   Updated: 2023/04/04 16:50:23 by ljohnson         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,7 +75,7 @@ size_t	RPN::get_size() const {return (this->data.size());}
 /* ************************************************************************** */
 /* MODULE : RPN OPERATION */
 /* ************************************************************************** */
-static int	rpn_op(char const symbol, int a, int const b)
+static int	rpn_op(char const symbol, long long int a, int const b)
 {
 	if (symbol == '+')
 		a += b;
@@ -89,6 +89,8 @@ static int	rpn_op(char const symbol, int a, int const b)
 			throw DivisionByZeroException();
 		a /= b;
 	}
+	if (a > INT_MAX || a < (-INT_MAX - 1) || errno == ERANGE)
+		throw OutOfRangeException();
 	return (a);
 }
 
@@ -112,14 +114,13 @@ void	RPN::operation(std::string const& input)
 					throw NotEnoughElementException();
 				this->data[1] = rpn_op(input[i], this->data[1], this->data[0]);
 				this->data.pop_front();
+				value.clear();
+				continue ;
 			}
-			else
-			{
-				int nb = std::strtol(value.c_str(), NULL, 10);
-				if (nb > INT_MAX || nb < (-INT_MAX - 1) || nb >= 10 || errno == ERANGE)
-					throw OutOfRangeException();
-				this->data.push_front(nb);
-			}
+			int nb = std::strtol(value.c_str(), NULL, 10);
+			if (nb > INT_MAX || nb < (-INT_MAX - 1) || nb >= 10 || errno == ERANGE)
+				throw OutOfRangeException();
+			this->data.push_front(nb);
 			value.clear();
 		}
 	}

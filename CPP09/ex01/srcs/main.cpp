@@ -6,7 +6,7 @@
 /*   By: ljohnson <ljohnson@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/03 11:20:40 by ljohnson          #+#    #+#             */
-/*   Updated: 2023/04/04 15:19:40 by ljohnson         ###   ########lyon.fr   */
+/*   Updated: 2023/04/04 16:50:27 by ljohnson         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,5 @@ int	main(int ac, char** av)
 	}
 	catch (std::exception& e) {return (ft_print_msg<int>(RED, e.what(), 1));}
 	std::cout << rpn.get_front() << std::endl;
-	// std::cout << rpn << std::endl;
-	// ft_print_msg(GREEN, "Everything worked correctly woo", 1);
 	return (0);
 }
