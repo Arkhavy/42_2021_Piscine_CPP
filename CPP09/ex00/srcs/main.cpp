@@ -6,7 +6,7 @@
 /*   By: ljohnson <ljohnson@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/17 12:54:18 by ljohnson          #+#    #+#             */
-/*   Updated: 2023/04/03 11:10:38 by ljohnson         ###   ########lyon.fr   */
+/*   Updated: 2023/04/04 13:57:37 by ljohnson         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -258,11 +258,12 @@ int	main(int ac, char** av)
 
 	if (ac != 2)
 		return (ft_print_msg<int>(RED, "ERROR: Usage: ./btc <input>", 1));
-	try {check_user_input(av[0], av[1]);}
-	catch (std::exception& e) {return (ft_print_msg<int>(RED, e.what(), 1));}
-	try {get_database(database);}
-	catch (std::exception& e) {return (ft_print_msg<int>(RED, e.what(), 1));}
-	try {display_bitcoin_exchange(database, av[1]);}
+	try
+	{
+		check_user_input(av[0], av[1]);
+		get_database(database);
+		display_bitcoin_exchange(database, av[1]);
+	}
 	catch (std::exception& e) {return (ft_print_msg<int>(RED, e.what(), 1));}
 	return (0);
 }
