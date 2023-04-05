@@ -6,7 +6,7 @@
 /*   By: ljohnson <ljohnson@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/05 12:06:20 by ljohnson          #+#    #+#             */
-/*   Updated: 2023/04/05 12:59:12 by ljohnson         ###   ########lyon.fr   */
+/*   Updated: 2023/04/05 15:55:10 by ljohnson         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,8 @@ void	init_sorter(PmergeMe& sorter, char** av)
 	}
 	if (sorter.check_vct_duplicates())
 		throw DuplicateFoundException();
+	for (size_t i = 1; av[i]; i++)
+		sorter.set_lst_val(std::strtol(av[i], NULL, 10));
 }
 
 void	check_user_input(std::string const program_name, char** av)
@@ -58,7 +60,17 @@ int	main(int ac, char** av)
 	{
 		check_user_input(av[0], av);
 		init_sorter(sorter, av);
+		sorter.display_lst();
+		sorter.display_vct();
+		while (!sorter.check_sorting())
+		{
+			sorter.launch(0);
+			sorter.launch(1);
+		}
+		sorter.display_lst();
+		sorter.display_vct();
 	}
 	catch (std::exception& e) {return (ft_print_msg<int>(RED, e.what(), 1));}
+	ft_print_msg<int>(GREEN, "Everything worked correctly wooo", 0);
 	return (0);
 }

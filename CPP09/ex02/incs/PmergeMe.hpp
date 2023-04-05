@@ -6,7 +6,7 @@
 /*   By: ljohnson <ljohnson@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/05 11:19:23 by ljohnson          #+#    #+#             */
-/*   Updated: 2023/04/05 12:55:21 by ljohnson         ###   ########lyon.fr   */
+/*   Updated: 2023/04/05 15:55:27 by ljohnson         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,6 +59,14 @@ class	PmergeMe
 
 	//Member functions
 		bool	check_vct_duplicates() const;
+		void	display_lst() const;
+		void	display_vct() const;
+
+		template<typename T>
+		T&	ft_sorting(T& lst);
+
+		void	launch(int id);
+		bool	check_sorting() const;
 };
 
 /* ************************************************************************** */
