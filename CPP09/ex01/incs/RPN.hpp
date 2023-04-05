@@ -6,7 +6,7 @@
 /*   By: ljohnson <ljohnson@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/03 11:20:38 by ljohnson          #+#    #+#             */
-/*   Updated: 2023/04/05 10:36:11 by ljohnson         ###   ########lyon.fr   */
+/*   Updated: 2023/04/05 11:17:52 by ljohnson         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,6 +82,6 @@ class OutOfRangeException			: public std::exception {public: virtual char const*
 /* Templates */
 /* ************************************************************************** */
 template<typename T>
-T	ft_print_msg(std::string color, std::string const& message, T const val);
+T	ft_print_msg(char const* color, std::string const& message, T const val);
 
 #include <RPN.tpp>
