@@ -6,7 +6,7 @@
 /*   By: ljohnson <ljohnson@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/05 11:19:23 by ljohnson          #+#    #+#             */
-/*   Updated: 2023/04/05 15:55:27 by ljohnson         ###   ########lyon.fr   */
+/*   Updated: 2023/04/05 17:56:47 by ljohnson         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,7 @@
 #include <cstdlib>
 #include <exception>
 #include <algorithm>
+#include <sys/time.h>
 
 # define BLACK		"\033[30m"
 # define RED		"\033[31m"
@@ -43,6 +44,10 @@ class	PmergeMe
 	private:
 		std::list<unsigned int>		lst;
 		std::vector<unsigned int>	vct;
+		u_int64_t					begin_time_lst;
+		u_int64_t					begin_time_vct;
+		u_int64_t					end_time_lst;
+		u_int64_t					end_time_vct;
 	
 	public:
 	//Constructors & Destructors
@@ -54,8 +59,11 @@ class	PmergeMe
 		PmergeMe&	operator=(PmergeMe const& rhs);
 
 	//Getter & Setters
-		void	set_lst_val(unsigned int nb);
-		void	set_vct_val(unsigned int nb);
+		void		set_lst_val(unsigned int nb);
+		void		set_vct_val(unsigned int nb);
+		u_int64_t	get_time_vct() const;
+		u_int64_t	get_time_lst() const;
+		u_int64_t	set_time();
 
 	//Member functions
 		bool	check_vct_duplicates() const;
@@ -65,8 +73,8 @@ class	PmergeMe
 		template<typename T>
 		T&	ft_sorting(T& lst);
 
-		void	launch(int id);
-		bool	check_sorting() const;
+		void	launch();
+		void	display_process_time();
 };
 
 /* ************************************************************************** */
@@ -82,5 +90,8 @@ class	DuplicateFoundException		: public std::exception {public: virtual char con
 /* ************************************************************************** */
 template<typename T>
 T	ft_print_msg(char const* color, std::string const& message, T const val);
+
+template<typename T>
+bool	check_sorting(T& lst);
 
 #include <PmergeMe.tpp>

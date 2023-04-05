@@ -6,7 +6,7 @@
 /*   By: ljohnson <ljohnson@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/05 11:16:44 by ljohnson          #+#    #+#             */
-/*   Updated: 2023/04/05 16:06:08 by ljohnson         ###   ########lyon.fr   */
+/*   Updated: 2023/04/05 18:02:33 by ljohnson         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ T&	PmergeMe::ft_sorting(T& lst)
 	unsigned int	lst_size = lst.size();
 	unsigned int	half_size = lst_size / 2;
 
-	if (lst_size > 32)
+	if (lst_size > 4)
 	{
 		typename T::iterator	it = lst.begin();
 		T	a;
@@ -54,4 +54,21 @@ T&	PmergeMe::ft_sorting(T& lst)
 		}
 	}
 	return (lst);
+}
+
+template<typename T>
+bool	check_sorting(T& lst)
+{
+	typename T::const_iterator	it1 = lst.begin();
+	typename T::const_iterator	it2 = lst.begin();
+	it2++;
+
+	while (it2 != lst.end())
+	{
+		if (*it1 > *it2)
+			return (false);
+		it1++;
+		it2++;
+	}
+	return (true);
 }

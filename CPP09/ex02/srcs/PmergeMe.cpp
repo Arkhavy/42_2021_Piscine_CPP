@@ -6,7 +6,7 @@
 /*   By: ljohnson <ljohnson@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/05 11:31:00 by ljohnson          #+#    #+#             */
-/*   Updated: 2023/04/05 16:30:23 by ljohnson         ###   ########lyon.fr   */
+/*   Updated: 2023/04/05 18:03:27 by ljohnson         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,36 +73,30 @@ void	PmergeMe::display_vct() const
 		std::cout << this->vct[i] << " ";
 }
 
-void	PmergeMe::launch(int id)
+void	PmergeMe::launch()
 {
-	if (id == 0)
+
+	this->begin_time_lst = this->set_time();
+	while (!check_sorting(this->lst))
 		this->lst = ft_sorting<std::list<unsigned int> >(this->lst);
-	else
+	this->end_time_lst = this->set_time() - this->begin_time_lst;
+
+	this->begin_time_vct = this->set_time();
+	while (!check_sorting(this->vct))
 		this->vct = ft_sorting<std::vector<unsigned int> >(this->vct);
+	this->end_time_vct = this->set_time() - this->begin_time_vct;
 }
 
-bool	PmergeMe::check_sorting() const
+u_int64_t	PmergeMe::set_time()
 {
-	std::list<unsigned int>::const_iterator	itl1 = this->lst.begin();
-	std::list<unsigned int>::const_iterator	itl2 = this->lst.begin();
-	itl2++;
-	std::vector<unsigned int>::const_iterator	itv1 = this->vct.begin();
-	std::vector<unsigned int>::const_iterator	itv2 = this->vct.begin();
-	itv2++;
+	struct timeval	time;
 
-	while (itl2 != this->lst.end())
-	{
-		if (*itl1 > *itl2)
-			return (false);
-		itl1++;
-		itl2++;
-	}
-	while (itv2 != this->vct.end())
-	{
-		if (*itv1 > *itv2)
-			return (false);
-		itv1++;
-		itv2++;
-	}
-	return (true);
+	gettimeofday(&time, NULL);
+	return (time.tv_sec * 1000000 + time.tv_usec);
+}
+
+void	PmergeMe::display_process_time()
+{
+	std::cout << "Time to process a range of " << this->lst.size() << " elements with std::list : " << this->end_time_lst << " us" << std::endl;
+	std::cout << "Time to process a range of " << this->vct.size() << " elements with std::vector : " << this->end_time_vct << " us" << std::endl;
 }
