@@ -6,23 +6,23 @@
 #    By: ljohnson <ljohnson@student.42lyon.fr>      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/03/13 14:21:46 by ljohnson          #+#    #+#              #
-#    Updated: 2023/03/13 14:21:50 by ljohnson         ###   ########lyon.fr    #
+#    Updated: 2023/04/05 11:22:11 by ljohnson         ###   ########lyon.fr    #
 #                                                                              #
 # **************************************************************************** #
 
 .PHONY: all clean fclean re
 # .SILENT:
 
-NAME	:=	
+NAME	:=	PmergeMe
 
 #//////////////////////////////////////////////////////////////////////////////
 #		ALL FILES
 #//////////////////////////////////////////////////////////////////////////////
 
 # Files
-LST_INCS	:=	
-LST_SRCS	:=	
-LST_TMPT	:=	
+LST_INCS	:=	PmergeMe.hpp
+LST_SRCS	:=	PmergeMe.cpp	main.cpp
+LST_TMPT	:=	PmergeMe.tpp
 LST_DEPS	:=	$(LST_SRCS:.cpp=.d)
 LST_OBJS	:=	$(LST_SRCS:.cpp=.o)
 
