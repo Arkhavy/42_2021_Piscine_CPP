@@ -6,7 +6,7 @@
 /*   By: ljohnson <ljohnson@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/05 11:31:00 by ljohnson          #+#    #+#             */
-/*   Updated: 2023/04/05 15:59:16 by ljohnson         ###   ########lyon.fr   */
+/*   Updated: 2023/04/05 16:30:23 by ljohnson         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,19 +61,16 @@ bool	PmergeMe::check_vct_duplicates() const
 
 void	PmergeMe::display_lst() const
 {
-	std::cout << "lst: ";
 	for (std::list<unsigned int>::const_iterator it = this->lst.begin(); it != this->lst.end(); it++)
-		std::cout << CYAN << *it << " ";
-	std::cout << RESET << std::endl;
+		std::cout << *it << " ";
 }
 
 void	PmergeMe::display_vct() const
 {
 	size_t	vct_size = this->vct.size();
-	std::cout << "vct: ";
+
 	for (size_t i = 0; i < vct_size; i++)
-		std::cout << CYAN << this->vct[i] << " ";
-	std::cout << RESET << std::endl;
+		std::cout << this->vct[i] << " ";
 }
 
 void	PmergeMe::launch(int id)
