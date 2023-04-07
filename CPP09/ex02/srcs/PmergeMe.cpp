@@ -6,7 +6,7 @@
 /*   By: ljohnson <ljohnson@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/05 11:31:00 by ljohnson          #+#    #+#             */
-/*   Updated: 2023/04/07 14:44:04 by ljohnson         ###   ########lyon.fr   */
+/*   Updated: 2023/04/07 15:14:42 by ljohnson         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,29 +59,23 @@ bool	PmergeMe::check_vct_duplicates() const
 	return (false);
 }
 
-void	PmergeMe::display_lst(std::string const& moment) const
-{
-	std::cout << moment;
-	if (moment == "Before: ")
-		std::cout << CYAN;
-	else
-		std::cout << GREEN;
-	for (std::list<unsigned int>::const_iterator it = this->lst.begin(); it != this->lst.end(); it++)
-		std::cout << *it << " ";
-	std::cout << RESET << std::endl;
-}
-
 void	PmergeMe::launch()
 {
+	this->display_tab<std::list<unsigned int> >(this->lst, "Before: "); //list version
+	// this->display_tab<std::vector<unsigned int> >(this->vct, "Before: "); //vector version
+
 	this->time_lst = this->set_time();
 	while (!check_sorting<std::list<unsigned int> >(this->lst))
-		this->lst = ft_sorting<std::list<unsigned int> >(this->lst);
+		this->lst = merge_insert_sort<std::list<unsigned int> >(this->lst);
 	this->time_lst = this->set_time() - this->time_lst;
 
 	this->time_vct = this->set_time();
 	while (!check_sorting<std::vector<unsigned int> >(this->vct))
-		this->vct = ft_sorting<std::vector<unsigned int> >(this->vct);
+		this->vct = merge_insert_sort<std::vector<unsigned int> >(this->vct);
 	this->time_vct = this->set_time() - this->time_vct;
+
+	this->display_tab<std::list<unsigned int> >(this->lst, "After: "); //list version
+	// this->display_tab<std::vector<unsigned int> >(this->vct, "After: "); //vector version
 }
 
 u_int64_t	PmergeMe::set_time()

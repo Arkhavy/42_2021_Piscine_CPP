@@ -6,7 +6,7 @@
 /*   By: ljohnson <ljohnson@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/05 11:16:44 by ljohnson          #+#    #+#             */
-/*   Updated: 2023/04/07 14:36:24 by ljohnson         ###   ########lyon.fr   */
+/*   Updated: 2023/04/07 14:56:55 by ljohnson         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ T	ft_print_msg(char const* color, std::string const& message, T const val)
 }
 
 template<typename T>
-T&	PmergeMe::ft_sorting(T& lst)
+T&	PmergeMe::merge_insert_sort(T& lst)
 {
 	unsigned int	lst_size = lst.size();
 	unsigned int	half_size = lst_size / 2;
@@ -37,8 +37,8 @@ T&	PmergeMe::ft_sorting(T& lst)
 			a.push_back(*it);
 		for (unsigned int i = half_size; i < lst_size; i++, it++)
 			b.push_back(*it);
-		a = ft_sorting(a);
-		b = ft_sorting(b);
+		a = merge_insert_sort(a);
+		b = merge_insert_sort(b);
 		std::merge(a.begin(), a.end(), b.begin(), b.end(), lst.begin());
 	}
 	else
@@ -71,4 +71,17 @@ bool	check_sorting(T& lst)
 		it2++;
 	}
 	return (true);
+}
+
+template<typename T>
+void	PmergeMe::display_tab(T const& lst, std::string const& moment) const
+{
+	std::cout << moment;
+	if (moment == "Before: ")
+		std::cout << CYAN;
+	else
+		std::cout << GREEN;
+	for (typename T::const_iterator it = lst.begin(); it != lst.end(); it++)
+		std::cout << *it << " ";
+	std::cout << RESET << std::endl;
 }

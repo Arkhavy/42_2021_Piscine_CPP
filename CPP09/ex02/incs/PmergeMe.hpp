@@ -6,7 +6,7 @@
 /*   By: ljohnson <ljohnson@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/05 11:19:23 by ljohnson          #+#    #+#             */
-/*   Updated: 2023/04/07 14:25:53 by ljohnson         ###   ########lyon.fr   */
+/*   Updated: 2023/04/07 14:57:35 by ljohnson         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,10 +63,12 @@ class	PmergeMe
 
 	//Member functions
 		bool	check_vct_duplicates() const;
-		void	display_lst(std::string const& moment) const;
 
 		template<typename T>
-		T&	ft_sorting(T& lst);
+		void	display_tab(T const& lst, std::string const& moment) const;
+
+		template<typename T>
+		T&	merge_insert_sort(T& lst);
 
 		void	launch();
 		void	display_process_time();
