@@ -6,7 +6,7 @@
 /*   By: ljohnson <ljohnson@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/17 13:17:50 by ljohnson          #+#    #+#             */
-/*   Updated: 2023/03/30 17:48:11 by ljohnson         ###   ########lyon.fr   */
+/*   Updated: 2023/04/07 14:06:30 by ljohnson         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,7 +66,6 @@ char const*	InvalidLineException::what()		const throw() {return ("ERROR: Invalid
 /* ************************************************************************** */
 /* Member Functions */
 /* ************************************************************************** */
-unsigned int	BitcoinExchange::get_size() const 							{return (this->data.size());}
 float&			BitcoinExchange::get_value_from_date(std::string const& date)
 {
 	std::map<std::string, float>::iterator	it = this->data.begin();

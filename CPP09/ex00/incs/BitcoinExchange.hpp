@@ -6,7 +6,7 @@
 /*   By: ljohnson <ljohnson@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/17 13:02:49 by ljohnson          #+#    #+#             */
-/*   Updated: 2023/03/30 17:48:45 by ljohnson         ###   ########lyon.fr   */
+/*   Updated: 2023/04/07 14:08:14 by ljohnson         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,10 +66,8 @@ class	BitcoinExchange
 
 	//Operator overloads
 		BitcoinExchange&	operator=(BitcoinExchange const& rhs);
-		float&				operator[](std::string const& key);
 
 	//Getter & Setters
-		unsigned int	get_size() const;
 		float&			get_value_from_date(std::string const& date);
 		void			set_key_value(std::string const& key, float const& value);
 };
