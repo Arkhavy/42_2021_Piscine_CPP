@@ -6,7 +6,7 @@
 /*   By: ljohnson <ljohnson@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/05 12:06:20 by ljohnson          #+#    #+#             */
-/*   Updated: 2023/04/05 17:56:31 by ljohnson         ###   ########lyon.fr   */
+/*   Updated: 2023/04/07 14:26:25 by ljohnson         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,16 +60,11 @@ int	main(int ac, char** av)
 	{
 		check_user_input(av[0], av);
 		init_sorter(sorter, av);
-		std::cout << "Before: ";
-		sorter.display_lst();
-		std::cout << std::endl;
+		sorter.display_lst("Before: ");
 		sorter.launch();
-		std::cout << "After: ";
-		sorter.display_lst();
-		std::cout << std::endl;
+		sorter.display_lst("After: ");
 		sorter.display_process_time();
 	}
 	catch (std::exception& e) {return (ft_print_msg<int>(RED, e.what(), 1));}
-	ft_print_msg<int>(GREEN, "Everything worked correctly wooo", 0);
 	return (0);
 }

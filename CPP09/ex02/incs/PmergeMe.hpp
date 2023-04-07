@@ -6,7 +6,7 @@
 /*   By: ljohnson <ljohnson@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/05 11:19:23 by ljohnson          #+#    #+#             */
-/*   Updated: 2023/04/05 17:56:47 by ljohnson         ###   ########lyon.fr   */
+/*   Updated: 2023/04/07 14:25:53 by ljohnson         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,10 +44,8 @@ class	PmergeMe
 	private:
 		std::list<unsigned int>		lst;
 		std::vector<unsigned int>	vct;
-		u_int64_t					begin_time_lst;
-		u_int64_t					begin_time_vct;
-		u_int64_t					end_time_lst;
-		u_int64_t					end_time_vct;
+		u_int64_t					time_lst;
+		u_int64_t					time_vct;
 	
 	public:
 	//Constructors & Destructors
@@ -61,14 +59,11 @@ class	PmergeMe
 	//Getter & Setters
 		void		set_lst_val(unsigned int nb);
 		void		set_vct_val(unsigned int nb);
-		u_int64_t	get_time_vct() const;
-		u_int64_t	get_time_lst() const;
 		u_int64_t	set_time();
 
 	//Member functions
 		bool	check_vct_duplicates() const;
-		void	display_lst() const;
-		void	display_vct() const;
+		void	display_lst(std::string const& moment) const;
 
 		template<typename T>
 		T&	ft_sorting(T& lst);

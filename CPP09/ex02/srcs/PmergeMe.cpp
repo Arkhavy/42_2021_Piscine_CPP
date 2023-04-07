@@ -6,7 +6,7 @@
 /*   By: ljohnson <ljohnson@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/05 11:31:00 by ljohnson          #+#    #+#             */
-/*   Updated: 2023/04/05 18:03:27 by ljohnson         ###   ########lyon.fr   */
+/*   Updated: 2023/04/07 14:44:04 by ljohnson         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,32 +59,29 @@ bool	PmergeMe::check_vct_duplicates() const
 	return (false);
 }
 
-void	PmergeMe::display_lst() const
+void	PmergeMe::display_lst(std::string const& moment) const
 {
+	std::cout << moment;
+	if (moment == "Before: ")
+		std::cout << CYAN;
+	else
+		std::cout << GREEN;
 	for (std::list<unsigned int>::const_iterator it = this->lst.begin(); it != this->lst.end(); it++)
 		std::cout << *it << " ";
-}
-
-void	PmergeMe::display_vct() const
-{
-	size_t	vct_size = this->vct.size();
-
-	for (size_t i = 0; i < vct_size; i++)
-		std::cout << this->vct[i] << " ";
+	std::cout << RESET << std::endl;
 }
 
 void	PmergeMe::launch()
 {
-
-	this->begin_time_lst = this->set_time();
-	while (!check_sorting(this->lst))
+	this->time_lst = this->set_time();
+	while (!check_sorting<std::list<unsigned int> >(this->lst))
 		this->lst = ft_sorting<std::list<unsigned int> >(this->lst);
-	this->end_time_lst = this->set_time() - this->begin_time_lst;
+	this->time_lst = this->set_time() - this->time_lst;
 
-	this->begin_time_vct = this->set_time();
-	while (!check_sorting(this->vct))
+	this->time_vct = this->set_time();
+	while (!check_sorting<std::vector<unsigned int> >(this->vct))
 		this->vct = ft_sorting<std::vector<unsigned int> >(this->vct);
-	this->end_time_vct = this->set_time() - this->begin_time_vct;
+	this->time_vct = this->set_time() - this->time_vct;
 }
 
 u_int64_t	PmergeMe::set_time()
@@ -97,6 +94,13 @@ u_int64_t	PmergeMe::set_time()
 
 void	PmergeMe::display_process_time()
 {
-	std::cout << "Time to process a range of " << this->lst.size() << " elements with std::list : " << this->end_time_lst << " us" << std::endl;
-	std::cout << "Time to process a range of " << this->vct.size() << " elements with std::vector : " << this->end_time_vct << " us" << std::endl;
+	std::cout << "Time to process a range of " << this->lst.size();
+	std::cout << " elements with std::list : ";
+	std::cout << YELLOW << BOLD << this->time_lst << RESET;
+	std::cout << " us" << std::endl;
+
+	std::cout << "Time to process a range of " << this->vct.size();
+	std::cout << " elements with std::vector : ";
+	std::cout << YELLOW << BOLD << this->time_vct << RESET;
+	std::cout << " us" << std::endl;
 }

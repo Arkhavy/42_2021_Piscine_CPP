@@ -6,7 +6,7 @@
 /*   By: ljohnson <ljohnson@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/05 11:16:44 by ljohnson          #+#    #+#             */
-/*   Updated: 2023/04/05 18:02:33 by ljohnson         ###   ########lyon.fr   */
+/*   Updated: 2023/04/07 14:36:24 by ljohnson         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ T&	PmergeMe::ft_sorting(T& lst)
 	unsigned int	lst_size = lst.size();
 	unsigned int	half_size = lst_size / 2;
 
-	if (lst_size > 4)
+	if (lst_size > 16)
 	{
 		typename T::iterator	it = lst.begin();
 		T	a;
