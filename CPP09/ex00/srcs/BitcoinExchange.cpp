@@ -6,7 +6,7 @@
 /*   By: ljohnson <ljohnson@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/17 13:17:50 by ljohnson          #+#    #+#             */
-/*   Updated: 2023/04/07 14:06:30 by ljohnson         ###   ########lyon.fr   */
+/*   Updated: 2023/04/20 13:23:49 by ljohnson         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,17 +36,6 @@ BitcoinExchange&	BitcoinExchange::operator=(BitcoinExchange const& rhs)
 	return (*this);
 }
 
-float&	BitcoinExchange::operator[](std::string const& key)
-{
-	for (std::map<std::string, float>::iterator it = this->data.begin(); it != this->data.end(); it++)
-	{
-		if (key == it->first)
-			return (this->data[key]);
-	}
-	throw KeyNotFoundException();
-	return (this->data[key]);
-}
-
 /* ************************************************************************** */
 /* Exceptions */
 /* ************************************************************************** */
@@ -66,16 +55,39 @@ char const*	InvalidLineException::what()		const throw() {return ("ERROR: Invalid
 /* ************************************************************************** */
 /* Member Functions */
 /* ************************************************************************** */
+static bool	compare_dates(std::string const& in_date, std::string const& db_date)
+{
+	char const*	in_str = in_date.c_str();
+	char const*	db_str = db_date.c_str();
+	int	in_pos = 0;
+	int	db_pos = 0;
+	int	in_nb = 0;
+	int	db_nb = 0;
+
+	for (int i = 0; i < 3; i++)
+	{
+		in_nb = std::strtol(&in_str[in_pos], NULL, 10);
+		db_nb = std::strtol(&db_str[db_pos], NULL, 10);
+		if (in_nb > db_nb)
+			return (true);
+		else if (in_nb < db_nb)
+			return (false);
+		in_pos = in_date.find('-', in_pos) + 1;
+		db_pos = db_date.find('-', db_pos) + 1;
+	}
+	return (false);
+}
+
 float&			BitcoinExchange::get_value_from_date(std::string const& date)
 {
 	std::map<std::string, float>::iterator	it = this->data.begin();
 	std::string	last_date = it->first;
 
-	if (date.compare(it->first) < 0)
+	if (!compare_dates(date, it->first))
 		throw InvalidDateException();
 	while (it != this->data.end())
 	{
-		if (date.compare(it->first) >= 0)
+		if (compare_dates(date, it->first))
 			last_date = it->first;
 		else
 			break ;

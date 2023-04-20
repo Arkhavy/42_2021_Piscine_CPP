@@ -6,7 +6,7 @@
 /*   By: ljohnson <ljohnson@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/17 12:54:18 by ljohnson          #+#    #+#             */
-/*   Updated: 2023/04/04 13:57:37 by ljohnson         ###   ########lyon.fr   */
+/*   Updated: 2023/04/20 15:13:59 by ljohnson         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 /* ************************************************************************** */
 /* MODULE : CHECK DATE */
 /* ************************************************************************** */
-void	check_date_numbers(int const month, int const day)
+void	check_date_numbers(int const year, int const month, int const day)
 {
 	if (month < 1 || month > 12)
 		throw InvalidDateException();
@@ -28,52 +28,58 @@ void	check_date_numbers(int const month, int const day)
 		}
 		else if (month == FEB)
 		{
-			if (day > 28)
-				throw InvalidDateException();
+			if ((year % 4) == 0)
+			{
+				if (day > 29)
+					throw InvalidDateException();
+			}
+			else
+				if (day > 28)
+					throw InvalidDateException();
 		}
 		else
-		{
 			if (day > 31)
 				throw InvalidDateException();
-		}
 	}
 	else
 		throw InvalidDateException();
 }
 
+static int	get_pos(std::string const& date, int pos)
+{
+	pos = date.find('-', pos);
+	if (static_cast<size_t>(pos) == std::string::npos)
+		throw InvalidDateException();
+	return (pos);
+}
+
 void	check_date(std::string const& date)
 {
+	char const*	date_str = date.c_str();
 	int	year = 0;
 	int	month = 0;
 	int	day = 0;
-
 	int	pos = 0;
-	int	old_pos = 0;
-	char const*	date_str = date.c_str();
 
 	for (size_t i = 0; i < date.size(); i++)
 	{
 		if (!isdigit(date[i]) && date[i] != '-')
 			throw InvalidDateException();
 	}
-	pos = date.find('-', 0);
-	if (static_cast<size_t>(pos) == std::string::npos)
-		throw InvalidDateException();
 	year = std::strtol(&date_str[0], NULL, 10);
 	if (errno == ERANGE || year > INT_MAX || year < (-INT_MAX - 1))
 		throw InvalidDateException();
-	old_pos = pos;
 
-	pos = date.find('-', (old_pos + 1));
-	if (static_cast<size_t>(pos) == std::string::npos)
-		throw InvalidDateException();
-	month = std::strtol(&date_str[old_pos + 1], NULL, 10);
+	pos = get_pos(date, 0);
+	month = std::strtol(&date_str[pos + 1], NULL, 10);
 	if (errno == ERANGE || month > INT_MAX || month < (-INT_MAX - 1))
 		throw InvalidDateException();
+
+	pos = get_pos(date, (pos + 1));
 	day = std::strtol(&date_str[pos + 1], NULL, 10);
 	if (errno == ERANGE || day > INT_MAX || day < (-INT_MAX - 1))
 		throw InvalidDateException();
-	check_date_numbers(month, day);
+	check_date_numbers(year, month, day);
 }
 
 /* ************************************************************************** */
