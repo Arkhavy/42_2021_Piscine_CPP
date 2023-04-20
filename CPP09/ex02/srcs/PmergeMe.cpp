@@ -6,7 +6,7 @@
 /*   By: ljohnson <ljohnson@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/05 11:31:00 by ljohnson          #+#    #+#             */
-/*   Updated: 2023/04/07 15:14:42 by ljohnson         ###   ########lyon.fr   */
+/*   Updated: 2023/04/20 17:02:01 by ljohnson         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 /* ************************************************************************** */
 /* Constructors & Destructors */
 /* ************************************************************************** */
-PmergeMe::PmergeMe() {}
+PmergeMe::PmergeMe() : time_lst(0), time_vct(0) {}
 
 PmergeMe::PmergeMe(PmergeMe const& src) {*this = src;}
 
@@ -30,6 +30,8 @@ PmergeMe&	PmergeMe::operator=(PmergeMe const& rhs)
 		this->lst.push_back(*it);
 	for (size_t i = 0; i < rhs.vct.size(); i++)
 		this->vct.push_back(rhs.vct[i]);
+	this->time_lst = 0;
+	this->time_vct = 0;
 	return (*this);
 }
 
