@@ -6,7 +6,7 @@
 /*   By: ljohnson <ljohnson@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/17 13:17:50 by ljohnson          #+#    #+#             */
-/*   Updated: 2023/04/20 15:28:27 by ljohnson         ###   ########lyon.fr   */
+/*   Updated: 2023/04/20 15:55:15 by ljohnson         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,6 +63,7 @@ static bool	compare_dates(std::string const& in_date, std::string const& db_date
 	int	db_pos = 0;
 	int	in_nb = 0;
 	int	db_nb = 0;
+	int	count = 0;
 
 	for (int i = 0; i < 3; i++)
 	{
@@ -70,9 +71,15 @@ static bool	compare_dates(std::string const& in_date, std::string const& db_date
 		db_nb = std::strtol(&db_str[db_pos], NULL, 10);
 		if (in_nb > db_nb)
 			return (true);
+		else if (in_nb == db_nb)
+			count++;
+		else
+			break ;
 		in_pos = in_date.find('-', in_pos) + 1;
 		db_pos = db_date.find('-', db_pos) + 1;
 	}
+	if (count == 3)
+		return (true);
 	return (false);
 }
 
@@ -82,9 +89,7 @@ float&			BitcoinExchange::get_value_from_date(std::string const& date)
 	std::string	last_date = it->first;
 
 	if (!compare_dates(date, it->first))
-	{
 		throw InvalidDateException();
-	}
 	while (it != this->data.end())
 	{
 		if (compare_dates(date, it->first))
