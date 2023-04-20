@@ -6,7 +6,7 @@
 /*   By: ljohnson <ljohnson@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/03 11:20:42 by ljohnson          #+#    #+#             */
-/*   Updated: 2023/04/07 14:04:55 by ljohnson         ###   ########lyon.fr   */
+/*   Updated: 2023/04/20 16:07:27 by ljohnson         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,9 +38,9 @@ RPN&	RPN::operator=(RPN const& rhs)
 /* ************************************************************************** */
 char const*	InvalidProgramNameException::what()		const throw() {return ("ERROR: Invalid program name");}
 char const*	InvalidArgumentException::what()		const throw() {return ("ERROR: Invalid argument given");}
-char const*	NotEnoughElementException::what()		const throw() {return ("ERROR: Not enough element in queue to process operation");}
+char const*	NotEnoughElementException::what()		const throw() {return ("ERROR: Not enough element in numbers queue to process operation");}
 char const*	DivisionByZeroException::what()			const throw() {return ("ERROR: Division by zero occured in operation");}
-char const*	QueueNotEmptyException::what()			const throw() {return ("ERROR: Queue is not empty at the end of the operation");}
+char const*	QueueNotEmptyException::what()			const throw() {return ("ERROR: Numbers Queue is not empty at the end of the operation");}
 char const*	OutOfRangeException::what()				const throw() {return ("ERROR: Out of range number in operation");}
 
 /* ************************************************************************** */
