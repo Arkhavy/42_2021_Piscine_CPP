@@ -6,7 +6,7 @@
 /*   By: ljohnson <ljohnson@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/17 13:17:50 by ljohnson          #+#    #+#             */
-/*   Updated: 2023/04/20 13:23:49 by ljohnson         ###   ########lyon.fr   */
+/*   Updated: 2023/04/20 15:28:27 by ljohnson         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,8 +70,6 @@ static bool	compare_dates(std::string const& in_date, std::string const& db_date
 		db_nb = std::strtol(&db_str[db_pos], NULL, 10);
 		if (in_nb > db_nb)
 			return (true);
-		else if (in_nb < db_nb)
-			return (false);
 		in_pos = in_date.find('-', in_pos) + 1;
 		db_pos = db_date.find('-', db_pos) + 1;
 	}
@@ -84,7 +82,9 @@ float&			BitcoinExchange::get_value_from_date(std::string const& date)
 	std::string	last_date = it->first;
 
 	if (!compare_dates(date, it->first))
+	{
 		throw InvalidDateException();
+	}
 	while (it != this->data.end())
 	{
 		if (compare_dates(date, it->first))

@@ -6,7 +6,7 @@
 /*   By: ljohnson <ljohnson@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/17 12:54:18 by ljohnson          #+#    #+#             */
-/*   Updated: 2023/04/20 15:13:59 by ljohnson         ###   ########lyon.fr   */
+/*   Updated: 2023/04/20 15:29:29 by ljohnson         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,9 @@ void	check_date_numbers(int const year, int const month, int const day)
 				throw InvalidDateException();
 	}
 	else
+	{
 		throw InvalidDateException();
+	}
 }
 
 static int	get_pos(std::string const& date, int pos)
