@@ -6,7 +6,7 @@
 /*   By: ljohnson <ljohnson@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/05 11:16:44 by ljohnson          #+#    #+#             */
-/*   Updated: 2023/04/07 14:56:55 by ljohnson         ###   ########lyon.fr   */
+/*   Updated: 2023/04/24 13:01:54 by ljohnson         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,10 +47,22 @@ T&	PmergeMe::merge_insert_sort(T& lst)
 		typename T::iterator	it2 = lst.begin();
 		it2++;
 
-		for (unsigned int i = 0; i < (lst_size - 1); i++, it1++, it2++)
+		while (it2 != lst.end())
 		{
 			if (*it1 > *it2)
+			{
 				std::swap(*it1, *it2);
+				if (it1 != lst.begin())
+				{
+					it1--;
+					it2--;
+				}
+			}
+			else
+			{
+				it1++;
+				it2++;
+			}
 		}
 	}
 	return (lst);
